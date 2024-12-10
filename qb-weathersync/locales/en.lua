@@ -1,0 +1,60 @@
+local Translations = {
+    weather = {
+        now_frozen = '天气已被冻结。',
+        now_unfrozen = '天气不再被冻结。',
+        invalid_syntax = '语法错误，正确的语法是：/weather <天气类型>',
+        invalid_syntaxc = '语法错误，请使用 /weather <天气类型>！',
+        updated = '天气已更新。',
+        invalid = '无效的天气类型，有效的天气类型有：\nEXTRASUNNY CLEAR NEUTRAL SMOG FOGGY OVERCAST CLOUDS CLEARING RAIN THUNDER SNOW BLIZZARD SNOWLIGHT XMAS HALLOWEEN ',
+        invalidc = '无效的天气类型，有效的天气类型有：\nEXTRASUNNY CLEAR NEUTRAL SMOG FOGGY OVERCAST CLOUDS CLEARING RAIN THUNDER SNOW BLIZZARD SNOWLIGHT XMAS HALLOWEEN ',
+        willchangeto = '天气将变为：%{value}。',
+        accessdenied = '没有权限使用命令 /weather。',
+    },
+    dynamic_weather = {
+        disabled = '动态天气变化已禁用。',
+        enabled = '动态天气变化已启用。',
+    },
+    time = {
+        frozenc = '时间已被冻结。',
+        unfrozenc = '时间不再被冻结。',
+        now_frozen = '时间已被冻结。',
+        now_unfrozen = '时间不再被冻结。',
+        morning = '时间已设定为早晨。',
+        noon = '时间已设定为中午。',
+        evening = '时间已设定为傍晚。',
+        night = '时间已设定为夜晚。',
+        change = '时间已变为 %{value}:%{value2}。',
+        changec = '时间已变为：%{value}！',
+        invalid = '语法错误，正确的语法是：time <小时> <分钟>！',
+        invalidc = '语法错误，请使用 /time <小时> <分钟>！',
+        access = '没有权限使用命令 /time。',
+    },
+    blackout = {
+        enabled = '停电模式已启用。',
+        enabledc = '停电模式已启用。',
+        disabled = '停电模式已禁用。',
+        disabledc = '停电模式已禁用。',
+    },
+    help = {
+        weathercommand = '改变天气。',
+        weathertype = '天气类型',
+        availableweather = '可用的天气类型有：extrasunny, clear, neutral, smog, foggy, overcast, clouds, clearing, rain, thunder, snow, blizzard, snowlight, xmas 和 halloween',
+        timecommand = '改变时间。',
+        timehname = '小时',
+        timemname = '分钟',
+        timeh = '一个在 0 到 23 之间的数字',
+        timem = '一个在 0 到 59 之间的数字',
+        freezecommand = '冻结 / 解冻时间。',
+        freezeweathercommand = '启用/禁用动态天气变化。',
+        morningcommand = '将时间设定为 09:00',
+        nooncommand = '将时间设定为 12:00',
+        eveningcommand = '将时间设定为 18:00',
+        nightcommand = '将时间设定为 23:00',
+        blackoutcommand = '切换停电模式。',
+    },
+}
+
+Lang = Lang or Locale:new({
+    phrases = Translations,
+    warnOnMissing = true
+})
