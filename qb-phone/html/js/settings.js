@@ -28,9 +28,9 @@ $(document).on('click', '.settings-app-tab', function(e){
         checkBoxes.prop("checked", QB.Phone.Data.AnonymousCall);
 
         if (!QB.Phone.Data.AnonymousCall) {
-            $("#numberrecognition > p").html('Off');
+            $("#numberrecognition > p").html('关闭');
         } else {
-            $("#numberrecognition > p").html('On');
+            $("#numberrecognition > p").html('开启');
         }
     }
 });
@@ -40,26 +40,26 @@ $(document).on(
     "click",
     "#phoneNumberSelect, #serialNumberSelect",
     function (e) {
-        // Get the title of the clicked element
+        // 获取点击元素的标题
         var title = "";
         if ($(this).attr("id") == "phoneNumberSelect") {
-            title = "Phone Number";
+            title = "电话号码";
         } else {
-            title = "Serial Number";
+            title = "序列号";
         }
 
-        // get the result id of myPhoneNumber or mySerialNumber
+        // 获取 myPhoneNumber 或 mySerialNumber 的文本内容
         var textToCopy =
             $(this).attr("id") == "phoneNumberSelect"
                 ? $("#myPhoneNumber").text()
                 : $("#mySerialNumber").text();
 
-        // Copying the text to clipboard using Clipboard.js
+        // 使用 Clipboard.js 将文本复制到剪贴板
         var clipboard = new ClipboardJS(this, {
             text: function () {
                 QB.Phone.Notifications.Add(
                     "fas fa-phone",
-                    "Copied " + title + "!",
+                    "已复制 " + title + "!",
                     textToCopy
                 );
                 return textToCopy;
@@ -73,13 +73,13 @@ $(document).on('click', '#accept-background', function(e){
     var hasCustomBackground = QB.Phone.Functions.IsBackgroundCustom();
 
     if (hasCustomBackground === false) {
-        QB.Phone.Notifications.Add("fas fa-paint-brush", "Settings", QB.Phone.Settings.Backgrounds[QB.Phone.Settings.Background].label+" is set!")
-        QB.Phone.Animations.TopSlideUp(".settings-"+QB.Phone.Settings.OpenedTab+"-tab", 200, -100);
-        $(".phone-background").css({"background-image":"url('/html/img/backgrounds/"+QB.Phone.Settings.Background+".png')"})
+        QB.Phone.Notifications.Add("fas fa-paint-brush", "设置", QB.Phone.Settings.Backgrounds[QB.Phone.Settings.Background].label + " 已设置！")
+        QB.Phone.Animations.TopSlideUp(".settings-" + QB.Phone.Settings.OpenedTab + "-tab", 200, -100);
+        $(".phone-background").css({"background-image": "url('/html/img/backgrounds/" + QB.Phone.Settings.Background + ".png')"})
     } else {
-        QB.Phone.Notifications.Add("fas fa-paint-brush", "Settings", "Personal background set!")
-        QB.Phone.Animations.TopSlideUp(".settings-"+QB.Phone.Settings.OpenedTab+"-tab", 200, -100);
-        $(".phone-background").css({"background-image":"url('"+QB.Phone.Settings.Background+"')"});
+        QB.Phone.Notifications.Add("fas fa-paint-brush", "设置", "个人背景已设置！")
+        QB.Phone.Animations.TopSlideUp(".settings-" + QB.Phone.Settings.OpenedTab + "-tab", 200, -100);
+        $(".phone-background").css({"background-image": "url('" + QB.Phone.Settings.Background + "')"});
     }
 
     $.post('https://qb-phone/SetBackground', JSON.stringify({
@@ -172,18 +172,19 @@ $(document).on('click', '#accept-profilepicture', function(e){
     e.preventDefault();
     var ProfilePicture = QB.Phone.Data.MetaData.profilepicture;
     if (ProfilePicture === "default") {
-        QB.Phone.Notifications.Add("fas fa-paint-brush", "Settings", "Standard avatar set!")
-        QB.Phone.Animations.TopSlideUp(".settings-"+QB.Phone.Settings.OpenedTab+"-tab", 200, -100);
+        QB.Phone.Notifications.Add("fas fa-paint-brush", "设置", "已设置默认头像！")
+        QB.Phone.Animations.TopSlideUp(".settings-" + QB.Phone.Settings.OpenedTab + "-tab", 200, -100);
         $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="./img/default.png">');
     } else {
-        QB.Phone.Notifications.Add("fas fa-paint-brush", "Settings", "Personal avatar set!")
-        QB.Phone.Animations.TopSlideUp(".settings-"+QB.Phone.Settings.OpenedTab+"-tab", 200, -100);
+        QB.Phone.Notifications.Add("fas fa-paint-brush", "设置", "已设置个人头像！")
+        QB.Phone.Animations.TopSlideUp(".settings-" + QB.Phone.Settings.OpenedTab + "-tab", 200, -100);
         $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="'+ProfilePicture+'">');
     }
     $.post('https://qb-phone/UpdateProfilePicture', JSON.stringify({
         profilepicture: ProfilePicture,
     }));
 });
+
 
 $(document).on('click', '#accept-custom-profilepicture', function(e){
     e.preventDefault();

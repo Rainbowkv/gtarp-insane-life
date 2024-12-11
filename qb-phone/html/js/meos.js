@@ -27,7 +27,7 @@ OpenMeosPage = function(page) {
 }
 
 SetupMeosHome = function() {
-    $("#meos-app-name").html("Welcome " + QB.Phone.Data.PlayerData.charinfo.firstname + " " + QB.Phone.Data.PlayerData.charinfo.lastname);
+    $("#meos-app-name").html("欢迎 " + QB.Phone.Data.PlayerData.charinfo.firstname + " " + QB.Phone.Data.PlayerData.charinfo.lastname);
 }
 
 MeosHomePage = function() {
@@ -64,24 +64,24 @@ $(document).on('click', '.person-search-result', function(e){
     var ClickedPersonId = $(this).attr('id');
     var ClickedPersonData = $("#"+ClickedPersonId).data('PersonData');
 
-    var Gender = "Male";
+    var Gender = "男";
     if (ClickedPersonData.gender == 1) {
-        Gender = "Female";
+        Gender = "女";
     }
-    var HasLicense = "Yes";
+    var HasLicense = "有";
     if (!ClickedPersonData.driverlicense) {
-        HasLicense = "No";
+        HasLicense = "没有";
     }
-    var IsWarrant = "No";
+    var IsWarrant = "没有";
     if (ClickedPersonData.warrant) {
-        IsWarrant = "Yes";
+        IsWarrant = "有";
     }
     var appartementData = {};
     if (ClickedPersonData.appartmentdata) {
         appartementData = ClickedPersonData.appartmentdata;
     }
 
-    var OpenElement = '<div class="person-search-result-name">Name: '+ClickedPersonData.firstname+' '+ClickedPersonData.lastname+'</div> <div class="person-search-result-bsn">CSN: '+ClickedPersonData.citizenid+'</div> <div class="person-opensplit"></div> &nbsp; <div class="person-search-result-dob">Birth Date: '+ClickedPersonData.birthdate+'</div> <div class="person-search-result-number">Phone number: '+ClickedPersonData.phone+'</div> <div class="person-search-result-nationality">Nationality: '+ClickedPersonData.nationality+'</div> <div class="person-search-result-gender">Gender: '+Gender+'</div> &nbsp; <div class="person-search-result-apartment"><span id="'+ClickedPersonId+'">Apartment: '+appartementData.label+'</span> <i class="fas fa-map-marker-alt appartment-adress-location" id="'+ClickedPersonId+'"></i></div> &nbsp; <div class="person-search-result-warned">Signaled: '+IsWarrant+'</div> <div class="person-search-result-driverslicense">Drivers License: '+HasLicense+'</div>';
+    var OpenElement = '<div class="person-search-result-name">姓名: '+ClickedPersonData.firstname+' '+ClickedPersonData.lastname+'</div> <div class="person-search-result-bsn">公民ID: '+ClickedPersonData.citizenid+'</div> <div class="person-opensplit"></div> &nbsp; <div class="person-search-result-dob">出生日期: '+ClickedPersonData.birthdate+'</div> <div class="person-search-result-number">电话号码: '+ClickedPersonData.phone+'</div> <div class="person-search-result-nationality">国籍: '+ClickedPersonData.nationality+'</div> <div class="person-search-result-gender">性别: '+Gender+'</div> &nbsp; <div class="person-search-result-apartment"><span id="'+ClickedPersonId+'">公寓: '+appartementData.label+'</span> <i class="fas fa-map-marker-alt appartment-adress-location" id="'+ClickedPersonId+'"></i></div> &nbsp; <div class="person-search-result-warned">是否有警告: '+IsWarrant+'</div> <div class="person-search-result-driverslicense">驾照: '+HasLicense+'</div>';
 
     if (OpenedPerson === null) {
         $(ClickedPerson).html(OpenElement)
@@ -89,13 +89,13 @@ $(document).on('click', '.person-search-result', function(e){
     } else if (OpenedPerson == ClickedPerson) {
         var PreviousPersonId = $(OpenedPerson).attr('id');
         var PreviousPersonData = $("#"+PreviousPersonId).data('PersonData');
-        var PreviousElement = '<div class="person-search-result-name">Name: '+PreviousPersonData.firstname+' '+PreviousPersonData.lastname+'</div> <div class="person-search-result-bsn">CSN: '+PreviousPersonData.citizenid+'</div>';
+        var PreviousElement = '<div class="person-search-result-name">姓名: '+PreviousPersonData.firstname+' '+PreviousPersonData.lastname+'</div> <div class="person-search-result-bsn">公民ID: '+PreviousPersonData.citizenid+'</div>';
         $(ClickedPerson).html(PreviousElement)
         OpenedPerson = null;
     } else {
         var PreviousPersonId = $(OpenedPerson).attr('id');
         var PreviousPersonData = $("#"+PreviousPersonId).data('PersonData');
-        var PreviousElement = '<div class="person-search-result-name">Name: '+PreviousPersonData.firstname+' '+PreviousPersonData.lastname+'</div> <div class="person-search-result-bsn">CSN: '+PreviousPersonData.citizenid+'</div>';
+        var PreviousElement = '<div class="person-search-result-name">姓名: '+PreviousPersonData.firstname+' '+PreviousPersonData.lastname+'</div> <div class="person-search-result-bsn">公民ID: '+PreviousPersonData.citizenid+'</div>';
         $(OpenedPerson).html(PreviousElement)
         $(ClickedPerson).html(OpenElement)
         OpenedPerson = ClickedPerson;
@@ -140,7 +140,7 @@ $(document).on('click', '.person-search-result-apartment > span', function(e){
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
 
-    QB.Phone.Notifications.Add("fas fa-university", "MDT", "House number copied!", "#badc58", 1750);
+    QB.Phone.Notifications.Add("fas fa-university", "MDT", "房屋号已复制", "#badc58", 1750);
 
     $.post('https://qb-phone/SetApartmentLocation', JSON.stringify({
         data: ClickedPersonData
@@ -155,26 +155,26 @@ $(document).on('click', '.person-search-result-house', function(e){
     var ClickedHouseId = $(this).attr('id');
     var ClickedHouseData = $("#"+ClickedHouseId).data('HouseData');
 
-    var GarageLabel = "No";
+    var GarageLabel = "没有";
     if (ClickedHouseData.garage.length > 0 ) {
-        GarageLabel = "Yes";
+        GarageLabel = "有";
     }
 
-    var OpenElement = '<div class="person-search-result-name">Owner: '+ClickedHouseData.charinfo.firstname+' '+ClickedHouseData.charinfo.lastname+'</div><div class="person-search-result-bsn">House: '+ClickedHouseData.label+'</div> <div class="person-opensplit"></div> &nbsp; <div class="person-search-result-dob">Address: '+ClickedHouseData.label+' &nbsp; <i class="fas fa-map-marker-alt house-adress-location" id="'+ClickedHouseId+'"></i></div> <div class="person-search-result-number">Tier: '+ClickedHouseData.tier+'</div> <div class="person-search-result-nationality">Garage: ' + GarageLabel + '</div>';
+    var OpenElement = '<div class="person-search-result-name">房主: '+ClickedHouseData.charinfo.firstname+' '+ClickedHouseData.charinfo.lastname+'</div><div class="person-search-result-bsn">房产: '+ClickedHouseData.label+'</div> <div class="person-opensplit"></div> &nbsp; <div class="person-search-result-dob">地址: '+ClickedHouseData.label+' &nbsp; <i class="fas fa-map-marker-alt house-adress-location" id="'+ClickedHouseId+'"></i></div> <div class="person-search-result-number">等级: '+ClickedHouseData.tier+'</div> <div class="person-search-result-nationality">车库: ' + GarageLabel + '</div>';
 
     if (OpenedHouse === null) {
         $(ClickedHouse).html(OpenElement)
         OpenedHouse = ClickedHouse;
     } else if (OpenedHouse == ClickedHouse) {
-        var PreviousPersonId = $(OpenedHouse).attr('id');
-        var PreviousPersonData = $("#"+PreviousPersonId).data('HouseData');
-        var PreviousElement = '<div class="person-search-result-name">Owner: '+PreviousPersonData.charinfo.firstname+' '+PreviousPersonData.charinfo.lastname+'</div> <div class="person-search-result-bsn">House: '+PreviousPersonData.label+'</div>';
+        var PreviousHouseId = $(OpenedHouse).attr('id');
+        var PreviousHouseData = $("#"+PreviousHouseId).data('HouseData');
+        var PreviousElement = '<div class="person-search-result-name">房主: '+PreviousHouseData.charinfo.firstname+' '+PreviousHouseData.charinfo.lastname+'</div> <div class="person-search-result-bsn">房产: '+PreviousHouseData.label+'</div>';
         $(ClickedHouse).html(PreviousElement)
         OpenedHouse = null;
     } else {
-        var PreviousPersonId = $(OpenedHouse).attr('id');
-        var PreviousPersonData = $("#"+PreviousPersonId).data('HouseData');
-        var PreviousElement = '<div class="person-search-result-name">Owner: '+PreviousPersonData.charinfo.firstname+' '+PreviousPersonData.charinfo.lastname+'</div> <div class="person-search-result-bsn">House: '+PreviousPersonData.label+'</div>';
+        var PreviousHouseId = $(OpenedHouse).attr('id');
+        var PreviousHouseData = $("#"+PreviousHouseId).data('HouseData');
+        var PreviousElement = '<div class="person-search-result-name">房主: '+PreviousHouseData.charinfo.firstname+' '+PreviousHouseData.charinfo.lastname+'</div> <div class="person-search-result-bsn">房产: '+PreviousHouseData.label+'</div>';
         $(OpenedHouse).html(PreviousElement)
         $(ClickedHouse).html(OpenElement)
         OpenedHouse = ClickedHouse;
@@ -197,12 +197,12 @@ $(document).on('click', '.confirm-search-person-test', function(e){
                     $("#person-"+i).data("PersonData", person);
                 });
             } else {
-                QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+                QB.Phone.Notifications.Add("politie", "MDT", "无搜索结果");
                 $(".person-search-results").html("");
             }
         });
     } else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+        QB.Phone.Notifications.Add("politie", "MDT", "无搜索结果");
         $(".person-search-results").html("");
     }
 });
@@ -223,12 +223,12 @@ $(document).on('click', '.confirm-search-person-house', function(e){
                     $("#personhouse-"+i).data("HouseData", house);
                 });
             } else {
-                QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+                QB.Phone.Notifications.Add("politie", "MDT", "无搜索结果");
                 $(".person-search-results").html("");
             }
         });
     } else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+        QB.Phone.Notifications.Add("politie", "MDT", "无搜索结果");
         $(".person-search-results").html("");
     }
 });
@@ -244,22 +244,22 @@ $(document).on('click', '.confirm-search-vehicle', function(e){
             if (result != null) {
                 $(".vehicle-search-results").html("");
                 $.each(result, function (i, vehicle) {
-                    var APK = "Yes";
+                    var APK = "有";
                     if (!vehicle.status) {
-                        APK = "No";
+                        APK = "没有";
                     }
-                    var Flagged = "No";
+                    var Flagged = "没有";
                     if (vehicle.isFlagged) {
-                        Flagged = "Yes";
+                        Flagged = "有";
                     }
                     
-                    var VehicleElement = '<div class="vehicle-search-result"> <div class="vehicle-search-result-name">'+vehicle.label+'</div> <div class="vehicle-search-result-plate">License Plate: '+vehicle.plate+'</div> <div class="vehicle-opensplit"></div> &nbsp; <div class="vehicle-search-result-owner">Owner: '+vehicle.owner+'</div> &nbsp; <div class="vehicle-search-result-apk">MOT: '+APK+'</div> <div class="vehicle-search-result-warrant">Signaled: '+Flagged+'</div> </div>'
+                    var VehicleElement = '<div class="vehicle-search-result"> <div class="vehicle-search-result-name">'+vehicle.label+'</div> <div class="vehicle-search-result-plate">车牌号: '+vehicle.plate+'</div> <div class="vehicle-opensplit"></div> &nbsp; <div class="vehicle-search-result-owner">车主: '+vehicle.owner+'</div> &nbsp; <div class="vehicle-search-result-apk">MOT: '+APK+'</div> <div class="vehicle-search-result-warrant">是否有警告: '+Flagged+'</div> </div>'
                     $(".vehicle-search-results").append(VehicleElement);
                 });
             }
         });
     } else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+        QB.Phone.Notifications.Add("politie", "MDT", "没有搜索结果！");
         $(".vehicle-search-results").html("");
     }
 });
@@ -269,19 +269,19 @@ $(document).on('click', '.scan-search-vehicle', function(e){
     $.post('https://qb-phone/FetchVehicleScan', JSON.stringify({}), function(vehicle){
         if (vehicle != null) {
             $(".vehicle-search-results").html("");
-            var APK = "Yes";
+            var APK = "有";
             if (!vehicle.status) {
-                APK = "No";
+                APK = "没有";
             }
-            var Flagged = "No";
+            var Flagged = "没有";
             if (vehicle.isFlagged) {
-                Flagged = "Yes";
+                Flagged = "有";
             }
 
-            var VehicleElement = '<div class="vehicle-search-result"> <div class="vehicle-search-result-name">'+vehicle.label+'</div> <div class="vehicle-search-result-plate">License Plate: '+vehicle.plate+'</div> <div class="vehicle-opensplit"></div> &nbsp; <div class="vehicle-search-result-owner">Owner: '+vehicle.owner+'</div> &nbsp; <div class="vehicle-search-result-apk">MOT: '+APK+'</div> <div class="vehicle-search-result-warrant">Signaled: '+Flagged+'</div> </div>'
+            var VehicleElement = '<div class="vehicle-search-result"> <div class="vehicle-search-result-name">'+vehicle.label+'</div> <div class="vehicle-search-result-plate">车牌号: '+vehicle.plate+'</div> <div class="vehicle-opensplit"></div> &nbsp; <div class="vehicle-search-result-owner">车主: '+vehicle.owner+'</div> &nbsp; <div class="vehicle-search-result-apk">MOT: '+APK+'</div> <div class="vehicle-search-result-warrant">是否有警告: '+Flagged+'</div> </div>'
             $(".vehicle-search-results").append(VehicleElement);
         } else {
-            QB.Phone.Notifications.Add("politie", "MDT", "No vehicle nearby!");
+            QB.Phone.Notifications.Add("politie", "MDT", "附近没有车辆！");
             $(".vehicle-search-results").append("");
         }
     });
@@ -315,10 +315,10 @@ $(document).on('click', '.meos-recent-alert', function(e){
                 alert: alertData,
             }));
         } else {
-            QB.Phone.Notifications.Add("politie", "MDT", "This alert doesn't have a GPS location!");
+            QB.Phone.Notifications.Add("politie", "MDT", "该警报没有GPS位置！");
         }
-    }else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no alerts available.");
+    } else {
+        QB.Phone.Notifications.Add("politie", "MDT", "没有可用的警报！");
     }
 });
 
@@ -332,6 +332,6 @@ $(document).on('click', '.meos-location-button', function(e){
 
 $(document).on('click', '.meos-clear-alerts', function(e){
     $(".meos-alerts").html("");
-    $(".meos-recent-alerts").html('<div class="meos-recent-alert"> <span class="meos-recent-alert-title">You don\'t have any alerts!</span></div>');
-    QB.Phone.Notifications.Add("politie", "MDT", "All alerts have been deleted!");
+    $(".meos-recent-alerts").html('<div class="meos-recent-alert"> <span class="meos-recent-alert-title">你没有任何警报！</span></div>');
+    QB.Phone.Notifications.Add("politie", "MDT", "所有警报已删除！");
 });

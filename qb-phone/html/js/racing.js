@@ -33,7 +33,7 @@ $(document).on('click', '.racing-race', function(e){
             OpenedRaceElement = this;
         }
     } else {
-        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "The race already started..", "#1DA1F2");
+        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "比赛已经开始", "#1DA1F2");
     }
 });
 
@@ -68,18 +68,18 @@ function SetupRaces(Races) {
     if (Races.length > 0) {
         Races = (Races).reverse();
         $.each(Races, function(i, race){
-            var Locked = '<i class="fas fa-unlock"></i> Not started yet';
+            var Locked = '<i class="fas fa-unlock"></i> 还未开始';
             if (race.RaceData.Started) {
-                Locked = '<i class="fas fa-lock"></i> Started';
+                Locked = '<i class="fas fa-lock"></i> 已开始';
             }
             var LapLabel = "";
             if (race.Laps == 0) {
-                LapLabel = "SPRINT"
+                LapLabel = "短途赛"
             } else {
                 if (race.Laps == 1) {
-                    LapLabel = race.Laps + " Lap";
+                    LapLabel = race.Laps + " 圈";
                 } else {
-                    LapLabel = race.Laps + " Laps";
+                    LapLabel = race.Laps + " 圈";
                 }
             }
             var InRace = IsInRace(QB.Phone.Data.PlayerData.citizenid, race.RaceData.Racers);
@@ -138,13 +138,13 @@ $(document).on('click', '#join-race', function(e){
                                 SetupRaces(Races);
                             });
                         } else {
-                            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You're in a editor..", "#1DA1F2");
+                            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "已在编辑框中", "#1DA1F2");
                         }
                     });
                 }
             })
         } else {
-            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You're already in a race..", "#1DA1F2");
+            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "您已经在比赛中", "#1DA1F2");
         }
     });
 });
@@ -260,14 +260,14 @@ $(document).on('click', '#create-race', function(e){
                     if (!InRace) {
                         $(".racing-create").fadeIn(200);
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You're in a race..", "#1DA1F2");
+                        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "您正在比赛", "#1DA1F2");
                     }
                 });
             } else {
-                QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You're already setting up a track..", "#1DA1F2");
+                QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "你已经在设置路线了", "#1DA1F2");
             }
         } else {
-            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You don't have rights to make Race Tracks..", "#1DA1F2");
+            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "您没有权限设置路线", "#1DA1F2");
         }
     });
 });
@@ -294,14 +294,14 @@ $(document).on('click', '#racing-create-accept', function(e){
                         $(".racing-create-trackname").val("");
                     });
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "This name is not available..", "#1DA1F2");
+                    QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "比赛不可用", "#1DA1F2");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You don't have any rights to create Race Tracks..", "#1DA1F2");
+                QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "您无权创建赛道", "#1DA1F2");
             }
         });
     } else {
-        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You have to enter a track name..", "#1DA1F2");
+        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "您必须输入赛道名称", "#1DA1F2");
     }
 });
 
@@ -339,27 +339,27 @@ $(document).on('click', '#setup-race-accept', function(e){
                                     $(".racing-setup").animate({
                                         left: -30+"vh"
                                     }, 300, function(){
-                                        $(".racing-setup-information-distance").html('Select a Track');
-                                        $(".racing-setup-information-creator").html('Select a Track');
-                                        $(".racing-setup-information-wr").html('Select a Track');
+                                        $(".racing-setup-information-distance").html('选择赛道');
+                                        $(".racing-setup-information-creator").html('选择赛道');
+                                        $(".racing-setup-information-wr").html('选择赛道');
                                         $(".racing-setup-laps").val("");
                                         $('.dropdown').find('input').removeAttr('value');
-                                        $('.dropdown').find('span').text("Select a Track");
+                                        $('.dropdown').find('span').text("选择赛道");
                                     });
                                 } else {
-                                    QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "There can't be any ..", "#1DA1F2");
+                                    QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "不可能有...", "#1DA1F2");
                                 }
                             });
                         } else {
-                            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "Fill in an amount of laps..", "#1DA1F2");
+                            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "填入圈数", "#1DA1F2");
                         }
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You haven't selected a track..", "#1DA1F2");
+                        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "你还没有选择赛道", "#1DA1F2");
                     }
                 }
             })
         } else {
-            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "You already have a race active..", "#1DA1F2");
+            QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "您已经有一场激活的赛道", "#1DA1F2");
         }
     });
 });
@@ -373,12 +373,12 @@ $(document).on('click', '#setup-race-cancel', function(e){
     $(".racing-setup").animate({
         left: -30+"vh"
     }, 300, function(){
-        $(".racing-setup-information-distance").html('Select a Track');
-        $(".racing-setup-information-creator").html('Select a Track');
-        $(".racing-setup-information-wr").html('Select a Track');
+        $(".racing-setup-information-distance").html('选择赛道');
+        $(".racing-setup-information-creator").html('选择赛道');
+        $(".racing-setup-information-wr").html('选择赛道');
         $(".racing-setup-laps").val("");
         $('.dropdown').find('input').removeAttr('value');
-        $('.dropdown').find('span').text("Select a Track");
+        $('.dropdown').find('span').text("选择赛道");
     });
 });
 

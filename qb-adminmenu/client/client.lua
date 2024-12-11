@@ -76,12 +76,12 @@ local menu1_dealer_list = menu1:AddButton({
 })
 
 --developer options
-menu1:AddButton({
-    icon = '🔧',
-    label = Lang:t('menu.developer_options'),
-    value = menu7,
-    description = Lang:t('desc.developer_desc')
-})
+-- menu1:AddButton({
+--     icon = '🔧',
+--     label = Lang:t('menu.developer_options'),
+--     value = menu7,
+--     description = Lang:t('desc.developer_desc')
+-- })
 
 --[[
     Sub Menus for the above main menu's

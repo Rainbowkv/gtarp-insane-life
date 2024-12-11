@@ -96,7 +96,7 @@ QB.Phone.Functions.GetLastMessage = function(messages) {
             ALLOWED_TAGS: [],
             ALLOWED_ATTR: []
         });
-        if(LastMessageData.message == '') 'Hmm, I shouldn\'t be able to do this...'
+        if(LastMessageData.message == '') '嗯...我不能这样做'
     });
 
     return LastMessageData
@@ -160,7 +160,7 @@ FormatChatDate = function(date) {
 
     var ReturnedValue = ChatDate;
     if (CurrentDate == CurDateee) {
-        ReturnedValue = "Today";
+        ReturnedValue = "今天";
     }
 
     return ReturnedValue;
@@ -198,7 +198,7 @@ $(document).on('click', '#whatsapp-openedchat-send', function(e){
         $("#whatsapp-openedchat-message").val("");
         $("div.emojionearea-editor").data("emojioneArea").setText('');
     } else {
-        QB.Phone.Notifications.Add("fab fa-whatsapp", "Whatsapp", "You can't send a empty message!", "#25D366", 1750);
+        QB.Phone.Notifications.Add("fab fa-whatsapp", "Whatsapp", "不能发送空消息", "#25D366", 1750);
     }
 });
 
@@ -212,7 +212,7 @@ $(document).on('keypress', function (e) {
                     ALLOWED_TAGS: [],
                     ALLOWED_ATTR: []
                 });
-                if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
+                if (clean == '') clean = '嗯...我不能这样做'
                 $.post('https://qb-phone/SendMessage', JSON.stringify({
                     ChatNumber: OpenedChatData.number,
                     ChatDate: GetCurrentDateKey(),
@@ -222,7 +222,7 @@ $(document).on('keypress', function (e) {
                 }));
                 $("#whatsapp-openedchat-message").val("");
             } else {
-                QB.Phone.Notifications.Add("fab fa-whatsapp", "Whatsapp", "You can't send a empty message!", "#25D366", 1750);
+                QB.Phone.Notifications.Add("fab fa-whatsapp", "Whatsapp", "不能发送空消息", "#25D366", 1750);
             }
         }
     }
@@ -289,7 +289,7 @@ QB.Phone.Functions.SetupChatMessages = function(cData, NewChatData) {
                     ALLOWED_TAGS: [],
                     ALLOWED_ATTR: []
                 });
-                if (message.message == '') message.message = 'Hmm, I shouldn\'t be able to do this...'
+                if (message.message == '') message.message = '嗯...我不能这样做'
                 var Sender = "me";
                 if (message.sender !== QB.Phone.Data.PlayerData.citizenid) { Sender = "other"; }
                 var MessageElement

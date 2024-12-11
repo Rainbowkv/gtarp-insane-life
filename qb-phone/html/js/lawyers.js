@@ -159,7 +159,7 @@ $(document).on('click', '.lawyer-list-call', function(e){
                 if (status.CanCall) {
                     if (!status.InCall) {
                         if (QB.Phone.Data.AnonymousCall) {
-                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You started a anonymous call!");
+                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "您打了一个匿名电话");
                         }
                         $(".phone-call-outgoing").css({"display":"block"});
                         $(".phone-call-incoming").css({"display":"none"});
@@ -178,16 +178,16 @@ $(document).on('click', '.lawyer-list-call', function(e){
                     
                         QB.Phone.Data.currentApplication = "phone-call";
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You are already connected to a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "您已连接到通话");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is already in a call");
+                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "他/她正在通话");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "无效电话号码");
             }
         } else {
-            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call your own number!");
+            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "亲，又尝试打给您自己");
         }
     });
 });

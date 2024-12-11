@@ -89,7 +89,7 @@ QB.Phone.Notifications.LoadTweets = function(Tweets) {
                 ALLOWED_TAGS: [],
                 ALLOWED_ATTR: []
             });
-            if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
+            if (clean == '') clean = '嗯...我不能这样做'
             var TwtMessage = QB.Phone.Functions.FormatTwitterMessage(clean);
             var TimeAgo = moment(Tweet.date).format('MM/DD/YYYY hh:mm');
 
@@ -147,7 +147,7 @@ QB.Phone.Notifications.LoadMentionedTweets = function(Tweets) {
                 ALLOWED_TAGS: [],
                 ALLOWED_ATTR: []
             });
-            if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
+            if (clean == '') clean = '嗯...我不能这样做'
             var TwtMessage = QB.Phone.Functions.FormatTwitterMessage(clean);
             var TimeAgo = moment(Tweet.date).format('MM/DD/YYYY hh:mm');
 
@@ -228,7 +228,7 @@ $(document).on('click', '#send-tweet', function(e){
         })
         QB.Phone.Animations.TopSlideUp(".twitter-new-tweet-tab", 450, -120);
     } else {
-        QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", "Fill a message!", "#1DA1F2");
+        QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", "填写留言", "#1DA1F2");
     };
     $('#tweet-new-url').val("");
     $("#tweet-new-message").val("");
@@ -281,7 +281,7 @@ function CopyMentionTag(elem) {
     var $temp = $("<input>");
     $("body").append($temp);
     $temp.val($(elem).data('mentiontag')).select();
-    QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", $(elem).data('mentiontag')+ " copied!", "rgb(27, 149, 224)", 1250);
+    QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", $(elem).data('mentiontag')+ " 已复制", "rgb(27, 149, 224)", 1250);
     document.execCommand("copy");
     $temp.remove();
 }
@@ -292,14 +292,14 @@ QB.Phone.Notifications.LoadHashtags = function(hashtags) {
 
         $.each(hashtags, function(i, hashtag){
             var Elem = '';
-            var TweetHandle = "Tweet";
+            var TweetHandle = "推文";
             if (hashtag.messages.length > 1 ) {
-               TweetHandle = "Tweets";
+               TweetHandle = "推文";
             }
             if (hashtag.messages.length >= MinimumTrending) {
-                Elem = '<div class="twitter-hashtag" id="tag-'+hashtag.hashtag+'"><div class="twitter-hashtag-status">Trending in City</div> <div class="twitter-hashtag-tag">#'+hashtag.hashtag+'</div> <div class="twitter-hashtag-messages">'+hashtag.messages.length+' '+TweetHandle+'</div> </div>';
+                Elem = '<div class="twitter-hashtag" id="tag-'+hashtag.hashtag+'"><div class="twitter-hashtag-status">在城市中热度较高</div> <div class="twitter-hashtag-tag">#'+hashtag.hashtag+'</div> <div class="twitter-hashtag-messages">'+hashtag.messages.length+' 条 '+TweetHandle+'</div> </div>';
             } else {
-                Elem = '<div class="twitter-hashtag" id="tag-'+hashtag.hashtag+'"><div class="twitter-hashtag-status">Not trending in City</div> <div class="twitter-hashtag-tag">#'+hashtag.hashtag+'</div> <div class="twitter-hashtag-messages">'+hashtag.messages.length+' '+TweetHandle+'</div> </div>';
+                Elem = '<div class="twitter-hashtag" id="tag-'+hashtag.hashtag+'"><div class="twitter-hashtag-status">在城市中不流行</div> <div class="twitter-hashtag-tag">#'+hashtag.hashtag+'</div> <div class="twitter-hashtag-messages">'+hashtag.messages.length+' 条 '+TweetHandle+'</div> </div>';
             }
 
             $(".twitter-hashtags").append(Elem);
@@ -317,7 +317,7 @@ QB.Phone.Notifications.LoadHashtagMessages = function(Tweets) {
                 ALLOWED_TAGS: [],
                 ALLOWED_ATTR: []
             });
-            if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
+            if (clean == '') clean = '嗯...我不能这样做'
             var TwtMessage = QB.Phone.Functions.FormatTwitterMessage(clean);
             var TimeAgo = moment(Tweet.date).format('MM/DD/YYYY hh:mm');
 

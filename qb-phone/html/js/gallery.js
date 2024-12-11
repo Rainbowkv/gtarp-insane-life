@@ -123,7 +123,7 @@ $(document).on('click', '#tweet-button', function(e){
         // QB.Phone.Animations.TopSlideUp(".twitter-new-tweet-tab", 450, -120);
         returnDetail()
     } else {
-        QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", "Fill a message!", "#1DA1F2");
+        QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", "内容为空", "#1DA1F2");
     };
     $('#tweet-new-url').val("");
     $("#tweet-new-message").val("");
@@ -157,7 +157,7 @@ $(document).on('click', '#advert-button', function(e){
         }
         $("#new-textarea").val(' ');
     } else {
-        QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "You can\'t post an empty ad!", "#ff8f1a", 2000);
+        QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "空广告没必要发送", "#ff8f1a", 2000);
     }
 });
 

@@ -73,7 +73,7 @@ QB.Phone.Functions.SetupMails = function(Mails) {
     var MessageTime = Hourssssss + ":" + Minutessss;
 
     $("#mail-header-mail").html(QB.Phone.Data.PlayerData.charinfo.firstname+"."+QB.Phone.Data.PlayerData.charinfo.lastname+"@qbcore.com");
-    $("#mail-header-lastsync").html("Last synchronized "+MessageTime);
+    $("#mail-header-lastsync").html("上次同步时间 "+MessageTime);
     if (Mails !== null && Mails !== undefined) {
         if (Mails.length > 0) {
             $(".mail-list").html("");
@@ -86,17 +86,19 @@ QB.Phone.Functions.SetupMails = function(Mails) {
                 $("#mail-"+mail.mailid).data('MailData', mail);
             });
         } else {
-            $(".mail-list").html('<p class="nomails">You don\'t have any mails..</p>');
+            $(".mail-list").html('<p class="nomails">您还没有任何邮件，青蛙孤寡</p>');
         }
 
     }
 }
 
-var MonthFormatting = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var MonthFormatting = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+// var MonthFormatting = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 QB.Phone.Functions.SetupMail = function(MailData) {
     var date = new Date(MailData.date);
-    var DateString = date.getDate()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
+    var DateString = date.getHours()+":"+date.getMinutes()+" "+MonthFormatting[date.getMonth()]+date.getDate()+"日"+" "+date.getFullYear();
+    // var DateString = date.getDate()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
     $(".mail-subject").html("<p><span style='font-weight: bold;'>"+MailData.sender+"</span><br>"+MailData.subject+"</p>");
     $(".mail-date").html("<p>"+DateString+"</p>");
     $(".mail-content").html("<p>"+MailData.message+"</p>");
@@ -180,7 +182,7 @@ $(document).on('click', '#new-advert-submit', function(e){
         $('#advert-new-url').val("")
         $(".new-advert-textarea").val("");
     } else {
-        QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "You can\'t post an empty ad!", "#ff8f1a", 2000);
+        QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "别发空广告", "#ff8f1a", 2000);
     }
 });
 
@@ -194,7 +196,7 @@ QB.Phone.Functions.RefreshAdverts = function(Adverts) {
                 ALLOWED_ATTR: []
             });
 
-            if (clean == '') { clean = 'I\'m a silly goose :/' }
+            if (clean == '') { clean = '我是一只大傻鹅 :/' }
 
             if (advert.url) {
                 var element = `<div class="advert"><span class="advert-sender">${advert.name} | ${advert.number}</span><p>${clean}</p></br><img class="advimage" src=`+advert.url +` style=" border-radius:4px; width: 95%; position:relative; z-index: 1; right:1px;height: auto; bottom:1vh;"></br><span><div class="adv-icon"></div> </span></div>`;
@@ -210,7 +212,7 @@ QB.Phone.Functions.RefreshAdverts = function(Adverts) {
         });
     } else {
         $(".advert-list").html("");
-        var element = '<div class="advert"><span class="advert-sender">There are no advertisements yet!</span></div>';
+        var element = '<div class="advert"><span class="advert-sender">现在还没有广告</span></div>';
         $(".advert-list").append(element);
     }
 }
@@ -219,7 +221,7 @@ $(document).on('click','#adv-delete',function(e){
     e.preventDefault();
     $.post('https://qb-phone/DeleteAdvert', function(){
         setTimeout(function(){
-            QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "The ad was deleted", "#ff8f1a", 2000);
+            QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "广告被删除", "#ff8f1a", 2000);
         },400)
     });
 })

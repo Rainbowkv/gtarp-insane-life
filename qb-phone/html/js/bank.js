@@ -6,7 +6,7 @@ $(document).on('click', '.bank-app-account', function(e){
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
 
-    QB.Phone.Notifications.Add("fas fa-university", "QBank", "Account number. copied!", "#badc58", 1750);
+    QB.Phone.Notifications.Add("fas fa-university", "QBank", "账号已复制", "#badc58", 1750);
 });
 
 var CurrentTab = "accounts";
@@ -111,14 +111,14 @@ $(document).on('click', '#accept-transfer', function(e){
 
                     $(".bank-app-account-balance").html("&#36; " + (data.NewBalance).toFixed(0));
                     $(".bank-app-account-balance").data('balance', (data.NewBalance).toFixed(0));
-                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "You have transfered &#36; "+amount+"!", "#badc58", 1500);
+                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "成功转账 &#36; "+amount+" $", "#badc58", 1500);
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "You don't have enough balance!", "#badc58", 1500);
+                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "余额不足", "#badc58", 1500);
                 }
                 QB.Phone.Animations.TopSlideUp(".bank-app-transfer", 400, -100);
             });
     } else {
-        QB.Phone.Notifications.Add("fas fa-university", "QBank", "Fill out all fields!", "#badc58", 1750);
+        QB.Phone.Notifications.Add("fas fa-university", "QBank", "请填写所有字段", "#badc58", 1750);
     }
 });
 
@@ -154,17 +154,17 @@ $(document).on('click', '.pay-invoice', function(event){
                         $("#"+InvoiceId).remove();
                     }, 100);
                 });
-                QB.Phone.Notifications.Add("fas fa-university", "QBank", "You have paid &#36;"+InvoiceData.amount+"!", "#badc58", 1500);
+                QB.Phone.Notifications.Add("fas fa-university", "QBank", "成功支付 &#36;"+InvoiceData.amount+" $", "#badc58", 1500);
                 var amountData = $(".bank-app-account-balance").data('balance');
                 var NewAmount = (amountData - InvoiceData.amount).toFixed();
                 $("#bank-transfer-amount").val(NewAmount);
                 $(".bank-app-account-balance").data('balance', NewAmount);
             } else {
-                QB.Phone.Notifications.Add("fas fa-university", "QBank", "You don't have enough balance!", "#badc58", 1500);
+                QB.Phone.Notifications.Add("fas fa-university", "QBank", "余额不足", "#badc58", 1500);
             }
         });
     } else {
-        QB.Phone.Notifications.Add("fas fa-university", "QBank", "You don't have enough balance!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fas fa-university", "QBank", "余额不足", "#badc58", 1500);
     }
 });
 
@@ -180,7 +180,7 @@ $(document).on('click', '.decline-invoice', async function(event) {
         invoiceId: InvoiceData.id,
     }));
     if(resp === true) {
-        QB.Phone.Notifications.Add("fas fa-university", "QBank", "You declined the invoice", "#8c7ae6")
+        QB.Phone.Notifications.Add("fas fa-university", "QBank", "您拒绝了发票", "#8c7ae6")
         $("#"+InvoiceId).animate({
             left: 30+"vh",
         }, 300, function(){
@@ -189,7 +189,7 @@ $(document).on('click', '.decline-invoice', async function(event) {
             }, 100);
         });
     } else {
-        QB.Phone.Notifications.Add("fas fa-university", "QBank", "Couldnt decline this invoice...", "#8c7ae6")
+        QB.Phone.Notifications.Add("fas fa-university", "QBank", "无法拒绝此发票", "#8c7ae6")
     }
 });
 
@@ -249,7 +249,7 @@ $(document).on('click', '.bank-app-my-contact', function(e){
     if (PressedContactData.iban !== "" && PressedContactData.iban !== undefined && PressedContactData.iban !== null) {
         $("#bank-transfer-iban").val(PressedContactData.iban);
     } else {
-        QB.Phone.Notifications.Add("fas fa-university", "QBank", "There is no bank account attached to this number!", "#badc58", 2500);
+        QB.Phone.Notifications.Add("fas fa-university", "QBank", "此号码未绑定账户", "#badc58", 2500);
     }
     QB.Phone.Animations.TopSlideUp(".bank-app-my-contacts", 400, -100);
 });

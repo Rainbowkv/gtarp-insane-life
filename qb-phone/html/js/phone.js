@@ -101,7 +101,7 @@ $(document).on('click', '.phone-recent-call', function(e){
                 if (status.CanCall) {
                     if (!status.InCall) {
                         if (QB.Phone.Data.AnonymousCall) {
-                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You started a anonymous call!");
+                            QB.Phone.Notifications.Add("fas fa-phone", "电话", "你已发起匿名电话！");
                         }
                         $(".phone-call-outgoing").css({"display":"block"});
                         $(".phone-call-incoming").css({"display":"none"});
@@ -120,16 +120,16 @@ $(document).on('click', '.phone-recent-call', function(e){
 
                         QB.Phone.Data.currentApplication = "phone-call";
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "电话", "你已经在通话中！");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "电话", "对方正在通话中！");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "电话", "对方不在服务范围内！");
             }
         } else {
-            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call yourself!");
+            QB.Phone.Notifications.Add("fas fa-phone", "电话", "你不能打给自己！");
         }
     });
 });
@@ -169,16 +169,16 @@ $(document).on('click', ".phone-keypad-key-call", function(e){
 
                         QB.Phone.Data.currentApplication = "phone-call";
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "电话", "你已经在通话中！");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "电话", "对方正在通话中！");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "电话", "对方不在服务范围内！");
             }
         } else {
-            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call yourself!");
+            QB.Phone.Notifications.Add("fas fa-phone", "电话", "你不能打给自己！");
         }
     });
 });
@@ -207,7 +207,7 @@ QB.Phone.Functions.LoadContacts = function(myContacts) {
                 ALLOWED_TAGS: [],
                 ALLOWED_ATTR: []
             });
-            if (contact.name == '') contact.name = 'Hmm, I shouldn\'t be able to do this...'
+            if (contact.name == '') contact.name = '嗯，我不应该能做这个...'
             var ContactElement = '<div class="phone-contact" data-contactid="'+i+'"><div class="phone-contact-firstletter" style="background-color: #e74c3c;">'+((contact.name).charAt(0)).toUpperCase()+'</div><div class="phone-contact-name">'+contact.name+'</div><div class="phone-contact-actions"><i class="fas fa-sort-down"></i></div><div class="phone-contact-action-buttons"> <i class="fas fa-phone-volume" id="phone-start-call"></i> <i class="fab fa-whatsapp" id="new-chat-phone" style="font-size: 2.5vh;"></i> <i class="fas fa-user-edit" id="edit-contact"></i> </div></div>'
             if (contact.status) {
                 ContactElement = '<div class="phone-contact" data-contactid="'+i+'"><div class="phone-contact-firstletter" style="background-color: #2ecc71;">'+((contact.name).charAt(0)).toUpperCase()+'</div><div class="phone-contact-name">'+contact.name+'</div><div class="phone-contact-actions"><i class="fas fa-sort-down"></i></div><div class="phone-contact-action-buttons"> <i class="fas fa-phone-volume" id="phone-start-call"></i> <i class="fab fa-whatsapp" id="new-chat-phone" style="font-size: 2.5vh;"></i> <i class="fas fa-user-edit" id="edit-contact"></i> </div></div>'
@@ -216,9 +216,9 @@ QB.Phone.Functions.LoadContacts = function(myContacts) {
             $(ContactsObject).append(ContactElement);
             $("[data-contactid='"+i+"']").data('contactData', contact);
         });
-        $("#total-contacts").text(TotalContacts+ " contacts");
+        $("#total-contacts").text(TotalContacts + " 个联系人");
     } else {
-        $("#total-contacts").text("0 contacten #SAD");
+        $("#total-contacts").text("0 个联系人 #悲伤");
     }
 };
 
@@ -259,7 +259,7 @@ $(document).on('click', '#new-chat-phone', function(e){
             });
         }, 400)
     } else {
-        QB.Phone.Notifications.Add("fa fa-phone-alt", "Phone", "You can't whatsapp yourself..", "default", 3500);
+        QB.Phone.Notifications.Add("fa fa-phone-alt", "Phone", "你不能 whatsapp 自己", "default", 3500);
     }
 });
 
@@ -274,7 +274,7 @@ $(document).on('click', '#edit-contact', function(e){
         ALLOWED_TAGS: [],
         ALLOWED_ATTR: []
     });
-    if (CurrentEditContactData.name == '') CurrentEditContactData.name = 'Hmm, I shouldn\'t be able to do this...'
+    if (CurrentEditContactData.name == '') CurrentEditContactData.name = '嗯...我不能这样做'
     CurrentEditContactData.number = ContactData.number
 
     $(".phone-edit-contact-header").text(ContactData.name+" Edit")
@@ -298,7 +298,7 @@ $(document).on('click', '#edit-contact-save', function(e){
         ALLOWED_TAGS: [],
         ALLOWED_ATTR: []
     });
-    if (ContactName == '') ContactName = 'Hmm, I shouldn\'t be able to do this...'
+    if (ContactName == '') ContactName = '嗯... 我不能这样做'
     var ContactNumber = $(".phone-edit-contact-number").val();
     var ContactIban = $(".phone-edit-contact-iban").val();
 
@@ -429,7 +429,7 @@ $(document).on('click', '#add-contact-save', function(e){
         ALLOWED_TAGS: [],
         ALLOWED_ATTR: []
     });
-    if (ContactName == '') ContactName = 'Hmm, I shouldn\'t be able to do this...'
+    if (ContactName == '') ContactName = '嗯... 我不能这样做'
     var ContactNumber = $(".phone-add-contact-number").val();
     var ContactIban = $(".phone-add-contact-iban").val();
 
@@ -460,7 +460,7 @@ $(document).on('click', '#add-contact-save', function(e){
             $(".amount-of-suggested-contacts").html(amount + " contacts");
         }
     } else {
-        QB.Phone.Notifications.Add("fas fa-exclamation-circle", "Add Contact", "Fill out all fields!");
+        QB.Phone.Notifications.Add("fas fa-exclamation-circle", "Add Contact", "请填写所有字段");
     }
 });
 
@@ -510,16 +510,16 @@ SetupCall = function(cData) {
 
                         QB.Phone.Data.currentApplication = "phone-call";
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "你已经在通话中");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is in a call!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "他/她正在通话中");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "无效电话号码");
             }
         } else {
-            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call your own number!");
+            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "你不能打给自己");
         }
     });
 }
@@ -562,9 +562,9 @@ IncomingCallAlert = function(CallData, Canceled, AnonymousCall) {
             QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
             QB.Phone.Animations.TopSlideUp('.'+QB.Phone.Data.currentApplication+"-app", 400, -160);
             setTimeout(function(){
-                var Label = "You have an incoming call from "+CallData.name
+                var Label = CallData.name+" 来电"
                 if (AnonymousCall) {
-                    Label = "You're being called by a anonymous person"
+                    Label = "匿名来电"
                 }
                 $(".call-notifications-title").html("Incoming Call");
                 $(".call-notifications-content").html(Label);
@@ -669,11 +669,11 @@ QB.Phone.Functions.SetupCurrentCall = function(cData) {
         $(".phone-currentcall-container").css({"display":"block"});
 
         if (cData.CallType == "incoming") {
-            $(".phone-currentcall-title").html("Incoming call");
+            $(".phone-currentcall-title").html("来电");
         } else if (cData.CallType == "outgoing") {
-            $(".phone-currentcall-title").html("Outgoing call");
+            $(".phone-currentcall-title").html("去电");
         } else if (cData.CallType == "ongoing") {
-            $(".phone-currentcall-title").html("In call ("+cData.CallTime+")");
+            $(".phone-currentcall-title").html("通话 ("+cData.CallTime+")");
         }
 
         $(".phone-currentcall-contact").html(cData.TargetData.name);

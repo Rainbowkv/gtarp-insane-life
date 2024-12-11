@@ -197,7 +197,7 @@ $(document).on('click', '.phone-application', function(e){
                         $(".house-app-mykeys-container").html("");
                         if (Keys.length > 0) {
                             $.each(Keys, function(i, key){
-                                var elem = '<div class="mykeys-key" id="keyid-'+i+'"><span class="mykeys-key-label">' + key.HouseData.adress + '</span> <span class="mykeys-key-sub">Click to set GPS</span> </div>';
+                                var elem = '<div class="mykeys-key" id="keyid-'+i+'"><span class="mykeys-key-label">' + key.HouseData.adress + '</span> <span class="mykeys-key-sub">点击设置 GPS</span> </div>';
                                 $(".house-app-mykeys-container").append(elem);
                                 $("#keyid-"+i).data('KeyData', key);
                             });
@@ -235,7 +235,7 @@ $(document).on('click', '.phone-application', function(e){
         }
     } else {
         if (PressedApplication != null){
-            QB.Phone.Notifications.Add("fas fa-exclamation-circle", "System", QB.Phone.Data.Applications[PressedApplication].tooltipText+" is not available!")
+            QB.Phone.Notifications.Add("fas fa-exclamation-circle", "System", QB.Phone.Data.Applications[PressedApplication].tooltipText+" 不可用")
         }
     }
 });
@@ -622,8 +622,8 @@ $(document).ready(function(){
                         $(".call-notifications").css({"display":"block"});
                         $(".call-notifications").animate({right: 5+"vh"});
                     }
-                    $(".call-notifications-title").html("In conversation ("+timeString+")");
-                    $(".call-notifications-content").html("Calling with "+event.data.Name);
+                    $(".call-notifications-title").html("通话中 ("+timeString+")");
+                    $(".call-notifications-content").html("正在与 "+event.data.Name+" 通话");
                     $(".call-notifications").removeClass('call-notifications-shake');
                 } else {
                     $(".call-notifications").animate({
@@ -633,7 +633,7 @@ $(document).ready(function(){
                     });
                 }
                 $(".phone-call-ongoing-time").html(timeString);
-                $(".phone-currentcall-title").html("In conversation ("+timeString+")");
+                $(".phone-currentcall-title").html("通话中 ("+timeString+")");
                 break;
             case "CancelOngoingCall":
                 $(".call-notifications").animate({right: -35+"vh"}, function(){
