@@ -81,42 +81,46 @@ function QBCore.Commands.Refresh(source)
 end
 
 -- Teleport
-QBCore.Commands.Add('tp', Lang:t('command.tp.help'), { { name = Lang:t('command.tp.params.x.name'), help = Lang:t('command.tp.params.x.help') }, { name = Lang:t('command.tp.params.y.name'), help = Lang:t('command.tp.params.y.help') }, { name = Lang:t('command.tp.params.z.name'), help = Lang:t('command.tp.params.z.help') } }, false, function(source, args)
-    if args[1] and not args[2] and not args[3] then
-        if tonumber(args[1]) then
-            local target = GetPlayerPed(tonumber(args[1]))
-            if target ~= 0 then
-                local coords = GetEntityCoords(target)
-                TriggerClientEvent('QBCore:Command:TeleportToPlayer', source, coords)
-            else
-                TriggerClientEvent('QBCore:Notify', source, Lang:t('error.not_online'), 'error')
-            end
-        else
-            local location = QBShared.Locations[args[1]]
-            if location then
-                TriggerClientEvent('QBCore:Command:TeleportToCoords', source, location.x, location.y, location.z, location.w)
-            else
-                TriggerClientEvent('QBCore:Notify', source, Lang:t('error.location_not_exist'), 'error')
-            end
-        end
-    else
-        if args[1] and args[2] and args[3] then
-            local x = tonumber((args[1]:gsub(',', ''))) + .0
-            local y = tonumber((args[2]:gsub(',', ''))) + .0
-            local z = tonumber((args[3]:gsub(',', ''))) + .0
-            if x ~= 0 and y ~= 0 and z ~= 0 then
-                TriggerClientEvent('QBCore:Command:TeleportToCoords', source, x, y, z)
-            else
-                TriggerClientEvent('QBCore:Notify', source, Lang:t('error.wrong_format'), 'error')
-            end
-        else
-            TriggerClientEvent('QBCore:Notify', source, Lang:t('error.missing_args'), 'error')
-        end
-    end
-end, 'admin')
+QBCore.Commands.Add('tp', Lang:t('command.tp.help'), { { name = Lang:t('command.tp.params.x.name'), help = Lang:t('command.tp.params.x.help') }, { name = Lang:t('command.tp.params.y.name'), help = Lang:t('command.tp.params.y.help') }, { name = Lang:t('command.tp.params.z.name'), help = Lang:t('command.tp.params.z.help') } }, false, 
+    function(source, args)
+        TriggerClientEvent('QBCore:Notify', source, '命令已被禁用', 'error')
+        -- if args[1] and not args[2] and not args[3] then
+        --     if tonumber(args[1]) then
+        --         local target = GetPlayerPed(tonumber(args[1]))
+        --         if target ~= 0 then
+        --             local coords = GetEntityCoords(target)
+        --             TriggerClientEvent('QBCore:Command:TeleportToPlayer', source, coords)
+        --         else
+        --             TriggerClientEvent('QBCore:Notify', source, Lang:t('error.not_online'), 'error')
+        --         end
+        --     else
+        --         local location = QBShared.Locations[args[1]]
+        --         if location then
+        --             TriggerClientEvent('QBCore:Command:TeleportToCoords', source, location.x, location.y, location.z, location.w)
+        --         else
+        --             TriggerClientEvent('QBCore:Notify', source, Lang:t('error.location_not_exist'), 'error')
+        --         end
+        --     end
+        -- else
+        --     if args[1] and args[2] and args[3] then
+        --         local x = tonumber((args[1]:gsub(',', ''))) + .0
+        --         local y = tonumber((args[2]:gsub(',', ''))) + .0
+        --         local z = tonumber((args[3]:gsub(',', ''))) + .0
+        --         if x ~= 0 and y ~= 0 and z ~= 0 then
+        --             TriggerClientEvent('QBCore:Command:TeleportToCoords', source, x, y, z)
+        --         else
+        --             TriggerClientEvent('QBCore:Notify', source, Lang:t('error.wrong_format'), 'error')
+        --         end
+        --     else
+        --         TriggerClientEvent('QBCore:Notify', source, Lang:t('error.missing_args'), 'error')
+        --     end
+        -- end
+    end, 
+'admin')
 
 QBCore.Commands.Add('tpm', Lang:t('command.tpm.help'), {}, false, function(source)
-    TriggerClientEvent('QBCore:Command:GoToMarker', source)
+    TriggerClientEvent('QBCore:Notify', source, '命令已被禁用', 'error')
+    -- TriggerClientEvent('QBCore:Command:GoToMarker', source)
 end, 'admin')
 
 QBCore.Commands.Add('togglepvp', Lang:t('command.togglepvp.help'), {}, false, function()

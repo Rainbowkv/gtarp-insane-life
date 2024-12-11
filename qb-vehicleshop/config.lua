@@ -32,7 +32,7 @@ Config.Shops = {
             ['size'] = 2.75                                          -- size of the vehicles zones
         },
         ['Job'] = 'none',                                            -- Name of job or none
-        ['ShopLabel'] = 'Premium Deluxe Motorsport',                 -- Blip name
+        ['ShopLabel'] = '轻奢汽车店（即将作为定制产业）',                 -- Blip name
         ['showBlip'] = true,                                         -- true or false
         ['blipSprite'] = 326,                                        -- Blip sprite
         ['blipColor'] = 3,                                           -- Blip color
@@ -108,7 +108,7 @@ Config.Shops = {
         },
         ['Job'] = 'none', -- Name of job or none
         -- ['Job'] = 'cardealer', -- Name of job or none
-        ['ShopLabel'] = 'Luxury Vehicle Shop',
+        ['ShopLabel'] = '豪华汽车店（即将作为定制产业）',
         ['showBlip'] = true,   -- true or false
         ['blipSprite'] = 326,  -- Blip sprite
         ['blipColor'] = 3,     -- Blip color
@@ -167,7 +167,7 @@ Config.Shops = {
             ['size'] = 6.2                                             -- size of the vehicles zones
         },
         ['Job'] = 'none',                                              -- Name of job or none
-        ['ShopLabel'] = 'Marina Shop',                                 -- Blip name
+        ['ShopLabel'] = '船坞大亨（即将作为定制产业）',                                 -- Blip name
         ['showBlip'] = true,                                           -- true or false
         ['blipSprite'] = 410,                                          -- Blip sprite
         ['blipColor'] = 3,                                             -- Blip color
@@ -214,7 +214,7 @@ Config.Shops = {
             ['size'] = 7.0,                                              -- size of the vehicles zones
         },
         ['Job'] = 'none',                                                -- Name of job or none
-        ['ShopLabel'] = 'Air Shop',                                      -- Blip name
+        ['ShopLabel'] = '私人飞机经销商（即将作为定制产业）',                                      -- Blip name
         ['showBlip'] = true,                                             -- true or false
         ['blipSprite'] = 251,                                            -- Blip sprite
         ['blipColor'] = 3,                                               -- Blip color
@@ -267,7 +267,7 @@ Config.Shops = {
             ['size'] = 5.75                                          -- size of the vehicles zones
         },
         ['Job'] = 'none',                                            -- Name of job or none
-        ['ShopLabel'] = 'Truck Motor Shop',                          -- Blip name
+        ['ShopLabel'] = '卡车经销商（即将作为定制产业）',                          -- Blip name
         ['showBlip'] = true,                                         -- true or false
         ['blipSprite'] = 477,                                        -- Blip sprite
         ['blipColor'] = 2,                                           -- Blip color

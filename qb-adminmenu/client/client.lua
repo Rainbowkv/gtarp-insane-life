@@ -60,12 +60,12 @@ menu1:AddButton({
 })
 
 --vehicle spawner
-menu1:AddButton({
-    icon = '🚗',
-    label = Lang:t('menu.vehicles'),
-    value = menu5,
-    description = Lang:t('desc.vehicles_desc')
-})
+-- menu1:AddButton({
+--     icon = '🚗',
+--     label = Lang:t('menu.vehicles'),
+--     value = menu5,
+--     description = Lang:t('desc.vehicles_desc')
+-- })
 
 --dealer list
 local menu1_dealer_list = menu1:AddButton({
@@ -88,12 +88,12 @@ local menu1_dealer_list = menu1:AddButton({
 --]]
 
 -- Admin Options Menu Buttons
-local menu2_admin_noclip = menu2:AddCheckbox({
-    icon = '🎥',
-    label = Lang:t('menu.noclip'),
-    value = nil,
-    description = Lang:t('desc.noclip_desc')
-})
+-- local menu2_admin_noclip = menu2:AddCheckbox({
+--     icon = '🎥',
+--     label = Lang:t('menu.noclip'),
+--     value = nil,
+--     description = Lang:t('desc.noclip_desc')
+-- })
 
 local menu2_admin_revive = menu2:AddButton({
     icon = '🏥',
@@ -131,12 +131,12 @@ local menu2_admin_display_blips = menu2:AddCheckbox({
 })
 
 --give weapons
-menu2:AddButton({
-    icon = '🎁',
-    label = Lang:t('menu.spawn_weapons'),
-    value = menu15,
-    description = Lang:t('desc.spawn_weapons_desc')
-})
+-- menu2:AddButton({
+--     icon = '🎁',
+--     label = Lang:t('menu.spawn_weapons'),
+--     value = menu15,
+--     description = Lang:t('desc.spawn_weapons_desc')
+-- })
 
 -- Server Options Menu Buttons
 local menu3_server_weather = menu3:AddButton({
@@ -391,9 +391,9 @@ menu2_admin_display_blips:On('change', function()
 end)
 
 -- Toggle NoClip
-menu2_admin_noclip:On('change', function(_, _, _)
-    ToggleNoClip()
-end)
+-- menu2_admin_noclip:On('change', function(_, _, _)
+--     ToggleNoClip()
+-- end)
 
 -- Revive Self
 menu2_admin_revive:On('select', function(_)
