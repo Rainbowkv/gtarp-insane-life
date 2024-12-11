@@ -502,9 +502,11 @@ const InventoryContainer = Vue.createApp({
         },
         async handlePurchase(targetSlot, sourceSlot, sourceItem, transferAmount) {
             try {
+		transferAmount = transferAmount || 1  // 如果玩家没有提供数量默认取1
                 const response = await axios.post("https://qb-inventory/AttemptPurchase", {
                     item: sourceItem,
-                    amount: transferAmount || sourceItem.amount,
+                    amount: transferAmount,
+		    // amount: transferAmount || sourceItem.amount
                     shop: this.otherInventoryName,
                 });
                 if (response.data) {
