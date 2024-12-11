@@ -3,13 +3,13 @@ Config = Config or {}
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
 
 Config.AvailableJobs = {                                     -- Only used when not using qb-jobs.
-    ['trucker'] = { ['label'] = 'Trucker', ['isManaged'] = false },
-    ['taxi'] = { ['label'] = 'Taxi', ['isManaged'] = false },
-    ['tow'] = { ['label'] = 'Tow Truck', ['isManaged'] = false },
-    ['reporter'] = { ['label'] = 'News Reporter', ['isManaged'] = false },
-    ['garbage'] = { ['label'] = 'Garbage Collector', ['isManaged'] = false },
-    ['bus'] = { ['label'] = 'Bus Driver', ['isManaged'] = false },
-    ['hotdog'] = { ['label'] = 'Hot Dog Stand', ['isManaged'] = false }
+    ['trucker'] = { ['label'] = '卡车司机', ['isManaged'] = false },
+    ['taxi'] = { ['label'] = '出租车司机', ['isManaged'] = false },
+    ['tow'] = { ['label'] = '拖吊车', ['isManaged'] = false },
+    ['reporter'] = { ['label'] = '新闻记者', ['isManaged'] = false },
+    ['garbage'] = { ['label'] = '清洁工', ['isManaged'] = false },
+    ['bus'] = { ['label'] = '公交司机', ['isManaged'] = false },
+    ['hotdog'] = { ['label'] = '热狗摊摊主', ['isManaged'] = false }
 }
 
 Config.Cityhalls = {
@@ -21,23 +21,23 @@ Config.Cityhalls = {
             display = 4,
             scale = 0.65,
             colour = 0,
-            title = 'City Services'
+            title = '市政厅服务'
         },
         licenses = {
             ['id_card'] = {
-                label = 'ID Card',
-                cost = 50,
+                label = '身份证 - 1000$',
+                cost = 1000,
             },
             ['driver_license'] = {
-                label = 'Driver License',
-                cost = 50,
+                label = '驾照 - 3000$',
+                cost = 3000,
                 metadata = 'driver'
             },
             ['weaponlicense'] = {
-                label = 'Weapon License',
-                cost = 50,
+                label = '武器执照 - 8000$',
+                cost = 8000,
                 metadata = 'weapon'
-            },
+            }
         }
     },
 }
@@ -51,7 +51,7 @@ Config.DrivingSchools = {
             display = 4,
             scale = 0.65,
             colour = 3,
-            title = 'Driving School'
+            title = '驾校'
         },
         instructors = {
             'DJD56142',
