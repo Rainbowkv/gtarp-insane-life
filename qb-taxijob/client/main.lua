@@ -410,7 +410,7 @@ function HasPlayerSpawnedTaxi(playerId)
 end
 
 -- 设置玩家已生成出租车的状态
-function SetPlayerSpawnedTaxi(playerId, status)
+function SetPlayerSpawnedTaxi(playerId, status)  -- 668行也使用了它，停放车辆时
     playerTaxiStatus[playerId] = status
 end
 
@@ -665,6 +665,7 @@ CreateThread(function()
                                 if IsControlJustReleased(0, 38) then
                                     if IsPedInAnyVehicle(PlayerPedId(), false) then
                                         DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
+                                        SetPlayerSpawnedTaxi(PlayerPedId(), false)  -- 停车后设置成未生成车辆
                                     end
                                 end
                             else
@@ -673,7 +674,7 @@ CreateThread(function()
                                     if PlayerJob.onduty then
                                         TaxiGarage()
                                     else
-                                        QBCore.Functions.Notify('You need to be on duty')
+                                        QBCore.Functions.Notify('您需要值班')
                                     end
                                 end
                             end
