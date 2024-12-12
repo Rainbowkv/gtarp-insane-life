@@ -342,18 +342,22 @@ RegisterNetEvent('qb-diving:client:UseGear', function()
             QBCore.Functions.Notify(Lang:t("error.need_otube"), 'error')
         end
     elseif isWearingSuit == true then
-        gearAnim()
-        QBCore.Functions.Progressbar("remove_gear", Lang:t("info.pullout_suit"), 5000, false, true, {}, {}, {}, {}, function() -- Done
-            SetEnableScuba(ped, false)
-            SetPedMaxTimeUnderwater(ped, 50.00)
-            CurrentGear.enabled = false
-            ClearPedTasks(ped)
-            deleteGear()
-            QBCore.Functions.Notify(Lang:t("success.took_out"))
-            TriggerServerEvent("InteractSound_SV:PlayOnSource", nil, 0.25)
-            isWearingSuit = false
-            OxygenLevel = OxygenLevel
-        end)
+        if not IsPedSwimming(ped) and not IsPedInAnyVehicle(ped, false) then  -- 没有站着也不能脱
+            gearAnim()
+            QBCore.Functions.Progressbar("remove_gear", Lang:t("info.pullout_suit"), 5000, false, true, {}, {}, {}, {}, function() -- Done
+                SetEnableScuba(ped, false)
+                SetPedMaxTimeUnderwater(ped, 50.00)
+                CurrentGear.enabled = false
+                ClearPedTasks(ped)
+                deleteGear()
+                QBCore.Functions.Notify(Lang:t("success.took_out"))
+                TriggerServerEvent("InteractSound_SV:PlayOnSource", nil, 0.25)
+                isWearingSuit = false
+                OxygenLevel = OxygenLevel
+            end)
+        else
+            QBCore.Functions.Notify(Lang:t("error.not_standing_up"), 'error')
+        end
     end
 end)
 

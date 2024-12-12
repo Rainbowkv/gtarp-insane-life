@@ -1,6 +1,6 @@
 local Translations = {
     info = {
-        open_shop = '[E] 商店',
+        open_shop = '[E] 浏览',
         deliver_e = '~g~E~w~ - 交付产品',
         deliver = '交付产品',
     },

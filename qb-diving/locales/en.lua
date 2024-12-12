@@ -5,7 +5,7 @@ local Translations = {
         ["take_off"] = "/divingsuit 脱下你的潜水服",
         ["not_wearing"] = "你没有穿潜水装备 ..",
         ["no_coral"] = "你没有珊瑚可以出售 ..",
-        ["not_standing_up"] = "你需要站起来才能穿上潜水装备",
+        ["not_standing_up"] = "你需要站起来才能穿上/脱下潜水装备",
         ["need_otube"] = "你需要一个氧气管才能给潜水装备加氧",
         ["oxygenlevel"] = '潜水装备的氧气水平是 %{oxygenlevel}，必须为 0%',
     },

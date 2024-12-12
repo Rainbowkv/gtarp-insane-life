@@ -128,7 +128,7 @@ end
 
 local function DrawText3D(x, y, z, text)
     SetTextScale(0.35, 0.35)
-    SetTextFont(4)
+    SetTextFont(0)
     SetTextProportional(1)
     SetTextColour(255, 255, 255, 215)
     BeginTextCommandDisplayText('STRING')
@@ -350,7 +350,7 @@ function TaxiGarage()
             }
         }
     end
-    -- qb-bossmenu:client:openMenu
+    -- qb-bossmenu:client:openMenu  玩家是老板则多生成一个老板菜单
     if PlayerJob.name == jobRequired and PlayerJob.isboss and Config.UseTarget then
         vehicleMenu[#vehicleMenu + 1] = {
             header = Lang:t('menu.boss_menu'),
@@ -371,7 +371,14 @@ function TaxiGarage()
     exports['qb-menu']:openMenu(vehicleMenu)
 end
 
+local playerTaxiStatus = {}
+
 RegisterNetEvent('qb-taxi:client:TakeVehicle', function(data)
+    local playerId = PlayerPedId()
+    if HasPlayerSpawnedTaxi(playerId) then
+        QBCore.Functions.Notify(Lang:t('error.already_take'), 'error')
+        return
+    end
     local SpawnPoint = getVehicleSpawnPoint()
     if SpawnPoint then
         local coords = vector3(Config.CabSpawns[SpawnPoint].x, Config.CabSpawns[SpawnPoint].y, Config.CabSpawns[SpawnPoint].z)
@@ -386,6 +393,7 @@ RegisterNetEvent('qb-taxi:client:TakeVehicle', function(data)
                 TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
                 TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
                 SetVehicleEngineOn(veh, true, true)
+                SetPlayerSpawnedTaxi(playerId, true)
             end, data.model, coords, true)
         else
             QBCore.Functions.Notify(Lang:t('info.no_spawn_point'), 'error')
@@ -394,6 +402,30 @@ RegisterNetEvent('qb-taxi:client:TakeVehicle', function(data)
         QBCore.Functions.Notify(Lang:t('info.no_spawn_point'), 'error')
         return
     end
+end)
+
+-- 判断玩家是否已生成出租车
+function HasPlayerSpawnedTaxi(playerId)
+    return playerTaxiStatus[playerId] == true
+end
+
+-- 设置玩家已生成出租车的状态
+function SetPlayerSpawnedTaxi(playerId, status)
+    playerTaxiStatus[playerId] = status
+end
+
+-- 玩家重新连接时重置租车状态
+AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
+    local playerId = source  -- 获取玩家ID
+    -- 重置玩家的租车状态
+    SetPlayerSpawnedTaxi(playerId, false)
+end)
+
+-- 玩家掉线时清理状态
+AddEventHandler('playerDropped', function()
+    local playerId = source  -- 获取玩家ID
+    -- 清理玩家的出租车状态
+    playerTaxiStatus[playerId] = nil
 end)
 
 function closeMenuFull()

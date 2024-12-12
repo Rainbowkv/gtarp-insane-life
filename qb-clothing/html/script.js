@@ -450,7 +450,7 @@ QBClothing.Open = function(data) {
 
         if (menu.menu == "roomOutfits") {
             $.each(menu.outfits, function(index, outfit) {
-                var elem = '<div class="clothing-menu-option" data-outfit="' + (index + 1) + '"> <div class="clothing-menu-option-header"><p>' + outfit.outfitLabel + '</p></div> <div class="clothing-menu-outfit-option-button"><p data-tkey="select">Select Outfit</p></div> </div>'
+                var elem = '<div class="clothing-menu-option" data-outfit="' + (index + 1) + '"> <div class="clothing-menu-option-header"><p>' + outfit.outfitLabel + '</p></div> <div class="clothing-menu-outfit-option-button"><p data-tkey="select">选择外观</p></div> </div>'
                 $(".clothing-menu-roomOutfits-container").append(elem)
 
                 $("[data-outfit='" + (index + 1) + "']").data('outfitData', outfit)
@@ -459,7 +459,7 @@ QBClothing.Open = function(data) {
 
         if (menu.menu == "myOutfits") {
             $.each(menu.outfits, function(index, outfit) {
-                var elem = '<div class="clothing-menu-option" data-myOutfit="' + (index + 1) + '"> <div class="clothing-menu-option-header"><p>' + outfit.outfitname + '</p></div><div class="clothing-menu-myOutfit-option-button"><p data-tkey="select">Select</p></div><div class="clothing-menu-myOutfit-option-button-remove"><p data-tkey="delete">Delete</p></div></div>'
+                var elem = '<div class="clothing-menu-option" data-myOutfit="' + (index + 1) + '"> <div class="clothing-menu-option-header"><p>' + outfit.outfitname + '</p></div><div class="clothing-menu-myOutfit-option-button"><p data-tkey="select">选择</p></div><div class="clothing-menu-myOutfit-option-button-remove"><p data-tkey="delete">删除</p></div></div>'
                 $(".clothing-menu-myOutfits-container").append(elem)
 
                 $("[data-myOutfit='" + (index + 1) + "']").data('myOutfitData', outfit)
@@ -536,11 +536,11 @@ QBClothing.SetMaxValues = function(maxValues) {
 
             var itemMax = $(containers).find('[data-headertype="item-header"]');
             $(itemMax).data('maxItem', maxValues[containers.data('type')].item);
-            $(itemMax).html("<p><span data-tkey='item'>Item</span>: " + maxValues[containers.data('type')].item + "</p>");
+            $(itemMax).html("<p><span data-tkey='item'>物品</span>: " + maxValues[containers.data('type')].item + "</p>");
 
             var headerMax = $(containers).find('[data-headertype="texture-header"]');
             $(headerMax).data('maxTexture', maxValues[containers.data('type')].texture);
-            $(headerMax).html("<p><span data-tkey='texture'>Texture</span>: " + maxValues[containers.data('type')].texture + "</p>");
+            $(headerMax).html("<p><span data-tkey='texture'>纹理</span>: " + maxValues[containers.data('type')].texture + "</p>");
 
             var itemInputMax = $(containers).find('[data-type="item"]');
             $(itemInputMax).attr({ 'max': maxValues[containers.data('type')].item, 'min' : -1 });
@@ -553,11 +553,11 @@ QBClothing.SetMaxValues = function(maxValues) {
 
             var itemMax = $(containers).find('[data-headertype="item-header"]');
             $(itemMax).data('maxItem', maxValues[containers.data('type')].item);
-            $(itemMax).html("<p><span data-tkey='item'>Item</span>: " + maxValues[containers.data('type')].item + "</p>");
+            $(itemMax).html("<p><span data-tkey='item'>物品</span>: " + maxValues[containers.data('type')].item + "</p>");
 
             var headerMax = $(containers).find('[data-headertype="texture-header"]');
             $(headerMax).data('maxTexture', maxValues[containers.data('type')].texture);
-            $(headerMax).html("<p><span data-tkey='texture'>Texture</span>: " + maxValues[containers.data('type')].texture + "</p>");
+            $(headerMax).html("<p><span data-tkey='texture'>纹理</span>: " + maxValues[containers.data('type')].texture + "</p>");
 
             var itemInputMax = $(containers).find('[data-type="item"]');
             $(itemInputMax).attr({ 'max': maxValues[containers.data('type')].item, 'min' : -1 });
@@ -570,11 +570,11 @@ QBClothing.SetMaxValues = function(maxValues) {
 
             var itemMax = $(containers).find('[data-headertype="item-header"]');
             $(itemMax).data('maxItem', maxValues[containers.data('type')].item);
-            $(itemMax).html("<p><span data-tkey='item'>Item</span>: " + maxValues[containers.data('type')].item + "</p>");
+            $(itemMax).html("<p><span data-tkey='item'>物品</span>: " + maxValues[containers.data('type')].item + "</p>");
 
             var headerMax = $(containers).find('[data-headertype="texture-header"]');
             $(headerMax).data('maxTexture', maxValues[containers.data('type')].texture);
-            $(headerMax).html("<p><span data-tkey='texture'>Texture</span>: " + maxValues[containers.data('type')].texture + "</p>");
+            $(headerMax).html("<p><span data-tkey='texture'>纹理</span>: " + maxValues[containers.data('type')].texture + "</p>");
 
             var itemInputMax = $(containers).find('[data-type="item"]');
             $(itemInputMax).attr({ 'max': maxValues[containers.data('type')].item, 'min' : -1 });
@@ -587,11 +587,11 @@ QBClothing.SetMaxValues = function(maxValues) {
 
             var itemMax = $(containers).find('[data-headertype="item-header"]');
             $(itemMax).data('maxItem', maxValues[containers.data('type')].item);
-            $(itemMax).html("<p><span data-tkey='item'>Item</span>: " + maxValues[containers.data('type')].item + "</p>");
+            $(itemMax).html("<p><span data-tkey='item'>物品</span>: " + maxValues[containers.data('type')].item + "</p>");
 
             var headerMax = $(containers).find('[data-headertype="texture-header"]');
             $(headerMax).data('maxTexture', maxValues[containers.data('type')].texture);
-            $(headerMax).html("<p><span data-tkey='texture'>Texture</span>: " + maxValues[containers.data('type')].texture + "</p>");
+            $(headerMax).html("<p><span data-tkey='texture'>纹理</span>: " + maxValues[containers.data('type')].texture + "</p>");
 
             var itemInputMax = $(containers).find('[data-type="item"]');
             $(itemInputMax).attr({ 'max': maxValues[containers.data('type')].item, 'min' : -1 });

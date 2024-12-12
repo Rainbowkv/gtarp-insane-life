@@ -1,6 +1,8 @@
 local Translations = {
     error = {
         ['already_mission'] = '你已经在执行一个NPC任务',
+        ['already_take'] = '您已经取走过一辆出租车',
+        ['not_take'] = '您没有租过车辆',
         ['not_in_taxi'] = '你不在出租车内',
         ['missing_meter'] = '这辆车没有出租车计价器',
         ['no_vehicle'] = '你不在任何车辆内',

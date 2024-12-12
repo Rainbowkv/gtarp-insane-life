@@ -66,13 +66,15 @@ Config.Products = {
     },
     ['gearshop'] = {
         { name = 'diving_gear', price = 2500, amount = 10 },
-        { name = 'jerry_can',   price = 200,  amount = 50 },
+        { name = 'diving_fill', price = 1200,  amount = 10 },
+        { name = 'dendrogyra_coral', price = 500,  amount = 10 },
+        { name = 'antipatharia_coral', price = 500,  amount = 10 },
     },
     ['leisureshop'] = {
         { name = 'parachute',   price = 2500, amount = 10 },
         { name = 'binoculars',  price = 50,   amount = 50 },
         { name = 'diving_gear', price = 2500, amount = 10 },
-        { name = 'diving_fill', price = 500,  amount = 10 },
+        { name = 'jerry_can',   price = 200,  amount = 50 },
     },
     ['weapons'] = {
         { name = 'weapon_knife',         price = 250,  amount = 250 },
@@ -753,7 +755,7 @@ Config.Locations = {
     },
 
     ['police'] = {
-        ['label'] = 'Police Shop',
+        ['label'] = '警械库',
         ['coords'] = vector4(461.8498, -981.0677, 30.6896, 91.5892),
         ['ped'] = 'mp_m_securoguard_01',
         ['scenario'] = 'WORLD_HUMAN_COP_IDLES',
@@ -766,7 +768,7 @@ Config.Locations = {
     },
 
     ['ambulance'] = {
-        ['label'] = 'Ambulance Shop',
+        ['label'] = '医用物品仓库',
         ['coords'] = vector4(309.93, -602.94, 43.29, 71.0820),
         ['ped'] = 's_m_m_doctor_01',
         ['scenario'] = 'WORLD_HUMAN_STAND_MOBILE',
@@ -779,45 +781,45 @@ Config.Locations = {
     },
 
     ['mechanic'] = {
-        ['label'] = 'Mechanic Shop',
+        ['label'] = '工作台',
         ['coords'] = vector4(-343.66, -140.78, 39.02, 0),
-        ['targetLabel'] = '修车工具',
+        ['targetLabel'] = '工作台',
         ['products'] = Config.Products['mechanic'],
         ['delivery'] = vector4(-354.3936, -128.2882, 39.4307, 251.4931),
         ['requiredJob'] = 'mechanic',
     },
 
     ['mechanic2'] = {
-        ['label'] = 'Mechanic Shop',
+        ['label'] = '工作台',
         ['coords'] = vector4(1189.36, 2641.00, 38.44, 0),
-        ['targetLabel'] = '修车工具',
+        ['targetLabel'] = '工作台',
         ['products'] = Config.Products['mechanic'],
         ['delivery'] = vector4(1189.9852, 2651.1873, 37.8351, 317.7137),
         ['requiredJob'] = 'mechanic2'
     },
 
     ['mechanic3'] = {
-        ['label'] = 'Mechanic Shop',
+        ['label'] = '工作台',
         ['coords'] = vector4(-1156.56, -1999.85, 13.19, 0),
-        ['targetLabel'] = '修车工具',
+        ['targetLabel'] = '工作台',
         ['products'] = Config.Products['mechanic'],
         ['delivery'] = vector4(-1131.9661, -1972.0144, 13.1603, 358.8637),
         ['requiredJob'] = 'mechanic3'
     },
 
     ['bennys'] = {
-        ['label'] = 'Mechanic Shop',
+        ['label'] = '工作台',
         ['coords'] = vector4(-195.80, -1318.24, 31.08, 0),
-        ['targetLabel'] = '修车工具',
+        ['targetLabel'] = '工作台',
         ['products'] = Config.Products['mechanic'],
         ['delivery'] = vector4(-232.5028, -1311.7202, 31.2960, 180.3716),
         ['requiredJob'] = 'bennys'
     },
 
     ['beeker'] = {
-        ['label'] = 'Mechanic Shop',
+        ['label'] = '工作台',
         ['coords'] = vector4(100.92, 6616.00, 32.47, 0),
-        ['targetLabel'] = '修车工具',
+        ['targetLabel'] = '工作台',
         ['products'] = Config.Products['mechanic'],
         ['delivery'] = vector4(119.3033, 6626.7358, 31.9558, 46.1566),
         ['requiredJob'] = 'beeker'
