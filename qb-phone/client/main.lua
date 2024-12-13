@@ -852,7 +852,7 @@ RegisterNUICallback('track-vehicle', function(data, cb)
     if findVehFromPlateAndLocate(veh.plate) then
         QBCore.Functions.Notify('GPS已定位到载具', 'success')
     else
-        QBCore.Functions.Notify('您的载具被扣押了', 'error')
+        QBCore.Functions.Notify('尝试返回车库定位', 'error')
     end
     cb('ok')
 end)
