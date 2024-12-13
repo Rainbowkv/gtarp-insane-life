@@ -847,15 +847,21 @@ RegisterNUICallback('DeleteImage', function(image, cb)
 end)
 
 
-RegisterNUICallback('track-vehicle', function(data, cb)
-    local veh = data.veh
-    if findVehFromPlateAndLocate(veh.plate) then
-        QBCore.Functions.Notify('GPS已定位到载具', 'success')
-    else
-        QBCore.Functions.Notify('尝试返回车库定位', 'error')
+RegisterNUICallback('track-vehicle', 
+    function(data, cb)
+        TriggerServerEvent('qb-garages:server:trackVehicle', data.veh.plate)
+        cb('ok')
     end
-    cb('ok')
-end)
+    -- function(data, cb)
+        -- local veh = data.veh
+        -- if findVehFromPlateAndLocate(veh.plate) then
+        --     QBCore.Functions.Notify('GPS已定位到载具', 'success')
+        -- else
+        --     QBCore.Functions.Notify('尝试返回车库定位', 'error')
+        -- end
+        -- cb('ok')
+    -- end
+)
 
 RegisterNUICallback('DeleteContact', function(data, cb)
     local Name = data.CurrentContactName
