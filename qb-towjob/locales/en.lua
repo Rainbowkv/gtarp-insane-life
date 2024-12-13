@@ -7,6 +7,7 @@ local Translations = {
         too_far_away = "你离得太远了",
         no_work_done = "你还没有做任何工作",
         no_deposit = "$%{value} 的押金是必需的",
+        has_spawn = "您已经取过拖车了",
     },
     success = {
         paid_with_cash = "$%{value} 押金已通过现金支付",
