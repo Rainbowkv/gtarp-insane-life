@@ -378,7 +378,8 @@ RegisterNetEvent('qb-radialmenu:flipVehicle', function()
         flags = 1,
     }, {}, {}, function() -- Done
         local vehicle = getNearestVeh()
-        SetVehicleOnGroundProperly(vehicle)
+        SetEntityRotation(vehicle, 0.0, 0.0, 0.0, 0, true)
+        -- SetVehicleOnGroundProperly(vehicle)
         StopAnimTask(PlayerPedId(), 'mini@repair', 'fixing_a_ped', 1.0)
     end, function() -- Cancel
         QBCore.Functions.Notify(Lang:t('task.cancel_task'), 'error')
