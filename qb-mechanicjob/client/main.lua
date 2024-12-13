@@ -38,7 +38,7 @@ function IsNearBone(vehicle, bone)
     local vehicleBoneIndex = GetEntityBoneIndexByName(vehicle, bone)
     if vehicleBoneIndex ~= -1 then
         local bonePos = GetWorldPositionOfEntityBone(vehicle, vehicleBoneIndex)
-        if #(playerCoords - bonePos) <= 1.5 then
+        if #(playerCoords - bonePos) <= 3.0 then
             return true
         end
     end
