@@ -304,6 +304,7 @@ RegisterCommand('toggleHotbar', function()
     ExecuteCommand('hotbar')
     ExecuteCommand('cash')
     ExecuteCommand('bank')
+    ExecuteCommand('job')
 end, false)
 
 for i = 1, 5 do
