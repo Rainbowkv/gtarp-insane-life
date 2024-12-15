@@ -30,3 +30,7 @@ files {
     'html/img/backgrounds/*.png',
     'html/img/apps/*.png',
 }
+
+dependencies {
+    'qb-garages'
+}

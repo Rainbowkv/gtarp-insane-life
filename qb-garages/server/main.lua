@@ -1,15 +1,18 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local OutsideVehicles = {}
 
+--rbcode
+local oxmysql = exports['oxmysql']
+
 -- Handler
 
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         Wait(100)
         if Config['AutoRespawn'] then
-            MySQL.update('UPDATE player_vehicles SET state = 1 WHERE state = 0', {})
+            MySQL.update('UPDATE player_vehicles SET state = 1 WHERE state = 0 and depotprice = 0', {})
         else
-            MySQL.update('UPDATE player_vehicles SET depotprice = 500 WHERE state = 0', {})
+            MySQL.update('UPDATE player_vehicles SET depotprice = 500 WHERE state = 0 and depotprice = 0', {})
         end
     end
 end)
@@ -221,6 +224,20 @@ end)
 
 RegisterNetEvent('qb-garages:server:syncGarage', function(updatedGarages)
     Config.Garages = updatedGarages
+end)
+
+-- rb_code
+RegisterNetEvent('qb-garages:server:compensateEntityFromPlate', function(plate)
+    local src = source
+    local vehicleData = OutsideVehicles[plate]
+    if vehicleData and DoesEntityExist(vehicleData.entity) then
+        DeleteEntity(vehicleData.entity)
+        oxmysql:execute('UPDATE player_vehicles SET depotprice = 4000 WHERE state = 0', {}, function(affectedRows)
+            TriggerClientEvent('QBCore:Notify', src, "载具已到扣押场", 'success')
+        end)        
+    else
+        TriggerClientEvent('QBCore:Notify', src, "车辆并不在外面", 'error')
+    end
 end)
 
 --Call from qb-phone
