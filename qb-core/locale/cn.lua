@@ -26,7 +26,7 @@ local Translations = {
         teleported_waypoint = '传送至航路点.',
     },
     info = {
-        received_paycheck = '你收到的薪水是 $%{value}',
+        received_paycheck = '你收到补助 $%{value}',
         job_info = '工作: %{value} | 级别: %{value2} | 上班状态: %{value3}',
         gang_info = '帮派: %{value} | 级别: %{value2}',
         on_duty = '你现在开始上班了!',
@@ -38,23 +38,23 @@ local Translations = {
         exploit_dropped = '你因为被而被踢出',
     },
     command = {
-        -- tp = {
-        --     help = 'TP至玩家或坐标(仅限管理员)',
-        --     params = {
-        --         x = { name = 'id/x', help = '玩家ID或X位置'},
-        --         y = { name = 'y', help = 'Y位置'},
-        --         z = { name = 'z', help = 'Z位置'},
-        --     },
-        -- },
-        -- tpm = { help = 'TP到标记(仅限管理员)' },
-        -- togglepvp = { help = '切换服务器上的PVP(仅限管理员)' },
-        -- addpermission = {
-        --     help = '授予玩家权限(仅限God)',
-        --     params = {
-        --         id = { name = 'id', help = '玩家ID' },
-        --         permission = { name = 'permission', help = '权限级别' },
-        --     },
-        -- },
+        tp = {
+            help = 'TP至玩家或坐标(仅限管理员)',
+            params = {
+                x = { name = 'id/x', help = '玩家ID或X位置'},
+                y = { name = 'y', help = 'Y位置'},
+                z = { name = 'z', help = 'Z位置'},
+            },
+        },
+        tpm = { help = 'TP到标记(仅限管理员)' },
+        togglepvp = { help = '切换服务器上的PVP(仅限管理员)' },
+        addpermission = {
+            help = '授予玩家权限(仅限God)',
+            params = {
+                id = { name = 'id', help = '玩家ID' },
+                permission = { name = 'permission', help = '权限级别' },
+            },
+        },
         removepermission = {
             help = '删除玩家权限(仅限上帝)',
             params = {
