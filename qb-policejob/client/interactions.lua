@@ -364,10 +364,11 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         if not isSoftcuff then
             cuffType = 16
             GetCuffedAnimation(playerId)
+            SetEntityMaxSpeed(ped, 1.0)  -- 手铐限制移动速度
             QBCore.Functions.Notify(Lang:t('info.cuff'), 'primary')
         else
             cuffType = 49
-            GetCuffedAnimation(playerId)
+            GetCuffedAnimation(playerId)  -- 脚铐用于追踪，暂不限制移动速度
             QBCore.Functions.Notify(Lang:t('info.cuffed_walk'), 'primary')
         end
     else
@@ -378,6 +379,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         TriggerServerEvent('police:server:SetHandcuffStatus', false)
         ClearPedTasksImmediately(ped)
         TriggerServerEvent('InteractSound_SV:PlayOnSource', 'Uncuff', 0.2)
+        SetEntityMaxSpeed(ped, 10.0)  -- 解除移动速度限制（10m/s只是限制玩家移动的最高移动速度，相当于不限制玩家的移动速度了
         QBCore.Functions.Notify(Lang:t('success.uncuffed'), 'success')
     end
 end)
