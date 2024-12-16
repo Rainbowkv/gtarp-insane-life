@@ -364,11 +364,11 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         if not isSoftcuff then
             cuffType = 16
             GetCuffedAnimation(playerId)
-            SetEntityMaxSpeed(ped, 1.0)  -- 手铐限制移动速度
             QBCore.Functions.Notify(Lang:t('info.cuff'), 'primary')
         else
             cuffType = 49
-            GetCuffedAnimation(playerId)  -- 脚铐用于追踪，暂不限制移动速度
+            GetCuffedAnimation(playerId)
+            SetEntityMaxSpeed(ped, 1.0)  -- 手铐限制移动速度
             QBCore.Functions.Notify(Lang:t('info.cuffed_walk'), 'primary')
         end
     else
