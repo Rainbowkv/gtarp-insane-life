@@ -615,7 +615,8 @@ function OpenInventory(source, identifier, data)
     local inventory = Inventories[identifier]
 
     if inventory and inventory.isOpen then
-        TriggerClientEvent('QBCore:Notify', source, 'This inventory is currently in use', 'error')
+        TriggerClientEvent('qb-inventory:client:abortOpenTrunkAnimAfterOpenFail', source)  -- rb_code
+        TriggerClientEvent('QBCore:Notify', source, '后备箱正在被别人使用', 'error')
         return
     end
 

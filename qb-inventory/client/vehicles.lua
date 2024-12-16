@@ -26,6 +26,14 @@ function CloseTrunk()
     end
 end
 
+-- events
+
+RegisterNetEvent("qb-inventory:client:abortOpenTrunkAnimAfterOpenFail", function()
+    Wait(500)
+    LoadAnimDict('amb@prop_human_bum_bin@idle_b')
+    TaskPlayAnim(PlayerPedId(), 'amb@prop_human_bum_bin@idle_b', 'exit', 4.0, 4.0, -1, 50, 0, false, false, false)
+end)
+
 -- Callbacks
 
 QBCore.Functions.CreateClientCallback('qb-inventory:client:vehicleCheck', function(cb)
