@@ -207,17 +207,17 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
         local repairCost = math.ceil(1000 - vehicleHealth)
 
         TriggerServerEvent("qb-customs:server:updateRepairCost", repairCost)
-        createMenu("repairMenu", welcomeLabel, "Repair Vehicle")
-        populateMenu("repairMenu", -1, "Repair", "$" .. repairCost)
+        createMenu("repairMenu", welcomeLabel, "修理载具")
+        populateMenu("repairMenu", -1, "修理", "$" .. repairCost)
         finishPopulatingMenu("repairMenu")
     end
 
     --#[Main Menu]#--
-    createMenu("mainMenu", welcomeLabel, "Choose a Category")
+    createMenu("mainMenu", welcomeLabel, "选择改装项")
 
     for _, v in ipairs(vehicleCustomisation) do
         local _, amountValidMods = CheckValidMods(v.category, v.id)
-
+        print(v.id.."-"..amountValidMods)
         if amountValidMods > 0 or v.id == 18 then
             if (v.id == 11 or v.id == 12 or v.id == 13 or v.id == 15) then
                 if categories.mods and maxVehiclePerformanceUpgrades ~= -1 then
@@ -251,10 +251,10 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
 
     if not isMotorcycle then
         if categories.tint then populateMenu("mainMenu", -2, "Window Tint", "none") end
-        if categories.neons then populateMenu("mainMenu", -3, "Neons", "none") end
+        -- if categories.neons then populateMenu("mainMenu", -3, "Neons", "none") end  -- 碰颜色会卡死
     end
 
-    if categories.xenons then populateMenu("mainMenu", 22, "Xenons", "none") end
+    -- if categories.xenons then populateMenu("mainMenu", 22, "Xenons", "none") end  -- 碰颜色会卡死
     if categories.wheels then populateMenu("mainMenu", 23, "Wheels", "none") end
 
     local livCount = GetVehicleLiveryCount(plyVeh)
@@ -276,7 +276,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
             if v.id == 11 or v.id == 12 or v.id == 13 or v.id == 15 or v.id == 16 then --Performance Upgrades
                 local tempNum = 0
 
-                createMenu(v.category:gsub("%s+", "") .. "Menu", v.category, "Choose an Upgrade")
+                createMenu(v.category:gsub("%s+", "") .. "Menu", v.category, "选择一项升级")
 
                 for _, n in pairs(validMods) do
                     tempNum = tempNum + 1
@@ -285,14 +285,14 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
                         populateMenu(v.category:gsub("%s+", "") .. "Menu", n.id, n.name, "$" .. vehicleCustomisationPrices.performance.prices[tempNum])
 
                         if currentMod == n.id then
-                            updateItem2Text(v.category:gsub("%s+", "") .. "Menu", n.id, "Installed")
+                            updateItem2Text(v.category:gsub("%s+", "") .. "Menu", n.id, "已安装")
                         end
                     else
                         if tempNum <= (maxVehiclePerformanceUpgrades + 1) then
                             populateMenu(v.category:gsub("%s+", "") .. "Menu", n.id, n.name, "$" .. vehicleCustomisationPrices.performance.prices[tempNum])
 
                             if currentMod == n.id then
-                                updateItem2Text(v.category:gsub("%s+", "") .. "Menu", n.id, "Installed")
+                                updateItem2Text(v.category:gsub("%s+", "") .. "Menu", n.id, "已安装")
                             end
                         end
                     end
@@ -301,22 +301,22 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
                 finishPopulatingMenu(v.category:gsub("%s+", "") .. "Menu")
             elseif v.id == 18 then
                 local currentTurboState = GetCurrentTurboState()
-                createMenu(v.category:gsub("%s+", "") .. "Menu", v.category .. " Customisation", "Enable or Disable Turbo")
+                createMenu(v.category:gsub("%s+", "") .. "Menu", v.category .. " 定制", "搭载/卸载涡轮引擎")
 
                 populateMenu(v.category:gsub("%s+", "") .. "Menu", -1, "Disable", "$0")
                 populateMenu(v.category:gsub("%s+", "") .. "Menu", 0, "Enable", "$" .. vehicleCustomisationPrices.turbo.prices[2])
 
-                updateItem2Text(v.category:gsub("%s+", "") .. "Menu", currentTurboState, "Installed")
+                updateItem2Text(v.category:gsub("%s+", "") .. "Menu", currentTurboState, "已安装")
 
                 finishPopulatingMenu(v.category:gsub("%s+", "") .. "Menu")
             else
-                createMenu(v.category:gsub("%s+", "") .. "Menu", v.category .. " Customisation", "Choose a Mod")
+                createMenu(v.category:gsub("%s+", "") .. "Menu", v.category .. " 定制", "选择模型")
 
                 for _, n in pairs(validMods) do
                     populateMenu(v.category:gsub("%s+", "") .. "Menu", n.id, n.name, "$" .. vehicleCustomisationPrices.cosmetics.price)
 
                     if currentMod == n.id then
-                        updateItem2Text(v.category:gsub("%s+", "") .. "Menu", n.id, "Installed")
+                        updateItem2Text(v.category:gsub("%s+", "") .. "Menu", n.id, "已安装")
                     end
                 end
 
@@ -326,19 +326,19 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     end
 
     --#[Respray Menu]#--
-    createMenu("ResprayMenu", "Respray", "Choose a Colour Category")
+    createMenu("ResprayMenu", "重新喷漆", "更换漆面")
 
-    populateMenu("ResprayMenu", 0, "Primary Colour", "none")
-    populateMenu("ResprayMenu", 1, "Secondary Colour", "none")
-    populateMenu("ResprayMenu", 2, "Pearlescent Colour", "none")
-    populateMenu("ResprayMenu", 3, "Wheel Colour", "none")
-    populateMenu("ResprayMenu", 4, "Interior Colour", "none")
-    populateMenu("ResprayMenu", 5, "Dashboard Colour", "none")
+    populateMenu("ResprayMenu", 0, "主色调", "none")
+    populateMenu("ResprayMenu", 1, "副色调", "none")
+    populateMenu("ResprayMenu", 2, "珠光色", "none")
+    populateMenu("ResprayMenu", 3, "车轮颜色", "none")
+    populateMenu("ResprayMenu", 4, "内饰颜色", "none")
+    populateMenu("ResprayMenu", 5, "仪表盘颜色", "none")
 
     finishPopulatingMenu("ResprayMenu")
 
     --#[Respray Types]#--
-    createMenu("ResprayTypeMenu", "Respray Types", "Choose a Colour Type")
+    createMenu("ResprayTypeMenu", "喷漆类型", "选择漆面类型")
 
     for _, v in ipairs(vehicleResprayOptions) do
         populateMenu("ResprayTypeMenu", v.id, v.category, "none")
@@ -348,7 +348,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
 
     --#[Respray Colours]#--
     for _, v in ipairs(vehicleResprayOptions) do
-        createMenu(v.category .. "Menu", v.category .. " Colours", "Choose a Colour")
+        createMenu(v.category .. "Menu", v.category .. " 颜色", "选择颜色")
 
         for _, n in ipairs(v.colours) do
             populateMenu(v.category .. "Menu", n.id, n.name, "$" .. vehicleCustomisationPrices.respray.price)
@@ -358,7 +358,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     end
 
     --#[Wheel Categories Menu]#--
-    createMenu("WheelsMenu", "Wheel Categories", "Choose a Category")
+    createMenu("WheelsMenu", "车轮类型", "选择类型")
 
     for _, v in ipairs(vehicleWheelOptions) do
         if isMotorcycle then
@@ -376,12 +376,12 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     for _, v in ipairs(vehicleWheelOptions) do
         if v.id == -1 then
             local currentCustomWheelState = GetCurrentCustomWheelState()
-            createMenu(v.category:gsub("%s+", "") .. "Menu", v.category, "Enable or Disable Custom Wheels")
+            createMenu(v.category:gsub("%s+", "") .. "Menu", v.category, "搭载/卸载车轮类型")
 
-            populateMenu(v.category:gsub("%s+", "") .. "Menu", 0, "Disable", "$0")
-            populateMenu(v.category:gsub("%s+", "") .. "Menu", 1, "Enable", "$" .. vehicleCustomisationPrices.customwheels.price)
+            populateMenu(v.category:gsub("%s+", "") .. "Menu", 0, "卸载", "$0")
+            populateMenu(v.category:gsub("%s+", "") .. "Menu", 1, "搭载", "$" .. vehicleCustomisationPrices.customwheels.price)
 
-            updateItem2Text(v.category:gsub("%s+", "") .. "Menu", currentCustomWheelState, "Installed")
+            updateItem2Text(v.category:gsub("%s+", "") .. "Menu", currentCustomWheelState, "已安装")
 
             finishPopulatingMenu(v.category:gsub("%s+", "") .. "Menu")
         elseif v.id ~= 20 then
@@ -389,7 +389,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
                 if v.id == 6 then --Motorcycle Wheels
                     local validMods, _ = CheckValidMods(v.category, v.wheelID, v.id)
 
-                    createMenu(v.category .. "Menu", v.category .. " Wheels", "Choose a Wheel")
+                    createMenu(v.category .. "Menu", v.category .. " 车轮", "选择车轮")
 
                     for _, n in pairs(validMods) do
                         populateMenu(v.category .. "Menu", n.id, n.name, "$" .. vehicleCustomisationPrices.wheels.price)
@@ -400,7 +400,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
             else
                 local validMods, _ = CheckValidMods(v.category, v.wheelID, v.id)
 
-                createMenu(v.category .. "Menu", v.category .. " Wheels", "Choose a Wheel")
+                createMenu(v.category .. "Menu", v.category .. " 车轮", "选择车轮")
 
                 for _, n in pairs(validMods) do
                     populateMenu(v.category .. "Menu", n.id, n.name, "$" .. vehicleCustomisationPrices.wheels.price)
@@ -413,13 +413,13 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
 
     --#[Wheel Smoke Menu]#--
     local currentWheelSmokeR, currentWheelSmokeG, currentWheelSmokeB = GetCurrentVehicleWheelSmokeColour()
-    createMenu("TyreSmokeMenu", "Tyre Smoke Customisation", "Choose a Colour")
+    createMenu("TyreSmokeMenu", "胎雾定制", "选择颜色")
 
     for k, v in ipairs(vehicleTyreSmokeOptions) do
         populateMenu("TyreSmokeMenu", k, v.name, "$" .. vehicleCustomisationPrices.wheelsmoke.price)
 
         if v.r == currentWheelSmokeR and v.g == currentWheelSmokeG and v.b == currentWheelSmokeB then
-            updateItem2Text("TyreSmokeMenu", k, "Installed")
+            updateItem2Text("TyreSmokeMenu", k, "已安装")
         end
     end
 
@@ -427,13 +427,13 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
 
     --#[Window Tint Menu]#--
     local currentWindowTint = GetCurrentWindowTint()
-    createMenu("WindowTintMenu", "Window Tint Customisation", "Choose a Tint")
+    createMenu("WindowTintMenu", "车窗定制", "选择车窗")
 
     for _, v in ipairs(vehicleWindowTintOptions) do
         populateMenu("WindowTintMenu", v.id, v.name, "$" .. vehicleCustomisationPrices.windowtint.price)
 
         if currentWindowTint == v.id then
-            updateItem2Text("WindowTintMenu", v.id, "Installed")
+            updateItem2Text("WindowTintMenu", v.id, "已安装")
         end
     end
 
@@ -442,11 +442,11 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     --#[Old Livery Menu]#--
     if livCount > 0 then
         local tempOldLivery = GetVehicleLivery(plyVeh)
-        createMenu("OldLiveryMenu", "Old Livery Customisation", "Choose a Livery")
+        createMenu("OldLiveryMenu", "经典涂装定制", "选择涂装")
         for i=0, livCount-1 do
-            populateMenu("OldLiveryMenu", i, "Livery", "$100")
+            populateMenu("OldLiveryMenu", i, "涂装", "$100")
             if tempOldLivery == i then
-                updateItem2Text("OldLiveryMenu", i, "Installed")
+                updateItem2Text("OldLiveryMenu", i, "已安装")
             end
         end
         finishPopulatingMenu("OldLiveryMenu")
@@ -455,7 +455,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     --#[Plate Colour Index Menu]#--
 
     local tempPlateIndex = GetVehicleNumberPlateTextIndex(plyVeh)
-    createMenu("PlateIndexMenu", "Plate Colour", "Choose a Style")
+    createMenu("PlateIndexMenu", "车牌样式", "选择风格")
     local plateTypes = {
         "Blue on White #1",
         "Yellow on Black",
@@ -468,88 +468,88 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
         if i ~= 4 or (i == 4 and GetVehicleClass(plyVeh) == 18) or Config.allowGovPlateIndex then
             populateMenu("PlateIndexMenu", i, plateTypes[i+1], "$"..vehicleCustomisationPrices.plateindex.price)
             if tempPlateIndex == i then
-                updateItem2Text("PlateIndexMenu", i, "Installed")
+                updateItem2Text("PlateIndexMenu", i, "已安装")
             end
         end
     end
     finishPopulatingMenu("PlateIndexMenu")
 
     --#[Vehicle Extras Menu]#--
-    createMenu("VehicleExtrasMenu", "Vehicle Extras Customisation", "Toggle Extras")
+    createMenu("VehicleExtrasMenu", "载具额外功能定制", "切换额外功能")
     for i=1, 12 do
         if DoesExtraExist(plyVeh, i) then
-            populateMenu("VehicleExtrasMenu", i, "Extra "..tostring(i), "Toggle")
+            populateMenu("VehicleExtrasMenu", i, "额外功能 "..tostring(i), "Toggle")
         else
-            populateMenu("VehicleExtrasMenu", i, "No Option", "NONE")
+            populateMenu("VehicleExtrasMenu", i, "无可用", "none")
         end
     end
     finishPopulatingMenu("VehicleExtrasMenu")
 
     --#[Neons Menu]#--
-    createMenu("NeonsMenu", "Neon Customisation", "Choose a Category")
+    createMenu("NeonsMenu", "霓虹灯定制", "选择颜色")
 
     for _, v in ipairs(vehicleNeonOptions.neonTypes) do
         populateMenu("NeonsMenu", v.id, v.name, "none")
     end
 
-    populateMenu("NeonsMenu", -1, "Neon Colours", "none")
+    populateMenu("NeonsMenu", -1, "霓虹灯颜色", "none")
     finishPopulatingMenu("NeonsMenu")
 
     --#[Neon State Menu]#--
     for _, v in ipairs(vehicleNeonOptions.neonTypes) do
         local currentNeonState = GetCurrentNeonState(v.id)
-        createMenu(v.name:gsub("%s+", "") .. "Menu", "Neon Customisation", "Enable or Disable Neon")
+        createMenu(v.name:gsub("%s+", "") .. "Menu", "霓虹灯定制", "开启/关闭霓虹灯")
 
-        populateMenu(v.name:gsub("%s+", "") .. "Menu", 0, "Disabled", "$0")
-        populateMenu(v.name:gsub("%s+", "") .. "Menu", 1, "Enabled", "$" .. vehicleCustomisationPrices.neonside.price)
+        populateMenu(v.name:gsub("%s+", "") .. "Menu", 0, "关闭", "$0")
+        populateMenu(v.name:gsub("%s+", "") .. "Menu", 1, "开启", "$" .. vehicleCustomisationPrices.neonside.price)
 
-        updateItem2Text(v.name:gsub("%s+", "") .. "Menu", currentNeonState, "Installed")
+        updateItem2Text(v.name:gsub("%s+", "") .. "Menu", currentNeonState, "已安装")
 
         finishPopulatingMenu(v.name:gsub("%s+", "") .. "Menu")
     end
 
     --#[Neon Colours Menu]#--
     local currentNeonR, currentNeonG, currentNeonB = GetCurrentNeonColour()
-    createMenu("NeonColoursMenu", "Neon Colours", "Choose a Colour")
+    createMenu("NeonColoursMenu", "霓虹灯颜色", "选择颜色")
 
     for k, _ in ipairs(vehicleNeonOptions.neonColours) do
         populateMenu("NeonColoursMenu", k, vehicleNeonOptions.neonColours[k].name, "$" .. vehicleCustomisationPrices.neoncolours.price)
 
         if currentNeonR == vehicleNeonOptions.neonColours[k].r and currentNeonG == vehicleNeonOptions.neonColours[k].g and currentNeonB == vehicleNeonOptions.neonColours[k].b then
-            updateItem2Text("NeonColoursMenu", k, "Installed")
+            updateItem2Text("NeonColoursMenu", k, "已安装")
         end
     end
 
     finishPopulatingMenu("NeonColoursMenu")
 
     --#[Xenons Menu]#--
-    createMenu("XenonsMenu", "Xenon Customisation", "Choose a Category")
+    createMenu("XenonsMenu", "氙气大灯菜单", "选择种类")
 
-    populateMenu("XenonsMenu", 0, "Headlights", "none")
-    populateMenu("XenonsMenu", 1, "Xenon Colours", "none")
+    populateMenu("XenonsMenu", 0, "大灯", "none")
+    populateMenu("XenonsMenu", 1, "氙气灯颜色", "none")
 
     finishPopulatingMenu("XenonsMenu")
 
     --#[Xenons Headlights Menu]#--
     local currentXenonState = GetCurrentXenonState()
-    createMenu("HeadlightsMenu", "Headlights Customisation", "Enable or Disable Xenons")
+    createMenu("HeadlightsMenu", "大灯定制", "搭载/卸载氙气灯")
 
-    populateMenu("HeadlightsMenu", 0, "Disable Xenons", "$0")
-    populateMenu("HeadlightsMenu", 1, "Enable Xenons", "$" .. vehicleCustomisationPrices.headlights.price)
+    populateMenu("HeadlightsMenu", 0, "卸载氙气灯", "$0")
+    populateMenu("HeadlightsMenu", 1, "搭载氙气灯", "$" .. vehicleCustomisationPrices.headlights.price)
 
-    updateItem2Text("HeadlightsMenu", currentXenonState, "Installed")
+    updateItem2Text("HeadlightsMenu", currentXenonState, "已安装")
 
     finishPopulatingMenu("HeadlightsMenu")
 
     --#[Xenons Colour Menu]#--
     local currentXenonColour = GetCurrentXenonColour()
-    createMenu("XenonColoursMenu", "Xenon Colours", "Choose a Colour")
+    createMenu("XenonColoursMenu", "氙气灯颜色", "选择颜色")
 
     for _, v in ipairs(vehicleXenonOptions.xenonColours) do
         populateMenu("XenonColoursMenu", v.id, v.name, "$" .. vehicleCustomisationPrices.xenoncolours.price)
 
         if currentXenonColour == v.id then
-            updateItem2Text("XenonColoursMenu", v.id, "Installed")
+            updateItem2Text("XenonColoursMenu", v.id, "已安装")
         end
     end
 
@@ -582,7 +582,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("turbo", currentMenuItemID) then
                         ApplyMod(currentCategory, currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money!")
@@ -591,7 +591,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("performance", currentMenuItemID) then
                         ApplyMod(currentCategory, currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -600,7 +600,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("cosmetics") then
                         ApplyMod(currentCategory, currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -610,7 +610,7 @@ function MenuManager(state, repairOnly)
                 if AttemptPurchase("respray") then
                     ApplyColour(currentResprayCategory, currentResprayType, currentMenuItemID)
                     playSoundEffect("respray", 1.0)
-                    updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                    updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                     updateMenuStatus("Purchased")
                 else
                     updateMenuStatus("Not Enough Money")
@@ -624,7 +624,7 @@ function MenuManager(state, repairOnly)
 
                         ApplyTyreSmoke(r, g, b)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -639,7 +639,7 @@ function MenuManager(state, repairOnly)
                             if AttemptPurchase("customwheels") then
                                 ApplyCustomWheel(currentMenuItemID)
                                 playSoundEffect("wrench", 0.4)
-                                updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                                updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                                 updateMenuStatus("Purchased")
                             else
                                 updateMenuStatus("Not Enough Money")
@@ -655,7 +655,7 @@ function MenuManager(state, repairOnly)
                             if AttemptPurchase("wheels") then
                                 ApplyWheel(currentCategory, currentMenuItemID, currentWheelCategory)
                                 playSoundEffect("wrench", 0.4)
-                                updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                                updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                                 updateMenuStatus("Purchased")
                             else
                                 updateMenuStatus("Not Enough Money")
@@ -667,7 +667,7 @@ function MenuManager(state, repairOnly)
                 if AttemptPurchase("neonside") then
                     ApplyNeon(currentNeonSide, currentMenuItemID)
                     playSoundEffect("wrench", 0.4)
-                    updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                    updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                     updateMenuStatus("Purchased")
                 else
                     updateMenuStatus("Not Enough Money")
@@ -684,7 +684,7 @@ function MenuManager(state, repairOnly)
                             toggleMenu(true, currentMenu)
                         else
                             ExitBennys()
-                            QBCore.Functions.Notify('Your vehicle was repaired!')
+                            QBCore.Functions.Notify('Your vehicle was !')
                         end
                         updateMenuHeading(currentMenu)
                         updateMenuSubheading(currentMenu)
@@ -724,7 +724,7 @@ function MenuManager(state, repairOnly)
                     currentWheelCategory = currentMenuItemID
 
                     if currentWheelType == currentWheelCategory then
-                        updateItem2Text(currentMenu, currentWheel, "Installed")
+                        updateItem2Text(currentMenu, currentWheel, "已安装")
                     end
 
                     toggleMenu(false, "WheelsMenu")
@@ -750,7 +750,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("windowtint") then
                         ApplyWindowTint(currentMenuItemID)
                         playSoundEffect("respray", 1.0)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -763,7 +763,7 @@ function MenuManager(state, repairOnly)
 
                         ApplyNeonColour(r, g, b)
                         playSoundEffect("respray", 1.0)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -772,7 +772,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("headlights") then
                         ApplyXenonLights(currentCategory, currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -781,7 +781,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("xenoncolours") then
                         ApplyXenonColour(currentMenuItemID)
                         playSoundEffect("respray", 1.0)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -790,7 +790,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("oldlivery") then
                         ApplyOldLivery(currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
@@ -799,7 +799,7 @@ function MenuManager(state, repairOnly)
                     if AttemptPurchase("plateindex") then
                         ApplyPlateIndex(currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
-                        updateItem2Text(currentMenu, currentMenuItemID, "Installed")
+                        updateItem2Text(currentMenu, currentMenuItemID, "已安装")
                         updateMenuStatus("Purchased")
                     else
                         updateMenuStatus("Not Enough Money")
