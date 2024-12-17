@@ -130,7 +130,7 @@ local function isMenuActive(menu)
                 menuActive = false
             end
         end
-    elseif menu == "ResprayMenu" then
+    elseif menu == "重新喷漆Menu" then
         for _, v in pairs(vehicleResprayOptions) do
             if (v.category:gsub("%s+", "") .. "Menu") == currentMenu then
                 menuActive = true
@@ -140,7 +140,7 @@ local function isMenuActive(menu)
                 menuActive = false
             end
         end
-    elseif menu == "WheelsMenu" then
+    elseif menu == "车轮Menu" then
         for _, v in pairs(vehicleWheelOptions) do
             if (v.category:gsub("%s+", "") .. "Menu") == currentMenu then
                 menuActive = true
@@ -174,15 +174,15 @@ local function updateCurrentMenuItemID(id, item, item2)
         if currentCategory ~= 18 then
             PreviewMod(currentCategory, currentMenuItemID)
         end
-    elseif isMenuActive("ResprayMenu") then
+    elseif isMenuActive("重新喷漆Menu") then
         PreviewColour(currentResprayCategory, currentResprayType, currentMenuItemID)
-    elseif isMenuActive("WheelsMenu") then
+    elseif isMenuActive("车轮Menu") then
         if currentWheelCategory ~= -1 and currentWheelCategory ~= 20 then
             PreviewWheel(currentCategory, currentMenuItemID, currentWheelCategory)
         end
     elseif isMenuActive("NeonsSideMenu") then
         PreviewNeon(currentNeonSide, currentMenuItemID)
-    elseif currentMenu == "WindowTintMenu" then
+    elseif currentMenu == "车窗Menu" then
         PreviewWindowTint(currentMenuItemID)
     elseif currentMenu == "NeonColoursMenu" then
         local r = vehicleNeonOptions.neonColours[currentMenuItemID].r
@@ -192,9 +192,9 @@ local function updateCurrentMenuItemID(id, item, item2)
         PreviewNeonColour(r, g, b)
     elseif currentMenu == "XenonColoursMenu" then
         PreviewXenonColour(currentMenuItemID)
-    elseif currentMenu == "OldLiveryMenu" then
+    elseif currentMenu == "经典涂装Menu" then
         PreviewOldLivery(currentMenuItemID)
-    elseif currentMenu == "PlateIndexMenu" then
+    elseif currentMenu == "车牌样式Menu" then
         PreviewPlateIndex(currentMenuItemID)
     end
 end
@@ -217,7 +217,6 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
 
     for _, v in ipairs(vehicleCustomisation) do
         local _, amountValidMods = CheckValidMods(v.category, v.id)
-        print(v.id.."-"..amountValidMods)
         if amountValidMods > 0 or v.id == 18 then
             if (v.id == 11 or v.id == 12 or v.id == 13 or v.id == 15) then
                 if categories.mods and maxVehiclePerformanceUpgrades ~= -1 then
@@ -247,23 +246,23 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
         end
     end
 
-    if categories.respray then populateMenu("mainMenu", -1, "Respray", "none") end
+    if categories.respray then populateMenu("mainMenu", -1, "重新喷漆", "none") end
 
     if not isMotorcycle then
-        if categories.tint then populateMenu("mainMenu", -2, "Window Tint", "none") end
+        if categories.tint then populateMenu("mainMenu", -2, "车窗", "none") end
         -- if categories.neons then populateMenu("mainMenu", -3, "Neons", "none") end  -- 碰颜色会卡死
     end
 
     -- if categories.xenons then populateMenu("mainMenu", 22, "Xenons", "none") end  -- 碰颜色会卡死
-    if categories.wheels then populateMenu("mainMenu", 23, "Wheels", "none") end
+    if categories.wheels then populateMenu("mainMenu", 23, "车轮", "none") end
 
     local livCount = GetVehicleLiveryCount(plyVeh)
     if livCount > 0 and categories.liveries then
-        populateMenu("mainMenu", 24, "Old Livery", "none")
+        populateMenu("mainMenu", 24, "经典涂装", "none")
     end
 
-    if categories.plate then populateMenu("mainMenu", 25, "Plate Index", "none") end
-    if categories.extras then populateMenu("mainMenu", 26, "Vehicle Extras", "none") end
+    if categories.plate then populateMenu("mainMenu", 25, "车牌样式", "none") end
+    if categories.extras then populateMenu("mainMenu", 26, "额外功能", "none") end
 
     finishPopulatingMenu("mainMenu")
 
@@ -326,16 +325,16 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     end
 
     --#[Respray Menu]#--
-    createMenu("ResprayMenu", "重新喷漆", "更换漆面")
+    createMenu("重新喷漆Menu", "重新喷漆", "更换漆面")
 
-    populateMenu("ResprayMenu", 0, "主色调", "none")
-    populateMenu("ResprayMenu", 1, "副色调", "none")
-    populateMenu("ResprayMenu", 2, "珠光色", "none")
-    populateMenu("ResprayMenu", 3, "车轮颜色", "none")
-    populateMenu("ResprayMenu", 4, "内饰颜色", "none")
-    populateMenu("ResprayMenu", 5, "仪表盘颜色", "none")
+    populateMenu("重新喷漆Menu", 0, "主色调", "none")
+    populateMenu("重新喷漆Menu", 1, "副色调", "none")
+    populateMenu("重新喷漆Menu", 2, "珠光色", "none")
+    populateMenu("重新喷漆Menu", 3, "车轮颜色", "none")
+    populateMenu("重新喷漆Menu", 4, "内饰颜色", "none")
+    populateMenu("重新喷漆Menu", 5, "仪表盘颜色", "none")
 
-    finishPopulatingMenu("ResprayMenu")
+    finishPopulatingMenu("重新喷漆Menu")
 
     --#[Respray Types]#--
     createMenu("ResprayTypeMenu", "喷漆类型", "选择漆面类型")
@@ -358,19 +357,19 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     end
 
     --#[Wheel Categories Menu]#--
-    createMenu("WheelsMenu", "车轮类型", "选择类型")
+    createMenu("车轮Menu", "车轮类型", "选择类型")
 
     for _, v in ipairs(vehicleWheelOptions) do
         if isMotorcycle then
             if v.id == -1 or v.id == 20 or v.id == 6 then --Motorcycle Wheels
-                populateMenu("WheelsMenu", v.id, v.category, "none")
+                populateMenu("车轮Menu", v.id, v.category, "none")
             end
         else
-            populateMenu("WheelsMenu", v.id, v.category, "none")
+            populateMenu("车轮Menu", v.id, v.category, "none")
         end
     end
 
-    finishPopulatingMenu("WheelsMenu")
+    finishPopulatingMenu("车轮Menu")
 
     --#[Wheels Menu]#--
     for _, v in ipairs(vehicleWheelOptions) do
@@ -427,35 +426,35 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
 
     --#[Window Tint Menu]#--
     local currentWindowTint = GetCurrentWindowTint()
-    createMenu("WindowTintMenu", "车窗定制", "选择车窗")
+    createMenu("车窗Menu", "车窗定制", "选择车窗")
 
     for _, v in ipairs(vehicleWindowTintOptions) do
-        populateMenu("WindowTintMenu", v.id, v.name, "$" .. vehicleCustomisationPrices.windowtint.price)
+        populateMenu("车窗Menu", v.id, v.name, "$" .. vehicleCustomisationPrices.windowtint.price)
 
         if currentWindowTint == v.id then
-            updateItem2Text("WindowTintMenu", v.id, "已安装")
+            updateItem2Text("车窗Menu", v.id, "已安装")
         end
     end
 
-    finishPopulatingMenu("WindowTintMenu")
+    finishPopulatingMenu("车窗Menu")
 
     --#[Old Livery Menu]#--
     if livCount > 0 then
         local tempOldLivery = GetVehicleLivery(plyVeh)
-        createMenu("OldLiveryMenu", "经典涂装定制", "选择涂装")
+        createMenu("经典涂装Menu", "经典涂装定制", "选择涂装")
         for i=0, livCount-1 do
-            populateMenu("OldLiveryMenu", i, "涂装", "$100")
+            populateMenu("经典涂装Menu", i, "涂装", "$100")
             if tempOldLivery == i then
-                updateItem2Text("OldLiveryMenu", i, "已安装")
+                updateItem2Text("经典涂装Menu", i, "已安装")
             end
         end
-        finishPopulatingMenu("OldLiveryMenu")
+        finishPopulatingMenu("经典涂装Menu")
     end
 
     --#[Plate Colour Index Menu]#--
 
     local tempPlateIndex = GetVehicleNumberPlateTextIndex(plyVeh)
-    createMenu("PlateIndexMenu", "车牌样式", "选择风格")
+    createMenu("车牌样式Menu", "车牌样式", "选择风格")
     local plateTypes = {
         "Blue on White #1",
         "Yellow on Black",
@@ -466,24 +465,24 @@ function InitiateMenus(isMotorcycle, vehicleHealth, categories, welcomeLabel)
     }
     for i=0, #plateTypes-1 do
         if i ~= 4 or (i == 4 and GetVehicleClass(plyVeh) == 18) or Config.allowGovPlateIndex then
-            populateMenu("PlateIndexMenu", i, plateTypes[i+1], "$"..vehicleCustomisationPrices.plateindex.price)
+            populateMenu("车牌样式Menu", i, plateTypes[i+1], "$"..vehicleCustomisationPrices.plateindex.price)
             if tempPlateIndex == i then
-                updateItem2Text("PlateIndexMenu", i, "已安装")
+                updateItem2Text("车牌样式Menu", i, "已安装")
             end
         end
     end
-    finishPopulatingMenu("PlateIndexMenu")
+    finishPopulatingMenu("车牌样式Menu")
 
     --#[Vehicle Extras Menu]#--
-    createMenu("VehicleExtrasMenu", "载具额外功能定制", "切换额外功能")
+    createMenu("额外功能Menu", "载具额外功能定制", "切换额外功能")
     for i=1, 12 do
         if DoesExtraExist(plyVeh, i) then
-            populateMenu("VehicleExtrasMenu", i, "额外功能 "..tostring(i), "Toggle")
+            populateMenu("额外功能Menu", i, "额外功能 "..tostring(i), "Toggle")
         else
-            populateMenu("VehicleExtrasMenu", i, "无可用", "none")
+            populateMenu("额外功能Menu", i, "无可用", "none")
         end
     end
-    finishPopulatingMenu("VehicleExtrasMenu")
+    finishPopulatingMenu("额外功能Menu")
 
     --#[Neons Menu]#--
     createMenu("NeonsMenu", "霓虹灯定制", "选择颜色")
@@ -606,7 +605,7 @@ function MenuManager(state, repairOnly)
                         updateMenuStatus("Not Enough Money")
                     end
                 end
-            elseif isMenuActive("ResprayMenu") then
+            elseif isMenuActive("重新喷漆Menu") then
                 if AttemptPurchase("respray") then
                     ApplyColour(currentResprayCategory, currentResprayType, currentMenuItemID)
                     playSoundEffect("respray", 1.0)
@@ -615,7 +614,7 @@ function MenuManager(state, repairOnly)
                 else
                     updateMenuStatus("Not Enough Money")
                 end
-            elseif isMenuActive("WheelsMenu") then
+            elseif isMenuActive("车轮Menu") then
                 if currentWheelCategory == 20 then
                     if AttemptPurchase("wheelsmoke") then
                         local r = vehicleTyreSmokeOptions[currentMenuItemID].r
@@ -701,11 +700,11 @@ function MenuManager(state, repairOnly)
                     toggleMenu(true, currentMenu)
                     updateMenuHeading(currentMenu)
                     updateMenuSubheading(currentMenu)
-                elseif currentMenu == "ResprayMenu" then
+                elseif currentMenu == "重新喷漆Menu" then
                     currentMenu = "ResprayTypeMenu"
                     currentResprayCategory = currentMenuItemID
 
-                    toggleMenu(false, "ResprayMenu")
+                    toggleMenu(false, "重新喷漆Menu")
                     toggleMenu(true, currentMenu)
                     updateMenuHeading(currentMenu)
                     updateMenuSubheading(currentMenu)
@@ -717,7 +716,7 @@ function MenuManager(state, repairOnly)
                     toggleMenu(true, currentMenu)
                     updateMenuHeading(currentMenu)
                     updateMenuSubheading(currentMenu)
-                elseif currentMenu == "WheelsMenu" then
+                elseif currentMenu == "车轮Menu" then
                     local currentWheel, _, currentWheelType = GetCurrentWheel()
 
                     currentMenu = currentMenuItem:gsub("%s+", "") .. "Menu"
@@ -727,7 +726,7 @@ function MenuManager(state, repairOnly)
                         updateItem2Text(currentMenu, currentWheel, "已安装")
                     end
 
-                    toggleMenu(false, "WheelsMenu")
+                    toggleMenu(false, "车轮Menu")
                     toggleMenu(true, currentMenu)
                     updateMenuHeading(currentMenu)
                     updateMenuSubheading(currentMenu)
@@ -746,7 +745,7 @@ function MenuManager(state, repairOnly)
                     toggleMenu(true, currentMenu)
                     updateMenuHeading(currentMenu)
                     updateMenuSubheading(currentMenu)
-                elseif currentMenu == "WindowTintMenu" then
+                elseif currentMenu == "车窗Menu" then
                     if AttemptPurchase("windowtint") then
                         ApplyWindowTint(currentMenuItemID)
                         playSoundEffect("respray", 1.0)
@@ -786,7 +785,7 @@ function MenuManager(state, repairOnly)
                     else
                         updateMenuStatus("Not Enough Money")
                     end
-                elseif currentMenu == "OldLiveryMenu" then
+                elseif currentMenu == "经典涂装Menu" then
                     if AttemptPurchase("oldlivery") then
                         ApplyOldLivery(currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
@@ -795,7 +794,7 @@ function MenuManager(state, repairOnly)
                     else
                         updateMenuStatus("Not Enough Money")
                     end
-                elseif currentMenu == "PlateIndexMenu" then
+                elseif currentMenu == "车牌样式Menu" then
                     if AttemptPurchase("plateindex") then
                         ApplyPlateIndex(currentMenuItemID)
                         playSoundEffect("wrench", 0.4)
@@ -804,7 +803,7 @@ function MenuManager(state, repairOnly)
                     else
                         updateMenuStatus("Not Enough Money")
                     end
-                elseif currentMenu == "VehicleExtrasMenu" then
+                elseif currentMenu == "额外功能Menu" then
                     ApplyExtra(currentMenuItemID)
                     playSoundEffect("wrench", 0.4)
                     updateItem2TextOnly(currentMenu, currentMenuItemID, "Toggle")
@@ -812,7 +811,7 @@ function MenuManager(state, repairOnly)
                 end
             end
         else
-            if currentMenu == "VehicleExtrasMenu" then
+            if currentMenu == "额外功能Menu" then
                 ApplyExtra(currentMenuItemID)
                 playSoundEffect("wrench", 0.4)
                 updateItem2TextOnly(currentMenu, currentMenuItemID, "Toggle")
@@ -834,7 +833,7 @@ function MenuManager(state, repairOnly)
             toggleMenu(true, currentMenu)
             updateMenuHeading(currentMenu)
             updateMenuSubheading(currentMenu)
-        elseif isMenuActive("ResprayMenu") then
+        elseif isMenuActive("重新喷漆Menu") then
             toggleMenu(false, currentMenu)
 
             currentMenu = "ResprayTypeMenu"
@@ -844,7 +843,7 @@ function MenuManager(state, repairOnly)
             toggleMenu(true, currentMenu)
             updateMenuHeading(currentMenu)
             updateMenuSubheading(currentMenu)
-        elseif isMenuActive("WheelsMenu") then
+        elseif isMenuActive("车轮Menu") then
             if currentWheelCategory ~= 20 and currentWheelCategory ~= -1 then
                 local currentWheel = GetOriginalWheel()
 
@@ -855,7 +854,7 @@ function MenuManager(state, repairOnly)
 
             toggleMenu(false, currentMenu)
 
-            currentMenu = "WheelsMenu"
+            currentMenu = "车轮Menu"
 
 
             toggleMenu(true, currentMenu)
@@ -874,17 +873,17 @@ function MenuManager(state, repairOnly)
         else
             if currentMenu == "mainMenu" or currentMenu == "repairMenu" then
                 ExitBennys()
-            elseif currentMenu == "ResprayMenu" or currentMenu == "WindowTintMenu" or currentMenu == "WheelsMenu" or currentMenu == "NeonsMenu" or currentMenu == "XenonsMenu" or currentMenu == "OldLiveryMenu" or currentMenu == "PlateIndexMenu" or currentMenu == "VehicleExtrasMenu" then
+            elseif currentMenu == "重新喷漆Menu" or currentMenu == "车窗Menu" or currentMenu == "车轮Menu" or currentMenu == "NeonsMenu" or currentMenu == "XenonsMenu" or currentMenu == "经典涂装Menu" or currentMenu == "车牌样式Menu" or currentMenu == "额外功能Menu" then
                 toggleMenu(false, currentMenu)
 
-                if currentMenu == "WindowTintMenu" then
+                if currentMenu == "车窗Menu" then
                     RestoreOriginalWindowTint()
                 end
 
-                if currentMenu == "OldLiveryMenu" then
+                if currentMenu == "经典涂装Menu" then
                     RestoreOldLivery()
                 end
-                if currentMenu == "PlateIndexMenu" then
+                if currentMenu == "车牌样式Menu" then
                     RestorePlateIndex()
                 end
 
@@ -896,7 +895,7 @@ function MenuManager(state, repairOnly)
             elseif currentMenu == "ResprayTypeMenu" then
                 toggleMenu(false, currentMenu)
 
-                currentMenu = "ResprayMenu"
+                currentMenu = "重新喷漆Menu"
 
                 toggleMenu(true, currentMenu)
                 updateMenuHeading(currentMenu)
