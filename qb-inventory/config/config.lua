@@ -1,17 +1,17 @@
 Config = {
     UseTarget = GetConvar('UseTarget', 'false') == 'true',
 
-    MaxWeight = 120000,
-    MaxSlots = 40,
+    MaxWeight = 50000,
+    MaxSlots = 30,
 
     StashSize = {
-        maxweight = 2000000,
-        slots = 100
+        maxweight = 120000,
+        slots = 50
     },
 
     DropSize = {
-        maxweight = 1000000,
-        slots = 50
+        maxweight = 200000,
+        slots = 30
     },
 
     Keybinds = {
@@ -19,8 +19,8 @@ Config = {
         Hotbar = 'Z',
     },
 
-    CleanupDropTime = 15,    -- in minutes
-    CleanupDropInterval = 1, -- in minutes
+    CleanupDropTime = 5,    -- clear Interval in minutes
+    CleanupDropInterval = 1, -- check Interval in minutes
 
     ItemDropObject = `bkr_prop_duffel_bag_01a`,
     ItemDropObjectBone = 28422,

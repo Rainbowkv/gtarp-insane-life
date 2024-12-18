@@ -132,10 +132,7 @@ exports('SaveInventory', SaveInventory)
 function SetInventory(identifier, items, reason)
     local player = QBCore.Functions.GetPlayer(identifier)
 
-    -- print('Setting inventory for ' .. identifier)
-
     if not player and not Inventories[identifier] and not Drops[identifier] then
-        print('SetInventory: Inventory not found')
         return
     end
 
@@ -374,7 +371,6 @@ function CanAddItem(identifier, item, amount)
     end
 
     if not inventory then
-        print('CanAddItem: Inventory not found')
         return false
     end
 
@@ -387,9 +383,6 @@ function CanAddItem(identifier, item, amount)
     local slotsUsed, _ = GetSlots(identifier)
 
     if slotsUsed >= inventory.slots then
-        print("-----------")
-        print(slotsUsed)
-        print("-----------")
         return false, 'slots'
     end
     return true
@@ -608,7 +601,6 @@ function OpenInventory(source, identifier, data)
     end
 
     if type(identifier) ~= 'string' then
-        print('Inventory tried to open an invalid identifier')
         return
     end
 
@@ -679,7 +671,6 @@ exports('RemoveInventory', RemoveInventory)
 function AddItem(identifier, item, amount, slot, info, reason)
     local itemInfo = QBCore.Shared.Items[item:lower()]
     if not itemInfo then
-        print('AddItem: Invalid item')
         return false
     end
     local inventory, inventoryWeight, inventorySlots
@@ -700,13 +691,11 @@ function AddItem(identifier, item, amount, slot, info, reason)
     end
 
     if not inventory then
-        print('AddItem: Inventory not found')
         return false
     end
 
     local totalWeight = GetTotalWeight(inventory)
     if totalWeight + (itemInfo.weight * amount) > inventoryWeight then
-        print('AddItem: Not enough weight available')
         return false
     end
 
@@ -729,7 +718,6 @@ function AddItem(identifier, item, amount, slot, info, reason)
     if not updated then
         slot = slot or GetFirstFreeSlot(inventory, inventorySlots)
         if not slot then
-            print('AddItem: No free slot available')
             return false
         end
 
@@ -788,7 +776,6 @@ exports('AddItem', AddItem)
 --- @return boolean - Returns true if the item was successfully removed, false otherwise.
 function RemoveItem(identifier, item, amount, slot, reason)
     if not QBCore.Shared.Items[item:lower()] then
-        print('RemoveItem: Invalid item')
         return false
     end
 
@@ -804,14 +791,12 @@ function RemoveItem(identifier, item, amount, slot, reason)
     end
 
     if not inventory then
-        print('RemoveItem: Inventory not found')
         return false
     end
 
     slot = tonumber(slot) or GetFirstSlotByItem(inventory, item)
 
     if not slot then
-        print('RemoveItem: Slot not found')
         return false
     end
 
@@ -827,13 +812,11 @@ function RemoveItem(identifier, item, amount, slot, reason)
     end
 
     if not inventoryItem or inventoryItem.name:lower() ~= item:lower() then
-        print('RemoveItem: Item not found in slot')
         return false
     end
 
     amount = tonumber(amount)
     if inventoryItem.amount < amount then
-        print('RemoveItem: Not enough items in slot')
         return false
     end
 
