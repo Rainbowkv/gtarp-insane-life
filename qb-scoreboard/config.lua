@@ -13,29 +13,29 @@ Config.IllegalActions = {
     ['storerobbery'] = {
         minimumPolice = 2,
         busy = false,
-        label = 'Store Robbery',
+        label = '超市抢劫',
     },
     ['bankrobbery'] = {
         minimumPolice = 3,
         busy = false,
-        label = 'Bank Robbery'
+        label = '银行劫案'
     },
     ['jewellery'] = {
         minimumPolice = 2,
         busy = false,
-        label = 'Jewellery'
+        label = '洗劫珠宝'
     },
     ['pacific'] = {
         minimumPolice = 5,
         busy = false,
-        label = 'Pacific Bank'
+        label = '太平洋银行'
     },
     ['paleto'] = {
         minimumPolice = 4,
         busy = false,
-        label = 'Paleto Bay Bank'
+        label = '帕莱托湾银行'
     }
 }
 
 -- Show ID's for all players or Opted in Staff
-Config.ShowIDforALL = false
+Config.ShowIDforALL = true

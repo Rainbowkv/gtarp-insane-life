@@ -14,7 +14,7 @@ window.addEventListener("message", (event) => {
 
 const Open = (data) => {
   $(".scoreboard-block").fadeIn(150);
-  $("#total-players").html("<p>" + data.players + " of " + data.maxPlayers + "</p>");
+  $("#total-players").html("<p>" + data.players + " / " + data.maxPlayers + "</p>");
 
   $.each(data.requiredCops, (i, category) => {
     var beam = $(".scoreboard-info").find('[data-type="' + i + '"]');
@@ -36,7 +36,7 @@ const Close = () => {
 
 const Setup = (data) => {
   let scoreboardHtml = "";
-  $.each(data.items, (index, value) => {
+  $.each(data.items, (index, value) => {  // 任务状态
     scoreboardHtml += `
       <div class="scoreboard-info-beam" data-type=${index}>
         <div class="info-beam-title">
@@ -47,12 +47,12 @@ const Setup = (data) => {
     `;
   });
   scoreboardHtml += `
-    <div class="scoreboard-info-beam" style="background: #dc143c">
+    <div class="scoreboard-info-beam" style="background: #24dddd96">
       <div class="info-beam-title-players">
-        <p>Total Players</p>
+        <p>当前活跃市民</p>
       </div>
       <div class="info-beam-status" id="total-players" style="color: #ededed"></div>
     </div>
-  `;
+  `;  // ‘当前活跃市民’的背景颜色
   $(".scoreboard-info").html(scoreboardHtml);
 };

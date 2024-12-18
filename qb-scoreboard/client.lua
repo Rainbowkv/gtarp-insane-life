@@ -4,18 +4,18 @@ local playerOptin = {}
 
 -- Functions
 
-local function DrawText3D(x, y, z, text)
+local function DrawText3D(x, y, z, text)  -- 玩家头顶的绿色流动编号
     SetTextScale(0.35, 0.35)
-    SetTextFont(4)
+    SetTextFont(0)
     SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
+    SetTextColour(0, 255, 0, 255)  -- 字体大小
     BeginTextCommandDisplayText('STRING')
     SetTextCentre(true)
     AddTextComponentSubstringPlayerName(text)
     SetDrawOrigin(x, y, z, 0)
     EndTextCommandDisplayText(0.0, 0.0)
     local factor = (string.len(text)) / 370
-    DrawRect(0.0, 0.0 + 0.0125, 0.017 + factor, 0.03, 0, 0, 0, 75)
+    DrawRect(0.0, 0.0 + 0.0125, 0.017 + factor, 0.03, 0, 0, 0, 0)  -- 字体的背景颜色
     ClearDrawOrigin()
 end
 
