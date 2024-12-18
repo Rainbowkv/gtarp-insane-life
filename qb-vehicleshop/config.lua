@@ -45,10 +45,10 @@ Config.Shops = {
         ['ShowroomVehicles'] = {
             [1] = {
                 coords = vector4(-45.65, -1093.66, 25.44, 69.5), -- where the vehicle will spawn on display
-                defaultVehicle = 'su7',                       -- Default display vehicle
-                chosenVehicle = 'su7',                        -- Same as default but is dynamically changed when swapping vehicles
-                -- defaultVehicle = 'ardent',                       -- Default display vehicle
-                -- chosenVehicle = 'ardent',                        -- Same as default but is dynamically changed when swapping vehicles
+                -- defaultVehicle = 'su7',                       -- Default display vehicle
+                -- chosenVehicle = 'su7',                        -- Same as default but is dynamically changed when swapping vehicles
+                defaultVehicle = 'ardent',                       -- Default display vehicle
+                chosenVehicle = 'ardent',                        -- Same as default but is dynamically changed when swapping vehicles
             },
             [2] = {
                 coords = vector4(-48.27, -1101.86, 25.44, 294.5),
@@ -77,13 +77,13 @@ Config.Shops = {
             },
             [7] = {
                 coords = vector4(-50.66, -1093.05, 25.44, 222.5),
-                defaultVehicle = 'bati',
-                chosenVehicle = 'bati'
+                defaultVehicle = 'vindicator',
+                chosenVehicle = 'vindicator'
             },
             [8] = {
                 coords = vector4(-44.28, -1102.47, 25.44, 298.5),
-                defaultVehicle = 'bati',
-                chosenVehicle = 'bati'
+                defaultVehicle = 'daemon',
+                chosenVehicle = 'daemon'
             }
         },
     },
@@ -121,10 +121,10 @@ Config.Shops = {
         ['ShowroomVehicles'] = {
             [1] = {
                 coords = vector4(-1265.31, -354.44, 35.91, 205.08),
-                defaultVehicle = 'rs721',
-                chosenVehicle = 'rs721'
-                -- defaultVehicle = 'italirsx',
-                -- chosenVehicle = 'italirsx'
+                -- defaultVehicle = 'rs721',
+                -- chosenVehicle = 'rs721'
+                defaultVehicle = 'italirsx',
+                chosenVehicle = 'italirsx'
             },
             [2] = {
                 coords = vector4(-1270.06, -358.55, 35.91, 247.08),
@@ -136,21 +136,21 @@ Config.Shops = {
                 defaultVehicle = 'nero',
                 chosenVehicle = 'nero'
             },
-            [4] = {
-                coords = vector4(-1252.07, -364.2, 35.91, 56.44),
-                defaultVehicle = 'bati',
-                chosenVehicle = 'bati'
-            },
-            [5] = {
-                coords = vector4(-1255.49, -365.91, 35.91, 55.63),
-                defaultVehicle = 'carbonrs',
-                chosenVehicle = 'carbonrs'
-            },
-            [6] = {
-                coords = vector4(-1249.21, -362.97, 35.91, 53.24),
-                defaultVehicle = 'hexer',
-                chosenVehicle = 'hexer'
-            },
+            -- [4] = {  -- 这三个地方有渲染BUG
+            --     coords = vector4(-1252.07, -364.2, 35.91, 56.44),
+            --     defaultVehicle = 'bati',
+            --     chosenVehicle = 'bati'
+            -- },
+            -- [5] = {
+            --     coords = vector4(-1255.49, -365.91, 35.91, 55.63),
+            --     defaultVehicle = 'carbonrs',
+            --     chosenVehicle = 'carbonrs'
+            -- },
+            -- [6] = {
+            --     coords = vector4(-1249.21, -362.97, 35.91, 53.24),
+            --     defaultVehicle = 'hexer',
+            --     chosenVehicle = 'hexer'
+            -- },
         }
     },                         -- Add your next table under this comma
     ['boats'] = {
