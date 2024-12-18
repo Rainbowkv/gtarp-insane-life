@@ -173,7 +173,7 @@ local function startTestDriveTimer(testDriveTime, prevCoords)
                     SetEntityCoords(PlayerPedId(), prevCoords)
                     QBCore.Functions.Notify(Lang:t('general.testdrive_complete'))
                 end
-                drawTxt(Lang:t('general.testdrive_timer') .. math.ceil(testDriveTime - secondsLeft / 1000), 4, 0.5, 0.93, 0.50, 255, 255, 255, 180)
+                drawTxt(Lang:t('general.testdrive_timer') .. math.ceil(testDriveTime - secondsLeft / 1000), 0, 0.5, 0.93, 0.50, 255, 255, 255, 180)  -- 调整字体以显示中文
             end
             Wait(0)
         end
