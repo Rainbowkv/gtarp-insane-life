@@ -29,16 +29,14 @@ Config.Products = {
         { name = 'snikkel_candy', price = 2,   amount = 50 },
         { name = 'sandwich',      price = 2,   amount = 50 },
         { name = 'beer',          price = 7,   amount = 50 },
-        { name = 'whiskey',       price = 10,  amount = 50 },
-        { name = 'vodka',         price = 12,  amount = 50 },
         { name = 'bandage',       price = 100, amount = 50 },
         { name = 'lighter',       price = 2,   amount = 50 },
         { name = 'rolling_paper', price = 2,   amount = 5000 },
     },
     ['liquor'] = {
-        { name = 'beer',    price = 7,  amount = 50 },
-        { name = 'whiskey', price = 10, amount = 50 },
-        { name = 'vodka',   price = 12, amount = 50 },
+        { name = 'beer',    price = 6,  amount = 50 },
+        { name = 'whiskey', price = 200, amount = 50 },
+        { name = 'vodka',   price = 150, amount = 50 },
     },
     ['hardware'] = {
         { name = 'lockpick',          price = 200, amount = 50 },
@@ -406,7 +404,7 @@ Config.Locations = {
         ['targetLabel'] = '喝点？！',
         ['products'] = Config.Products['liquor'],
         ['showblip'] = true,
-        ['blipsprite'] = 52,
+        ['blipsprite'] = 827,
         ['blipscale'] = 0.6,
         ['blipcolor'] = 0,
         ['delivery'] = vector4(-1226.92, -901.82, 12.28, 213.26)
@@ -422,7 +420,7 @@ Config.Locations = {
         ['targetLabel'] = '喝点？！',
         ['products'] = Config.Products['liquor'],
         ['showblip'] = true,
-        ['blipsprite'] = 52,
+        ['blipsprite'] = 827,
         ['blipscale'] = 0.6,
         ['blipcolor'] = 0,
         ['delivery'] = vector4(-1468.29, -387.61, 38.79, 220.13)
@@ -438,7 +436,7 @@ Config.Locations = {
     --     ['targetLabel'] = '喝点？！',
     --     ['products'] = Config.Products['liquor'],
     --     ['showblip'] = true,
-    --     ['blipsprite'] = 52,
+    --     ['blipsprite'] = 827,
     --     ['blipscale'] = 0.6,
     --     ['blipcolor'] = 0,
     --     ['delivery'] = vector4(-2961.49, 376.25, 15.02, 111.41)
@@ -454,7 +452,7 @@ Config.Locations = {
         ['targetLabel'] = '喝点？！',
         ['products'] = Config.Products['liquor'],
         ['showblip'] = true,
-        ['blipsprite'] = 52,
+        ['blipsprite'] = 827,
         ['blipscale'] = 0.6,
         ['blipcolor'] = 0,
         ['delivery'] = vector4(1194.52, 2722.21, 38.62, 9.37)
@@ -470,7 +468,7 @@ Config.Locations = {
         ['targetLabel'] = '喝点？！',
         ['products'] = Config.Products['liquor'],
         ['showblip'] = true,
-        ['blipsprite'] = 52,
+        ['blipsprite'] = 827,
         ['blipscale'] = 0.6,
         ['blipcolor'] = 0,
         ['delivery'] = vector4(1129.73, -989.27, 45.97, 280.98)
