@@ -301,10 +301,11 @@ RegisterCommand('openInv', function()
 end, false)
 
 RegisterCommand('toggleHotbar', function()
-    ExecuteCommand('hotbar')
+    -- ExecuteCommand('hotbar')
     ExecuteCommand('cash')
     ExecuteCommand('bank')
     ExecuteCommand('job')
+    ExecuteCommand('gang')
 end, false)
 
 for i = 1, 5 do

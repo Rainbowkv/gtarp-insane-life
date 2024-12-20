@@ -363,7 +363,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         end
         if not isSoftcuff then
             cuffType = 16
-            GetCuffedAnimation(playerId)
+            GetCuffedAnimation(playerId)  -- 软手铐还没搞清楚是哪个
             QBCore.Functions.Notify(Lang:t('info.cuff'), 'primary')
         else
             cuffType = 49
@@ -383,6 +383,20 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         QBCore.Functions.Notify(Lang:t('success.uncuffed'), 'success')
     end
 end)
+
+-- rb_code
+RegisterNetEvent('qb-police:client:EscortPlayer-forQbTarget', function(entity)
+    if entity then
+        local target_id = GetPlayerServerId(NetworkGetEntityOwner(entity))
+	print(target_id)
+        if not isHandcuffed and not isEscorted then
+            TriggerServerEvent('police:server:EscortPlayer', target_id)
+        end
+    else
+        QBCore.Functions.Notify(Lang:t('error.none_nearby'), 'error')
+    end
+end)
+-- --
 
 -- Threads
 CreateThread(function()

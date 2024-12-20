@@ -139,7 +139,18 @@ RegisterNetEvent('qb-bossmenu:client:ManageEmployee', function(data)
             icon = 'fa-solid fa-circle-info'
         },
     }
+    -- 提取grades的所有k值并排序
+    local sortedGrades = {}
     for k, v in pairs(QBCore.Shared.Jobs[data.work.name].grades) do
+        table.insert(sortedGrades, k)
+    end
+
+    -- 降序排序
+    table.sort(sortedGrades, function(a, b) return a > b end)
+
+    -- 按排序后的k值生成菜单项
+    for _, k in ipairs(sortedGrades) do
+        local v = QBCore.Shared.Jobs[data.work.name].grades[k]
         EmployeeMenu[#EmployeeMenu + 1] = {
             header = v.name,
             txt = Lang:t('body.grade') .. k,
@@ -155,6 +166,22 @@ RegisterNetEvent('qb-bossmenu:client:ManageEmployee', function(data)
             }
         }
     end
+    -- for k, v in pairs(QBCore.Shared.Jobs[data.work.name].grades) do
+    --     EmployeeMenu[#EmployeeMenu + 1] = {
+    --         header = v.name,
+    --         txt = Lang:t('body.grade') .. k,
+    --         params = {
+    --             isServer = true,
+    --             event = 'qb-bossmenu:server:GradeUpdate',
+    --             icon = 'fa-solid fa-file-pen',
+    --             args = {
+    --                 cid = data.player.empSource,
+    --                 grade = tonumber(k),
+    --                 gradename = v.name
+    --             }
+    --         }
+    --     }
+    -- end
     EmployeeMenu[#EmployeeMenu + 1] = {
         header = Lang:t('body.fireemp'),
         icon = 'fa-solid fa-user-large-slash',

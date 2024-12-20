@@ -12,8 +12,19 @@ if Config.EnableDefaultOptions then
                 TriggerEvent('qb-target:client:openGiveCashInput', entity)
             end,
             distance = 1.2
-        }
+        },
+        ["escort"] = {
+            icon = "fas fa-door-open",
+            label = "拖动",
+            canInteract = function(entity)
+                return true
+            end,
+            action = function(entity)
+                TriggerEvent('qb-police:client:EscortPlayer-forQbTarget', entity)
+            end,
+            distance = 1.2
+        },
     }
- end
+end
 
 return PlayerInteractions

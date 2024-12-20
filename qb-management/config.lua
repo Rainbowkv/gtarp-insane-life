@@ -20,10 +20,10 @@ Config.BossMenus = {
 
 Config.GangMenus = {
     lostmc = {
-        vector3(0, 0, 0),
+        vector3(976.88, -103.89, 74.85),
     },
     ballas = {
-        vector3(0, 0, 0),
+        vector3(78.31, -1947.14, 21.17),
     },
     vagos = {
         vector3(0, 0, 0),
