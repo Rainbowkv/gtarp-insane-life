@@ -388,7 +388,6 @@ end)
 RegisterNetEvent('qb-police:client:EscortPlayer-forQbTarget', function(entity)
     if entity then
         local target_id = GetPlayerServerId(NetworkGetEntityOwner(entity))
-	print(target_id)
         if not isHandcuffed and not isEscorted then
             TriggerServerEvent('police:server:EscortPlayer', target_id)
         end
