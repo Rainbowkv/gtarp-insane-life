@@ -9,7 +9,7 @@ Config.NitrousBoost = 1.8                      -- how much boost nitrous gives (
 Config.NitrousUsage = 0.1                      -- how much nitrous is used per frame while holding key
 
 Config.UseDistance = true                      -- enable/disable saving vehicle distance
-Config.UseDistanceDamage = false               -- damage vehicle engine health based on vehicle distance
+Config.UseDistanceDamage = true               -- damage vehicle engine health based on vehicle distance
 Config.UseWearableParts = true                 -- enable/disable wearable parts
 Config.WearablePartsChance = 1                 -- chance of wearable parts being damaged while driving if enabled
 Config.WearablePartsDamage = math.random(1, 2) -- how much wearable parts are damaged when damaged if enabled
@@ -17,9 +17,9 @@ Config.DamageThreshold = 25                    -- how worn a part needs to be or
 Config.WarningThreshold = 50                   -- how worn a part needs to be to show a warning color in toolbox if enabled
 
 Config.MinimalMetersForDamage = {              -- unused if Config.UseDistanceDamage is false
-    { min = 5000,  max = 10000, damage = 10 },
-    { min = 15000, max = 20000, damage = 20 },
-    { min = 25000, max = 30000, damage = 30 },
+    { min = 5000,  max = 10000, damage = 10.0 },
+    { min = 15000, max = 20000, damage = 20.0 },
+    { min = 25000, max = 30000, damage = 30.0 },
 }
 
 Config.WearableParts = { -- unused if Config.UseWearableParts is false (feel free to add/remove parts)

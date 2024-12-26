@@ -15,7 +15,7 @@ end
 local function ApplyComponentEffect(component) -- add custom effects here for each component in config
     if component == 'radiator' then
         local engineHealth = GetVehicleEngineHealth(vehicle)
-        SetVehicleEngineHealth(vehicle, engineHealth - 50)
+        SetVehicleEngineHealth(vehicle, engineHealth - 50.0)
     elseif component == 'axle' then
         for i = 0, 360 do
             Wait(15)
