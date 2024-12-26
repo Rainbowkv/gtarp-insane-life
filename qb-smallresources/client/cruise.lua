@@ -24,6 +24,14 @@ local vehicleClasses = {
     [21] = false
 }
 
+-- rb_code
+local function other_check(veh)
+    if GetVehicleEngineHealth(veh) < Config.DamageThreshold then return false end
+    if GetVehicleFuelLevel(veh) < Config.DamageThreshold then return false end
+    return true
+end
+-- --
+
 local function triggerCruiseControl(veh)
     local ped = PlayerPedId()
     if IsPedInAnyVehicle(ped, false) then
@@ -71,8 +79,10 @@ RegisterCommand('togglecruise', function()
     local veh = GetVehiclePedIsIn(ped, false)
     local driver = GetPedInVehicleSeat(veh, -1)
     local vehClass = GetVehicleClass(veh)
-    if ped == driver and vehicleClasses[vehClass] then
+    if ped == driver and vehicleClasses[vehClass] and other_check(veh) then
         triggerCruiseControl(veh)
+    else
+        QBCore.Functions.Notify("巡航启动失败","error")
     end
 end, false)
 

@@ -51,12 +51,27 @@ local function DamageRandomComponent()
 end
 
 local function GetDamageAmount(distance)
+    local damage = 0
     for _, tier in ipairs(Config.MinimalMetersForDamage) do
-        if distance >= tier.min and distance < tier.max then
-            return tier.damage
+        if distance > tier.min then
+            damage = tier.damage
+        else
+            break
         end
     end
-    return 0
+    return damage
+end
+
+local function ApplyEngineEffect()
+    QBCore.Functions.Notify('引擎故障...', 'error')
+    local elapsedTime = 0
+    while elapsedTime < 5000 do    -- 5秒后恢复引擎
+        SetVehicleEngineOn(vehicle, false, true, false)
+        Wait(200)  -- 每隔200ms（0.2秒）关闭一次引擎
+        elapsedTime += 200
+    end
+    SetVehicleEngineOn(vehicle, true, true, false)
+    QBCore.Functions.Notify('引擎暂时恢复(建议速度<72km/h)，请前往修车或叫拖车...', 'success')
 end
 
 local function ApplyDamageBasedOnDistance(distance)
@@ -64,9 +79,13 @@ local function ApplyDamageBasedOnDistance(distance)
     local damage = GetDamageAmount(distance)
     local engineHealth = GetVehicleEngineHealth(vehicle)
     SetVehicleEngineHealth(vehicle, engineHealth - damage)
+    if GetVehicleEngineHealth(vehicle) <= Config.DamageThreshold then
+        ApplyEngineEffect()
+    end
 end
 
 local function TrackDistance()
+    local accumulatedDistance = 0
     CreateThread(function()
         while true do
             Wait(0)
@@ -84,25 +103,30 @@ local function TrackDistance()
                     else
                         local newCoords = GetEntityCoords(vehicle)
                         local distance = #(drivingDistance[plate].lastCoords - newCoords)
-                        if distance < 5 then
-                            drivingDistance[plate].distance = drivingDistance[plate].distance + distance
+                        if distance > 5 then
+                            accumulatedDistance += distance  -- distance无需手动清零，accumulatedDistance需要
                             drivingDistance[plate].lastCoords = newCoords
-                            -- Engine damage
-                            local accumulatedDistance = drivingDistance[plate].distance
-                            if accumulatedDistance >= Config.MinimalMetersForDamage[1].min then
+                            if accumulatedDistance >= 1000 then  -- 至少1km累计一次
+                                drivingDistance[plate].distance += accumulatedDistance
+                                -- Engine damage
                                 ApplyDamageBasedOnDistance(accumulatedDistance)
-                            end
-                            -- Parts Damage
-                            local randomNumber = math.random(1, 1000)
-                            if randomNumber <= Config.WearablePartsChance then
-                                DamageRandomComponent()
+                                accumulatedDistance = 0
+                                -- Parts Damage
+                                local randomNumber = math.random(1, 1000)
+                                if randomNumber <= Config.WearablePartsChance then
+                                    DamageRandomComponent()
+                                end
+                            elseif GetVehicleEngineHealth(vehicle) <= Config.DamageThreshold and speed >= 20 then  --引擎低于阈值后，平均速度不能超过 20*3.6 km/h
+                                ApplyEngineEffect()
                             end
                         end
                     end
                 end
             else
                 if drivingDistance[plate] then
-                    TriggerServerEvent('qb-mechanicjob:server:updateDrivingDistance', plate, drivingDistance[plate].distance)
+                    QBCore.Functions.Notify("本次驾驶里程: "..drivingDistance[plate].distance + accumulatedDistance.."m, 计入该车总里程...", 'success')
+                    TriggerServerEvent('qb-mechanicjob:server:updateDrivingDistance', plate, drivingDistance[plate].distance + accumulatedDistance)
+                    drivingDistance[plate].distance = 0  -- 保存后，清零此次里程数
                     TriggerServerEvent('qb-mechanicjob:server:updateVehicleComponents', plate, vehicleComponents[plate])
                 end
                 plate = nil
