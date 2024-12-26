@@ -368,7 +368,6 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         else
             cuffType = 49
             GetCuffedAnimation(playerId)
-            SetEntityMaxSpeed(ped, 1.0)  -- 手铐限制移动速度
             QBCore.Functions.Notify(Lang:t('info.cuffed_walk'), 'primary')
         end
     else
@@ -379,7 +378,6 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         TriggerServerEvent('police:server:SetHandcuffStatus', false)
         ClearPedTasksImmediately(ped)
         TriggerServerEvent('InteractSound_SV:PlayOnSource', 'Uncuff', 0.2)
-        SetEntityMaxSpeed(ped, 10.0)  -- 解除移动速度限制（10m/s只是限制玩家移动的最高移动速度，相当于不限制玩家的移动速度了
         QBCore.Functions.Notify(Lang:t('success.uncuffed'), 'success')
     end
 end)
@@ -406,7 +404,7 @@ CreateThread(function()
             EnableControlAction(0, 1, true)
             EnableControlAction(0, 2, true)
             EnableControlAction(0, 245, true)
-            EnableControlAction(0, 38, true)
+            -- EnableControlAction(0, 38, true)  --关闭E的交互(rb_code)
             EnableControlAction(0, 322, true)
             EnableControlAction(0, 249, true)
             EnableControlAction(0, 46, true)
@@ -419,6 +417,7 @@ CreateThread(function()
             DisableControlAction(0, 263, true) -- Melee Attack 1
 
             DisableControlAction(0, 45, true)  -- Reload
+            DisableControlAction(0, 21, true)  -- SPRINT(rb_code)
             DisableControlAction(0, 22, true)  -- Jump
             DisableControlAction(0, 44, true)  -- Cover
             DisableControlAction(0, 37, true)  -- Select Weapon

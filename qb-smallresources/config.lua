@@ -3,7 +3,7 @@ Config = {}
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
 Config.PauseMapText = ''                                     -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
 Config.HarnessUses = 20
-Config.DamageNeeded = 100.0                                  -- amount of damage till you can push your vehicle. 0-1000
+Config.DamageNeeded = 1000.0                                  -- amount of damage till you can push your vehicle. 0-1000
 Config.Logging = 'discord'                                   -- fivemanage
 
 Config.AFK = {
@@ -19,7 +19,7 @@ Config.AFK = {
 Config.HandsUp = {
     command = 'hu',
     keybind = 'X',
-    controls = { 24, 25, 47, 58, 59, 63, 64, 71, 72, 75, 140, 141, 142, 143, 257, 263, 264 }
+    controls = { 21, 22, 24, 25, 47, 58, 59, 63, 64, 71, 72, 75, 140, 141, 142, 143, 257, 263, 264 }  -- 新禁止21，22奔跑和跳跃
 }
 
 Config.Binoculars = {

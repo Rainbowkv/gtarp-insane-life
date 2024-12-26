@@ -18,7 +18,7 @@ RegisterNetEvent('vehiclepush:client:push', function(veh)
         if not IsEntityAttachedToEntity(ped, veh) and IsVehicleSeatFree(veh, -1) and GetVehicleEngineHealth(veh) <= Config.DamageNeeded and GetVehicleEngineHealth(veh) >= 0 then
             if vehClass ~= 13 or vehClass ~= 14 or vehClass ~= 15 or vehClass ~= 16 then
                 NetworkRequestControlOfEntity(veh)
-                if #(pos - vehPos) < 3.0 and not IsPedInAnyVehicle(ped, false) then
+                if #(pos - vehPos) < 3.5 and not IsPedInAnyVehicle(ped, false) then
                     if #(vehPos + GetEntityForwardVector(veh) - pos) > #(vehPos + GetEntityForwardVector(veh) * -1 - pos) then
                         isInFront = false
                         AttachEntityToEntity(ped, veh, GetPedBoneIndex(ped, 6286), 0.0, dimension.y - 0.3, dimension.z + 1.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
@@ -31,12 +31,19 @@ RegisterNetEvent('vehiclepush:client:push', function(veh)
                     exports['qb-core']:DrawText(Lang:t('pushcar.stop_push'),'left')
                     while true do
                         Wait(0)
+
+                        -- rb_code
+                        if IsDisabledControlPressed(0, 32) then  -- 'w'恢复直行
+                            TaskVehicleTempAction(ped, veh, 3, 1000)  -- 这个3可以奏效，但不知道为什么
+                        end
+                        -- --
+
                         if IsDisabledControlPressed(0, 34) then
-                            TaskVehicleTempAction(ped, veh, 11, 1000)
+                            TaskVehicleTempAction(ped, veh, 11, 1000)  -- 持续的右转
                         end
 
                         if IsDisabledControlPressed(0, 9) then
-                            TaskVehicleTempAction(ped, veh, 10, 1000)
+                            TaskVehicleTempAction(ped, veh, 10, 1000)  -- 持续的左转
                         end
 
                         SetVehicleForwardSpeed(veh, isInFront and -1.0 or 1.0)
@@ -64,7 +71,7 @@ CreateThread(function()
         options = {
             {
                 icon = 'fas fa-wrench',
-                label = 'Push Vehicle',
+                label = '推车',
                 action = function(entity)
                     TriggerEvent('vehiclepush:client:push', entity)
                 end,
