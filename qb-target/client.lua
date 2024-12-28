@@ -66,7 +66,10 @@ end
 
 local function DrawTarget()
 	CreateThread(function()
-		while not HasStreamedTextureDictLoaded("shared") do Wait(10) RequestStreamedTextureDict("shared", true) end
+		while not HasStreamedTextureDictLoaded("shared") do
+			Wait(10)
+			RequestStreamedTextureDict("shared", true)
+		end
 		local sleep
 		local r, g, b, a
 		while targetActive do
@@ -102,8 +105,8 @@ local function RaycastCamera(flag, playerCoords)
 
 	local rayPos, rayDir = ScreenPositionToCameraRay()
 	local destination = rayPos + 16 * rayDir
-	local rayHandle = StartShapeTestLosProbe(rayPos.x, rayPos.y, rayPos.z, destination.x, destination.y, destination.z, flag or -1, playerPed, 4)
-
+	local rayHandle = StartShapeTestLosProbe(rayPos.x, rayPos.y, rayPos.z, destination.x, destination.y, destination.z, 
+		flag or -1, playerPed, 4)
 	while true do
 		local result, _, endCoords, _, entityHit = GetShapeTestResult(rayHandle)
 
@@ -314,24 +317,21 @@ local function EnableTarget()
 
 				-- Player and Ped targets
 				if entityType == 1 then
-					-- local data = Models[GetEntityModel(entity)]
-					-- if IsPedAPlayer(entity) then data = Players end
-					-- if data and next(data) then CheckEntity(flag, data, entity, distance) end
-					-- rb_code
-					if not IsPedAPlayer(entity) then return end
-					local datatable = PlayerInteractions.Options['anywhere']
-					if datatable and next(datatable) then
-						local slot = SetupOptions(datatable, entity, distance)
-						if next(nuiData) then
-							success = true
-							SendNUIMessage({response = "foundTarget", data = nuiData[slot].targeticon})
-							EnableNUI(nuiData)
-							DrawOutlineEntity(entity, true)
-							while targetActive and success do  -- 激活成功卡着不让失效
-								Wait(0)
+					if IsPedAPlayer(entity) then
+						local datatable = PlayerInteractions.Options['anywhere']
+						if datatable and next(datatable) then
+							local slot = SetupOptions(datatable, entity, distance)
+							if next(nuiData) then
+								success = true
+								SendNUIMessage({response = "foundTarget", data = nuiData[slot].targeticon})
+								EnableNUI(nuiData)
+								DrawOutlineEntity(entity, true)
+								while targetActive and success do  -- 激活成功卡着不让失效
+									Wait(0)
+								end
+								LeftTarget()
+								DrawOutlineEntity(entity, false)
 							end
-							LeftTarget()
-							DrawOutlineEntity(entity, false)
 						end
 					end
 					-- --
@@ -405,7 +405,8 @@ local function EnableTarget()
 						closestZone = zone
 					end
 					if Config.DrawSprite then
-						if #(coords - zone.center) < (zone.targetoptions.drawDistance or Config.DrawDistance) then
+						local testCentre = type(zone.center) == 'vector2' and vector3(zone.center.x, zone.center.y, zone.maxZ) or zone.center
+						if #(coords - testCentre) < (zone.targetoptions.drawDistance or Config.DrawDistance) then
 							listSprite[k] = zone
 						else
 							listSprite[k] = nil
