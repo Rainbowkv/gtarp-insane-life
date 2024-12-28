@@ -382,4 +382,21 @@ QBShared.Items = {
     newscam                      = { name = 'newscam', label = '新闻摄像机', weight = 100, type = 'item', image = 'newscam.png', unique = true, useable = true, shouldClose = true, description = '新闻用摄像机' },
     newsmic                      = { name = 'newsmic', label = '新闻麦克风', weight = 100, type = 'item', image = 'newsmic.png', unique = true, useable = true, shouldClose = true, description = '新闻用麦克风' },
     newsbmic                     = { name = 'newsbmic', label = '新闻话筒', weight = 100, type = 'item', image = 'newsbmic.png', unique = true, useable = true, shouldClose = true, description = '可用的新闻话筒' },
+
+    -- custom:fishing
+    tuna                          = { name = 'tuna', label = '金枪鱼', weight = 10000, type = 'item', image = 'tuna.png', unique = false, useable = false, shouldClose = true, description = '' },
+    titanium_rod                  = { name = 'titanium_rod', label = '钛合金钓竿', weight = 450, type = 'item', image = 'titanium_rod.png', unique = false, useable = true, shouldClose = true, description = '' },
+    basic_rod                     = { name = 'basic_rod', label = '基础钓竿', weight = 250, type = 'item', image = 'basic_rod.png', unique = false, useable = true, shouldClose = true, description = '' },
+    anchovy                       = { name = 'anchovy', label = '鳀鱼', weight = 20, type = 'item', image = 'anchovy.png', unique = false, useable = false, shouldClose = true, description = '' },
+    shark                         = { name = 'shark', label = '鲨鱼', weight = 7500, type = 'item', image = 'shark.png', unique = false, useable = false, shouldClose = true, description = '' },
+    mahi_mahi                     = { name = 'mahi_mahi', label = '马哈马哈', weight = 3500, type = 'item', image = 'mahi_mahi.png', unique = false, useable = false, shouldClose = true, description = '' },
+    trout                         = { name = 'trout', label = '鳟鱼', weight = 750, type = 'item', image = 'trout.png', unique = false, useable = false, shouldClose = true, description = '' },
+    salmon                        = { name = 'salmon', label = '鲑鱼', weight = 1000, type = 'item', image = 'salmon.png', unique = false, useable = false, shouldClose = true, description = '' },
+    red_snapper                   = { name = 'red_snapper', label = '红鲷鱼', weight = 2500, type = 'item', image = 'red_snapper.png', unique = false, useable = false, shouldClose = true, description = '' },
+    piranha                       = { name = 'piranha', label = '食人鱼', weight = 1500, type = 'item', image = 'piranha.png', unique = false, useable = false, shouldClose = true, description = '' },
+    graphite_rod                  = { name = 'graphite_rod', label = '石墨钓竿', weight = 350, type = 'item', image = 'graphite_rod.png', unique = false, useable = true, shouldClose = true, description = '' },
+    worms                         = { name = 'worms', label = '虫饵', weight = 10, type = 'item', image = 'worms.png', unique = false, useable = false, shouldClose = true, description = '' },
+    haddock                       = { name = 'haddock', label = '黑线鳕', weight = 500, type = 'item', image = 'haddock.png', unique = false, useable = false, shouldClose = true, description = '' },
+    grouper                       = { name = 'grouper', label = '石斑鱼', weight = 3500, type = 'item', image = 'grouper.png', unique = false, useable = false, shouldClose = true, description = '' },
+    artificial_bait               = { name = 'artificial_bait', label = '人工饵', weight = 30, type = 'item', image = 'artificial_bait.png', unique = false, useable = false, shouldClose = true, description = '' },
 }
