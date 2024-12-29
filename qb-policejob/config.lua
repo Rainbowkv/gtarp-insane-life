@@ -58,9 +58,9 @@ Config.Locations = {
         vector3(455.1456, -985.462, 30.689),
     },
     stations = {
-        { label = 'Police Station',        coords = vector4(428.23, -984.28, 29.76, 3.5) },
-        { label = 'Prison',                coords = vector4(1845.903, 2585.873, 45.672, 272.249) },
-        { label = 'Police Station Paleto', coords = vector4(-451.55, 6014.25, 31.716, 223.81) },
+        { label = '密申罗警局',        coords = vector4(428.23, -984.28, 29.76, 3.5) },
+        { label = '监狱',                coords = vector4(1845.903, 2585.873, 45.672, 272.249) },
+        { label = '帕莱托警局', coords = vector4(-451.55, 6014.25, 31.716, 223.81) },
     },
 }
 
@@ -126,13 +126,13 @@ Config.CarItems = {
 Config.AuthorizedVehicles = {
     -- Grade 0 and higher
     [0] = {
-        police = 'Police Car 1',
-        police2 = 'Police Car 2',
-        police3 = 'Police Car 3',
-        police4 = 'Police Car 4',
-        policeb = 'Police Car 5',
-        policet = 'Police Car 6',
-        sheriff = 'Sheriff Car 1',
+        police   = 'Police Car 1',
+        police2  = 'Police Car 2',
+        police3  = 'Police Car 3',
+        police4  = 'Police Car 4',
+        policeb  = 'Police Car 5',
+        policet  = 'Police Car 6',
+        sheriff  = 'Sheriff Car 1',
         sheriff2 = 'Sheriff Car 2',
     },
 }

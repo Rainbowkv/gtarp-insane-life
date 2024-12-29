@@ -113,7 +113,7 @@ CreateThread(function()
         SetBlipAsShortRange(carWash, true)
         SetBlipColour(carWash, 37)
         BeginTextCommandSetBlipName('STRING')
-        AddTextComponentSubstringPlayerName('Hands Free Carwash')
+        AddTextComponentSubstringPlayerName('免提洗车')
         EndTextCommandSetBlipName(carWash)
     end
 end)
