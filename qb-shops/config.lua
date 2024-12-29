@@ -10,7 +10,7 @@ Config.RewardItem = 'cryptostick'
 Config.Fuel = 'LegacyFuel'
 
 Config.DeliveryLocations = {
-    ['main'] = { label = 'GO Postal', coords = vector4(69.0862, 127.6753, 79.2123, 156.7736) },
+    ['main'] = { label = '邮政', coords = vector4(69.0862, 127.6753, 79.2123, 156.7736) },
     ['vehicleWithdraw'] = vector4(71.9318, 120.8389, 79.0823, 160.5110),
     ['vehicleDeposit'] = vector3(62.7282, 124.9846, 79.0926),
     ['stores'] = {} -- auto generated
