@@ -759,14 +759,16 @@ local Vehicles = {
     { model = 'formula2',        name = 'R88',                           brand = '奥斯洛特',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     { model = 'formula',         name = 'PR4',                           brand = '先驱者',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     -- custom
-    { model = 'su7',             name = 'SU7',                           brand = '小米',          price = 100000000,  category = '定制车',      type = 'automobile', shop = 'luxury' },
-    { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000000, category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'luxury' },
+    { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'bmwx7m23',        name = 'X7',                            brand = '宝马',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
     -- special
     { model = 'voltic2',         name = '火箭伏尔蒂克',                  brand = '科尔',             price = 9830400, category = '超级跑车',         type = 'automobile', shop = 'none' },
-    { model = 'oppressor',       name = '压迫者',                     brand = '佩加西',         price = 9999999, category = '摩托车',    type = 'bike',       shop = 'none' },
+    { model = 'oppressor',       name = '压迫者',                        brand = '佩加西',         price = 9999999, category = '摩托车',    type = 'bike',       shop = 'none' },
     { model = 'kuruma2',         name = '库鲁玛2',                       brand = '卡林2',          price = 72000,   category = '运动',            type = 'automobile', shop = 'none' },  
-    { model = 'baller5',         name = '巴勒 LE (装甲版)',            brand = '加利万特',     price = 78000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
-    { model = 'baller6',         name = '巴勒 LE LWB (装甲版)',        brand = '加利万特',     price = 82000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
+    { model = 'baller5',         name = '巴勒 LE (装甲版)',              brand = '加利万特',     price = 78000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
+    { model = 'baller6',         name = '巴勒 LE LWB (装甲版)',          brand = '加利万特',     price = 82000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
+    { model = 'iak_wheelchair',  name = '轮椅',                         brand = '医疗公司',      price = 3000,   category = '特殊车辆',           type = 'bike', shop = 'none' },
 }
 
 for i = 1, #Vehicles do
