@@ -17,7 +17,7 @@ Config.DamageThreshold = 25                    -- how worn a part needs to be or
 Config.WarningThreshold = 50                   -- how worn a part needs to be to show a warning color in toolbox if enabled
 
 Config.MinimalMetersForDamage = {              -- unused if Config.UseDistanceDamage is false
-    { min = 1000,  max = 10000, damage = 200.0 },
+    { min = 1000,  max = 10000, damage = 10.0 },
     { min = 15000, max = 20000, damage = 20.0 },
     { min = 25000, max = 30000, damage = 30.0 },
 }
