@@ -110,6 +110,10 @@ Config.Products = {
         { name = 'weed_amnesia',      price = 5000, amount = 50 },
         { name = 'weed_ak47',         price = 5000, amount = 50 },
         { name = 'markedbills',       price = 5000, amount = 50, info = { worth = 5000 } },
+        -- ps-drugprocessing 的钥匙
+        { name = 'methkey',           price = 10000, amount = 50 },
+        { name = 'cocainekey',        price = 10000, amount = 50 },
+        { name = 'weedkey',           price = 10000, amount = 50 },
     },
     ['prison'] = {
         { name = 'sandwich',     price = 4, amount = 50 },
