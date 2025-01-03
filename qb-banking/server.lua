@@ -214,7 +214,7 @@ QBCore.Functions.CreateCallback('qb-banking:server:withdraw', function(source, c
     if not Player or not citizenid then return cb({ success = false, message = Lang:t('error.error') }) end
     local accountName = data.accountName
     local withdrawAmount = tonumber(data.amount)
-    local reason = (data.reason ~= '' and data.reason) or 'Bank Withdrawal'
+    local reason = (data.reason ~= '' and data.reason) or '取款'
     if accountName == 'checking' then
         local accountBalance = Player.PlayerData.money.bank
         if accountBalance < withdrawAmount then return cb({ success = false, message = Lang:t('error.money') }) end
@@ -243,7 +243,7 @@ QBCore.Functions.CreateCallback('qb-banking:server:deposit', function(source, cb
     if not Player or not citizenid then return cb({ success = false, message = Lang:t('error.error') }) end
     local accountName = data.accountName
     local depositAmount = tonumber(data.amount)
-    local reason = (data.reason ~= '' and data.reason) or 'Bank Deposit'
+    local reason = (data.reason ~= '' and data.reason) or '存款'
     if accountName == 'checking' then
         local accountBalance = Player.PlayerData.money.cash
         if accountBalance < depositAmount then return cb({ success = false, message = Lang:t('error.money') }) end

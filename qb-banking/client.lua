@@ -155,7 +155,7 @@ if Config.useTarget then
                 options = {
                     {
                         icon = 'fas fa-university',
-                        label = 'Open Bank',
+                        label = '柜台服务',
                         action = function()
                             OpenBank()
                         end,
@@ -173,7 +173,7 @@ if Config.useTarget then
                 options = {
                     {
                         icon = 'fas fa-university',
-                        label = 'Open ATM',
+                        label = 'ATM服务',
                         item = 'bank_card',
                         action = function()
                             OpenATM()
@@ -204,7 +204,7 @@ if not Config.useTarget then
         combo:onPlayerInOut(function(isPointInside)
             isPlayerInsideBankZone = isPointInside
             if isPlayerInsideBankZone then
-                exports['qb-core']:DrawText('Open Bank')
+                exports['qb-core']:DrawText('[E] 打开银行')
                 CreateThread(function()
                     while isPlayerInsideBankZone do
                         Wait(0)
