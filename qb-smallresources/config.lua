@@ -235,31 +235,31 @@ Config.Objects = { -- for object removal
 
 -- You may add more than 2 selections and it will bring up a menu for the player to select which floor be sure to label each section though
 Config.Teleports = {
-    [1] = {                   -- Elevator @ labs
-        [1] = {               -- up
-            poly = { coords = vector3(3540.74, 3675.59, 20.99), heading = 167.5, length = 2, width = 2 },
-            allowVeh = false, -- whether or not to allow use in vehicle
-            label = false     -- set this to a string for a custom label or leave it false to keep the default. if more than 2 options, label all options
+    -- [1] = {                   -- Elevator @ labs
+    --     [1] = {               -- up
+    --         poly = { coords = vector3(3540.74, 3675.59, 20.99), heading = 167.5, length = 2, width = 2 },
+    --         allowVeh = false, -- whether or not to allow use in vehicle
+    --         label = false     -- set this to a string for a custom label or leave it false to keep the default. if more than 2 options, label all options
 
-        },
-        [2] = { -- down
-            poly = { coords = vector3(3540.74, 3675.59, 28.11), heading = 172.5, length = 2, width = 2 },
-            allowVeh = false,
-            label = false
-        }
-    },
-    [2] = { --Coke Processing Enter/Exit
-        [1] = {
-            poly = { coords = vector3(909.49, -1589.22, 30.51), heading = 92.24, length = 2, width = 2 },
-            allowVeh = false,
-            label = '[E] Enter Coke Processing'
-        },
-        [2] = {
-            poly = { coords = vector3(1088.81, -3187.57, -38.99), heading = 181.7, length = 2, width = 2 },
-            allowVeh = false,
-            label = '[E] Leave'
-        }
-    }
+    --     },
+    --     [2] = { -- down
+    --         poly = { coords = vector3(3540.74, 3675.59, 28.11), heading = 172.5, length = 2, width = 2 },
+    --         allowVeh = false,
+    --         label = false
+    --     }
+    -- },
+    -- [2] = { --Coke Processing Enter/Exit
+    --     [1] = {
+    --         poly = { coords = vector3(909.49, -1589.22, 30.51), heading = 92.24, length = 2, width = 2 },
+    --         allowVeh = false,
+    --         label = '[E] Enter Coke Processing'
+    --     },
+    --     [2] = {
+    --         poly = { coords = vector3(1088.81, -3187.57, -38.99), heading = 181.7, length = 2, width = 2 },
+    --         allowVeh = false,
+    --         label = '[E] Leave'
+    --     }
+    -- }
 }
 
 Config.CarWash = {
