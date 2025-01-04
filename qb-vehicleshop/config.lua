@@ -32,10 +32,10 @@ Config.Shops = {
             ['size'] = 2.75                                          -- size of the vehicles zones
         },
         ['Job'] = 'none',                                            -- Name of job or none
-        ['ShopLabel'] = '轻奢汽车店（即将作为定制产业）',                 -- Blip name
+        ['ShopLabel'] = '轻奢汽车店',                 -- Blip name
         ['showBlip'] = true,                                         -- true or false
-        ['blipSprite'] = 326,                                        -- Blip sprite
-        ['blipColor'] = 3,                                           -- Blip color
+        ['blipSprite'] = 821,                                        -- Blip sprite
+        ['blipColor'] = 82,                                           -- Blip color
         ['TestDriveTimeLimit'] = 1.5,                                -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(-45.67, -1098.34, 26.42),             -- Blip Location
         ['ReturnLocation'] = vector3(-44.74, -1082.58, 26.68),       -- Location to return vehicle, only enables if the vehicleshop has a job owned
@@ -108,10 +108,10 @@ Config.Shops = {
         },
         ['Job'] = 'none', -- Name of job or none
         -- ['Job'] = 'cardealer', -- Name of job or none
-        ['ShopLabel'] = '豪华汽车店（即将作为定制产业）',
+        ['ShopLabel'] = '豪华汽车店',
         ['showBlip'] = true,   -- true or false
-        ['blipSprite'] = 326,  -- Blip sprite
-        ['blipColor'] = 3,     -- Blip color
+        ['blipSprite'] = 820,  -- Blip sprite
+        ['blipColor'] = 70,     -- Blip color
         ['TestDriveTimeLimit'] = 1.5,
         ['Location'] = vector3(-1255.6, -361.16, 36.91),
         ['ReturnLocation'] = vector3(-1231.46, -349.86, 37.33),
@@ -168,7 +168,7 @@ Config.Shops = {
         },
         ['Job'] = 'none',                                              -- Name of job or none
         ['ShopLabel'] = '船坞大亨（即将作为定制产业）',                                 -- Blip name
-        ['showBlip'] = true,                                           -- true or false
+        ['showBlip'] = false,                                           -- true or false
         ['blipSprite'] = 410,                                          -- Blip sprite
         ['blipColor'] = 3,                                             -- Blip color
         ['TestDriveTimeLimit'] = 1.5,                                  -- Time in minutes until the vehicle gets deleted
@@ -215,7 +215,7 @@ Config.Shops = {
         },
         ['Job'] = 'none',                                                -- Name of job or none
         ['ShopLabel'] = '私人飞机经销商（即将作为定制产业）',                                      -- Blip name
-        ['showBlip'] = true,                                             -- true or false
+        ['showBlip'] = false,                                             -- true or false
         ['blipSprite'] = 251,                                            -- Blip sprite
         ['blipColor'] = 3,                                               -- Blip color
         ['TestDriveTimeLimit'] = 1.5,                                    -- Time in minutes until the vehicle gets deleted
@@ -268,7 +268,7 @@ Config.Shops = {
         },
         ['Job'] = 'none',                                            -- Name of job or none
         ['ShopLabel'] = '卡车经销商（即将作为定制产业）',                          -- Blip name
-        ['showBlip'] = true,                                         -- true or false
+        ['showBlip'] = false,                                         -- true or false
         ['blipSprite'] = 477,                                        -- Blip sprite
         ['blipColor'] = 2,                                           -- Blip color
         ['TestDriveTimeLimit'] = 1.5,                                -- Time in minutes until the vehicle gets deleted

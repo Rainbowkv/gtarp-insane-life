@@ -509,6 +509,8 @@ Config.LoadedWomanModels = {}
 -- Set to true or false or GetConvar('UseTarget', 'false') == 'true' to use global option or script specific
 -- These have to be a string thanks to how Convars are returned.
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
+-- rb_code
+Config.hideBlip = true
 
 -- width, length, minZ and maxZ are for the size and height of the PolyZone
 Config.Stores = {
@@ -537,7 +539,7 @@ Config.Stores = {
 }
 
 Config.OutfitChangers = {
-    [1] = {shopType = 'outfit', coords = vector3(1697.41, 4829.25, 41.06), width = 2, length = 2},
+    -- [1] = {shopType = 'outfit', coords = vector3(1697.41, 4829.25, 41.06), width = 2, length = 2},
     [2] = {shopType = 'outfit', coords = vector3(-703.83, -151.67, 36.42), width = 2, length = 2},
     [3] = {shopType = 'outfit', coords = vector3(-1187.19, -768.64, 16.33), width = 2, length = 2},
     [4] = {shopType = 'outfit', coords = vector3(429.5, -800.15, 28.49), width = 2, length = 2},

@@ -131,6 +131,7 @@ end)
 -- Threads
 
 CreateThread(function()
+    if Config.hideBlip then return end
     for i = 1, #Config.locations do
         local blip = AddBlipForCoord(Config.locations[i])
         SetBlipSprite(blip, Config.blipInfo.sprite)

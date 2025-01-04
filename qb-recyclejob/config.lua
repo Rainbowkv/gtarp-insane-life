@@ -1,4 +1,5 @@
 Config = {
+	hideBlip = true,
 	-- **** IMPORTANT ****
 	-- UseTarget should only be set to true when using qb-target
 	UseTarget               = GetConvar('UseTarget', 'false') == 'true',

@@ -324,6 +324,7 @@ local function DropPackage()
 end
 
 local function SetLocationBlip()
+    if Config.hideBlip then return end
     local RecycleBlip = AddBlipForCoord(Config.OutsideLocation.x, Config.OutsideLocation.y, Config.OutsideLocation.z)
     SetBlipSprite(RecycleBlip, 365)
     SetBlipColour(RecycleBlip, 2)

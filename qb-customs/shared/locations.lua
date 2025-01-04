@@ -68,7 +68,7 @@ Config.Locations = {
             scale = 0.65,
             color = 0,
             display = 4,
-            enabled = true,
+            enabled = false,
         },
         categories = {
             mods = true,
@@ -88,7 +88,7 @@ Config.Locations = {
         drawtextui = {
             text = "自助改车坊"
         },
-        restrictions = { deniedClasses = { 18 } },
+        restrictions = { deniedClasses = {  } },
         zones = {
             { coords = vector3(-212.55, -1320.56, 31.0), length = 6.0, width = 4.0, heading = 270.0, minZ = 29.88, maxZ = 33.48 },
             { coords = vector3(-222.47, -1329.73, 31.0), length = 6.0, width = 4.0, heading = 270.0, minZ = 29.88, maxZ = 33.48 },
@@ -99,7 +99,7 @@ Config.Locations = {
         settings = {
             label = '自助改车坊',
             welcomeLabel = "欢迎来到自助改车坊!",
-            enabled = true,
+            enabled = false,
         },
         blip = {
             label = '自助改车坊',
@@ -108,7 +108,7 @@ Config.Locations = {
             scale = 0.65,
             color = 0,
             display = 4,
-            enabled = true,
+            enabled = false,
         },
         categories = {
             mods = true,
@@ -349,7 +349,7 @@ Config.Locations = {
             scale = 0.65,
             color = 0,
             display = 4,
-            enabled = true,
+            enabled = false,
         },
         categories = {
             repair = true,
@@ -386,7 +386,7 @@ Config.Locations = {
             scale = 0.65,
             color = 0,
             display = 4,
-            enabled = true,
+            enabled = false,
         },
         categories = {
             repair = true,

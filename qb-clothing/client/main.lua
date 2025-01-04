@@ -1588,6 +1588,7 @@ RegisterCommand("refreshskin", function()
 end)
 -- Threads
 Citizen.CreateThread(function()
+    if Config.hideBlip then return end  -- rb_code
     for k, _ in pairs (Config.Stores) do
         if Config.Stores[k].shopType == "clothing" then
             local clothingShop = AddBlipForCoord(Config.Stores[k].coords)
