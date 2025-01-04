@@ -169,7 +169,11 @@ RegisterCommand('togglelocks', function()
     if IsPedInAnyVehicle(ped, false) then
         ToggleVehicleLockswithoutnui(GetVehicle())
     else
-        if Config.UseKeyfob then
+        local pressStartTime = GetGameTimer()  -- 记录按下时间
+        while IsControlPressed(0, 182) do  -- 182 -> L
+            Wait(10)
+        end
+        if GetGameTimer() - pressStartTime > Config.openMenu_threshold then  -- 按住时长超过阈值，打开钥匙nui
             openmenu()
         else
             ToggleVehicleLockswithoutnui(GetVehicle())
