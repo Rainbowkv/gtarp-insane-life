@@ -35,7 +35,8 @@ local Translations = {
     cruise = {
         unavailable = "巡航控制不可用",
         activated = "巡航控制已启用",
-        deactivated = "巡航控制已禁用"
+        deactivated = "巡航控制已禁用",
+        reset = "巡航速度更改为"
     },
     editor = {
         started = "开始录制！",
