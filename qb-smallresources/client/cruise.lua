@@ -26,8 +26,10 @@ local vehicleClasses = {
 
 -- rb_code
 local function other_check(veh)
-    if GetVehicleEngineHealth(veh) < Config.DamageThreshold then return false end
-    if GetVehicleFuelLevel(veh) < Config.DamageThreshold then return false end
+    if GetVehicleEngineHealth(veh) < Config.DamageThreshold then 
+        QBCore.Functions.Notify("巡航启动失败，您的载具引擎不健康", "error")
+        return false 
+    end
     return true
 end
 -- --
@@ -40,7 +42,7 @@ local function triggerCruiseControl(veh)
             speed = GetEntitySpeed(veh)
             local isTurningOrHandbraking = IsControlPressed(2, 76) or IsControlPressed(2, 63) or IsControlPressed(2, 64)
             TriggerEvent('seatbelt:client:ToggleCruise', true)
-            QBCore.Functions.Notify(Lang:t('cruise.activated'))
+            QBCore.Functions.Notify(Lang:t('cruise.activated'), "success")
 
             CreateThread(function()
                 while speed > 0 and GetPedInVehicleSeat(veh, -1) == ped do
@@ -79,10 +81,16 @@ RegisterCommand('togglecruise', function()
     local veh = GetVehiclePedIsIn(ped, false)
     local driver = GetPedInVehicleSeat(veh, -1)
     local vehClass = GetVehicleClass(veh)
-    if ped == driver and vehicleClasses[vehClass] and other_check(veh) then
+    if ped ~=driver then
+        QBCore.Functions.Notify("您必须驾驶载具才能启动巡航功能", "error")
+        return
+    end
+    if not vehicleClasses[vehClass] then
+        QBCore.Functions.Notify("该载具不搭载巡航功能", "error")
+        return
+    end
+    if other_check(veh) then
         triggerCruiseControl(veh)
-    else
-        QBCore.Functions.Notify("巡航启动失败","error")
     end
 end, false)
 
