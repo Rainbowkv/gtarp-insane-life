@@ -758,7 +758,7 @@ local Vehicles = {
     { model = 'openwheel1',      name = 'BR8',                           brand = '本尼工厂',      price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     { model = 'formula2',        name = 'R88',                           brand = '奥斯洛特',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     { model = 'formula',         name = 'PR4',                           brand = '先驱者',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
-    -- custom
+    -- customized
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'luxury' },
     { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'bmwx7m23',        name = 'X7',                            brand = '宝马',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
@@ -769,6 +769,8 @@ local Vehicles = {
     { model = 'baller5',         name = '巴勒 LE (装甲版)',              brand = '加利万特',     price = 78000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'baller6',         name = '巴勒 LE LWB (装甲版)',          brand = '加利万特',     price = 82000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'iak_wheelchair',  name = '轮椅',                         brand = '医疗公司',      price = 3000,   category = '特殊车辆',           type = 'bike', shop = 'none' },
+    -- emergency
+    { model = '2vd_vscout',      name = '警用越野车',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
 }
 
 for i = 1, #Vehicles do
