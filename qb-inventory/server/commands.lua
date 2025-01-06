@@ -120,13 +120,10 @@ RegisterCommand('inventory', function(source)
     QBCore.Functions.TriggerClientCallback('qb-inventory:client:vehicleCheck', source, function(inventory, class)
         if not inventory then return OpenInventory(source) end
         if inventory:find('trunk-') then
-            print("before open")
-            print(inventory)
             OpenInventory(source, inventory, {
                 slots = VehicleStorage[class] and VehicleStorage[class].trunkSlots or VehicleStorage.default.slots,
                 maxweight = VehicleStorage[class] and VehicleStorage[class].trunkWeight or VehicleStorage.default.maxWeight
             })
-            print("after open")
             return
         elseif inventory:find('glovebox-') then
             OpenInventory(source, inventory, {
