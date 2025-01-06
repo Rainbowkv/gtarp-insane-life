@@ -124,14 +124,14 @@ RegisterNetEvent('qb-inventory:client:requiredItems', function(items, bool)
     })
 end)
 
-RegisterNetEvent('qb-inventory:client:hotbar', function(items)
-    hotbarShown = not hotbarShown
-    SendNUIMessage({
-        action = 'toggleHotbar',
-        open = hotbarShown,
-        items = items
-    })
-end)
+-- RegisterNetEvent('qb-inventory:client:hotbar', function(items)
+--     hotbarShown = not hotbarShown
+--     SendNUIMessage({
+--         action = 'toggleHotbar',
+--         open = hotbarShown,
+--         items = items
+--     })
+-- end)
 
 RegisterNetEvent('qb-inventory:client:closeInv', function()
     SendNUIMessage({
@@ -300,13 +300,9 @@ RegisterCommand('openInv', function()
     ExecuteCommand('inventory')
 end, false)
 
-RegisterCommand('toggleHotbar', function()
-    -- ExecuteCommand('hotbar')
-    ExecuteCommand('cash')
-    ExecuteCommand('bank')
-    ExecuteCommand('job')
-    ExecuteCommand('gang')
-end, false)
+-- RegisterCommand('toggleHotbar', function()
+--     ExecuteCommand('hotbar')
+-- end, false)
 
 for i = 1, 5 do
     RegisterCommand('slot_' .. i, function()
@@ -323,4 +319,4 @@ for i = 1, 5 do
 end
 
 RegisterKeyMapping('openInv', Lang:t('inf_mapping.opn_inv'), 'keyboard', Config.Keybinds.Open)
-RegisterKeyMapping('toggleHotbar', Lang:t('inf_mapping.tog_slots'), 'keyboard', Config.Keybinds.Hotbar)
+-- RegisterKeyMapping('toggleHotbar', Lang:t('inf_mapping.tog_slots'), 'keyboard', Config.Keybinds.Hotbar)

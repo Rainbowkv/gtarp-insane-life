@@ -97,20 +97,20 @@ RegisterCommand('closeInv', function(source)
     CloseInventory(source)
 end, false)
 
-RegisterCommand('hotbar', function(source)
-    if Player(source).state.inv_busy then return end
-    local QBPlayer = QBCore.Functions.GetPlayer(source)
-    if not QBPlayer then return end
-    if not QBPlayer or QBPlayer.PlayerData.metadata['isdead'] or QBPlayer.PlayerData.metadata['inlaststand'] or QBPlayer.PlayerData.metadata['ishandcuffed'] then return end
-    local hotbarItems = {
-        QBPlayer.PlayerData.items[1],
-        QBPlayer.PlayerData.items[2],
-        QBPlayer.PlayerData.items[3],
-        QBPlayer.PlayerData.items[4],
-        QBPlayer.PlayerData.items[5],
-    }
-    TriggerClientEvent('qb-inventory:client:hotbar', source, hotbarItems)
-end, false)
+-- RegisterCommand('hotbar', function(source)
+--     if Player(source).state.inv_busy then return end
+--     local QBPlayer = QBCore.Functions.GetPlayer(source)
+--     if not QBPlayer then return end
+--     if not QBPlayer or QBPlayer.PlayerData.metadata['isdead'] or QBPlayer.PlayerData.metadata['inlaststand'] or QBPlayer.PlayerData.metadata['ishandcuffed'] then return end
+--     local hotbarItems = {
+--         QBPlayer.PlayerData.items[1],
+--         QBPlayer.PlayerData.items[2],
+--         QBPlayer.PlayerData.items[3],
+--         QBPlayer.PlayerData.items[4],
+--         QBPlayer.PlayerData.items[5],
+--     }
+--     TriggerClientEvent('qb-inventory:client:hotbar', source, hotbarItems)
+-- end, false)
 
 RegisterCommand('inventory', function(source)
     if Player(source).state.inv_busy then return end
@@ -120,10 +120,13 @@ RegisterCommand('inventory', function(source)
     QBCore.Functions.TriggerClientCallback('qb-inventory:client:vehicleCheck', source, function(inventory, class)
         if not inventory then return OpenInventory(source) end
         if inventory:find('trunk-') then
+            print("before open")
+            print(inventory)
             OpenInventory(source, inventory, {
                 slots = VehicleStorage[class] and VehicleStorage[class].trunkSlots or VehicleStorage.default.slots,
                 maxweight = VehicleStorage[class] and VehicleStorage[class].trunkWeight or VehicleStorage.default.maxWeight
             })
+            print("after open")
             return
         elseif inventory:find('glovebox-') then
             OpenInventory(source, inventory, {
