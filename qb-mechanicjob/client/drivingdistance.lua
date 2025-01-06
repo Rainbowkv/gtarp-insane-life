@@ -124,8 +124,9 @@ local function TrackDistance()
                 end
             else
                 if drivingDistance[plate] then
-                    QBCore.Functions.Notify("本次驾驶里程: "..drivingDistance[plate].distance + accumulatedDistance.."m, 计入该车总里程...", 'success')
-                    TriggerServerEvent('qb-mechanicjob:server:updateDrivingDistance', plate, drivingDistance[plate].distance + accumulatedDistance)
+                    local increase_distance = math.floor(drivingDistance[plate].distance + accumulatedDistance)
+                    QBCore.Functions.Notify("本次驾驶里程: "..increase_distance.."m, 计入该车总里程...", 'success')
+                    TriggerServerEvent('qb-mechanicjob:server:updateDrivingDistance', plate, increase_distance)
                     drivingDistance[plate].distance = 0  -- 保存后，清零此次里程数
                     TriggerServerEvent('qb-mechanicjob:server:updateVehicleComponents', plate, vehicleComponents[plate])
                 end
