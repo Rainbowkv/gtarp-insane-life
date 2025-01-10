@@ -8,6 +8,10 @@ local isEscorting = false
 
 -- Functions
 
+exports('inLaststand', function()
+    return InLaststand  -- 返回是否在护送状态
+end)
+
 local function GetClosestPlayer()
     local closestPlayers = QBCore.Functions.GetPlayersFromCoords()
     local closestDistance = -1

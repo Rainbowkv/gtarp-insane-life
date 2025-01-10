@@ -306,6 +306,7 @@ end, false)
 
 for i = 1, 5 do
     RegisterCommand('slot_' .. i, function()
+        if IsEntityDead(PlayerPedId()) or exports["qb-ambulancejob"]:inLaststand() or exports["qb-policejob"]:isEscorting() or exports["qb-policejob"]:IsHandcuffed() then return end  -- 这些状态不能使用
         local itemData = PlayerData.items[i]
         if not itemData then return end
         if itemData.type == "weapon" then

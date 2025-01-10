@@ -34,4 +34,7 @@ files {
     'html/images/*.png',
 }
 
-dependency 'qb-weapons'
+dependencies {
+    'qb-weapons',
+    'qb-inventory',
+}

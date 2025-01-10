@@ -8,6 +8,18 @@ Config.WhitelistedVehicles = {}
 Config.PoliceHelicopter = 'POLMAV'
 Config.FuelResource = 'LegacyFuel' -- supports any that has a GetFuel() and SetFuel() export
 
+Config.controlsToDisable = {  -- when isHandcuffed
+    24, 257, 25, 263,  -- Attack, Attack 2, Aim, Melee Attack 1
+    45, 21, 22, 44, 37, 23,  -- Reload, Sprint, Jump, Cover, Select Weapon
+    288, 289, 170, 167,  -- Disable phone, Inventory, Animations, Job
+    26, 73, 199,  -- Disable looking behind, clearing animation, pause screen
+    59, 71, 72,  -- Disable steering, driving forward, reversing in vehicle
+    36,  -- Disable going stealth
+    264, 257, 140, 141, 142, 143,  -- Disable melee
+    75,   -- Disable exit vehicle
+    38,  -- E
+}
+
 Config.AmmoLabels = {
     AMMO_PISTOL = '9x19mm parabellum bullet',
     AMMO_SMG = '9x19mm parabellum bullet',
