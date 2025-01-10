@@ -36,5 +36,6 @@ files {
 
 dependencies {
     'qb-weapons',
-    'qb-inventory',
+    'qb-policejob',
+    'qb-ambulancejob'
 }
