@@ -44,14 +44,15 @@ Config.MenuItems = {
                 title = '互动',
                 icon = 'triangle-exclamation',
                 items = {
+                    -- {
+                    --     id = 'handcuff',
+                    --     title = '戴上手铐',
+                    --     icon = 'user-lock',
+                    --     type = 'client',
+                    --     event = 'police:client:CuffPlayerSoft',
+                    --     shouldClose = true
+                    -- }, 
                     {
-                        id = 'handcuff',
-                        title = '戴上手铐',
-                        icon = 'user-lock',
-                        type = 'client',
-                        event = 'police:client:CuffPlayerSoft',
-                        shouldClose = true
-                    }, {
                         id = 'playerinvehicle',
                         title = '放入车内',
                         icon = 'car-side',
