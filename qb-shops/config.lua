@@ -167,6 +167,7 @@ Config.Products = {
         { name = 'cleaningkit',       price = 150, amount = 150 },
         { name = 'advancedrepairkit', price = 500, amount = 50, requiredJob = 'mechanic' },
         { name = 'lockpick',          price = 200, amount = 50 },
+	{ name = 'advancedlockpick',  price = 5000, amount = 50 },
         { name = 'weapon_wrench',     price = 250, amount = 250 },
         { name = 'weapon_hammer',     price = 250, amount = 250 },
         { name = 'repairkit',         price = 250, amount = 50, requiredJob = { 'mechanic', 'police' } },
