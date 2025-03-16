@@ -30,5 +30,6 @@ files {
     'html/index.html',
     'html/style.css',
     'html/reset.css',
-    'html/script.js'
+    'html/script.js',
+    'html/jquery-3.6.0.min.js'
 }
