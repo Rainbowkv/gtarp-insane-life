@@ -1317,9 +1317,9 @@ RegisterNetEvent('qb-clothing:client:loadOutfit', function(oData)
         end
     end
 
-    if oData.outfitName ~= nil then
-        QBCore.Functions.Notify("You have chosen "..oData.outfitName.."! Press Confirm to confirm outfit.")
-    end
+    -- if oData.outfitName ~= nil then
+    --     QBCore.Functions.Notify("You have chosen "..oData.outfitName.."! Press Confirm to confirm outfit.")
+    -- end
 end)
 RegisterNetEvent("qb-clothing:client:adjustfacewear", function(type)
     if QBCore.Functions.GetPlayerData().metadata["ishandcuffed"] then return end
