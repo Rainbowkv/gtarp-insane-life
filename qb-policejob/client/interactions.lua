@@ -394,6 +394,14 @@ RegisterNetEvent('qb-police:client:EscortPlayer-forQbTarget', function(entity)
         local target_id = GetPlayerServerId(NetworkGetEntityOwner(entity))
         if not isHandcuffed and not isEscorted then
             TriggerServerEvent('police:server:EscortPlayer', target_id)
+            --- 之后按下x键就解除护送
+            while true do
+                Citizen.Wait(0) -- 确保不会卡死线程
+                if IsControlJustPressed(0, 73) then -- 73 是 X 键的 keycode
+                    TriggerServerEvent('police:server:EscortPlayer', target_id)
+                    break
+                end
+            end
         end
     else
         QBCore.Functions.Notify(Lang:t('error.none_nearby'), 'error')

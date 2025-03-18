@@ -762,6 +762,8 @@ local Vehicles = {
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'luxury' },
     { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'oycm5cs',         name = 'M5',                            brand = '宝马',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'century24',       name = 'GL8',                brand = '别克',           price = 100000,  category = '公共服务',      type = 'automobile', shop = 'none' },
+
     -- special
     { model = 'voltic2',         name = '火箭伏尔蒂克',                  brand = '科尔',             price = 9830400, category = '超级跑车',         type = 'automobile', shop = 'none' },
     { model = 'oppressor',       name = '压迫者',                        brand = '佩加西',         price = 9999999, category = '摩托车',    type = 'bike',       shop = 'none' },
