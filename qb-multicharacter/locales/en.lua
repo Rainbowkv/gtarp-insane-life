@@ -1,73 +1,73 @@
 local Translations = {
     notifications = {
-        ["char_deleted"] = "角色已删除！",
-        ["deleted_other_char"] = "你已成功删除公民ID为 %{citizenid} 的角色。",
-        ["forgot_citizenid"] = "你忘记输入公民ID了！",
+        ["char_deleted"] = "Character deleted!",
+        ["deleted_other_char"] = "You successfully deleted the character with citizen id %{citizenid}.",
+        ["forgot_citizenid"] = "You forgot to input a citizen id!",
     },
 
     commands = {
         -- /deletechar
-        ["deletechar_description"] = "删除其他玩家的角色",
-        ["citizenid"] = "公民ID",
-        ["citizenid_help"] = "你想删除的角色的公民ID",
+        ["deletechar_description"] = "Deletes another players character",
+        ["citizenid"] = "Citizen ID",
+        ["citizenid_help"] = "The Citizen ID of the character you want to delete",
 
         -- /logout
-        ["logout_description"] = "退出角色（仅限管理员）",
+        ["logout_description"] = "Logout of Character (Admin Only)",
 
         -- /closeNUI
-        ["closeNUI_description"] = "关闭多重NUI"
+        ["closeNUI_description"] = "Close Multi NUI"
     },
 
     misc = {
-        ["droppedplayer"] = "你已断开与《GTA 疯狂生活》的连接"
+        ["droppedplayer"] = "You have disconnected from QBCore"
     },
 
     ui = {
-        -- 主界面
-        characters_header = "我的角色",
-        emptyslot = "空槽",
-        play_button = "游玩",
-        create_button = "创建角色",
-        delete_button = "删除角色",
+        -- Main
+        characters_header = "My Characters",
+        emptyslot = "Empty Slot",
+        play_button = "Play",
+        create_button = "Create Character",
+        delete_button = "Delete Character",
 
-        -- 角色信息
-        charinfo_header = "角色信息",
-        charinfo_description = "选择一个角色槽以查看该角色的所有信息。",
-        name = "姓名",
-        male = "男",
-        female = "女",
-        firstname = "名字",
-        lastname = "姓氏",
-        nationality = "国籍",
-        gender = "性别",
-        birthdate = "出生日期",
-        job = "职业",
-        jobgrade = "职位等级",
-        cash = "现金",
-        bank = "银行",
-        phonenumber = "电话号码",
-        accountnumber = "账户号码",
+        -- Character Information
+        charinfo_header = "Character Information",
+        charinfo_description = "Select a character slot to see all information about your character.",
+        name = "Name",
+        male = "Male",
+        female = "Female",
+        firstname = "First Name",
+        lastname = "Last Name",
+        nationality = "Nationality",
+        gender = "Gender",
+        birthdate = "Birthdate",
+        job = "Job",
+        jobgrade = "Job Grade",
+        cash = "Cash",
+        bank = "Bank",
+        phonenumber = "Phone Number",
+        accountnumber = "Account Number",
 
-        chardel_header = "角色注册",
+        chardel_header = "Character Registration",
 
-        -- 删除角色
-        deletechar_header = "删除角色",
-        deletechar_description = "你确定要删除这个角色吗？",
+        -- Delete character
+        deletechar_header = "Delete Character",
+        deletechar_description = "Are You Sure You Want To Delete Your Character?",
 
-        -- 按钮
-        cancel = "取消",
-        confirm = "确认",
+        -- Buttons
+        cancel = "Cancel",
+        confirm = "Confirm",
 
-        -- 加载文本
-        retrieving_playerdata = "正在检索玩家数据",
-        validating_playerdata = "正在验证玩家数据",
-        retrieving_characters = "正在检索角色",
-        validating_characters = "正在验证角色",
+        -- Loading Text
+        retrieving_playerdata = "Retrieving player data",
+        validating_playerdata = "Validating player data",
+        retrieving_characters = "Retrieving characters",
+        validating_characters = "Validating characters",
 
-        -- 通知
-        ran_into_issue = "我们遇到了一些问题",
-        profanity = "似乎你在姓名或国籍中使用了不当言辞或脏话！",
-        forgotten_field = "似乎你忘记填写一个或多个字段！"
+        -- Notifications
+        ran_into_issue = "We ran into an issue",
+        profanity = "It seems like you are trying to use some type of profanity / bad words in your name or nationality!",
+        forgotten_field = "It seems like you have forgotten to input one or multiple of the fields!"
     }
 }
 
