@@ -22,6 +22,7 @@ files {
     'html/musica.mp3',
     'html/click.wav',
     'html/qb-pixel.png',
+    'html/jquery-3.6.0.min.js',
 }
 
 dependencies {
