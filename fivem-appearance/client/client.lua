@@ -172,7 +172,7 @@ end)
 function OpenShop(config, isPedMenu, shopType)
     QBCore.Functions.TriggerCallback("fivem-appearance:server:hasMoney", function(hasMoney, money)
         if not hasMoney and not isPedMenu then
-            QBCore.Functions.Notify("Not enough cash. Need $" .. money, "error")
+            QBCore.Functions.Notify("无足够现金. 需要 $" .. money, "error")
             return
         end
 
@@ -183,7 +183,7 @@ function OpenShop(config, isPedMenu, shopType)
                 end
                 TriggerServerEvent('fivem-appearance:server:saveAppearance', appearance)
             else
-                QBCore.Functions.Notify("Cancelled Customization")
+                QBCore.Functions.Notify("取消换装")
             end
         end, config)
     end, shopType)
