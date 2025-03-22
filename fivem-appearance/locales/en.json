@@ -1,0 +1,150 @@
+{
+  "modal": {
+  "save": {
+  "title": "保存自定义",
+  "description": "您将保持当前外观"
+  },
+  "exit": {
+  "title": "退出自定义",
+  "description": "不会保存任何更改"
+  },
+  "accept": "是的",
+  "decline": "不"
+  },
+  "ped": {
+  "title": "人物",
+  "model": "模型"
+  },
+  "headBlend": {
+  "title": "遗传",
+  "shape": {
+  "title": "面部形状",
+  "firstOption": "父亲",
+  "secondOption": "母亲",
+  "mix": "混合"
+  },
+  "skin": {
+  "title": "皮肤",
+  "firstOption": "父亲",
+  "secondOption": "母亲",
+  "mix": "混合"
+  },
+  "race": {
+  "title": "种族",
+  "shape": "外形",
+  "skin": "肤色",
+  "mix": "混合"
+  }
+  },
+  "faceFeatures": {
+  "title": "面部特征",
+  "nose": {
+  "title": "鼻子",
+  "width": "宽度",
+  "height": "高度",
+  "size": "大小",
+  "boneHeight": "鼻骨高度",
+  "boneTwist": "鼻骨扭转",
+  "peakHeight": "鼻峰高度"
+  },
+  "eyebrows": {
+  "title": "眉毛",
+  "height": "高度",
+  "depth": "深度"
+  },
+  "cheeks": {
+  "title": "脸颊",
+  "boneHeight": "颧骨高度",
+  "boneWidth": "颧骨宽度",
+  "width": "宽度"
+  },
+  "eyesAndMouth": {
+  "title": "眼睛和嘴巴",
+  "eyesOpening": "眼睛开度",
+  "lipsThickness": "嘴唇厚度"
+  },
+  "jaw": {
+  "title": "下巴",
+  "width": "宽度",
+  "size": "大小"
+  },
+  "chin": {
+  "title": "下颌",
+  "lowering": "降低",
+  "length": "长度",
+  "size": "大小",
+  "hole": "孔径"
+  },
+  "neck": {
+  "title": "脖子",
+  "thickness": "粗细"
+  }
+  },
+  "headOverlays": {
+  "title": "外观",
+  "hair": {
+  "title": "头发",
+  "style": "样式",
+  "color": "颜色",
+  "highlight": "高光",
+  "texture": "质地",
+  "fade": "渐变"
+  },
+  "opacity": "透明度",
+  "style": "样式",
+  "color": "颜色",
+  "secondColor": "次要颜色",
+  "blemishes": "瑕疵",
+  "beard": "胡须",
+  "eyebrows": "眉毛",
+  "ageing": "老化",
+  "makeUp": "化妆",
+  "blush": "腮红",
+  "complexion": "肤色",
+  "sunDamage": "晒伤",
+  "lipstick": "口红",
+  "moleAndFreckles": "痣和雀斑",
+  "chestHair": "胸毛",
+  "bodyBlemishes": "身体瑕疵",
+  "eyeColor": "眼睛颜色"
+  },
+  "components": {
+  "title": "衣服",
+  "drawable": "可绘制",
+  "texture": "纹理",
+  "mask": "面具",
+  "upperBody": "上半身",
+  "lowerBody": "下半身",
+  "bags": "包和降落伞",
+  "shoes": "鞋子",
+  "scarfAndChains": "围巾和链条",
+  "shirt": "衬衫",
+  "bodyArmor": "护甲",
+  "decals": "贴花",
+  "jackets": "夹克"
+  },
+  "props": {
+  "title": "道具",
+  "drawable": "可绘制",
+  "texture": "纹理",
+  "hats": "帽子和头盔",
+  "glasses": "眼镜",
+  "ear": "耳朵",
+  "watches": "手表",
+  "bracelets": "手镯"
+  },
+  "tattoos": {
+  "title": "纹身",
+  "items": {
+  "ZONE_TORSO": "躯干",
+  "ZONE_HEAD": "头部",
+  "ZONE_LEFT_ARM": "左臂",
+  "ZONE_RIGHT_ARM": "右臂",
+  "ZONE_LEFT_LEG": "左腿",
+  "ZONE_RIGHT_LEG": "右腿"
+  },
+  "apply": "应用",
+  "delete": "移除",
+  "deleteAll": "移除所有纹身"
+  }
+  }
