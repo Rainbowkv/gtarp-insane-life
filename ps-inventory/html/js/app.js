@@ -731,6 +731,11 @@ function handleDragDrop() {
                     }
                 }
                 InventoryError($(this).parent(), $(this).attr("data-slot"));
+                // 触发 NUI 事件，通知玩家
+                $.post("https://ps-inventory/Notify", JSON.stringify({
+                    message: "输入的拖拽数量超过物品实际数量，请调整",
+                    type: "error"
+                }));
             } else if (dragAmount > 0) {
                 if (itemData.price != null) {
                     $(this)
