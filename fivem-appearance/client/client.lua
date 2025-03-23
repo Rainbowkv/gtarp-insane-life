@@ -253,8 +253,8 @@ RegisterNetEvent('fivem-appearance:client:openClothingShop', OpenClothingShop)
 
 RegisterNetEvent('fivem-appearance:client:saveOutfit', function()
     local keyboard = exports['qb-input']:ShowInput({
-        header = "Name your outfit",
-        submitText = "Save Outfit",
+        header = "命名您即将保存的服装",
+        submitText = "保存套装",
         inputs = {{
             text = "Outfit Name",
             name = "input",
@@ -275,7 +275,7 @@ RegisterNetEvent('fivem-appearance:client:saveOutfit', function()
             end
 
             if outfitExists then
-                QBCore.Functions.Notify("Outfit with this name already exists.", "error")
+                QBCore.Functions.Notify("此名称已存在。", "error")
                 return
             end
 

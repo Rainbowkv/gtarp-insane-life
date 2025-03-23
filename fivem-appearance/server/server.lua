@@ -98,9 +98,9 @@ RegisterServerEvent("fivem-appearance:server:chargeCustomer", function(shopType)
     local Player = QBCore.Functions.GetPlayer(src)
     local money = getMoneyForShop(shopType)
     if Player.Functions.RemoveMoney('cash', money) then
-        TriggerClientEvent("QBCore:Notify", src, "Gave $" .. money .. " to " .. shopType .. "!", "success")
+        TriggerClientEvent("QBCore:Notify", src, "付款 $" .. money .. " 给 " .. shopType .. "!", "success")
     else
-        TriggerClientEvent("QBCore:Notify", src, "You didn't have enough money! Tried to exploit the system!", "error")
+        TriggerClientEvent("QBCore:Notify", src, "您没有足够的钱。", "error")
     end
 end)
 
@@ -121,7 +121,7 @@ RegisterNetEvent('fivem-appearance:server:saveOutfit', function(name, model, com
                     components = components,
                     props = props
                 }
-                TriggerClientEvent('QBCore:Notify', src, 'Outfit ' .. name .. ' has been saved', 'success')
+                TriggerClientEvent('QBCore:Notify', src, '套装: ' .. name .. ' 已保存', 'success')
             end)
     end
 end)
@@ -165,7 +165,7 @@ if Config.EnablePedMenu then
             if Player then
                 src = playerId
             else
-                TriggerClientEvent('QBCore:Notify', src, "Player not online", 'error')
+                TriggerClientEvent('QBCore:Notify', src, "公民不在国内", 'error')
                 return
             end
         end
