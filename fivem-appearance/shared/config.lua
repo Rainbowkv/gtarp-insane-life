@@ -127,7 +127,7 @@ Config.Stores = {
     {shopType = "tattoo", coords = vector4(-3169.52, 1074.86, 20.83, 253.29), width = 2, length = 2},
     {shopType = "tattoo", coords = vector4(1864.1, 3747.91, 33.03, 17.23), width = 2, length = 2},
     {shopType = "tattoo", coords = vector4(-294.24, 6200.12, 31.49, 195.72), width = 2, length = 2},
-    {shopType = "surgeon", coords = vector4(298.78, -572.81, 43.26, 114.27), width = 2, length = 2},
+    {shopType = "surgeon", coords = vector4(325.82, -571.41, 43.28, 157.59), width = 3, length = 3},
 }
 
 Config.ClothingRooms = {
