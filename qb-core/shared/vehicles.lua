@@ -776,6 +776,7 @@ local Vehicles = {
     -- emergency
     { model = '2vd_vscout',      name = '警用SUV',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
     { model = 'expolregent',      name = '警用探险者',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
+    { model = 'BCS_Silverado',      name = '联邦政府用车',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
 }
 
 for i = 1, #Vehicles do
