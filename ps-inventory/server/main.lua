@@ -1015,18 +1015,6 @@ local function CreateNewDrop(source, fromSlot, toSlot, itemAmount, created)
 	end
 end
 
-local function OpenInventoryById(source, targetId)
-    local QBPlayer = QBCore.Functions.GetPlayer(source)
-    local TargetPlayer = QBCore.Functions.GetPlayer(tonumber(targetId))
-    if not QBPlayer or not TargetPlayer then return end
-    if Player(targetId).state.inv_busy then TriggerClientEvent("ps-inventory:client:closeinv", targetId) end
-    Wait(1500)
-    Player(targetId).state.inv_busy = true
-    OpenInventory("otherplayer", targetId, nil, source)
-end
-
-exports('OpenInventoryById', OpenInventoryById)
-
 local function OpenInventory(name, id, other, origin)
 
     -- New QB compatibility
@@ -1061,9 +1049,9 @@ local function OpenInventory(name, id, other, origin)
 
 	local src = origin
 	local ply = Player(src)
-    local Player = QBCore.Functions.GetPlayer(src)
+    local QBPlayer = QBCore.Functions.GetPlayer(src)
 	if ply.state.inv_busy then
-		return QBCore.Functions.Notify(src, Lang:t("notify.noaccess"), 'error')
+		return QBCore.Functions.Notify(src, "方法：背包处于繁忙状态", 'error')
 	end
 	if name and id then
 		local secondInv = {}
@@ -1127,7 +1115,7 @@ local function OpenInventory(name, id, other, origin)
 			secondInv.maxweight = other.maxweight or 60000
 			secondInv.inventory = {}
 			secondInv.slots = other.slots or 50
-			if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and (Player.PlayerData.job.name ~= "police" or Player.PlayerData.job.type ~= "leo")) then
+			if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and (QBPlayer.PlayerData.job.name ~= "police" or QBPlayer.PlayerData.job.type ~= "leo")) then
 				secondInv.name = "none-inv"
 				secondInv.label = "Trunk-None"
 				secondInv.maxweight = other.maxweight or 60000
@@ -1228,12 +1216,18 @@ local function OpenInventory(name, id, other, origin)
 				secondInv.label = "Player-"..id
 				secondInv.maxweight = Config.MaxInventoryWeight
 				secondInv.inventory = OtherPlayer.PlayerData.items
-				if (Player.PlayerData.job.name == "police" or Player.PlayerData.job.type == "leo") and Player.PlayerData.job.onduty then
+				if (QBPlayer.PlayerData.job.name == "police" or QBPlayer.PlayerData.job.type == "leo") and QBPlayer.PlayerData.job.onduty then
 					secondInv.slots = Config.MaxInventorySlots
 				else
 					secondInv.slots = Config.MaxInventorySlots - 1
 				end
 				Wait(250)
+				print("open----")
+				print("id: "..id)
+				print(Player(id).state.inv_busy)
+				Player(id).state.inv_busy = true
+				print(Player(id).state.inv_busy)
+				print("----")
 			end
 		else
 			if Drops[id] then
@@ -1265,12 +1259,24 @@ local function OpenInventory(name, id, other, origin)
 			end
 		end
 		TriggerClientEvent("ps-inventory:client:closeinv", id)
-		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, Player.PlayerData.items, secondInv)
+		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, QBPlayer.PlayerData.items, secondInv)
 	else
-		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, Player.PlayerData.items)
+		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, QBPlayer.PlayerData.items)
 	end
 end
 exports('OpenInventory',OpenInventory)
+
+local function OpenInventoryById(source, targetId)
+    local QBPlayer = QBCore.Functions.GetPlayer(source)
+    local TargetPlayer = QBCore.Functions.GetPlayer(tonumber(targetId))
+    if not QBPlayer or not TargetPlayer then return end
+    if Player(targetId).state.inv_busy then TriggerClientEvent("ps-inventory:client:closeinv", targetId) end
+    Wait(1500)
+	-- Player(targetId).state.inv_busy = true  -- rb_code
+    OpenInventory("otherplayer", targetId, nil, source)
+end
+
+exports('OpenInventoryById', OpenInventoryById)
 
 -- Events
 
@@ -1435,7 +1441,7 @@ RegisterNetEvent('ps-inventory:server:OpenInventory', function(name, id, other)
 		local ply = Player(src)
 		local Player = QBCore.Functions.GetPlayer(src)
 		if ply.state.inv_busy then
-			return QBCore.Functions.Notify(src, Lang:t("notify.noaccess"), 'error')
+			return QBCore.Functions.Notify(src, "事件：背包处于繁忙状态", 'error')
 		end
 		if name and id then
 			local secondInv = {}
@@ -1643,6 +1649,8 @@ RegisterNetEvent('ps-inventory:server:OpenInventory', function(name, id, other)
 end)
 
 RegisterNetEvent('ps-inventory:server:SaveInventory', function(type, id)
+	print("entersave")
+	print(type)
 	if type == "trunk" then
 		if IsVehicleOwned(id) then
 			SaveOwnedVehicleItems(id, Trunks[id].items)
@@ -1665,6 +1673,11 @@ RegisterNetEvent('ps-inventory:server:SaveInventory', function(type, id)
 				TriggerClientEvent("ps-inventory:client:RemoveDropItem", -1, id)
 			end
 		end
+	elseif type == "otherplayer" then
+		print("closeAndSave, id:"..id..".inv_busy:")
+		print(Player(id).state.inv_busy)
+		Player(id).state.inv_busy = false
+		print(Player(id).state.inv_busy)
 	end
 end)
 

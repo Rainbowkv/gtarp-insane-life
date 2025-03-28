@@ -349,6 +349,14 @@ end
 
 -- Events
 
+AddEventHandler('onResourceStart', function()
+    LocalPlayer.state:set("inv_busy", false, true)
+    PlayerData = QBCore.Functions.GetPlayerData()
+    QBCore.Functions.TriggerCallback("ps-inventory:server:GetCurrentDrops", function(theDrops)
+		Drops = theDrops
+    end)
+end)
+
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     LocalPlayer.state:set("inv_busy", false, true)
     PlayerData = QBCore.Functions.GetPlayerData()
@@ -874,6 +882,7 @@ RegisterNUICallback('getCombineItem', function(data, cb)
 end)
 
 RegisterNUICallback("CloseInventory", function()
+    print(currentOtherInventory)  -- rb_code
     if currentOtherInventory == "none-inv" then
         CurrentDrop = nil
         CurrentVehicle = nil
@@ -885,7 +894,10 @@ RegisterNUICallback("CloseInventory", function()
         ClearPedTasks(PlayerPedId())
         return
     end
-    if CurrentVehicle ~= nil then
+    if currentOtherInventory ~= nil and string.match(currentOtherInventory, "^otherplayer%-") then
+        print("匹配成功")
+        TriggerServerEvent("ps-inventory:server:SaveInventory", "otherplayer", tonumber(currentOtherInventory:sub(13)))  -- rb_code
+    elseif CurrentVehicle ~= nil then
         CloseTrunk()
         TriggerServerEvent("ps-inventory:server:SaveInventory", "trunk", CurrentVehicle)
         CurrentVehicle = nil
