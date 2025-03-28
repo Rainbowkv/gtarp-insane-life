@@ -2853,6 +2853,28 @@ end
 
 exports('OpenShop', OpenShop)
 
+-- rb_code
+function GetItemCount(source, items)
+    local Player = QBCore.Functions.GetPlayer(source)
+    if not Player then return end
+    local isTable = type(items) == 'table'
+    local itemsSet = isTable and {} or nil
+    if isTable then
+        for _, item in pairs(items) do
+            itemsSet[item] = true
+        end
+    end
+    local count = 0
+    for _, item in pairs(Player.PlayerData.items) do
+        if (isTable and itemsSet[item.name]) or (not isTable and items == item.name) then
+            count = count + item.amount
+        end
+    end
+    return count
+end
+
+exports('GetItemCount', GetItemCount)
+
 -- Warning Messages
 
 RegisterNetEvent('ps-inventory:server:addTrunkItems', function()
