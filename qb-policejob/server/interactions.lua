@@ -8,7 +8,7 @@ RegisterNetEvent('police:server:SearchPlayer', function()
     if player ~= -1 and distance < 2.5 then
         local SearchedPlayer = QBCore.Functions.GetPlayer(tonumber(player))
         if not SearchedPlayer then return end
-        exports['ps-inventory']:OpenInventoryById(src, tonumber(player))
+        exports['qb-inventory']:OpenInventoryById(src, tonumber(player))
         TriggerClientEvent('QBCore:Notify', src, Lang:t('info.cash_found', { cash = SearchedPlayer.PlayerData.money['cash'] }))
         TriggerClientEvent('QBCore:Notify', player, Lang:t('info.being_searched'))
     else
@@ -163,8 +163,8 @@ RegisterNetEvent('police:server:SeizeCash', function(playerId)
     local moneyAmount = SearchedPlayer.PlayerData.money['cash']
     local info = { cash = moneyAmount }
     SearchedPlayer.Functions.RemoveMoney('cash', moneyAmount, 'police-cash-seized')
-    exports['ps-inventory']:AddItem(src, 'moneybag', 1, false, info, 'police:server:SeizeCash')
-    TriggerClientEvent('ps-inventory:client:ItemBox', src, QBCore.Shared.Items['moneybag'], 'add')
+    exports['qb-inventory']:AddItem(src, 'moneybag', 1, false, info, 'police:server:SeizeCash')
+    TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['moneybag'], 'add')
     TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t('info.cash_confiscated'))
 end)
 
@@ -210,7 +210,7 @@ RegisterNetEvent('police:server:RobPlayer', function(playerId)
     end
     Player.Functions.AddMoney('cash', robMoney, 'police-player-robbed')
     SearchedPlayer.Functions.RemoveMoney('cash', robMoney, 'police-player-robbed')
-    exports['ps-inventory']:OpenInventoryById(src, playerId)
+    exports['qb-inventory']:OpenInventoryById(src, playerId)
     TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t('info.cash_robbed', { money = robMoney }))
     TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('info.stolen_money', { stolen = robMoney }))
 end)
