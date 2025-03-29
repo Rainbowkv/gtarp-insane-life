@@ -1049,7 +1049,7 @@ local function OpenInventory(name, id, other, origin)
 
 	local src = origin
 	local ply = Player(src)
-    local QBPlayer = QBCore.Functions.GetPlayer(src)
+    local Player = QBCore.Functions.GetPlayer(src)
 	if ply.state.inv_busy then
 		return QBCore.Functions.Notify(src, "方法：背包处于繁忙状态", 'error')
 	end
@@ -1115,7 +1115,7 @@ local function OpenInventory(name, id, other, origin)
 			secondInv.maxweight = other.maxweight or 60000
 			secondInv.inventory = {}
 			secondInv.slots = other.slots or 50
-			if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and (QBPlayer.PlayerData.job.name ~= "police" or QBPlayer.PlayerData.job.type ~= "leo")) then
+			if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and (Player.PlayerData.job.name ~= "police" or Player.PlayerData.job.type ~= "leo")) then
 				secondInv.name = "none-inv"
 				secondInv.label = "Trunk-None"
 				secondInv.maxweight = other.maxweight or 60000
@@ -1216,17 +1216,16 @@ local function OpenInventory(name, id, other, origin)
 				secondInv.label = "Player-"..id
 				secondInv.maxweight = Config.MaxInventoryWeight
 				secondInv.inventory = OtherPlayer.PlayerData.items
-				if (QBPlayer.PlayerData.job.name == "police" or QBPlayer.PlayerData.job.type == "leo") and QBPlayer.PlayerData.job.onduty then
+				if (Player.PlayerData.job.name == "police" or Player.PlayerData.job.type == "leo") and Player.PlayerData.job.onduty then
 					secondInv.slots = Config.MaxInventorySlots
 				else
 					secondInv.slots = Config.MaxInventorySlots - 1
 				end
 				Wait(250)
-				print("open----")
+				print("----")
 				print("id: "..id)
-				print(Player(id).state.inv_busy)
-				Player(id).state.inv_busy = true
-				print(Player(id).state.inv_busy)
+				-- QBCore.Functions.GetPlayer(id).state.inv_busy = true  -- rb_code
+				-- print(QBCore.Functions.GetPlayer(id).state.inv_busy)
 				print("----")
 			end
 		else
@@ -1259,9 +1258,9 @@ local function OpenInventory(name, id, other, origin)
 			end
 		end
 		TriggerClientEvent("ps-inventory:client:closeinv", id)
-		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, QBPlayer.PlayerData.items, secondInv)
+		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, Player.PlayerData.items, secondInv)
 	else
-		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, QBPlayer.PlayerData.items)
+		TriggerClientEvent("ps-inventory:client:OpenInventory", src, {}, Player.PlayerData.items)
 	end
 end
 exports('OpenInventory',OpenInventory)
@@ -1272,7 +1271,7 @@ local function OpenInventoryById(source, targetId)
     if not QBPlayer or not TargetPlayer then return end
     if Player(targetId).state.inv_busy then TriggerClientEvent("ps-inventory:client:closeinv", targetId) end
     Wait(1500)
-	-- Player(targetId).state.inv_busy = true  -- rb_code
+	Player(targetId).state.inv_busy = true  -- rb_code
     OpenInventory("otherplayer", targetId, nil, source)
 end
 
@@ -1649,8 +1648,6 @@ RegisterNetEvent('ps-inventory:server:OpenInventory', function(name, id, other)
 end)
 
 RegisterNetEvent('ps-inventory:server:SaveInventory', function(type, id)
-	print("entersave")
-	print(type)
 	if type == "trunk" then
 		if IsVehicleOwned(id) then
 			SaveOwnedVehicleItems(id, Trunks[id].items)
@@ -1674,10 +1671,7 @@ RegisterNetEvent('ps-inventory:server:SaveInventory', function(type, id)
 			end
 		end
 	elseif type == "otherplayer" then
-		print("closeAndSave, id:"..id..".inv_busy:")
-		print(Player(id).state.inv_busy)
 		Player(id).state.inv_busy = false
-		print(Player(id).state.inv_busy)
 	end
 end)
 
@@ -2852,28 +2846,6 @@ function OpenShop(source, name)
 end
 
 exports('OpenShop', OpenShop)
-
--- rb_code
-function GetItemCount(source, items)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if not Player then return end
-    local isTable = type(items) == 'table'
-    local itemsSet = isTable and {} or nil
-    if isTable then
-        for _, item in pairs(items) do
-            itemsSet[item] = true
-        end
-    end
-    local count = 0
-    for _, item in pairs(Player.PlayerData.items) do
-        if (isTable and itemsSet[item.name]) or (not isTable and items == item.name) then
-            count = count + item.amount
-        end
-    end
-    return count
-end
-
-exports('GetItemCount', GetItemCount)
 
 -- Warning Messages
 

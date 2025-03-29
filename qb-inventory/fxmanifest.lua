@@ -24,7 +24,6 @@ files {
 	'html/ui.html',
 	'html/css/main.css',
 	'html/js/app.js',
-	'html/js/jquery-ui.js',
 	'html/images/*.svg',
 	'html/images/*.png',
 	'html/images/*.jpg',
