@@ -115,10 +115,43 @@ QBCore.Commands.Add('escort', Lang:t('commands.escort'), {}, false, function(sou
     TriggerClientEvent('police:client:EscortPlayer', src)
 end)
 
-QBCore.Commands.Add('callsign', Lang:t('commands.callsign'), { { name = 'name', help = Lang:t('info.callsign_name') } }, false, function(source, args)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.SetMetaData('callsign', table.concat(args, ' '))
+-- QBCore.Commands.Add('callsign', Lang:t('commands.callsign'), { { name = 'name', help = Lang:t('info.callsign_name') } }, false, function(source, args)
+--     local src = source
+--     local Player = QBCore.Functions.GetPlayer(src)
+--     Player.Functions.SetMetaData('callsign', table.concat(args, ' '))
+-- end)
+
+-- rb_code
+QBCore.Commands.Add('callsign', Lang:t('commands.callsign'), { 
+    { name = 'playerId', help = Lang:t('commands.player_id') },
+    { name = 'callsign', help = Lang:t('commands.number') }
+}, false, function(source, args)
+    local targetId = tonumber(args[1]) -- 获取玩家 ID
+    -- local callsign = table.concat(args, ' ', 2) -- 获取呼号内容
+    local callsign = args[2] -- 获取呼号内容
+
+    if not targetId or not callsign then
+        TriggerClientEvent('QBCore:Notify', source, "命令输入不正确，请检查", 'error')
+        return
+    end
+    if not callsign:match("^%d%d%d$") then
+        TriggerClientEvent('QBCore:Notify', source, "呼号必须是三位整数，例如 101", 'error')
+        return
+    end
+    
+    local Player = QBCore.Functions.GetPlayer(targetId)
+    if Player then
+        local job = Player.PlayerData.job
+        if job.name ~= 'police' or job.grade.level < 3 then
+            TriggerClientEvent('QBCore:Notify', source, "您不是警察或者职级不够", 'error')
+            return
+        end
+        Player.Functions.SetMetaData('callsign', callsign)
+        TriggerClientEvent('QBCore:Notify', source, "id: " .. targetId .. "的警员现在警号为: " .. callsign, 'success')
+        TriggerClientEvent('QBCore:Notify', targetId, "您的警号被更新为: " .. callsign, 'primary')
+    else
+        TriggerClientEvent('QBCore:Notify', source, "没有id: " .. targetId .. "的玩家", 'error')
+    end
 end)
 
 QBCore.Commands.Add('jail', Lang:t('commands.jail_player'), {}, false, function(source)

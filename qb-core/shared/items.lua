@@ -425,5 +425,5 @@ QBShared.Items = {
     weedkey = {name = 'weedkey', 						label = '大麻实验室钥匙', 				    weight = 200, 		type = 'item', 		image = 'keyc.png', 			    unique = false, 	useable = false, 	shouldClose = false,   combinable = nil,   description = '随机钥匙，背面刻有"种子"...'},
     finescale = {name = 'finescale', 					label = '精密天平', 			    weight = 200, 		type = 'item', 		image = 'finescale.png', 			unique = false, 	useable = false, 	shouldClose = false,   combinable = nil,   description = '用于精细粉末和材料的秤。'},
     -- coke_small_brick = {name = 'coke_small_brick', 		label = '小型可卡因包装', 			weight = 350, 		type = 'item', 		image = 'coke_small_brick.png', 	unique = false, 	useable = false, 	shouldClose = true,	   combinable = nil,   description = '小包装可卡因，主要用于交易，占据大量空间'},
-    pdbadge = {name = 'pdbadge', 					label = '警徽', 			    weight = 200, 		type = 'item', 		image = 'pdbadge.png', 			unique = false, 	useable = true, 	shouldClose = true,   combinable = nil,   description = '用于展示警察身份'},
+    pdbadge = {name = 'pdbadge', 					label = '警徽', 			    weight = 200, 		type = 'item', 		image = 'pdbadge.png', 			unique = true, 	useable = true, 	shouldClose = true,   combinable = nil,   description = '用于展示警察身份'},
 }
