@@ -1,9 +1,9 @@
-# qb-input
+# nmsh-input
 
-NUI input system for QBCore
+# My Discord Server
+https://discord.gg/AXEVAqH7yX
 
-This is a modified version of **[NH Keyboard](https://forum.cfx.re/t/no-longer-supported-standalone-nerohiro-s-keyboard-dynamic-nui-keyboard-input/2506326)** by **[NeroHiro](https://github.com/nerohiro)**
-
+![Uploading image.png…](https://media.discordapp.net/attachments/1126640360664338572/1196101785899761684/image.png?ex=65b66798&is=65a3f298&hm=fa3a236112d6226b4659ad5bb90675b737f41f9fa1e89fd91425aaaedad53ac3&=&format=webp&quality=lossless&width=1202&height=676)
 ## Example
 
 Here is an example commant which will create a basic form and will print out it's inputs:

@@ -1,8 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
-lua54 'yes'
-author 'Kakarot'
-description 'Menu that allows players to input information for various things'
+
+description 'QB-Input'
 version '1.2.0'
 
 client_scripts {
@@ -16,3 +15,5 @@ files {
     'html/styles/*.css',
     'html/script.js'
 }
+
+lua54 'yes'
