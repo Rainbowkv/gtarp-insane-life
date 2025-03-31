@@ -1649,8 +1649,6 @@ RegisterNetEvent('qb-inventory:server:OpenInventory', function(name, id, other)
 end)
 
 RegisterNetEvent('qb-inventory:server:SaveInventory', function(type, id)
-	print("entersave")
-	print(type)
 	if type == "trunk" then
 		if IsVehicleOwned(id) then
 			SaveOwnedVehicleItems(id, Trunks[id].items)

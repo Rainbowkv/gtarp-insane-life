@@ -100,10 +100,10 @@ Config.Products = {
     },
     ['police'] = {
         { name = 'weapon_pistol',       price = 500, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_PI_FLSH', label = 'Flashlight' } } } },
-        { name = 'weapon_stungun',      price = 400, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' } } } },
-        { name = 'weapon_pumpshotgun',  price = 2000, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' } } } },
-        { name = 'weapon_smg',          price = 2000, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_SCOPE_MACRO_02', label = '1x Scope' }, { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' } } } },
-        { name = 'weapon_carbinerifle', price = 5000, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' }, { component = 'COMPONENT_AT_SCOPE_MEDIUM', label = '3x Scope' } } } },
+        -- { name = 'weapon_stungun',      price = 400, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' } } } },
+        -- { name = 'weapon_pumpshotgun',  price = 2000, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' } } } },
+        -- { name = 'weapon_smg',          price = 2000, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_SCOPE_MACRO_02', label = '1x Scope' }, { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' } } } },
+        -- { name = 'weapon_carbinerifle', price = 5000, amount = 50, info = { attachments = { { component = 'COMPONENT_AT_AR_FLSH', label = 'Flashlight' }, { component = 'COMPONENT_AT_SCOPE_MEDIUM', label = '3x Scope' } } } },
         { name = 'weapon_nightstick',   price = 300, amount = 50 },
         { name = 'weapon_flashlight',   price = 200, amount = 50 },
         { name = 'pistol_ammo',         price = 10, amount = 50 },
@@ -780,7 +780,7 @@ Config.Locations = {
 
     ['police'] = {
         ['label'] = '警械库',
-        ['coords'] = vector4(461.8498, -981.0677, 30.6896, 91.5892),
+        ['coords'] = vector4(484.49, -995.57, 30.69, 179.15),
         ['ped'] = 'mp_m_securoguard_01',
         ['scenario'] = 'WORLD_HUMAN_COP_IDLES',
         ['radius'] = 1.5,
