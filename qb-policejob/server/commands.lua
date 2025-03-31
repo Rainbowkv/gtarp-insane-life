@@ -139,9 +139,11 @@ QBCore.Commands.Add('callsign', Lang:t('commands.callsign'), {
         return
     end
     
-    local Player = QBCore.Functions.GetPlayer(targetId)
+    local Player = QBCore.Functions.GetPlayer(source)
     if Player then
         local job = Player.PlayerData.job
+	print(job.name)
+	print(job.grade.level)
         if job.name ~= 'police' or job.grade.level < 3 then
             TriggerClientEvent('QBCore:Notify', source, "您不是警察或者职级不够", 'error')
             return
