@@ -148,7 +148,7 @@ QBCore.Commands.Add('callsign', Lang:t('commands.callsign'), {
             TriggerClientEvent('QBCore:Notify', source, "您不是警察或者职级不够", 'error')
             return
         end
-        Player.Functions.SetMetaData('callsign', callsign)
+        QBCore.Functions.GetPlayer(targetId).Functions.SetMetaData('callsign', callsign)
         TriggerClientEvent('QBCore:Notify', source, "id: " .. targetId .. "的警员现在警号为: " .. callsign, 'success')
         TriggerClientEvent('QBCore:Notify', targetId, "您的警号被更新为: " .. callsign, 'primary')
     else
