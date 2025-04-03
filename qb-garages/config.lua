@@ -303,7 +303,7 @@ Config.Garages = {
     },
     police = {
         label = '密申罗警局',
-        takeVehicle = vector3(462.83, -1019.52, 28.1),
+        takeVehicle = vector3(442.28, -1026.46, 28.72),
         spawnPoint = {
             vector4(446.16, -1025.79, 28.23, 6.59)
         },
