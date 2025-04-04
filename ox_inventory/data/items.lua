@@ -2495,4 +2495,191 @@ return {
 		weight = 200,
 		stack = true,
 	},
+
+	["evidence_ne"] = {
+		label = "脚印证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_ne.png",
+		}
+	},
+
+	["bcsd_badge"] = {
+		label = "治安官徽章",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您作为治安官的身份标识，包含您的职级和徽章编号",
+		client = {
+			image = "bcsd_badge.png",
+		}
+	},
+
+	["megaphone"] = {
+		label = "扩音器",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "一个可以让您的声音被听到的扩音器",
+		client = {
+			image = "megaphone.png",
+		}
+	},
+
+	["evidence_az"] = {
+		label = "通用证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_az.png",
+		}
+	},
+
+	["fib_badge"] = {
+		label = "联邦调查局徽章",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您作为联邦探员的身份标识，包含您的职级和徽章编号",
+		client = {
+			image = "fib_badge.png",
+		}
+	},
+
+	["instant_camera"] = {
+		label = "即时相机",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "一台专为犯罪现场拍摄照片设计的简易相机",
+		client = {
+			image = "polaroid.png",
+		}
+	},
+
+	["evidence_v"] = {
+		label = "毒品证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_v.png",
+		}
+	},
+
+	["lspd_badge"] = {
+		label = "警察徽章",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您作为警察的身份标识，包含您的职级和徽章编号",
+		client = {
+			image = "lspd_badge.png",
+		}
+	},
+
+	["report_evidence"] = {
+		label = "证据报告",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "最多可以收集4件证据的报告",
+		client = {
+			image = "report_evidence.png",
+		}
+	},
+
+	["evidence_b"] = {
+		label = "车辆证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_b.png",
+		}
+	},
+
+	["evidence_a"] = {
+		label = "弹道证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_a.png",
+		}
+	},
+
+	["k9"] = {
+		label = "警犬哨子",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "使用哨子召唤警犬单位",
+		client = {
+			image = "whistle.png",
+		}
+	},
+
+	["photo"] = {
+		label = "照片",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "一张图像",
+		client = {
+			image = "photos.png",
+		}
+	},
+
+	["evidence_n"] = {
+		label = "撞击证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_n.png",
+		}
+	},
+
+	["police_cad"] = {
+		label = "警务平板",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您的个人平板电脑，包含圣安地列斯警察的所有信息",
+		client = {
+			image = "tablet.png",
+		}
+	},
+
+	["evidence_r"] = {
+		label = "血迹证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_r.png",
+		}
+	},
+
+	["evidence_ro"] = {
+		label = "通用证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_ro.png",
+		}
+	},
 }

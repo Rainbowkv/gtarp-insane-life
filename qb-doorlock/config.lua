@@ -50,6 +50,8 @@ Config.DoorList['configname-identifier'] = {
 
 Config.DoorStates = {}
 Config.DoorList = {
+
+	-- mission-raw
 	-- Reception Side Door 1
 	{
 		objName = 'gabz_mrpd_door_05',
@@ -310,7 +312,28 @@ Config.DoorList = {
 		pickable = false,
 		distance = 1.25,
 	},
+	-- Back_door rb_code
+	{
+		textCoords = vector3(457, -972, 30.71),
+		authorizedJobs = { 'police' },
+		locking = false,
+		locked = true,
+		pickable = false,
+		distance = 1.5,
+		doors = {
+			{
+				objName = 'gabz_mrpd_reception_entrancedoor',
+				objYaw = 180.1287689209,
+				objCoords = vector3(458.208740, -972.254272, 30.815308)
+			},
 
+			{
+				objName = 'gabz_mrpd_reception_entrancedoor',
+				objYaw = 0.053879842162132,
+				objCoords = vector3(455.886169, -972.254272, 30.815308)
+			}
+		}
+	},
 	--end of Gabz MRPD
 			
 	--
@@ -1047,7 +1070,7 @@ Config.DoorList = {
 				objCoords = vector3(-765.6217, -237.9405, 37.43247) 		
 			}
 		}
-	},		
+	},			
 	----------------
 	-- Pickle Rental
 	----------------

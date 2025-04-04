@@ -112,7 +112,7 @@ local function refreshShops()
 	for type, shop in pairs(shopTypes) do
 		local blip = shop.blip
 		local label = shop.label or locale('open_label', shop.name)
-
+		
 		if shared.target then
 			if shop.model then
 				if not hasShopAccess(shop) then goto skipLoop end

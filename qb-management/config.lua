@@ -7,9 +7,9 @@ Config.BossMenus = {
     police = {
 	vector3(460.26, -985.41, 30.73),
     },
-    ambulance = {
-        vector3(311.21, -599.36, 43.29),
-    },
+    -- ambulance = {
+        -- vector3(311.21, -599.36, 43.29),
+    -- },
     cardealer = {
         vector3(-32.94, -1114.64, 26.42),
     },

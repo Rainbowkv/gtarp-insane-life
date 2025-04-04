@@ -1,12 +1,13 @@
 return {
 	General = {
-		name = 'Shop',
+		-- name = 'Shop',
+		name = '超市',
 		blip = {
 			id = 59, colour = 69, scale = 0.8
 		}, inventory = {
 			{ name = 'burger', price = 10 },
 			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
+			{ name = 'kurkakola', price = 10 },
 		}, locations = {
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),
@@ -33,13 +34,15 @@ return {
 	},
 
 	Liquor = {
-		name = 'Liquor Store',
+		-- name = 'Liquor Store',
+		name = '酒铺',
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
-			{ name = 'burger', price = 15 },
+			{ name = 'beer', price = 10 },
+			{ name = 'whiskey', price = 1000 },
+			{ name = 'vodka', price = 500 },
+			{ name = 'wine', price = 200 },
 		}, locations = {
 			vec3(1135.808, -982.281, 46.415),
 			vec3(-1222.915, -906.983, 12.326),
@@ -59,7 +62,8 @@ return {
 	},
 
 	YouTool = {
-		name = 'YouTool',
+		-- name = 'YouTool',
+		name = '工具店',
 		blip = {
 			id = 402, colour = 69, scale = 0.8
 		}, inventory = {
@@ -73,7 +77,8 @@ return {
 	},
 
 	Ammunation = {
-		name = 'Ammunation',
+		-- name = 'Ammunation',
+		name = '售枪店',
 		blip = {
 			id = 110, colour = 69, scale = 0.8
 		}, inventory = {
@@ -105,7 +110,8 @@ return {
 	},
 
 	PoliceArmoury = {
-		name = 'Police Armoury',
+		-- name = 'Police Armoury',
+		name = '警用物品/枪械',
 		groups = shared.police,
 		blip = {
 			id = 110, colour = 84, scale = 0.8
@@ -115,17 +121,21 @@ return {
 			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
 			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
 			{ name = 'WEAPON_PISTOL', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-			{ name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
-			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} }
+			{ name = 'WEAPON_CARBINERIFLE', price = 10000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
+			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} },
+			{ name = 'megaphone', price = 500},
+			{ name = 'police_cad', price = 2000},
+			{ name = 'k9', price = 200, license = 'k9'},
 		}, locations = {
-			vec3(484.21, -995.67, 30.69)
+			vec3(484.21, -995.67, 30.69)  -- 480.82, -990.16, 30.69
 		}, targets = {
 			{ loc = vec3(484.21, -995.67, 30.69), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
 	},
 
 	Medicine = {
-		name = 'Medicine Cabinet',
+		-- name = 'Medicine Cabinet',
+		name = '药箱',
 		groups = {
 			['ambulance'] = 0
 		},
@@ -142,13 +152,18 @@ return {
 	},
 
 	BlackMarketArms = {
-		name = 'Black Market (Arms)',
+		-- name = 'Black Market (Arms)',
+		name = "黑市商人",
 		inventory = {
 			{ name = 'WEAPON_DAGGER', price = 5000, metadata = { registered = false	}, currency = 'black_money' },
 			{ name = 'WEAPON_CERAMICPISTOL', price = 50000, metadata = { registered = false }, currency = 'black_money' },
 			{ name = 'at_suppressor_light', price = 50000, currency = 'black_money' },
 			{ name = 'ammo-rifle', price = 1000, currency = 'black_money' },
-			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' }
+			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' },
+			{ name = 'suppressor_attachment', price = 20000, currency = 'black_money'},
+			{ name = 'methkey', price = 5000, currency = 'black_money'},
+			{ name = 'weedkey', price = 10000, currency = 'black_money'},
+			{ name = 'cocainekey', price = 10000, currency = 'black_money'},
 		}, locations = {
 			vec3(309.09, -913.75, 56.46)
 		}, targets = {
@@ -157,13 +172,16 @@ return {
 	},
 
 	VendingMachineDrinks = {
-		name = 'Vending Machine',
+		-- name = 'Vending Machine',
+		name = "自动贩卖机",
 		inventory = {
 			{ name = 'water', price = 10 },
-			{ name = 'cola', price = 10 },
+			{ name = 'kurkakola', price = 10 },
+			{ name = 'burger', price = 22},
+			{ neme = 'twerks_candy', price = 5}
 		},
 		model = {
-			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`
+			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`, `prop_vend_snak_01`
 		}
 	}
 }
