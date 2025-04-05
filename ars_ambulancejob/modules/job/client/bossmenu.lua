@@ -16,24 +16,24 @@ for index, hospital in pairs(hospitals) do
     --         end
     --     }
     -- })
-    exports['qb-target']:AddTargetModel("prop_trailer_monitor_01", {
-        options = {
-            {
-                type = "client",
-                icon = "fas fa-radiation",
-                label = locale("bossmenu_label"),
-                canInteract = function(entity)
-                    return math.floor(GetEntityCoords(entity).x) == 339
-                end,
-                action = function(entity)
-                    if Framework.getPlayerJobGrade() >= hospital.bossmenu.min_grade then
-                        Framework.openBossMenu(Framework.playerJob())
-                    else
-                        print(locale("bossmenu_denied"))
-                    end
-                end
-            },
-        },
-        distance = 2.0
-    })
+    -- exports['qb-target']:AddTargetModel("prop_trailer_monitor_01", {
+    --     options = {
+    --         {
+    --             type = "client",
+    --             icon = "fas fa-radiation",
+    --             label = locale("bossmenu_label"),
+    --             canInteract = function(entity)
+    --                 return math.floor(GetEntityCoords(entity).x) == 339
+    --             end,
+    --             action = function(entity)
+    --                 if Framework.getPlayerJobGrade() >= hospital.bossmenu.min_grade then
+    --                     Framework.openBossMenu(Framework.playerJob())
+    --                 else
+    --                     print(locale("bossmenu_denied"))
+    --                 end
+    --             end
+    --         },
+    --     },
+    --     distance = 2.0
+    -- })
 end

@@ -44,10 +44,15 @@ RegisterNetEvent('qb-gangmenu:server:stash', function()
 		local coords = bossCoords[i]
 		if #(playerCoords - coords) < 2.5 then
 			local stashName = 'boss_' .. playerGang.name
-			exports['qb-inventory']:OpenInventory(src, stashName, {
-				maxweight = 4000000,
-				slots = 25,
-			})
+			-- exports['qb-inventory']:OpenInventory(src, stashName, {
+			-- 	maxweight = 4000000,
+			-- 	slots = 25,
+			-- })
+			-- 注册 stash（防止未注册，重复的注册ox_inventory会忽略）
+            exports.ox_inventory:RegisterStash(stashName, playerGang.label .. '仓库', 50, 1000000, false)
+
+            -- 打开 stash
+            TriggerClientEvent('ox_inventory:openInventory', src, 'stash', stashName)
 			return
 		end
 	end
