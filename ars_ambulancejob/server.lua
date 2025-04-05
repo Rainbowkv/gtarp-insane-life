@@ -215,3 +215,23 @@ end)
 RegisterNetEvent('ars_ambulance:server:ReturnKeys', function(plate)
     exports['qb-vehiclekeys']:RemoveKeys(source, plate)
 end)
+
+RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
+    print("ars_ambulancejob:server:EscortPlayer")
+    local src = source
+    local playerPed = GetPlayerPed(src)
+    local targetPed = GetPlayerPed(playerId)
+    local playerCoords = GetEntityCoords(playerPed)
+    local targetCoords = GetEntityCoords(targetPed)
+    if #(playerCoords - targetCoords) > 3.0 then return DropPlayer(src, '尝试滥用操作') end
+
+    local Player = QBCore.Functions.GetPlayer(src)
+    local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
+    if not Player or not EscortPlayer then return end
+
+    if (Player.PlayerData.job.type == 'leo' or Player.PlayerData.job.name == 'ambulance') or (EscortPlayer.PlayerData.metadata['ishandcuffed'] or EscortPlayer.PlayerData.metadata['isdead']) then
+        TriggerClientEvent('ars_ambulancejob:client:GetEscorted', EscortPlayer.PlayerData.source, Player.PlayerData.source)
+    else
+        TriggerClientEvent('QBCore:Notify', src, "无法拖动", 'error')
+    end
+end)

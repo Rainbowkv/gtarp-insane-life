@@ -81,14 +81,14 @@ return {
 	},
 
 	['sprunk'] = {
-		label = 'Sprunk',
+		label = 'Sprunk汽水',
 		weight = 350,
 		client = {
 			status = { thirst = 200000 },
 			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
 			prop = { model = `prop_ld_can_01`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
 			usetime = 2500,
-			notification = '你用Sprunk解渴了'
+			notification = '你用Sprunk汽水解渴了'
 		}
 	},
 
@@ -135,12 +135,12 @@ return {
 
 	['lockpick'] = {
 		label = '撬锁工具',
-		weight = 160,
+		weight = 300,
 	},
 
 	['phone'] = {
 		label = '手机',
-		weight = 190,
+		weight = 500,
 		stack = false,
 		consume = 0,
 		client = {
@@ -1193,7 +1193,7 @@ return {
 
 	["finescale"] = {
 		label = "精密天平",
-		weight = 200,
+		weight = 1000,
 		stack = true,
 		close = false,
 		description = "用于精细粉末和材料的秤。",
@@ -1204,7 +1204,7 @@ return {
 
 	["trimming_scissors"] = {
 		label = "修剪剪刀",
-		weight = 1500,
+		weight = 1000,
 		stack = true,
 		close = false,
 		description = "非常锋利的修剪剪刀",
@@ -2085,7 +2085,7 @@ return {
 	["coke_small_brick"] = {
 		label = "小可卡因包",
 		weight = 350,
-		stack = false,
+		stack = true,
 		close = true,
 		description = "小型的可卡因包，主要用于交易，占用很大空间",
 		client = {
@@ -2492,95 +2492,18 @@ return {
 	
 	['emstablet'] = {
 		label = '急救平板',
-		weight = 200,
+		weight = 1000,
 		stack = true,
 	},
 
-	["evidence_ne"] = {
-		label = "脚印证据",
+	["evidence_b"] = {
+		label = "车辆证据",
 		weight = 0,
 		stack = false,
 		close = false,
 		description = "从犯罪现场获取的证据",
 		client = {
-			image = "evidence_ne.png",
-		}
-	},
-
-	["bcsd_badge"] = {
-		label = "治安官徽章",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "您作为治安官的身份标识，包含您的职级和徽章编号",
-		client = {
-			image = "bcsd_badge.png",
-		}
-	},
-
-	["megaphone"] = {
-		label = "扩音器",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "一个可以让您的声音被听到的扩音器",
-		client = {
-			image = "megaphone.png",
-		}
-	},
-
-	["evidence_az"] = {
-		label = "通用证据",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "从犯罪现场获取的证据",
-		client = {
-			image = "evidence_az.png",
-		}
-	},
-
-	["fib_badge"] = {
-		label = "联邦调查局徽章",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "您作为联邦探员的身份标识，包含您的职级和徽章编号",
-		client = {
-			image = "fib_badge.png",
-		}
-	},
-
-	["instant_camera"] = {
-		label = "即时相机",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "一台专为犯罪现场拍摄照片设计的简易相机",
-		client = {
-			image = "polaroid.png",
-		}
-	},
-
-	["evidence_v"] = {
-		label = "毒品证据",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "从犯罪现场获取的证据",
-		client = {
-			image = "evidence_v.png",
-		}
-	},
-
-	["lspd_badge"] = {
-		label = "警察徽章",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "您作为警察的身份标识，包含您的职级和徽章编号",
-		client = {
-			image = "lspd_badge.png",
+			image = "evidence_b.png",
 		}
 	},
 
@@ -2595,47 +2518,25 @@ return {
 		}
 	},
 
-	["evidence_b"] = {
-		label = "车辆证据",
+	["lspd_badge"] = {
+		label = "警察徽章",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您作为警察的身份标识，包含您的职级和徽章编号",
+		client = {
+			image = "lspd_badge.png",
+		}
+	},
+
+	["evidence_az"] = {
+		label = "通用证据",
 		weight = 0,
 		stack = false,
 		close = false,
 		description = "从犯罪现场获取的证据",
 		client = {
-			image = "evidence_b.png",
-		}
-	},
-
-	["evidence_a"] = {
-		label = "弹道证据",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "从犯罪现场获取的证据",
-		client = {
-			image = "evidence_a.png",
-		}
-	},
-
-	["k9"] = {
-		label = "警犬哨子",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "使用哨子召唤警犬单位",
-		client = {
-			image = "whistle.png",
-		}
-	},
-
-	["photo"] = {
-		label = "照片",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "一张图像",
-		client = {
-			image = "photos.png",
+			image = "evidence_az.png",
 		}
 	},
 
@@ -2647,17 +2548,6 @@ return {
 		description = "从犯罪现场获取的证据",
 		client = {
 			image = "evidence_n.png",
-		}
-	},
-
-	["police_cad"] = {
-		label = "警务平板",
-		weight = 0,
-		stack = false,
-		close = false,
-		description = "您的个人平板电脑，包含圣安地列斯警察的所有信息",
-		client = {
-			image = "tablet.png",
 		}
 	},
 
@@ -2682,4 +2572,224 @@ return {
 			image = "evidence_ro.png",
 		}
 	},
+
+	["bcsd_badge"] = {
+		label = "治安官徽章",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您作为治安官的身份标识，包含您的职级和徽章编号",
+		client = {
+			image = "bcsd_badge.png",
+		}
+	},
+
+	["megaphone"] = {
+		label = "扩音器",
+		weight = 500,
+		stack = false,
+		close = false,
+		description = "一个可以让您的声音被听到的扩音器",
+		client = {
+			image = "megaphone.png",
+		}
+	},
+
+	["k9"] = {
+		label = "警犬哨子",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "使用哨子召唤警犬单位",
+		client = {
+			image = "whistle.png",
+		}
+	},
+
+	["police_cad"] = {
+		label = "警务平板",
+		weight = 1000,
+		stack = false,
+		close = false,
+		description = "您的个人平板电脑，包含圣安地列斯警察的所有信息",
+		client = {
+			image = "tablet.png",
+		}
+	},
+
+	["photo"] = {
+		label = "照片",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "一张图像",
+		client = {
+			image = "photos.png",
+		}
+	},
+
+	["fib_badge"] = {
+		label = "联邦调查局徽章",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "您作为联邦探员的身份标识，包含您的职级和徽章编号",
+		client = {
+			image = "fib_badge.png",
+		}
+	},
+
+	["evidence_a"] = {
+		label = "弹道证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_a.png",
+		}
+	},
+
+	["evidence_ne"] = {
+		label = "脚印证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_ne.png",
+		}
+	},
+
+	["evidence_v"] = {
+		label = "毒品证据",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "从犯罪现场获取的证据",
+		client = {
+			image = "evidence_v.png",
+		}
+	},
+
+	["instant_camera"] = {
+		label = "即时相机",
+		weight = 0,
+		stack = false,
+		close = false,
+		description = "一台专为犯罪现场拍摄照片设计的简易相机",
+		client = {
+			image = "polaroid.png",
+		}
+	},
+	["stretcher"] = {
+		label = "Stretcher",
+		weight = 15,
+		stack = false,
+		consume = 1,
+		server = {
+			export = "ND_Ambulance.createStretcher"
+		}
+	},
+	["defib"] = {
+		label = "Monitor/defibrillator",
+		weight = 8,
+		stack = false,
+		consume = 1,
+		client = {
+			export = "ND_Ambulance.useDefib",
+			add = function(total)
+				if total > 0 then
+					pcall(function()
+						return exports["ND_Ambulance"]:hasDefib(true)
+					end)
+				end
+			end,
+			remove = function(total)
+				if total < 1 then
+					pcall(function()
+						return exports["ND_Ambulance"]:hasDefib(false)
+					end)
+				end
+			end
+		}
+	},
+	["medbag"] = {
+		label = "Trauma bag",
+		weight = 1,
+		stack = false,
+		consume = 1,
+		server = {
+			export = "ND_Ambulance.useBag"
+		},
+		client = {
+			export = "ND_Ambulance.useBag",
+			add = function(total)
+				if total > 0 then
+					pcall(function()
+						return exports["ND_Ambulance"]:bag(true)
+					end)
+				end
+			end,
+			remove = function(total)
+				if total < 1 then
+					pcall(function()
+						return exports["ND_Ambulance"]:bag(false)
+					end)
+				end
+			end
+		}
+	},
+	["burndressing"] = {
+		label = "Burn Dressing",
+		weight = 50,
+		server = {
+			export = "ND_Ambulance.treatment"
+		},
+		client = {
+			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
+			prop = { model = `prop_toilet_roll_01`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
+			disable = { move = true, car = true, combat = true },
+			usetime = 2500
+		}
+	},
+	["splint"] = {
+		label = "Splint",
+		weight = 5,
+		server = {
+			export = "ND_Ambulance.treatment"
+		},
+		client = {
+			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
+			prop = { model = `prop_toilet_roll_01`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
+			disable = { move = true, car = true, combat = true },
+			usetime = 2500
+		}
+	},
+	["gauze"] = {
+		label = "Gauze",
+		weight = 8,
+		server = {
+			export = "ND_Ambulance.treatment"
+		},
+		client = {
+			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
+			prop = { model = `prop_toilet_roll_01`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
+			disable = { move = true, car = true, combat = true },
+			usetime = 2500
+		}
+	},
+	["tourniquet"] = {
+		label = "Tourniquet",
+		weight = 8,
+		server = {
+			export = "ND_Ambulance.treatment"
+		},
+		client = {
+			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
+			prop = { model = `prop_rolled_sock_02`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
+			disable = { move = true, car = true, combat = true },
+			usetime = 2500
+		}
+	},	
 }

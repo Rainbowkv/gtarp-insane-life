@@ -70,7 +70,7 @@ return {
 		},
 
 		['WEAPON_BAT'] = {
-			label = 'Bat',
+			label = '木棒',
 			weight = 1134,
 			durability = 0.1,
 		},
@@ -115,8 +115,8 @@ return {
 		},
 
 		['WEAPON_CARBINERIFLE'] = {
-			label = 'Carbine Rifle',
-			weight = 3100,
+			label = '卡宾步枪',
+			weight = 10000,
 			durability = 0.03,
 			ammoname = 'ammo-rifle'
 		},
@@ -129,8 +129,8 @@ return {
 		},
 
 		['WEAPON_CERAMICPISTOL'] = {
-			label = 'Ceramic Pistol',
-			weight = 800,
+			label = '格洛克 43',
+			weight = 3000,
 			durability = 0.2,
 			ammoname = 'ammo-9'
 		},
@@ -198,8 +198,8 @@ return {
 		},
 
 		['WEAPON_DAGGER'] = {
-			label = 'Dagger',
-			weight = 800,
+			label = '武士刺刀',
+			weight = 2000,
 			durability = 0.1,
 		},
 
@@ -251,8 +251,8 @@ return {
 		},
 
 		['WEAPON_FLASHLIGHT'] = {
-			label = 'Flashlight',
-			weight = 125,
+			label = '手电筒',
+			weight = 1000,
 			durability = 0.1,
 		},
 
@@ -352,7 +352,7 @@ return {
 		},
 
 		['WEAPON_KNIFE'] = {
-			label = 'Knife',
+			label = '刀',
 			weight = 300,
 			durability = 0.1,
 		},
@@ -453,8 +453,8 @@ return {
 		},
 
 		['WEAPON_NIGHTSTICK'] = {
-			label = 'Nightstick',
-			weight = 1000,
+			label = '警棍',
+			weight = 3000,
 			durability = 0.1,
 		},
 
@@ -477,8 +477,8 @@ return {
 		},
 
 		['WEAPON_PISTOL'] = {
-			label = 'Pistol',
-			weight = 1130,
+			label = '警用格洛克',
+			weight = 3000,
 			durability = 0.1,
 			ammoname = 'ammo-9',
 		},
@@ -658,8 +658,8 @@ return {
 		},
 
 		['WEAPON_STUNGUN'] = {
-			label = 'Tazer',
-			weight = 227,
+			label = '泰瑟枪',
+			weight = 2000,
 			durability = 0.1,
 		},
 
@@ -678,8 +678,8 @@ return {
 		},
 
 		['WEAPON_VINTAGEPISTOL'] = {
-			label = 'Vintage Pistol',
-			weight = 700,
+			label = '经典格洛克',
+			weight = 2000,
 			durability = 0.1,
 			ammoname = 'ammo-9'
 		},
@@ -720,8 +720,8 @@ return {
 
 	Components = {
 		['at_flashlight'] = {
-			label = 'Tactical Flashlight',
-			weight = 120,
+			label = '战术手电',
+			weight = 500,
 			type = 'flashlight',
 			client = {
 				component = {
@@ -736,8 +736,8 @@ return {
 		},
 
 		['at_suppressor_light'] = {
-			label = 'Suppressor',
-			weight = 280,
+			label = '消音器',
+			weight = 500,
 			type = 'muzzle',
 			client = {
                 image = 'at_suppressor.png',
@@ -1809,7 +1809,7 @@ return {
 
 		['ammo-9'] = {
 			label = '9mm',
-			weight = 7,
+			weight = 14,
 		},
 
 		['ammo-firework'] = {
@@ -1848,12 +1848,12 @@ return {
 		},
 
 		['ammo-rifle'] = {
-			label = '5.56x45',
-			weight = 4,
+			label = '5.56mm',
+			weight = 12,
 		},
 
 		['ammo-rifle2'] = {
-			label = '7.62x39',
+			label = '7.62mm',
 			weight = 8,
 		},
 

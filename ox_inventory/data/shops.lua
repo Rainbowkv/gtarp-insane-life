@@ -5,9 +5,10 @@ return {
 		blip = {
 			id = 59, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'burger', price = 10 },
+			{ name = 'burger', price = 20 },
 			{ name = 'water', price = 10 },
-			{ name = 'kurkakola', price = 10 },
+			{ name = 'kurkakola', price = 15 },
+			{ name = 'bakingsoda', price = 100 },
 		}, locations = {
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),
@@ -67,12 +68,14 @@ return {
 		blip = {
 			id = 402, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'lockpick', price = 10 }
+			{ name = 'lockpick', price = 140 },
+			{ name = 'trimming_scissors', price = 100},
+			{ name = 'finescale', price = 200},
 		}, locations = {
-			vec3(2748.0, 3473.0, 55.67),
+			vec3(2735.56, 3463.5, 55.7),
 			vec3(342.99, -1298.26, 32.51)
 		}, targets = {
-			{ loc = vec3(2746.8, 3473.13, 55.67), length = 0.6, width = 3.0, heading = 65.0, minZ = 55.0, maxZ = 56.8, distance = 3.0 }
+			{ loc = vec3(2735.56, 3463.5, 55.7), length = 0.5, width = 0.5, heading = 158.72, minZ = 55.6, maxZ = 55.8, distance = 2.0 }
 		}
 	},
 
@@ -85,7 +88,7 @@ return {
 			{ name = 'ammo-9', price = 5, },
 			{ name = 'WEAPON_KNIFE', price = 200 },
 			{ name = 'WEAPON_BAT', price = 100 },
-			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
+			{ name = 'WEAPON_VINTAGEPISTOL', price = 3000, metadata = { registered = true }, license = 'weapon' }
 		}, locations = {
 			vec3(-662.180, -934.961, 21.829),
 			vec3(810.25, -2157.60, 29.62),
@@ -120,7 +123,9 @@ return {
 			{ name = 'ammo-rifle', price = 5, },
 			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
 			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
-			{ name = 'WEAPON_PISTOL', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+			{ name = 'at_suppressor_light', price = 1000 },
+			{ name = 'at_flashlight', price = 700 },
+			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 			{ name = 'WEAPON_CARBINERIFLE', price = 10000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
 			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'megaphone', price = 500},
@@ -153,21 +158,19 @@ return {
 
 	BlackMarketArms = {
 		-- name = 'Black Market (Arms)',
-		name = "黑市商人",
+		name = "黑市",
 		inventory = {
-			{ name = 'WEAPON_DAGGER', price = 5000, metadata = { registered = false	}, currency = 'black_money' },
-			{ name = 'WEAPON_CERAMICPISTOL', price = 50000, metadata = { registered = false }, currency = 'black_money' },
-			{ name = 'at_suppressor_light', price = 50000, currency = 'black_money' },
-			{ name = 'ammo-rifle', price = 1000, currency = 'black_money' },
-			{ name = 'ammo-rifle2', price = 1000, currency = 'black_money' },
-			{ name = 'suppressor_attachment', price = 20000, currency = 'black_money'},
+			{ name = 'WEAPON_DAGGER', price = 700, metadata = { registered = false	}, currency = 'black_money' },
+			{ name = 'WEAPON_CERAMICPISTOL', price = 20000, metadata = { registered = false }, currency = 'black_money' },
+			{ name = 'ammo-9', price = 10, currency = 'black_money' },
+			{ name = 'at_suppressor_light', price = 10000, currency = 'black_money' },
 			{ name = 'methkey', price = 5000, currency = 'black_money'},
 			{ name = 'weedkey', price = 10000, currency = 'black_money'},
 			{ name = 'cocainekey', price = 10000, currency = 'black_money'},
 		}, locations = {
-			vec3(309.09, -913.75, 56.46)
+			vec3(309.33, -913.75, 55.46)
 		}, targets = {
-
+			{ loc = vec3(309.33, -913.75, 54.46), length = 1.0, width = 1.0, heading = 180.0, minZ = 52.46, maxZ = 56.46, distance = 2.0 },
 		}
 	},
 
