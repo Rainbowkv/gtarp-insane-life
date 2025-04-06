@@ -370,20 +370,19 @@ RegisterNetEvent('consumables:client:meth', function()
 end)
 
 RegisterNetEvent('consumables:client:UseJoint', function()
-    QBCore.Functions.Progressbar('smoke_joint', Lang:t('consumables.joint_progress'), 1500, false, true, {
+    local ped = PlayerPedId()
+    RequestAnimDict('timetable@gardener@smoking_joint')
+    while not HasAnimDictLoaded('timetable@gardener@smoking_joint') do
+        Wait(10)
+    end
+    TaskPlayAnim(ped, 'timetable@gardener@smoking_joint', 'smoke_idle', 8.0, -8.0, 12000, 1, 0.0, false, false, false)
+    QBCore.Functions.Progressbar('smoke_joint', Lang:t('consumables.joint_progress'), 12000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        TriggerEvent('qb-inventory:client:ItemBox', QBCore.Shared.Items['joint'], 'remove')
-        if IsPedInAnyVehicle(PlayerPedId(), false) then
-            QBCore.Functions.PlayAnim('timetable@gardener@smoking_joint', 'smoke_idle', false)
-        else
-            QBCore.Functions.PlayAnim('timetable@gardener@smoking_joint', 'smoke_idle', false)
-        end
-        TriggerEvent('evidence:client:SetStatus', 'weedsmell', 300)
-        TriggerServerEvent('hud:server:RelieveStress', Config.RelieveWeedStress)
+        TriggerEvent('hud:client:usedJoint')  -- 这里已经适配至uz_PureHud
     end)
 end)
 

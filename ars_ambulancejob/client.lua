@@ -72,11 +72,8 @@ RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
 end)
 
 RegisterNetEvent('ars_ambulancejob:client:EscortPlayer', function(targetId)
-    print(exports['ars_ambulancejob']:isDead())
-    print(targetId)
     if exports['ars_ambulancejob']:isDead() then return end
     if not isHandcuffed and not isEscorted then  -- 自己没有被拷，没有被拖动，没有死亡
-        print("enter if")
         TriggerServerEvent('ars_ambulancejob:server:EscortPlayer', targetId)
     end
 end)

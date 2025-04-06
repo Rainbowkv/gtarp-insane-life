@@ -85,7 +85,7 @@ Config.MenuItems = {
                         title = '护送',
                         icon = 'user-group',
                         type = 'client',
-                        event = 'police:client:EscortPlayer',
+                        event = 'ars_ambulancejob:client:EscortPlayer',
                         shouldClose = true
                     }, {
                         id = 'escort554',

@@ -217,7 +217,6 @@ RegisterNetEvent('ars_ambulance:server:ReturnKeys', function(plate)
 end)
 
 RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
-    print("ars_ambulancejob:server:EscortPlayer")
     local src = source
     local playerPed = GetPlayerPed(src)
     local targetPed = GetPlayerPed(playerId)

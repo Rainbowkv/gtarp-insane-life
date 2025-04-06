@@ -9,7 +9,8 @@ return {
 			{ name = 'water', price = 10 },
 			{ name = 'kurkakola', price = 15 },
 			{ name = 'bakingsoda', price = 100 },
-			{ name = 'rolling_paper', price = 30}
+			{ name = 'rolling_paper', price = 30},
+			{ name = 'redwcig', price = 10},
 		}, locations = {
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),

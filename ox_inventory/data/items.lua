@@ -1369,7 +1369,7 @@ return {
 
 	["joint"] = {
 		label = "大麻烟",
-		weight = 0,
+		weight = 20,
 		stack = true,
 		close = true,
 		description = "Sidney 会为你感到骄傲",
@@ -2792,4 +2792,10 @@ return {
 			usetime = 2500
 		}
 	},	
+	["redwcig"] = {
+		label = "香烟",
+		weight = 10,
+		stack = true,
+		close = true,
+	},
 }
