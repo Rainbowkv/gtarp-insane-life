@@ -1303,12 +1303,14 @@ return {
 
 	["handcuffs"] = {
 		label = "手铐",
-		weight = 100,
-		stack = true,
+		weight = 1000,
+		consume = 0.25,
+		stack = false,
 		close = true,
 		description = "在有人捣乱时派上用场。也许它可以用来做别的事情？",
 		client = {
 			image = "handcuffs.png",
+			event = "origen_police:client:cuffuncuff"
 		}
 	},
 
@@ -2680,116 +2682,6 @@ return {
 		description = "一台专为犯罪现场拍摄照片设计的简易相机",
 		client = {
 			image = "polaroid.png",
-		}
-	},
-	["stretcher"] = {
-		label = "Stretcher",
-		weight = 15,
-		stack = false,
-		consume = 1,
-		server = {
-			export = "ND_Ambulance.createStretcher"
-		}
-	},
-	["defib"] = {
-		label = "Monitor/defibrillator",
-		weight = 8,
-		stack = false,
-		consume = 1,
-		client = {
-			export = "ND_Ambulance.useDefib",
-			add = function(total)
-				if total > 0 then
-					pcall(function()
-						return exports["ND_Ambulance"]:hasDefib(true)
-					end)
-				end
-			end,
-			remove = function(total)
-				if total < 1 then
-					pcall(function()
-						return exports["ND_Ambulance"]:hasDefib(false)
-					end)
-				end
-			end
-		}
-	},
-	["medbag"] = {
-		label = "Trauma bag",
-		weight = 1,
-		stack = false,
-		consume = 1,
-		server = {
-			export = "ND_Ambulance.useBag"
-		},
-		client = {
-			export = "ND_Ambulance.useBag",
-			add = function(total)
-				if total > 0 then
-					pcall(function()
-						return exports["ND_Ambulance"]:bag(true)
-					end)
-				end
-			end,
-			remove = function(total)
-				if total < 1 then
-					pcall(function()
-						return exports["ND_Ambulance"]:bag(false)
-					end)
-				end
-			end
-		}
-	},
-	["burndressing"] = {
-		label = "Burn Dressing",
-		weight = 50,
-		server = {
-			export = "ND_Ambulance.treatment"
-		},
-		client = {
-			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
-			prop = { model = `prop_toilet_roll_01`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500
-		}
-	},
-	["splint"] = {
-		label = "Splint",
-		weight = 5,
-		server = {
-			export = "ND_Ambulance.treatment"
-		},
-		client = {
-			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
-			prop = { model = `prop_toilet_roll_01`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500
-		}
-	},
-	["gauze"] = {
-		label = "Gauze",
-		weight = 8,
-		server = {
-			export = "ND_Ambulance.treatment"
-		},
-		client = {
-			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
-			prop = { model = `prop_toilet_roll_01`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500
-		}
-	},
-	["tourniquet"] = {
-		label = "Tourniquet",
-		weight = 8,
-		server = {
-			export = "ND_Ambulance.treatment"
-		},
-		client = {
-			anim = { dict = "missheistdockssetup1clipboard@idle_a", clip = "idle_a", flag = 49 },
-			prop = { model = `prop_rolled_sock_02`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500
 		}
 	},	
 	["redwcig"] = {

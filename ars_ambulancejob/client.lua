@@ -54,7 +54,6 @@ local isHandcuffed = false
 local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
-    print("ars_ambulancejob:client:GetEscorted")
     local ped = PlayerPedId()
     QBCore.Functions.GetPlayerData(function(PlayerData)
         if PlayerData.metadata['isdead'] or isHandcuffed then
@@ -74,6 +73,14 @@ end)
 RegisterNetEvent('ars_ambulancejob:client:EscortPlayer', function(targetId)
     if exports['ars_ambulancejob']:isDead() then return end
     if not isHandcuffed and not isEscorted then  -- 自己没有被拷，没有被拖动，没有死亡
+        TriggerServerEvent('ars_ambulancejob:server:EscortPlayer', targetId)
+    end
+end)
+
+RegisterNetEvent('ars_ambulancejob:client:MenuEscortPlayer', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 2.5 then
+        local targetId = GetPlayerServerId(player)
         TriggerServerEvent('ars_ambulancejob:server:EscortPlayer', targetId)
     end
 end)

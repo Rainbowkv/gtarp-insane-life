@@ -133,6 +133,7 @@ return {
 			{ name = 'megaphone', price = 500},
 			{ name = 'police_cad', price = 2000},
 			{ name = 'k9', price = 200, license = 'k9'},
+			{ name = 'handcuffs', price = 1000}
 		}, locations = {
 			vec3(484.21, -995.67, 30.69)  -- 480.82, -990.16, 30.69
 		}, targets = {

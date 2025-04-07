@@ -82,10 +82,10 @@ Config.MenuItems = {
                         shouldClose = true
                     }, {
                         id = 'escort2',
-                        title = '护送',
+                        title = '拖动',
                         icon = 'user-group',
                         type = 'client',
-                        event = 'ars_ambulancejob:client:EscortPlayer',
+                        event = 'ars_ambulancejob:client:MenuEscortPlayer',
                         shouldClose = true
                     }, {
                         id = 'escort554',
