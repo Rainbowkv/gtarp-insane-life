@@ -50,13 +50,12 @@ end
 CreateThread(createZones)
 
 local isEscorted = false
-local isHandcuffed = false
 local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
     local ped = PlayerPedId()
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.metadata['isdead'] or isHandcuffed then
+        if PlayerData.metadata['isdead'] then
             if not isEscorted then
                 isEscorted = true
                 local dragger = GetPlayerPed(GetPlayerFromServerId(playerId))
@@ -72,7 +71,7 @@ end)
 
 RegisterNetEvent('ars_ambulancejob:client:EscortPlayer', function(targetId)
     if exports['ars_ambulancejob']:isDead() then return end
-    if not isHandcuffed and not isEscorted then  -- 自己没有被拷，没有被拖动，没有死亡
+    if not isEscorted then  -- 自己没有被拖动，没有死亡
         TriggerServerEvent('ars_ambulancejob:server:EscortPlayer', targetId)
     end
 end)

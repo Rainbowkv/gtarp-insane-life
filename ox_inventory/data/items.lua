@@ -1425,7 +1425,7 @@ return {
 	},
 
 	["water_bottle"] = {
-		label = "水瓶",
+		label = "矿泉水",
 		weight = 500,
 		stack = true,
 		close = true,

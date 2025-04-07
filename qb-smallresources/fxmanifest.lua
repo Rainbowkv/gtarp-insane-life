@@ -28,3 +28,5 @@ files {
     'popgroups.ymt',
     'relationships.dat'
 }
+
+data_file 'DLC_ITYP_REQUEST' 'stream/brum_can_coke.ytyp'  -- 可乐prop

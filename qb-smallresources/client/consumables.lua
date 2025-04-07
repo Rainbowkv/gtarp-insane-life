@@ -177,12 +177,12 @@ RegisterNetEvent('consumables:client:Drink', function(itemName)
         anim = 'loop_bottle',
         flags = 49
     }, {
-        model = 'vw_prop_casino_water_bottle_01a',
+        model = Config.PropModel[itemName].model,
         bone = 60309,
-        coords = vec3(0.0, 0.0, -0.05),
+        coords = Config.PropModel[itemName].coords,
         rotation = vec3(0.0, 0.0, -40),
     }, {}, function() -- Done
-        TriggerEvent('qb-inventory:client:ItemBox', QBCore.Shared.Items[itemName], 'remove')
+        -- TriggerEvent('qb-inventory:client:ItemBox', QBCore.Shared.Items[itemName], 'remove')
         TriggerServerEvent('consumables:server:addThirst', QBCore.Functions.GetPlayerData().metadata.thirst + Config.Consumables.drink[itemName])
     end)
 end)
