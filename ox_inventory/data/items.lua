@@ -2715,4 +2715,15 @@ return {
 			image = "sprayremover.png",
 		}
 	},
+
+	["scratch_ticket"] = {
+		label = "刮刮乐",
+		weight = 25,
+		stack = true,
+		close = true,
+		description = "先天刮奖圣体~~",
+		client = {
+			image = "scratch_ticket.png",
+		}
+	},
 }
