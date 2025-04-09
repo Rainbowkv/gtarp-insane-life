@@ -424,7 +424,7 @@ local Vehicles = {
     { model = 'double',          name = '双T',                      brand = '丁卡',           price = 28000,   category = '摩托车',    type = 'bike',       shop = 'none' },
     { model = 'enduro',          name = '耐力车',                        brand = '丁卡',           price = 5500,    category = '摩托车',    type = 'bike',       shop = 'none' },
     { model = 'esskey',          name = '埃斯基',                        brand = '佩加西',         price = 12000,   category = '摩托车',    type = 'bike',       shop = 'none' },
-    { model = 'faggio',          name = '法吉奥运动版',                  brand = '佩加西',         price = 2000,    category = '摩托车',    type = 'bike',       shop = 'none' },
+    { model = 'faggio',          name = '法吉奥运动版',                  brand = '佩加西',         price = 2000,    category = '摩托车',    type = 'bike',       shop = 'pdm' },
     { model = 'faggio2',         name = '法吉奥',                        brand = '佩加西',         price = 4000,    category = '摩托车',    type = 'bike',       shop = 'none' },  -- pdm_sale
     { model = 'faggio3',         name = '法吉奥改装版',                    brand = '佩加西',         price = 8000,    category = '摩托车',    type = 'bike',       shop = 'none' },  -- pdm_sale
     { model = 'fcr',             name = 'FCR 1000',                      brand = '佩加西',         price = 5000,    category = '摩托车',    type = 'bike',       shop = 'none' },
