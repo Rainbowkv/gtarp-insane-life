@@ -16,7 +16,7 @@ Config.PawnLocation = {
 Config.BankMoney = false -- Set to true if you want the money to go into the players bank
 Config.UseTimes = false -- Set to false if you want the pawnshop open 24/7
 Config.TimeOpen = 7 -- Opening Time
-Config.TimeClosed = 17 -- Closing Time
+Config.TimeClosed = 19 -- Closing Time
 Config.SendMeltingEmail = true
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
@@ -24,35 +24,35 @@ Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.PawnItems = {
     [1] = {
         item = 'goldchain',
-        price = math.random(50,100)
+        price = 190
     },
     [2] = {
         item = 'diamond_ring',
-        price = math.random(50,100)
+        price = 180
     },
     [3] = {
         item = 'rolex',
-        price = math.random(50,100)
+        price = 210
     },
     [4] = {
         item = 'tenkgoldchain',
-        price = math.random(50,100)
+        price = 200
     },
     [5] = {
         item = 'tablet',
-        price = math.random(50,100)
+        price = 210
     },
     [6] = {
         item = 'iphone',
-        price = math.random(50,100)
+        price = 220
     },
     [7] = {
         item = 'samsungphone',
-        price = math.random(50,100)
+        price = 220
     },
     [8] = {
         item = 'laptop',
-        price = math.random(50,100)
+        price = 250
     }
 }
 
