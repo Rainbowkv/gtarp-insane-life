@@ -35,7 +35,14 @@ end
 
 local function smashVitrine(k)
     if not firstAlarm then
-        TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
+        -- TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
+        TriggerServerEvent("SendAlert:police", {  -- rb_code，与新警察适配
+            coords = GetEntityCoords(PlayerPedId()),
+            title = '珠宝抢劫',
+            type = 'GENERAL',
+            message = '珠宝店正在遭遇劫犯',
+            job = 'police',
+        })
         firstAlarm = true
     end
 
@@ -61,7 +68,14 @@ local function smashVitrine(k)
             }, {}, {}, {}, function() -- Done
                 TriggerServerEvent('qb-jewellery:server:vitrineReward', k)
                 TriggerServerEvent('qb-jewellery:server:setTimeout')
-                TriggerServerEvent('police:server:policeAlert', 'Robbery in progress')
+                -- TriggerServerEvent('police:server:policeAlert', 'Robbery in progress')
+                TriggerServerEvent("SendAlert:police", {  -- rb_code，与新警察适配
+                    coords = GetEntityCoords(PlayerPedId()),
+                    title = '珠宝抢劫',
+                    type = 'GENERAL',
+                    message = '珠宝店正在遭遇劫犯',
+                    job = 'police',
+                })
                 smashing = false
                 TaskPlayAnim(ped, animDict, 'exit', 3.0, 3.0, -1, 2, 0, 0, 0, 0)
             end, function() -- Cancel
