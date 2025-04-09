@@ -104,6 +104,9 @@ return {
 
 	['garbage'] = {
 		label = '垃圾',
+		client = {
+			image = 'garbage.png',
+		}
 	},
 
 	['paperbag'] = {
@@ -2689,5 +2692,27 @@ return {
 		weight = 10,
 		stack = true,
 		close = true,
+	},
+
+	["spraycan"] = {
+		label = "Spray Can",
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = "Spray Can",
+		client = {
+			image = "spraycan.png",
+		}
+	},
+
+	["sprayremover"] = {
+		label = "Spray Remover",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Spray Remover",
+		client = {
+			image = "sprayremover.png",
+		}
 	},
 }
