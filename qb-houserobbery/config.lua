@@ -10,6 +10,7 @@ Config.ChanceToBreakLockPick = 30         -- chance in percent to break a normal
 Config.ChanceToBreakAdvancedLockPick = 15 -- chance in percent to break a advanced lockpick if failed
 Config.ChanceToAlertPolice = 100           -- chance in percent to call the police if a house robbery is in progress
 Config.MinZOffset = 45
+Config.difficulty = 'medium'
 
 Config.Rewards = {
     { -- house tier

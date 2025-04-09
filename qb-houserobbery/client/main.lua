@@ -171,7 +171,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                 TaskPlayAnim(PlayerPedId(), 'mp_missheist_countrybank@nervous', 'nervous_idle', 8.0, 8.0, -1, 49, 0.0, false, false, false)
                 alertCops()
                 if usingAdvanced then
-                    local success = exports['qb-minigames']:Skillbar("hard")
+                    local success = exports['qb-minigames']:Skillbar(Config.difficulty)
                     if success then
                         TriggerServerEvent('qb-houserobbery:server:enterHouse', closestHouse)
                         QBCore.Functions.Notify(Lang:t('success.worked'), 'success', 2500)
@@ -183,7 +183,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                         QBCore.Functions.Notify(Lang:t('error.didnt_work'), 'error', 2500)
                     end
                 else
-                    local success = exports['qb-minigames']:Skillbar('hard')
+                    local success = exports['qb-minigames']:Skillbar(Config.difficulty)
                     if success then
                         TriggerServerEvent('qb-houserobbery:server:enterHouse', closestHouse)
                         QBCore.Functions.Notify(Lang:t('success.worked'), 'success', 2500)
