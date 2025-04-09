@@ -24,36 +24,48 @@ Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.PawnItems = {
     [1] = {
         item = 'goldchain',
-        price = 190
+        price = 90
     },
     [2] = {
         item = 'diamond_ring',
-        price = 180
+        price = 90
     },
     [3] = {
         item = 'rolex',
-        price = 210
+        price = 110
     },
     [4] = {
         item = 'tenkgoldchain',
-        price = 200
+        price = 120
     },
     [5] = {
         item = 'tablet',
-        price = 210
+        price = 150
     },
     [6] = {
         item = 'iphone',
-        price = 220
+        price = 150
     },
     [7] = {
         item = 'samsungphone',
-        price = 220
+        price = 150
     },
     [8] = {
         item = 'laptop',
-        price = 250
-    }
+        price = 160
+    },
+    [9] = {
+        item = 'goldbar',
+        price = 100
+    },
+    [10] = {
+        item = 'diamond',
+        price = 100
+    },
+    [11] = {
+        item = 'laptop',
+        price = 160
+    },
 }
 
 Config.MeltingItems = { -- meltTime is amount of time in minutes per item
@@ -65,7 +77,7 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 amount = 2
             }
         },
-        meltTime = 0.15
+        meltTime = 2
     },
     [2] = {
         item = 'diamond_ring',
@@ -74,12 +86,8 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 item = 'diamond',
                 amount = 1
             },
-            [2] = {
-                item = 'goldbar',
-                amount = 1
-            }
         },
-        meltTime = 0.15
+        meltTime = 1
     },
     [3] = {
         item = 'rolex',
@@ -92,12 +100,8 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 item = 'goldbar',
                 amount = 1
             },
-            [3] = {
-                item = 'electronickit',
-                amount = 1
-            }
         },
-        meltTime = 0.15
+        meltTime = 2
     },
     [4] = {
         item = 'tenkgoldchain',
@@ -111,6 +115,6 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 amount = 1
             }
         },
-        meltTime = 0.15
+        meltTime = 2
     },
 }

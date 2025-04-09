@@ -181,10 +181,12 @@ RegisterNetEvent('qb-pawnshop:client:openPawn', function(data)
                         params = {
                             event = 'qb-pawnshop:client:pawnitems',
                             args = {
-                                label = QBCore.Shared.Items[v.name].label,
+                                -- label = QBCore.Shared.Items[v.name].label,
+                                label = v.label,  -- for ox_inventory
                                 price = data.items[i].price,
                                 name = v.name,
-                                amount = v.amount
+                                -- amount = v.amount
+                                amount = v.count  -- for ox_inventory
                             }
                         }
                     }
@@ -219,10 +221,12 @@ RegisterNetEvent('qb-pawnshop:client:openMelt', function(data)
                         params = {
                             event = 'qb-pawnshop:client:meltItems',
                             args = {
-                                label = QBCore.Shared.Items[v.name].label,
+                                -- label = QBCore.Shared.Items[v.name].label,
+                                label = v.label,  -- for ox_inventory
                                 reward = data.items[i].rewards,
                                 name = v.name,
-                                amount = v.amount,
+                                -- amount = v.amount,
+                                amount = v.count,  -- for ox_inventory
                                 time = data.items[i].meltTime
                             }
                         }
