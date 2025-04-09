@@ -5,7 +5,7 @@ Config.debug = false
 Config.useOxInventory = GetResourceState('ox_inventory'):find('start')
 
 Config.clothingScript = 'fivem-appearance' -- 'illenium-appearance', 'fivem-appearance', 'core' or false -- to disable
-Config.emsJobs = { "ambulance", "ems" }
+Config.emsJobs = { "ambulance" } -- , "ems"
 Config.respawnTime = 5                        -- in minutes
 Config.waitTimeForNewCall = 5                 -- minutes
 
