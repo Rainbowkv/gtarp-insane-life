@@ -1,0 +1,44 @@
+{
+    "notify": {
+        "cancel-rob": "你停止了对收银机的抢劫",
+        "cooldown": "这似乎不是个好主意——我应该再等等",
+        "no-police": "城市里的警察数量不足",
+        "missing-item": "我觉得如果有工具的话，这会容易得多",
+        "item-broke": "你弄坏了撬锁工具，未能打开收银机",
+        "failed-hack": "你未能成功入侵电脑",
+        "wrong-pin": "这似乎不对劲……还是锁着的",
+        "failed-limit": "你失败次数太多，未能抢到商店"
+    },
+    "target": {
+        "register": "抢劫收银机",
+        "computer": "登录",
+        "safe": "解锁"
+    },
+    "alerts": {
+        "note": {
+            "header": "**发现纸条**",
+            "content": "你在收银机下发现了一张有趣的纸条，上面只写着以下数字：%s"
+        },
+        "hack": {
+            "header": "**代码暴露**",
+            "content": "你成功黑入了电脑并找到了以下代码：%s"
+        }
+    },
+    "inputs": {
+        "questions": {
+            "header": "安全问题"
+        },
+        "safe": {
+            "header": "商店保险箱",
+            "label": "输入PIN码",
+            "desc": "输入PIN码以解锁保险箱",
+            "placeholder": "1234"
+        }
+    },
+    "logs": {
+        "register-robbed-title": "收银机被抢",
+        "register-robbed-message": "%s（标识符：%s）已成功抢劫了一个收银机，获得%s",
+        "safe-robbed-title": "保险箱被抢",
+        "safe-robbed-message": "%s（标识符：%s）已成功抢劫了一个保险箱，获得%s"
+    }
+}

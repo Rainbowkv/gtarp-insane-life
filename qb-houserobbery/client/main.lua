@@ -13,7 +13,7 @@ local CurrentCops = 0
 
 local function DrawText3Ds(x, y, z, text)
     SetTextScale(0.35, 0.35)
-    SetTextFont(4)
+    SetTextFont(0)
     SetTextProportional(1)
     SetTextColour(255, 255, 255, 215)
     BeginTextCommandDisplayText('STRING')
@@ -73,7 +73,15 @@ end
 
 local function alertCops()
     if math.random(1, 100) < Config.ChanceToAlertPolice then
-        TriggerServerEvent('police:server:policeAlert', Lang:t('info.palert'))
+        -- TriggerServerEvent('police:server:policeAlert', Lang:t('info.palert'))
+        -- rb_code, 适配origen_police
+        TriggerServerEvent("SendAlert:police", {
+            coords = GetEntityCoords(PlayerPedId()),
+            title = '入室盗窃',
+            type = 'GENERAL',
+            message = '正在发生房屋撬锁',
+            job = 'police',
+        })
     end
 end
 
@@ -163,7 +171,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                 TaskPlayAnim(PlayerPedId(), 'mp_missheist_countrybank@nervous', 'nervous_idle', 8.0, 8.0, -1, 49, 0.0, false, false, false)
                 alertCops()
                 if usingAdvanced then
-                    local success = exports['qb-minigames']:Skillbar()
+                    local success = exports['qb-minigames']:Skillbar("hard")
                     if success then
                         TriggerServerEvent('qb-houserobbery:server:enterHouse', closestHouse)
                         QBCore.Functions.Notify(Lang:t('success.worked'), 'success', 2500)
@@ -175,7 +183,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                         QBCore.Functions.Notify(Lang:t('error.didnt_work'), 'error', 2500)
                     end
                 else
-                    local success = exports['qb-minigames']:Skillbar('medium')
+                    local success = exports['qb-minigames']:Skillbar('hard')
                     if success then
                         TriggerServerEvent('qb-houserobbery:server:enterHouse', closestHouse)
                         QBCore.Functions.Notify(Lang:t('success.worked'), 'success', 2500)

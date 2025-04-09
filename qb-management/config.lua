@@ -26,7 +26,7 @@ Config.GangMenus = {
         vector3(78.31, -1947.14, 21.17),
     },
     vagos = {
-        vector3(0, 0, 0),
+        vector3(362.04, -2041.24, 25.61),
     },
     cartel = {
         vector3(0, 0, 0),
