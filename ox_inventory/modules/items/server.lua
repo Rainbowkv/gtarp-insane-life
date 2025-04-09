@@ -10,12 +10,12 @@ Items.containers = require 'modules.items.containers'
 
 -- Possible metadata when creating garbage
 local trash = {
-	{description = 'A discarded burger carton.', weight = 50, image = 'trash_burger'},
-	{description = 'An empty soda can.', weight = 20, image = 'trash_can'},
-	{description = 'A mouldy piece of bread.', weight = 70, image = 'trash_bread'},
-	{description = 'An empty chips bag.', weight = 5, image = 'trash_chips'},
-	{description = 'A slightly used pair of panties.', weight = 20, image = 'panties'},
-	{description = 'An old rolled up newspaper.', weight = 200, image = 'WEAPON_ACIDPACKAGE'},
+	{description = '一个被丢弃的汉堡盒。', weight = 50, image = 'trash_burger'},
+	{description = '一个空的汽水罐。', weight = 20, image = 'trash_can'},
+	{description = '一块发霉的面包。', weight = 70, image = 'trash_bread'},
+	{description = '一个空的薯片袋。', weight = 5, image = 'trash_chips'},
+	{description = '一条稍微用过的内裤。', weight = 20, image = 'panties'},
+	{description = '一份卷起来的旧报纸。', weight = 200, image = 'weapon_acidpackage'},
 }
 
 ---@param _ table?

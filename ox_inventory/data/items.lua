@@ -2616,9 +2616,9 @@ return {
 		weight = 1000,
 		stack = false,
 		close = false,
-		description = "您的个人平板电脑，包含圣安地列斯警察的所有信息",
+		description = "您的个人平板电脑, 包含LSPD警察的所有信息",
 		client = {
-			image = "tablet.png",
+			image = "police_cad.png",
 		}
 	},
 
