@@ -124,8 +124,9 @@ RegisterNetEvent('qb-jewellery:server:setTimeout', function()
                 Config.Locations[k]['isOpened'] = false
                 TriggerClientEvent('qb-jewellery:client:setVitrineState', -1, 'isOpened', false, k)
                 TriggerClientEvent('qb-jewellery:client:setAlertState', -1, false)
-                TriggerEvent('qb-scoreboard:server:SetActivityBusy', 'jewellery', false)
+                -- TriggerEvent('qb-scoreboard:server:SetActivityBusy', 'jewellery', false)
             end
+            TriggerEvent('qb-scoreboard:server:SetActivityBusy', 'jewellery', false)  -- 只通知设置busy一次就好
             timeOut = false
         end)
     end

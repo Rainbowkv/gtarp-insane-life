@@ -1,25 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <script src="nui://shared/html/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"/>
-        <link rel="stylesheet" href="./style.css"/>
-        <link rel="stylesheet" href="./reset.css"/>
-        <title>Scoreboard</title>
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.2/css/pro.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal:700&display=swap&subset=arabic" rel="stylesheet"> 
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./reset.css">
+    <title>Scoreboard</title>
+</head>
     <body>
         <div class="container">
             <div class="scoreboard-block">
-                <div class="scoreboard-header">
-                  <p>城市状态</p>
-                </div>
-                <div class="scoreboard-info"></div>
+                <!-- <div class="scoreboard-header">
+                    <img src="clover-logo.png" alt="clover-logo" class="clover-logo">
+                        <p></p>
+                </div> -->
+
+                <div class="scoreboard-info">
+                    <div class="scoreboard-info-header">
+                        <div id="info-tab-label"><p>非法活动</p></div>
+                        <div id="status-tab-label"><p>状态</p></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="storerobbery" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🛒 | 超商抢劫</p></div>
+                        <div class="info-beam-status"></div>
+                    </div>
+                    <!-- <div class="scoreboard-info-beam" data-type="atmrobbery" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🏧 | ATM ROBBERY:</p></div>
+                        <div class="info-beam-status"></div>
+                    </div>          
+                    <div class="scoreboard-info-beam" data-type="banktruck" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🏠 | TRUCK ROBBERY:</p></div>
+                        <div class="info-beam-status"></div>
+                    </div> -->
+                    <div class="scoreboard-info-beam" data-type="houserobbery" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🏠 | 入室盗窃</p></div>
+                        <div class="info-beam-status"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="jewellery" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>💎 | 珠宝劫案</p></div>
+                        <div class="info-beam-status"></div>
+                    </div>
+                    <!-- <div class="scoreboard-info-beam" data-type="Fleeca" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🏦 | FLEECA ROBBERY:</p></div>
+                        <div class="info-beam-status"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="Paleto" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🏦 | POLETO ROBBERY:</p></div>
+                        <div class="info-beam-status"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="Pacific" style="background: radial-gradient(circle, rgba(38, 94, 86, 0.684) 0%, rgba(31, 79, 72, 0.256) 100%)">
+                        <div class="info-beam-title"><p>🏦 | PACIFIC ROBBERY:</p></div>
+                        <div class="info-beam-status"></div>
+                    </div> -->
+                    <div class="scoreboard-info-beam" style="background:  linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(42, 156, 139, 0.856) 64.97%);">
+                        <div class="info-beam-title"><p>👦 | 市民</p></div>
+                        <div class="info-beam-status1" id="total-players"></div>
+						</div>
+				</div>
+				
+				<!-- <div class="scoreboard-info1">
+                    <div class="scoreboard-info-header">
+					<div id="info-tab-label"><p>JOBS</p></div>
+                    <div id="status-tab-label"><p>STATUS</p></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="emsonline" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🩺 | EMS ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-ems"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="policeonline" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>👮 | LSPD ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-cops"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="sasponline" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🕵 | SASP ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-sasp"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="saspronline" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>💂 | SASPR ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-saspr"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="bcsoonline" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>👨‍✈‍ | BCSO ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-bcso"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="mechanic1online" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>👨‍🔧 | HAYES ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-hayes"></div>
+                    </div>
+                    <div class="scoreboard-info-beam" data-type="tuneronline" style="background: linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(32, 126, 112, 0.651) 64.97%);">
+                        <div class="info-beam-title"><p>🚙 | TUNER ONLINE:</p></div>
+                        <div class="info-beam-status1" id="total-tuner"></div>
+                    </div>
+					<div class="scoreboard-info-beam" style="background:  linear-gradient(270deg, rgba(0, 255, 221, 0) 0%, rgba(42, 156, 139, 0.856) 64.97%);">
+                        <div class="info-beam-title"><p>👦 | PLAYERS:</p></div>
+                        <div class="info-beam-status1" id="total-players"></div>
+						</div>
+				</div> -->
+				
             </div>
         </div>
+    </div>
+        </div>		
         <script src="./app.js"></script>
     </body>
 </html>

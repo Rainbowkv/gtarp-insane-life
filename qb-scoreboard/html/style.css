@@ -1,97 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Tajawal:700&display=swap&subset=arabic');
+
+
+--devloper by tma
 
 .container {
-  height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+    height: 100vh;
+    font-family: 'Tajawal', sans-serif !important;
 }
 
-.scoreboard-block {   /* 整个板子的背景色 */
-  display: none;
-  border-radius: 2vh;
-  position: absolute;
-  height: fit-content;
-  width: 40vh;
-  background-color: #24dddd96;
-  right: 3vh;
-  top: 30vh;
-  margin: 1vh;
+.scoreboard-block {
+    display: none;
+    position: absolute;
+    height: 37.0vh;
+    width: 21vh;
+    border-top: thick double rgb(0, 255, 191);
+    border-right: 3px;
+    border-radius: 18px;
+    background: linear-gradient(to right, rgba(133,133,133,0) 30%, rgba(133, 133, 133, 0) 50%, rgb(43, 44, 54) 100%);
+    right: 5vh;
+    top: 22vh;
+    padding: 1;
 }
 
-.scoreboard-header {  /* 板子标题（城市信息）的背景色 */
-  border-radius: 1vh;
-  position: relative;
-  width: 92%;
-  height: 5vh;
-  margin: 1.7vh 1.3vh 0vh 1.7vh;
-  background: #24dddd96;
-  /* background: #dc143c; */
+.scoreboard-header > p {
+    font-weight: bold;
+    color: rgb(0, 255, 191);
+    padding: 0vh;
+    font-family: 'Tajawal';
+    font-size: 1.8vh;
 }
 
-.scoreboard-header > p {  /* 板子标题（城市信息）的字体 */
-  text-align: center;
-  font-weight: bold;
-  color: #f4f5f0f3;
-  padding: 1.3vh;
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.5vh;
+.scoreboard-info {
+    position: absolute;
+    height: 32.5vh;
+    /* width: 20vh; */
+    width: 96%;
+    top: 46%;
+	/* left: 51%; */
+	left: 1.3%;
+    transform: translateY(-50%);
+    margin: 0 auto;
 }
+
+/* .scoreboard-info1 {
+    position: absolute;
+    height: 32.5vh;
+    width: 20vh;
+    top: 46%;
+	left: 1.3%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+} */
+
+.scoreboard-info-header {
+    position: relative;
+    height: 2vh;
+}
+
+#info-tab-label {
+    position: absolute;
+    font-family: 'Tajawal';
+    color: rgb(56,236,168);
+    left: 1vh;
+    font-weight: bold;
+}
+
 #status-tab-label {
-  position: absolute;
-  font-family: 'Poppins', sans-serif;
-  right: 3vh;
-  font-weight: bold;
+    position: absolute;
+    font-family: 'Tajawal';
+    color: rgb(56,236,168);
+    right: 3vh;
+    font-weight: bold;
 }
 
-.info-beam-title {  /* 任务的字体 */
-  position: absolute;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.7vh;
-  letter-spacing: 0.1vh;
-  left: 2.7vh;
-  line-height: 4vh;
-  font-weight: bold;
-  color: #f4f5f0f3;
-}
-
-.info-beam-title-players {  /* 城市市民的字体 */
-  position: absolute;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.6vh;
-  letter-spacing: 0.1vh;
-  left: 2.4vh;
-  line-height: 4vh;
-  font-weight: bold;
-  color: #f4f5f0f3;
+.info-beam-title {
+    position: absolute;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.2vh;
+    font-weight: lighter;
+    color: rgb(56,236,168);
+    letter-spacing: 0.1vh;
+    left: 1vh;
+    line-height: 4.25vh;
 }
 
 .info-beam-status {
-  position: absolute;
-  font-family: 'Poppins', sans-serif;
-  right: 3vh;
-  float: left;
-  text-align: left;
-  line-height: 4.25vh;
+    position: absolute;
+    font-family: 'Tajawal';
+    font-size: 1.6vh;
+    color: rgb(236, 56, 56);
+    right: 2vh;
+    float: left;
+    text-align: left;
+    line-height: 4.25vh;
+}
+
+.info-beam-status1 {
+    position: absolute;
+    font-family: 'Tajawal';
+    font-size: 1.6vh;
+    color: rgb(56,236,168);
+    right: 2vh;
+    float: left;
+    text-align: left;
+    line-height: 4.25vh;
 }
 
 .scoreboard-info-beam {
-  margin-top: .3vh;
-  position: relative;
-  height: 4.25vh;
-  width: 100%;
-  border-bottom-left-radius: 2vh;
-  border-bottom-right-radius: 2vh;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px rgb(56,236,168);
+    height: 3.75vh;
+    margin: 5px 1px 1px 1px;
+    width: 100%;
 }
 
-.fa-times {
-  color: #ecea44;
+.scoreboard-info-beam1 {
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px rgb(56,236,168);
+    height: 3.75vh;
+    margin: 5px 1px 1px 1px;
+    width: 100%;
 }
+
 
 .fa-check {
-  color: #28a745;
+    color: rgb(59, 141, 49);
 }
 
 .fa-clock {
-  color: #2873a7;
+    color: rgb(255, 190, 50);
+}
+
+.green {
+    color: rgb(98, 255, 78);
+}
+
+.red {
+    color: rgb(235, 59, 59);
+}
+
+.clover-logo {
+  position: absolute;
+  margin-left: 33%;
+  margin-top: -15%;
+  height: 13.4vh;
+  width: 13.4vh;
 }

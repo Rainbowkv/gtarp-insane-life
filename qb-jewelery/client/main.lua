@@ -36,6 +36,7 @@ end
 local function smashVitrine(k)
     if not firstAlarm then
         -- TriggerServerEvent('police:server:policeAlert', 'Suspicious Activity')
+        TriggerServerEvent('qb-jewellery:server:setTimeout')  -- 只通知一次计时就好
         TriggerServerEvent("SendAlert:police", {  -- rb_code，与新警察适配
             coords = GetEntityCoords(PlayerPedId()),
             title = '珠宝抢劫',
@@ -67,7 +68,6 @@ local function smashVitrine(k)
                 disableCombat = true,
             }, {}, {}, {}, function() -- Done
                 TriggerServerEvent('qb-jewellery:server:vitrineReward', k)
-                TriggerServerEvent('qb-jewellery:server:setTimeout')
                 -- TriggerServerEvent('police:server:policeAlert', 'Robbery in progress')
                 TriggerServerEvent("SendAlert:police", {  -- rb_code，与新警察适配
                     coords = GetEntityCoords(PlayerPedId()),

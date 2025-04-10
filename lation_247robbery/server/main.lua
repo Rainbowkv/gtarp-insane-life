@@ -64,10 +64,16 @@ end
 local function StartCooldown()
     GlobalState.cooldown = true
     local wait = math.floor(sh_config.setup.global.duration * 1000)
+    TriggerEvent('qb-scoreboard:server:SetActivityBusy', 'storerobbery', true)  -- add for qb-scoreboard rb_code
     SetTimeout(wait, function()
         GlobalState.cooldown = false
+        TriggerEvent('qb-scoreboard:server:SetActivityBusy', 'storerobbery', false)  -- add for qb-scoreboard
     end)
 end
+
+RegisterNetEvent('lation_247robbery:server:StartCooldown', function()
+    StartCooldown()
+end)
 
 -- Callback to initialize store robbery
 --- @param source number
@@ -278,7 +284,7 @@ RegisterNetEvent('lation_247robbery:CompleteSafeRobbery', function()
     GlobalState.started = false
     states[identifier].state = nil
     states[identifier].completed = os.time()
-    StartCooldown()
+    -- StartCooldown()  -- 提前到很前面
     if sv_config.logs.events.safe_robbed and #items > 0 then
         ---@diagnostic disable-next-line: undefined-field
         PlayerLog(source, locale('logs.safe-robbed-title'), locale('logs.safe-robbed-message', name, identifier, rewards))
@@ -318,7 +324,7 @@ RegisterNetEvent('lation_247robbery:FailedRobbery', function()
     GlobalState.started = false
     states[identifier].state = nil
     states[identifier].completed = os.time()
-    StartCooldown()
+    -- StartCooldown()  -- 提前到很前面
 end)
 
 InitializeStores()

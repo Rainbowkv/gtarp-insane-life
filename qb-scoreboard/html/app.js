@@ -1,58 +1,59 @@
-window.addEventListener("message", (event) => {
-  switch (event.data.action) {
-    case "open":
-      Open(event.data);
-      break;
-    case "close":
-      Close();
-      break;
-    case "setup":
-      Setup(event.data);
-      break;
-  }
+QBScoreboard = {};
+
+$(document).ready(function () {
+  window.addEventListener("message", function (event) {
+    switch (event.data.action) {
+      case "open":
+        QBScoreboard.Open(event.data);
+        break;
+      case "close":
+        QBScoreboard.Close();
+        break;
+    }
+  });
 });
 
-const Open = (data) => {
+QBScoreboard.Open = function (data) {
   $(".scoreboard-block").fadeIn(150);
-  $("#total-players").html("<p>" + data.players + " / " + data.maxPlayers + "</p>");
+  $("#total-players").html(
+    "<p>" + data.players + " / " + data.maxPlayers + "</p>"
+  );
+  $("#total-cops").html(
+    "<p>" + data.currentCops + "</p>"
+  );
+  $("#total-ems").html(
+    "<p>" + data.currentAmbulance + "</p>"
+  );
+  $("#total-sasp").html(
+    "<p>" + data.currentSasp + "</p>"
+  );
+  $("#total-saspr").html(
+    "<p>" + data.currentSaspr + "</p>"
+  );
+  $("#total-bcso").html(
+    "<p>" + data.currentBcso + "</p>"
+  );
+  $("#total-hayes").html(
+    "<p>" + data.currentHayes + "</p>"
+  );
+  $("#total-tuner").html(
+    "<p>" + data.currentTuner + "</p>"
+  );
 
-  $.each(data.requiredCops, (i, category) => {
+  $.each(data.requiredCops, function (i, category) {
     var beam = $(".scoreboard-info").find('[data-type="' + i + '"]');
     var status = $(beam).find(".info-beam-status");
 
-    // For anyone wondering, this does work, you can leave the brackets out if you have just one line of code to execute
-    if (category.busy)
+    if (category.busy) {
       $(status).html('<i class="fas fa-clock"></i>');
-    else if (data.currentCops >= category.minimumPolice)
+    } else if (data.currentCops >= category.minimum) {
       $(status).html('<i class="fas fa-check"></i>');
-    else
+    } else {
       $(status).html('<i class="fas fa-times"></i>');
+    }
   });
 };
 
-const Close = () => {
+QBScoreboard.Close = function () {
   $(".scoreboard-block").fadeOut(150);
-};
-
-const Setup = (data) => {
-  let scoreboardHtml = "";
-  $.each(data.items, (index, value) => {  // 任务状态
-    scoreboardHtml += `
-      <div class="scoreboard-info-beam" data-type=${index}>
-        <div class="info-beam-title">
-            <p>${value}</p>
-        </div>
-        <div class="info-beam-status"></div>
-      </div>
-    `;
-  });
-  scoreboardHtml += `
-    <div class="scoreboard-info-beam" style="background: #24dddd96">
-      <div class="info-beam-title-players">
-        <p>当前活跃市民</p>
-      </div>
-      <div class="info-beam-status" id="total-players" style="color: #ededed"></div>
-    </div>
-  `;  // ‘当前活跃市民’的背景颜色
-  $(".scoreboard-info").html(scoreboardHtml);
 };

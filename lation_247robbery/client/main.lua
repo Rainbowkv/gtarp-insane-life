@@ -57,19 +57,20 @@ local function InitiateRegisterRobbery()
     lib.requestAnimDict(dict)
     while not HasAnimDictLoaded(dict) do Wait(0) end
     TaskPlayAnim(cache.ped, dict, anim, 8.0, 8.0, -1, 51, 1.0, false, false, false)
-    local skillcheck = Minigame(sh_config.registers.minigame)
+    local coords = GetEntityCoords(cache.ped)
+    local data = {
+        coords = coords,
+        street = GetStreetNameFromHashKey(GetStreetNameAtCoord(coords.x, coords.y, coords.z))
+    }
+    PoliceDispatch(data)  -- 先报警
+    local skillcheck = Minigame(sh_config.registers.minigame)  -- 再开始游戏
     ClearPedTasks(cache.ped)
     if not skillcheck then
         TriggerServerEvent('lation_247robbery:DoesLockpickBreak')
         activeRegister = false
         return
     end
-    local coords = GetEntityCoords(cache.ped)
-    local data = {
-        coords = coords,
-        street = GetStreetNameFromHashKey(GetStreetNameAtCoord(coords.x, coords.y, coords.z))
-    }
-    PoliceDispatch(data)
+    TriggerServerEvent('lation_247robbery:server:StartCooldown')  -- 收银机撬成功后再然后进入冷却
     if ProgressBar(cl_config.anims.register) then
         local codeChance = math.random(100)
         if codeChance <= sh_config.registers.noteChance then

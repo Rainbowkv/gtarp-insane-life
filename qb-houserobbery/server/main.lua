@@ -4,12 +4,14 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local function ResetHouseStateTimer(house)
     CreateThread(function()
+        TriggerEvent('qb-scoreboard:server:SetActivityBusy', "houserobbery", true)  -- rb_code
         Wait(Config.TimeToCloseDoors * 60000)
         Config.Houses[house]['opened'] = false
         for _, v in pairs(Config.Houses[house]['furniture']) do
             v['searched'] = false
         end
         TriggerClientEvent('qb-houserobbery:client:ResetHouseState', -1, house)
+        TriggerEvent('qb-scoreboard:server:SetActivityBusy', "houserobbery", false)  -- rb_code
     end)
 end
 

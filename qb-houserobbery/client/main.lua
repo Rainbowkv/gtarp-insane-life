@@ -150,12 +150,11 @@ end)
 
 RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
     if Config.UseClockHours then
-        if GetClockHours() < Config.MinimumTime or GetClockHours() > Config.MaximumTime then
+        if GetClockHours() >= Config.MinimumTime and GetClockHours() <= Config.MaximumTime then
             QBCore.Functions.Notify(Lang:t('error.not_allowed_time'), 'error', 3500)
             return
         end
     end
-
     usingAdvanced = isAdvanced
     if closestHouse ~= nil then
         if CurrentCops >= Config.PoliceOnDutyRequired then
@@ -195,6 +194,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                         QBCore.Functions.Notify(Lang:t('error.didnt_work'), 'error', 2500)
                     end
                 end
+                ClearPedTasks(PlayerPedId())  -- rb_code 清理动画
             else
                 QBCore.Functions.Notify(Lang:t('error.door_open'), 'error', 3500)
             end
@@ -218,13 +218,6 @@ CreateThread(function()
         local PlayerPed = PlayerPedId()
         local PlayerPos = GetEntityCoords(PlayerPed)
         closestHouse = nil
-
-        if Config.UseClockHours then
-            if GetClockHours() < Config.MinimumTime or GetClockHours() > Config.MaximumTime then
-                QBCore.Functions.Notify(Lang:t('error.not_allowed_time'), 'error', 3500)
-                return
-            end
-        end
 
         if not inside then
             for k, _ in pairs(Config.Houses) do
@@ -256,7 +249,7 @@ CreateThread(function()
             end
             Wait(1000)
         end
-        Wait(1)
+        Wait(3)
     end
 end)
 
