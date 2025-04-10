@@ -71,7 +71,8 @@ function populateVehicleList(garageLabel, vehicles) {
 
         const mileage = document.createElement("span");
         mileage.classList.add("mileage");
-        mileage.textContent = `${v.distance}mi`;
+        // mileage.textContent = `${v.distance}mi`;
+        mileage.textContent = `里程：${v.distance}米`;
         vehicleInfo.appendChild(mileage);
 
         vehicleItem.appendChild(vehicleInfo);
@@ -83,9 +84,9 @@ function populateVehicleList(garageLabel, vehicles) {
         financeInfo.classList.add("finance-info");
 
         if (v.balance && v.balance > 0) {
-            financeInfo.textContent = "Balance: $" + v.balance.toFixed(0);
+            financeInfo.textContent = "车贷: $" + v.balance.toFixed(0);
         } else {
-            financeInfo.textContent = "Paid Off";
+            financeInfo.textContent = "无车贷";
         }
 
         financeDriveContainer.appendChild(financeInfo);
@@ -99,43 +100,52 @@ function populateVehicleList(garageLabel, vehicles) {
                 isDepotPrice = true;
 
                 if (v.type === "public") {
-                    status = "Depot";
+                    // status = "Depot";
+                    status = "扣押场";
                 } else if (v.type === "depot") {
                     status = "$" + v.depotPrice.toFixed(0);
                 } else {
-                    status = "Out";
+                    // status = "Out";
+                    status = "外面";
                 }
             } else {
-                status = "Out";
+                // status = "Out";
+                status = "外面";
             }
         } else if (v.state === 1) {
             if (v.depotPrice && v.depotPrice > 0) {
                 isDepotPrice = true;
 
+                // if (v.type === "depot") {
                 if (v.type === "depot") {
                     status = "$" + v.depotPrice.toFixed(0);
                 } else if (v.type === "public") {
-                    status = "Depot";
+                    // status = "Depot";
+                    status = "扣押场";
                 } else {
-                    status = "Drive";
+                    // status = "Drive";
+                    status = "取出";
                 }
             } else {
-                status = "Drive";
+                // status = "Drive";
+                status = "取出";
             }
         } else if (v.state === 2) {
-            status = "Impound";
+            // status = "Impound";
+            status = "被扣押";
         }
 
         const driveButton = document.createElement("button");
         driveButton.classList.add("drive-btn");
         driveButton.textContent = status;
 
-        if (status === "Depot" || status === "Impound") {
+        // if (status === "Depot" || status === "Impound") {
+        if (status === "扣押场" || status === "被扣押") {
             driveButton.style.backgroundColor = "#222";
             driveButton.disabled = true;
         }
 
-        if (status === "Out") {
+        if (status === "外面") {
             driveButton.style.backgroundColor = "#222";
         }
 
@@ -158,7 +168,7 @@ function populateVehicleList(garageLabel, vehicles) {
                 stats: vehicleStats,
             };
 
-            if (status === "Out") {
+            if (status === "外面") {
                 fetch("https://qb-garages/trackVehicle", {
                     method: "POST",
                     headers: {
@@ -222,12 +232,20 @@ function populateVehicleList(garageLabel, vehicles) {
             body: 1000,
         };
 
+        // 映射英文到中文
+        const statLabels = {
+            fuel: "油量",
+            engine: "引擎",
+            body: "车身"
+        };
+
         ["fuel", "engine", "body"].forEach((statLabel) => {
             const stat = document.createElement("div");
             stat.classList.add("stat");
             const label = document.createElement("div");
             label.classList.add("label");
-            label.textContent = statLabel.charAt(0).toUpperCase() + statLabel.slice(1);
+            // label.textContent = statLabel.charAt(0).toUpperCase() + statLabel.slice(1);
+            label.textContent = statLabels[statLabel];
             stat.appendChild(label);
             const progressBar = document.createElement("div");
             progressBar.classList.add("progress-bar");

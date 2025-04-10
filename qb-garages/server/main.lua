@@ -230,13 +230,19 @@ end)
 RegisterNetEvent('qb-garages:server:compensateEntityFromPlate', function(plate)
     local src = source
     local vehicleData = OutsideVehicles[plate]
-    if vehicleData and DoesEntityExist(vehicleData.entity) then
+    if not vehicleData then
+        TriggerClientEvent('QBCore:Notify', src, "车辆数据不存在", 'error')
+        return
+    end
+    if DoesEntityExist(vehicleData.entity) then
         DeleteEntity(vehicleData.entity)
-        oxmysql:execute('UPDATE player_vehicles SET depotprice = 4000 WHERE state = 0', {}, function(affectedRows)
-            TriggerClientEvent('QBCore:Notify', src, "载具已到扣押场", 'success')
-        end)        
+        oxmysql:execute('UPDATE player_vehicles SET depotprice = 4000, state = 1 WHERE plate = @plate', {['@plate'] = plate}, function(affectedRows)
+            TriggerClientEvent('QBCore:Notify', src, "载具已到扣押场，保险费4000", 'success')
+        end)
     else
-        TriggerClientEvent('QBCore:Notify', src, "车辆并不在外面", 'error')
+        oxmysql:execute('UPDATE player_vehicles SET depotprice = 0, state = 1 WHERE plate = @plate', {['@plate'] = plate}, function(affectedRows)
+            TriggerClientEvent('QBCore:Notify', src, "消失的载具已免费送回车库", 'success')
+        end)
     end
 end)
 

@@ -73,11 +73,11 @@ Config.Discord = {
 }
 
 Config.Density = {
-    parked = 0,  -- 0-1
-    vehicle = 0,
-    multiplier = 0.8,
-    peds = 0,
-    scenario = 0.8
+    parked = 0.3,  -- 0-1
+    vehicle = 0.3,
+    multiplier = 0.6,
+    peds = 0.3,
+    scenario = 0.6
 }
 
 Config.Disable = {
@@ -93,11 +93,6 @@ Config.Disable = {
 
 Config.RelieveWeedStress = math.random(15, 20) -- stress relief amount (100 max)
 
-Config.PropModel = {
-    ['water_bottle'] = {model='vw_prop_casino_water_bottle_01a',coords=vec3(0.0, 0.0, -0.05)},
-    ['kurkakola'] = {model='brum_can_coke',coords=vec3(0.0, 0.0, 0.09)},
-}
-
 Config.Consumables = {
     eat = { -- default food items
         ['sandwich'] = math.random(35, 54),
@@ -106,8 +101,8 @@ Config.Consumables = {
         ['snikkel_candy'] = math.random(40, 50)
     },
     drink = { -- default drink items
-        ['water_bottle'] = 10,
-        ['kurkakola'] = 20,
+        ['water_bottle'] = math.random(35, 54),
+        ['kurkakola'] = math.random(35, 54),
         ['coffee'] = math.random(40, 50)
     },
     alcohol = { -- default alcohol items
