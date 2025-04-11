@@ -49,13 +49,14 @@ end
 
 CreateThread(createZones)
 
+-- rb_code
 local isEscorted = false
 local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
     local ped = PlayerPedId()
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.metadata['isdead'] then
+        if PlayerData.metadata['isdead'] or PlayerData.metadata['ishandcuffed'] then
             if not isEscorted then
                 isEscorted = true
                 local dragger = GetPlayerPed(GetPlayerFromServerId(playerId))
@@ -84,6 +85,17 @@ RegisterNetEvent('ars_ambulancejob:client:MenuEscortPlayer', function()
     end
 end)
 
+RegisterNetEvent('ars_ambulancejob:client:vehicleinof', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player == -1 or distance > 1.5 then
+        QBCore.Functions.Notify("附近没有市民", "error")
+        return
+    end
+    local playerId = GetPlayerServerId(player)
+    -- 检查目标玩家是否死亡或被上手铐
+    TriggerServerEvent('ars_ambulancejob:server:vehicleinof', playerId)
+end)
+
 CreateThread(function()
     exports.ox_target:addGlobalPlayer({
         {
@@ -97,6 +109,17 @@ CreateThread(function()
             onSelect = function(data)
                 -- 触发事件，传目标ID
                 TriggerEvent('ars_ambulancejob:client:EscortPlayer', GetPlayerServerId(NetworkGetEntityOwner(data.entity)))
+            end
+        }
+    })
+    exports.ox_target:addGlobalVehicle({
+        {
+            name = 'put/take a player',
+            label = '放入/抱出市民',
+            icon = 'fa-solid fa-car',
+            distance = 1.2,
+            onSelect = function(data)
+                TriggerEvent('ars_ambulancejob:client:vehicleinof')
             end
         }
     })

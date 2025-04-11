@@ -1313,7 +1313,7 @@ return {
 		description = "在有人捣乱时派上用场。也许它可以用来做别的事情？",
 		client = {
 			image = "handcuffs.png",
-			event = "origen_police:client:cuffuncuff"
+			event = "police:client:CuffPlayerSoft"
 		}
 	},
 

@@ -59,7 +59,7 @@ function checkInjuries(data)
                     lib.registerContext({
                         id = 'ars_ambulancejob:patient_injury',
                         title = v.label,
-                        menu = "patient_injuries",
+                        menu = "ars_ambulancejob:patient_injuries",
                         options = {
                             {
                                 title = locale("injury_value"),
@@ -118,7 +118,7 @@ function checkInjuries(data)
     lib.registerContext({
         id = 'ars_ambulancejob:patient_injuries',
         title = locale("injury_menu_title"),
-        menu = "check_patient",
+        menu = "ars_ambulancejob:check_patient",
         options = injuries
     })
 
