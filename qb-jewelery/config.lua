@@ -54,7 +54,7 @@ Config.VitrineRewards = {
         ['item'] = 'rolex',
         ['amount'] = {
             ['min'] = 1,
-            ['max'] = 4
+            ['max'] = 3
         },
         ['probability'] = 0.4
     },
@@ -62,7 +62,7 @@ Config.VitrineRewards = {
         ['item'] = 'diamond_ring',
         ['amount'] = {
             ['min'] = 1,
-            ['max'] = 4
+            ['max'] = 3
         },
         ['probability'] = 0.3
     },
@@ -70,7 +70,7 @@ Config.VitrineRewards = {
         ['item'] = 'goldchain',
         ['amount'] = {
             ['min'] = 1,
-            ['max'] = 4
+            ['max'] = 3
         },
         ['probability'] = 0.2
     },
@@ -78,7 +78,7 @@ Config.VitrineRewards = {
         ['item'] = 'tenkgoldchain',
         ['amount'] = {
             ['min'] = 1,
-            ['max'] = 4
+            ['max'] = 3
         },
         ['probability'] = 0.1
     },

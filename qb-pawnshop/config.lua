@@ -28,43 +28,39 @@ Config.PawnItems = {
     },
     [2] = {
         item = 'diamond_ring',
-        price = 90
+        price = 80
     },
     [3] = {
         item = 'rolex',
-        price = 110
+        price = 70
     },
     [4] = {
         item = 'tenkgoldchain',
-        price = 120
+        price = 110
     },
     [5] = {
         item = 'tablet',
-        price = 150
+        price = 70
     },
     [6] = {
         item = 'iphone',
-        price = 150
+        price = 70
     },
     [7] = {
         item = 'samsungphone',
-        price = 150
+        price = 70
     },
     [8] = {
         item = 'laptop',
-        price = 160
+        price = 90
     },
     [9] = {
         item = 'goldbar',
-        price = 100
+        price = 110
     },
     [10] = {
         item = 'diamond',
-        price = 100
-    },
-    [11] = {
-        item = 'laptop',
-        price = 160
+        price = 110
     },
 }
 
@@ -77,7 +73,7 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 amount = 2
             }
         },
-        meltTime = 2
+        meltTime = 1
     },
     [2] = {
         item = 'diamond_ring',
@@ -101,7 +97,7 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 amount = 1
             },
         },
-        meltTime = 2
+        meltTime = 1
     },
     [4] = {
         item = 'tenkgoldchain',
@@ -115,6 +111,6 @@ Config.MeltingItems = { -- meltTime is amount of time in minutes per item
                 amount = 1
             }
         },
-        meltTime = 2
+        meltTime = 1
     },
 }

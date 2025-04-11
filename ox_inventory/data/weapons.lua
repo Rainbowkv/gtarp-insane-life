@@ -1809,7 +1809,7 @@ return {
 
 		['ammo-9'] = {
 			label = '9mm',
-			weight = 14,
+			weight = 20,
 		},
 
 		['ammo-firework'] = {
@@ -1849,7 +1849,7 @@ return {
 
 		['ammo-rifle'] = {
 			label = '5.56mm',
-			weight = 12,
+			weight = 30,
 		},
 
 		['ammo-rifle2'] = {

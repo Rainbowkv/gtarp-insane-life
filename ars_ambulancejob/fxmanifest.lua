@@ -58,4 +58,5 @@ files {
 	'config.lua',
 }
 
-dependency 'qb-target'
+-- dependency 'ox_target'
+dependency 'ox_inventory'  -- ox_target已经在server.cfg中保证了

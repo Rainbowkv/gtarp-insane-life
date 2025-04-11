@@ -128,6 +128,16 @@ local function SetupVehicleMenu()
                     shouldClose = false,
                 }
             end
+
+            -- rb_code
+            VehicleMenu.items[#VehicleMenu.items + 1] = {
+                id = 'vehicle-givekeys',
+                title = '分发车辆钥匙',
+                icon = 'key',
+                type = 'client',
+                event = 'qb-radialmenu:givekeys',
+                shouldClose = true
+            }
         end
     end
 
@@ -177,7 +187,7 @@ local function SetupRadialMenu()
                 title = Lang:t('options.emergency_button'),
                 icon = 'circle-exclamation',
                 type = 'client',
-                event = 'police:client:SendPoliceEmergencyAlert',
+                event = 'qb-radialmenu:ambulance',
                 shouldClose = true,
             },
         }
@@ -393,6 +403,19 @@ AddEventHandler('onClientResourceStop', function(resource)
             DynamicMenuItems[k] = nil
         end
     end
+end)
+
+-- rb_code
+RegisterNetEvent('qb-radialmenu:givekeys', function()
+    ExecuteCommand("givekeys")
+end)
+
+RegisterNetEvent('qb-radialmenu:jobinfo', function()
+    ExecuteCommand("job")
+end)
+
+RegisterNetEvent('qb-radialmenu:ambulance', function()
+    ExecuteCommand("ambulance")
 end)
 
 -- NUI Callbacks

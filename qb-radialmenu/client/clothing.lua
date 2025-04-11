@@ -958,10 +958,13 @@ end
 
 RegisterNetEvent('qb-radialmenu:ToggleProps', ToggleProps)
 
-for k, v in pairs(Config.Commands) do
-	RegisterCommand(k, v.Func)
-	--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
-	TriggerEvent('chat:addSuggestion', '/' .. k, v.Desc)
+-- rb_code
+if Config.CommandsEnable then
+	for k, v in pairs(Config.Commands) do
+		RegisterCommand(k, v.Func)
+		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
+		TriggerEvent('chat:addSuggestion', '/' .. k, v.Desc)
+	end
 end
 
 if Config.ExtrasEnabled then

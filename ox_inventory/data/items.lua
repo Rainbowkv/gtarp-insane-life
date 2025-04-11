@@ -272,7 +272,7 @@ return {
 
 	["jerry_can"] = {
 		label = "20L油桶",
-		weight = 20000,
+		weight = 18000,
 		stack = true,
 		close = true,
 		description = "装满油的油桶",
@@ -305,7 +305,7 @@ return {
 
 	["rolex"] = {
 		label = "金表",
-		weight = 1500,
+		weight = 250,
 		stack = true,
 		close = true,
 		description = "这块金表看起来像是打 Jackpot 一样！",
@@ -855,7 +855,7 @@ return {
 
 	["goldchain"] = {
 		label = "金链",
-		weight = 1500,
+		weight = 100,
 		stack = true,
 		close = true,
 		description = "这条金链看起来像是打 Jackpot 一样！",
@@ -1031,7 +1031,7 @@ return {
 
 	["tenkgoldchain"] = {
 		label = "10k 金链",
-		weight = 2000,
+		weight = 200,
 		stack = true,
 		close = true,
 		description = "10 克拉金链",
@@ -1363,7 +1363,7 @@ return {
 
 	["diamond"] = {
 		label = "钻石",
-		weight = 1000,
+		weight = 50,
 		stack = true,
 		close = true,
 		description = "这颗钻石看起来像是打 Jackpot 一样！",
@@ -1561,7 +1561,7 @@ return {
 
 	["diamond_ring"] = {
 		label = "钻石戒指",
-		weight = 1500,
+		weight = 20,
 		stack = true,
 		close = true,
 		description = "这枚钻石戒指看起来像是打 Jackpot 一样！",
@@ -2210,7 +2210,7 @@ return {
 
 	["goldbar"] = {
 		label = "金条",
-		weight = 7000,
+		weight = 300,
 		stack = true,
 		close = true,
 		description = "看起来相当贵重",
