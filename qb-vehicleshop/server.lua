@@ -24,6 +24,11 @@ RegisterNetEvent('qb-vehicleshop:server:removePlayer', function(citizenid)
     financetimer[citizenid] = nil
 end)
 
+-- rb_code
+RegisterNetEvent('qb-vehicleshop:server:SetRoutingBucket', function(bucket)
+    SetPlayerRoutingBucket(source, bucket)
+end)
+
 -- Deduct stored game time from player on quit because we can't get citizenid
 AddEventHandler('playerDropped', function()
     local src = source

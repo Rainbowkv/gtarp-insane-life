@@ -170,6 +170,7 @@ local function startTestDriveTimer(testDriveTime, prevCoords)
                     TriggerServerEvent('qb-vehicleshop:server:deleteVehicle', testDriveVeh)
                     testDriveVeh = 0
                     inTestDrive = false
+                    TriggerServerEvent('qb-vehicleshop:server:SetRoutingBucket', 0)  -- rb_code, 返回原来的路由桶以取消场景隔离，默认路由桶都为0
                     SetEntityCoords(PlayerPedId(), prevCoords)
                     QBCore.Functions.Notify(Lang:t('general.testdrive_complete'))
                 end
@@ -265,18 +266,18 @@ local function createFreeUseShop(shopShape, name)
                                 }
                             }
                         },
-                        {
-                            header = Lang:t('menus.finance_header'),
-                            txt = Lang:t('menus.freeuse_finance_txt'),
-                            icon = 'fa-solid fa-coins',
-                            params = {
-                                event = 'qb-vehicleshop:client:openFinance',
-                                args = {
-                                    price = getVehPrice(),
-                                    buyVehicle = Config.Shops[insideShop]['ShowroomVehicles'][ClosestVehicle].chosenVehicle
-                                }
-                            }
-                        },
+                        -- {
+                        --     header = Lang:t('menus.finance_header'),  -- rb_code 关闭融资车辆
+                        --     txt = Lang:t('menus.freeuse_finance_txt'),
+                        --     icon = 'fa-solid fa-coins',
+                        --     params = {
+                        --         event = 'qb-vehicleshop:client:openFinance',
+                        --         args = {
+                        --             price = getVehPrice(),
+                        --             buyVehicle = Config.Shops[insideShop]['ShowroomVehicles'][ClosestVehicle].chosenVehicle
+                        --         }
+                        --     }
+                        -- },
                         {
                             header = Lang:t('menus.swap_header'),
                             txt = Lang:t('menus.swap_txt'),
@@ -339,18 +340,18 @@ local function createManagedShop(shopShape, name)
                                 }
                             }
                         },
-                        {
-                            header = Lang:t('menus.finance_header'),
-                            txt = Lang:t('menus.managed_finance_txt'),
-                            icon = 'fa-solid fa-coins',
-                            params = {
-                                event = 'qb-vehicleshop:client:openCustomFinance',
-                                args = {
-                                    price = getVehPrice(),
-                                    vehicle = Config.Shops[insideShop]['ShowroomVehicles'][ClosestVehicle].chosenVehicle
-                                }
-                            }
-                        },
+                        -- {
+                        --     header = Lang:t('menus.finance_header'),  -- rb_code关闭融资车辆
+                        --     txt = Lang:t('menus.managed_finance_txt'),
+                        --     icon = 'fa-solid fa-coins',
+                        --     params = {
+                        --         event = 'qb-vehicleshop:client:openCustomFinance',
+                        --         args = {
+                        --             price = getVehPrice(),
+                        --             vehicle = Config.Shops[insideShop]['ShowroomVehicles'][ClosestVehicle].chosenVehicle
+                        --         }
+                        --     }
+                        -- },
                         {
                             header = Lang:t('menus.swap_header'),
                             txt = Lang:t('menus.swap_txt'),
@@ -438,6 +439,10 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
     if not inTestDrive and ClosestVehicle ~= 0 then
         inTestDrive = true
         local prevCoords = GetEntityCoords(PlayerPedId())
+        -- rb_code, 设置路由桶实现试驾场景隔离
+        local testDriveBucket = GetPlayerServerId(PlayerId()) + 1000 -- 每人单独一个桶（避免冲突）
+        TriggerServerEvent('qb-vehicleshop:server:SetRoutingBucket', testDriveBucket)
+        --
         tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
         QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
             local veh = NetToVeh(netId)
@@ -460,6 +465,10 @@ RegisterNetEvent('qb-vehicleshop:client:customTestDrive', function(data)
         inTestDrive = true
         local vehicle = data
         local prevCoords = GetEntityCoords(PlayerPedId())
+        -- rb_code, 设置路由桶实现试驾场景隔离
+        local testDriveBucket = GetPlayerServerId(PlayerId()) + 1000 -- 每人单独一个桶（避免冲突）
+        TriggerServerEvent('qb-vehicleshop:server:SetRoutingBucket', testDriveBucket)
+        --
         tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
         QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
             local veh = NetToVeh(netId)
