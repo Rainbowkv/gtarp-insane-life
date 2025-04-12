@@ -774,8 +774,9 @@ local Vehicles = {
     { model = 'baller6',         name = '巴勒 LE LWB (装甲版)',          brand = '加利万特',     price = 82000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'iak_wheelchair',  name = '轮椅',                         brand = '医疗公司',      price = 3000,   category = '特殊车辆',           type = 'bike', shop = 'none' },
     -- emergency
-    { model = '2vd_vscout',      name = '警用SUV',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
-    { model = 'expolregent',      name = '警用探险者',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
+    { model = '2vd_vscout',      name = '警用探险者',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
+    { model = '2vd_bstx',      name = '警用CTX',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
+    { model = 'expolregent',      name = '警用布鲁特',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
     { model = 'BCS_Silverado',      name = '联邦政府用车',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
 }
 

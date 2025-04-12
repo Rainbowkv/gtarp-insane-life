@@ -2726,4 +2726,14 @@ return {
 			image = "scratch_ticket.png",
 		}
 	},
+	["specialcar_license"] = {
+		label = "特殊车辆购买许可",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "用于公职人员购买特殊车辆",
+		client = {
+			image = "specialcar_license.png",
+		}
+	},
 }
