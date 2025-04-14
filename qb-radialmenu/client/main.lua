@@ -180,7 +180,8 @@ end
 
 local function SetupRadialMenu()
     FinalMenuItems = {}
-    if (IsDowned() and IsPoliceOrEMS()) then
+    -- if (IsDowned() and IsPoliceOrEMS()) then  -- 取消职业限制
+    if IsDowned() then  -- 取消职业限制
         FinalMenuItems = {
             [1] = {
                 id = 'emergencybutton2',
@@ -251,7 +252,8 @@ end
 -- Command
 
 RegisterCommand('radialmenu', function()
-    if ((IsDowned() and IsPoliceOrEMS()) or not IsDowned()) and not PlayerData.metadata['ishandcuffed'] and not IsPauseMenuActive() and not inRadialMenu then
+    -- if ((IsDowned() and IsPoliceOrEMS()) or not IsDowned()) and not PlayerData.metadata['ishandcuffed'] and not IsPauseMenuActive() and not inRadialMenu then
+    if not PlayerData.metadata['ishandcuffed'] and not IsPauseMenuActive() and not inRadialMenu then  -- 取消职业限制
         setRadialState(true, true)
         SetCursorLocation(0.5, 0.5)
     end
