@@ -9,6 +9,13 @@ local ClosestVehicle = 1
 local zones = {}
 local insideShop, tempShop = nil, nil
 
+-- rb_code
+local function cleanCar(veh)
+    -- 设置车辆干净状态
+    SetVehicleDirtLevel(veh, 0.0)
+    WashDecalsFromVehicle(veh, 1.0)
+end
+
 -- Handlers
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     PlayerData = QBCore.Functions.GetPlayerData()
@@ -446,6 +453,7 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
         tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
         QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
             local veh = NetToVeh(netId)
+            cleanCar(veh)  -- rb_code
             exports['LegacyFuel']:SetFuel(veh, 100)
             SetVehicleNumberPlateText(veh, 'TESTDRIVE')
             SetEntityHeading(veh, Config.Shops[tempShop]['TestDriveSpawn'].w)
@@ -472,6 +480,7 @@ RegisterNetEvent('qb-vehicleshop:client:customTestDrive', function(data)
         tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
         QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
             local veh = NetToVeh(netId)
+            cleanCar(veh)  -- rb_code
             exports['LegacyFuel']:SetFuel(veh, 100)
             SetVehicleNumberPlateText(veh, 'TESTDRIVE')
             SetEntityHeading(veh, Config.Shops[tempShop]['TestDriveSpawn'].w)
@@ -722,6 +731,7 @@ RegisterNetEvent('qb-vehicleshop:client:swapVehicle', function(data)
             Wait(50)
         end
         SetModelAsNoLongerNeeded(model)
+        cleanCar(veh)  -- rb_code
         SetVehicleOnGroundProperly(veh)
         SetEntityInvincible(veh, true)
         SetEntityHeading(veh, Config.Shops[shopName]['ShowroomVehicles'][data.ClosestVehicle].coords.w)
@@ -736,11 +746,13 @@ RegisterNetEvent('qb-vehicleshop:client:buyShowroomVehicle', function(vehicle, p
     tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
     QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
         local veh = NetToVeh(netId)
+        cleanCar(veh)  -- rb_code
         exports['LegacyFuel']:SetFuel(veh, 100)
         SetVehicleNumberPlateText(veh, plate)
         SetEntityHeading(veh, Config.Shops[tempShop]['VehicleSpawn'].w)
         TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
-        TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
+        -- SetVehicleModKit(vehicle, 0)  -- 防止车辆之后改装掉落
+        TriggerServerEvent('qb-garages:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
     end, vehicle, Config.Shops[tempShop]['VehicleSpawn'], true)
 end)
 
