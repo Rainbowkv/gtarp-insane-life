@@ -315,6 +315,10 @@ RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
                 TriggerEvent('vehiclekeys:client:SetOwner', vehPlate)
                 if Config.Warp then TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1) end
                 if Config.VisuallyDamageCars then doCarDamage(veh, data.stats, properties) end
+                -- 设置车辆干净状态
+                SetVehicleDirtLevel(veh, 0.0)
+                WashDecalsFromVehicle(veh, 1.0)
+                -- 启动引擎
                 SetVehicleEngineOn(veh, true, true, false)
             end, data.plate, data.vehicle, location, true)
         else
