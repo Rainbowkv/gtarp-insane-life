@@ -190,5 +190,58 @@ return {
 		model = {
 			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`, `prop_vend_snak_01`
 		}
-	}
+	},
+
+	mechanicShop = {
+		name = '高级改装件',
+		groups = {
+			['mechanic'] = 0
+		},
+		inventory = {
+			{ name = 'engine_oil', price = 10000, },
+			{ name = 'tyre_replacement', price = 10000, },
+			-- { name = 'clutch_replacement', price = 10000 },
+			{ name = 'air_filter', price = 10000 },
+			{ name = 'spark_plug', price = 10000 },
+			{ name = 'brakepad_replacement', price = 10000 },
+			{ name = 'suspension_parts', price = 10000 },
+			-- { name = 'i4_engine', price = 10000 },
+			-- { name = 'v6_engine', price = 10000 },
+			-- { name = 'v8_engine', price = 10000 },
+			-- { name = 'v12_engine', price = 10000},
+			{ name = 'turbocharger', price = 10000},
+			{ name = 'ev_motor', price = 10000},
+			{ name = 'ev_battery', price = 10000},
+			{ name = 'ev_coolant', price = 10000},
+			{ name = 'awd_drivetrain', price = 10000},
+			{ name = 'rwd_drivetrain', price = 10000},
+			{ name = 'fwd_drivetrain', price = 10000},
+			{ name = 'slick_tyres', price = 10000},
+			{ name = 'semi_slick_tyres', price = 10000},
+			{ name = 'offroad_tyres', price = 10000},
+			-- { name = 'drift_tuning_kit', price = 10000},
+			-- { name = 'ceramic_brakes', price = 10000},
+			{ name = 'lighting_controller', price = 10000},
+			{ name = 'stancing_kit', price = 10000},
+			{ name = 'cosmetic_part', price = 10000},
+			{ name = 'respray_kit', price = 10000},
+			{ name = 'vehicle_wheels', price = 10000},
+			{ name = 'tyre_smoke_kit', price = 10000},
+			{ name = 'bulletproof_tyres', price = 10000},
+			{ name = 'extras_kit', price = 10000},
+			-- { name = 'nitrous_bottle', price = 10000},
+			{ name = 'empty_nitrous_bottle', price = 10000},
+			-- { name = 'nitrous_install_kit', price = 10000},
+			{ name = 'cleaning_kit', price = 10000},
+			{ name = 'repair_kit', price = 10000},
+			{ name = 'duct_tape', price = 10000},
+			-- { name = 'performance_part', price = 10000},
+			{ name = 'mechanic_tablet', price = 10000},
+			-- { name = 'manual_gearbox', price = 10000},
+		}, locations = {
+			vec3(-343.79, -139.92, 39.01)  -- 480.82, -990.16, 30.69
+		}, targets = {
+			{ loc = vec3(-343.79, -139.92, 39.01), length = 0.5, width = 3.0, heading = 270.0, minZ = 37.5, maxZ = 41.0, distance = 6 }
+		}
+	},
 }

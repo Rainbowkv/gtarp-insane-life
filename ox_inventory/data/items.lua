@@ -2736,4 +2736,196 @@ return {
 			image = "specialcar_license.png",
 		}
 	},
+	-- jg-mechanic
+	-- Servicing Items
+	["engine_oil"] = {
+		label = "机油",
+		weight = 1000,
+	},
+	["tyre_replacement"] = {
+	label = "轮胎更换",
+	weight = 1000,
+	},
+	["clutch_replacement"] = {
+	label = "离合器更换",
+	weight = 1000,
+	},
+	["air_filter"] = {
+	label = "空气滤清器",
+	weight = 100,
+	},
+	["spark_plug"] = {
+	label = "火花塞",
+	weight = 1000,
+	},
+	["brakepad_replacement"] = {
+	label = "刹车片更换",
+	weight = 1000,
+	},
+	["suspension_parts"] = {
+	label = "悬挂部件",
+	weight = 1000,
+	},
+	-- 发动机部件
+	["i4_engine"] = {
+	label = "I4发动机",
+	weight = 1000,
+	},
+	["v6_engine"] = {
+	label = "V6发动机",
+	weight = 1000,
+	},
+	["v8_engine"] = {
+	label = "V8发动机",
+	weight = 1000,
+	},
+	["v12_engine"] = {
+	label = "V12发动机",
+	weight = 1000,
+	},
+	["turbocharger"] = {
+	label = "涡轮增压器",
+	weight = 1000,
+	},
+	-- 电动发动机
+	["ev_motor"] = {
+	label = "电动车电机",
+	weight = 1000,
+	},
+	["ev_battery"] = {
+	label = "电动车电池",
+	weight = 1000,
+	},
+	["ev_coolant"] = {
+	label = "电动车冷却液",
+	weight = 1000,
+	},
+	-- 传动系统部件
+	["awd_drivetrain"] = {
+	label = "全轮驱动系统",
+	weight = 1000,
+	},
+	["rwd_drivetrain"] = {
+	label = "后轮驱动系统",
+	weight = 1000,
+	},
+	["fwd_drivetrain"] = {
+	label = "前轮驱动系统",
+	weight = 1000,
+	},
+	-- 改装配件
+	["slick_tyres"] = {
+	label = "光头胎",
+	weight = 1000,
+	},
+	["semi_slick_tyres"] = {
+	label = "半光头胎",
+	weight = 1000,
+	},
+	["offroad_tyres"] = {
+	label = "越野胎",
+	weight = 1000,
+	},
+	["drift_tuning_kit"] = {
+	label = "漂移调校套件",
+	weight = 1000,
+	},
+	["ceramic_brakes"] = {
+	label = "陶瓷刹车",
+	weight = 1000,
+	},
+	-- 外观配件
+	["lighting_controller"] = {
+	label = "灯光控制器",
+	weight = 100,
+	client = {
+		event = "jg-mechanic:client:show-lighting-controller",
+	}
+	},
+	["stancing_kit"] = {
+	label = "姿态套件",
+	weight = 100,
+	client = {
+		event = "jg-mechanic:client:show-stancer-kit",
+	}
+	},
+	["cosmetic_part"] = {
+	label = "外观部件",
+	weight = 100,
+	},
+	["respray_kit"] = {
+	label = "喷漆套件",
+	weight = 1000,
+	},
+	["vehicle_wheels"] = {
+	label = "车辆轮毂套装",
+	weight = 1000,
+	},
+	["tyre_smoke_kit"] = {
+	label = "轮胎烟雾套件",
+	weight = 1000,
+	},
+	["bulletproof_tyres"] = {
+	label = "防弹轮胎",
+	weight = 1000,
+	},
+	["extras_kit"] = {
+	label = "额外套件",
+	weight = 1000,
+	},
+	-- 氮气和清洁用品
+	["nitrous_bottle"] = {
+	label = "氮气瓶",
+	weight = 1000,
+	client = {
+		event = "jg-mechanic:client:use-nitrous-bottle",
+	}
+	},
+	["empty_nitrous_bottle"] = {
+	label = "空氮气瓶",
+	weight = 1000,
+	},
+	["nitrous_install_kit"] = {
+	label = "氮气安装套件",
+	weight = 1000,
+	},
+	["cleaning_kit"] = {
+	label = "清洁套件",
+	weight = 1000,
+	client = {
+		event = "jg-mechanic:client:clean-vehicle",
+	}
+	},
+	["repair_kit"] = {
+	label = "维修套件",
+	weight = 1000,
+	client = {
+		event = "jg-mechanic:client:repair-vehicle",
+	}
+	},
+	["duct_tape"] = {
+	label = "强力胶带",
+	weight = 1000,
+	client = {
+		event = "jg-mechanic:client:use-duct-tape",
+	}
+	},
+	-- 性能部件
+	["performance_part"] = {
+	label = "性能部件",
+	weight = 1000,
+	},
+	-- 机械师平板
+	["mechanic_tablet"] = {
+	label = "机械师平板",
+	weight = 1000,
+	client = {
+		event = "jg-mechanic:client:use-tablet",
+	}
+	},
+	-- 变速箱
+	["manual_gearbox"] = {
+	label = "手动变速箱",
+	weight = 1000,
+	},
 }
