@@ -463,12 +463,12 @@ local Vehicles = {
     --- Off-Road (9)
     { model = 'bfinjection',     name = 'Bf 注射器',                  brand = '安尼斯',         price = 9000,    category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'bifta',           name = '比夫塔',                         brand = '安尼斯',         price = 15500,   category = '越野车',        type = 'automobile', shop = 'none' },
-    { model = 'blazer',          name = '开拓者',                        brand = '安尼斯',         price = 40000,    category = '越野车',        type = 'automobile', shop = 'none' },  
+    { model = 'blazer',          name = '开拓者',                        brand = '安尼斯',         price = 40000,    category = '越野车',        type = 'automobile', shop = 'pdm' },  -- pdm_sale
     { model = 'blazer2',         name = '开拓者救生员',              brand = '长崎',           price = 7000,    category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'blazer3',         name = '开拓者改装版',                brand = '长崎',           price = 7000,    category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'blazer4',         name = '开拓者运动版',                  brand = '安尼斯',         price = 9250,    category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'blazer5',         name = '开拓者水陆两用',                   brand = '长崎',           price = 40000,   category = '越野车',        type = 'automobile', shop = 'none' },
-    { model = 'brawler',         name = '格斗家',                       brand = '安尼斯',         price = 40000,   category = '越野车',        type = 'automobile', shop = 'pdm' },  -- pdm_sale
+    { model = 'brawler',         name = '格斗家',                       brand = '安尼斯',         price = 300000,   category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'caracara',        name = '卡拉卡拉',                      brand = '瓦皮德',         price = 60000,   category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'caracara2',       name = '卡拉卡拉 4x4',                  brand = '瓦皮德',         price = 80000,   category = '越野车',        type = 'automobile', shop = 'none' },
     { model = 'dubsta3',         name = '杜布斯塔 6x6',                    brand = '安尼斯',         price = 34000,   category = '越野车',        type = 'automobile', shop = 'none' },

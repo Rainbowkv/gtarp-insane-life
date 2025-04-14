@@ -350,6 +350,12 @@ RegisterNetEvent("ars_ambulancejob:playHealAnim", function(data)
         utils.showNotification(locale("action_revived_notification"))
 
         player.gettingRevived = true
+        Citizen.CreateThread(function()  -- rb_code，被救时禁用所有操作
+            while player.gettingRevived do
+                Wait(0)
+                DisableAllControlActions(0)
+            end
+        end)
 
         lib.requestAnimDict('mini@cpr@char_b@cpr_str')
         lib.requestAnimDict('mini@cpr@char_b@cpr_def')
