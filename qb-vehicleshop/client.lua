@@ -751,8 +751,7 @@ RegisterNetEvent('qb-vehicleshop:client:buyShowroomVehicle', function(vehicle, p
         SetVehicleNumberPlateText(veh, plate)
         SetEntityHeading(veh, Config.Shops[tempShop]['VehicleSpawn'].w)
         TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
-        -- SetVehicleModKit(vehicle, 0)  -- 防止车辆之后改装掉落
-        TriggerServerEvent('qb-garages:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
+        TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
     end, vehicle, Config.Shops[tempShop]['VehicleSpawn'], true)
 end)
 
