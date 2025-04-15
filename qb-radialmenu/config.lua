@@ -22,6 +22,14 @@ Config.MenuItems = {
                 event = 'qb-radialmenu:jobinfo',
                 shouldClose = true
             }, 
+            {
+                id = 'ganginfo',
+                title = '帮派',
+                icon = 'mask',
+                type = 'client',
+                event = 'qb-radialmenu:ganginfo',
+                shouldClose = true
+            }, 
         },
     },
     {

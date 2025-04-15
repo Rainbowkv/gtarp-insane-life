@@ -416,6 +416,10 @@ RegisterNetEvent('qb-radialmenu:jobinfo', function()
     ExecuteCommand("job")
 end)
 
+RegisterNetEvent('qb-radialmenu:ganginfo', function()
+    ExecuteCommand("gang")
+end)
+
 RegisterNetEvent('qb-radialmenu:ambulance', function()
     ExecuteCommand("ambulance")
 end)
