@@ -216,6 +216,7 @@ RegisterNetEvent('ars_ambulance:server:ReturnKeys', function(plate)
     exports['qb-vehiclekeys']:RemoveKeys(source, plate)
 end)
 
+-- 护送
 RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
     local src = source
     local playerPed = GetPlayerPed(src)
@@ -246,5 +247,43 @@ RegisterNetEvent('ars_ambulancejob:server:vehicleinof', function(targetId)
         TriggerClientEvent('origen_police:client:vehicleinof', src)
     else
         TriggerClientEvent('QBCore:Notify', src, '该玩家未死亡或未被上手铐，无法进行操作', 'error')
+    end
+end)
+
+-- 将市民放入车辆
+RegisterNetEvent('ars_ambulancejob:server:PutPlayerInVehicle', function(playerId)
+    local src = source
+    local playerPed = GetPlayerPed(src)
+    local targetPed = GetPlayerPed(playerId)
+    local playerCoords = GetEntityCoords(playerPed)
+    local targetCoords = GetEntityCoords(targetPed)
+    if #(playerCoords - targetCoords) > 3.0 then return DropPlayer(src, '尝试滥用操作') end
+
+    local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
+    if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
+
+    if EscortPlayer.PlayerData.metadata['ishandcuffed'] or EscortPlayer.PlayerData.metadata['isdead'] then
+        TriggerClientEvent('ars_ambulancejob:client:PutInVehicle', EscortPlayer.PlayerData.source)
+    else
+        TriggerClientEvent('QBCore:Notify', src, '该市民没有被上手铐或者死亡', 'error')
+    end
+end)
+
+-- 将市民挪出车辆
+RegisterNetEvent('ars_ambulancejob:server:SetPlayerOutVehicle', function(playerId)
+    local src = source
+    local playerPed = GetPlayerPed(src)
+    local targetPed = GetPlayerPed(playerId)
+    local playerCoords = GetEntityCoords(playerPed)
+    local targetCoords = GetEntityCoords(targetPed)
+    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, '尝试滥用操作') end
+
+    local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
+    if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
+
+    if EscortPlayer.PlayerData.metadata['ishandcuffed'] or EscortPlayer.PlayerData.metadata['isdead'] then
+        TriggerClientEvent('ars_ambulancejob:client:SetOutVehicle', EscortPlayer.PlayerData.source)
+    else
+        TriggerClientEvent('QBCore:Notify', src, '该市民没有被上手铐或者死亡', 'error')
     end
 end)

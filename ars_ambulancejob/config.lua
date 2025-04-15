@@ -47,6 +47,8 @@ Config.emsVehicles = {                -- vehicles that have access to the props 
 	ambulance2 = true,
 }
 
+Config.allowOperations = {1, 2, 30, 31, 36, 199, 245, 249}
+
 Config.animations = {
 	["death_car"] = {
 		dict = "veh@low@front_ps@idle_duck",
