@@ -58,5 +58,8 @@ files {
 	'config.lua',
 }
 
--- dependency 'ox_target'
-dependency 'ox_inventory'  -- ox_target已经在server.cfg中保证了
+-- dependency 'ox_target'-- ox_target已经在server.cfg中保证了
+dependencies {
+	'ox_inventory',
+	'origen_police',
+}

@@ -54,6 +54,10 @@ local isEscorted = false
 local QBCore = exports['qb-core']:GetCoreObject()
 local allowOperations = lib.load("config").allowOperations
 
+exports('isEscorted', function()
+    return isEscorted
+end)
+
 RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
     local ped = PlayerPedId()
     QBCore.Functions.GetPlayerData(function(PlayerData)
