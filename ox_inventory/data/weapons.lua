@@ -1838,8 +1838,8 @@ return {
 		},
 
 		['ammo-musket'] = {
-			label = '.50 Ball',
-			weight = 38,
+			label = '.50 子弹',
+			weight = 40,
 		},
 
 		['ammo-railgun'] = {

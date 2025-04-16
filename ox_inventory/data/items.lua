@@ -2928,4 +2928,55 @@ return {
 	label = "手动变速箱",
 	weight = 1000,
 	},
+	-- ars-hunting
+	['animal_tracker'] = {
+		label = '动物追踪器',
+		weight = 200,
+		allowArmed = true,
+		stack = false,
+	},
+	['campfire'] = {
+		label = '篝火',
+		weight = 200,
+		allowArmed = true,
+		stack = false,
+	},
+	['huntingbait'] = {
+		label = '狩猎诱饵',
+		weight = 100,
+		allowArmed = true,
+	},
+	['cooked_meat'] = {
+		label = '熟肉',
+		weight = 200,
+	},
+	['raw_meat'] = {
+		label = '生肉',
+		weight = 200,
+	},
+	['skin_deer_ruined'] = {
+		label = '破旧鹿皮',
+		weight = 200,
+		-- stack = false,
+	},
+	['skin_deer_low'] = {
+		label = '磨损鹿皮',
+		weight = 200,
+	},
+	['skin_deer_medium'] = {
+		label = '柔软鹿皮',
+		weight = 200,
+	},
+	['skin_deer_good'] = {
+		label = '上等鹿皮',
+		weight = 200,
+	},
+	['skin_deer_perfect'] = {
+		label = '无暇鹿皮',
+		weight = 200,
+	},
+	['deer_horn'] = {
+		label = '鹿角',
+		weight = 1000,
+	},
 }
