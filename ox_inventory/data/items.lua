@@ -191,7 +191,7 @@ return {
 	},
 
 	['radio'] = {
-		label = '收音机',
+		label = '无线电',
 		weight = 1000,
 		stack = false,
 		allowArmed = true

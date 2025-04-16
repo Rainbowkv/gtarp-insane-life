@@ -223,7 +223,10 @@ RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 3.0 then return DropPlayer(src, '尝试滥用操作') end
+    if #(playerCoords - targetCoords) > 3.0 then 
+        TriggerClientEvent('QBCore:Notify', src, 'id为'..playerId..'距离你太远了', 'error')
+        return 
+    end
 
     local Player = QBCore.Functions.GetPlayer(src)
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
@@ -236,20 +239,6 @@ RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
     end
 end)
 
-RegisterNetEvent('ars_ambulancejob:server:vehicleinof', function(targetId)
-    local src = source
-    local targetPlayer = QBCore.Functions.GetPlayer(targetId)
-
-    if not targetPlayer then return end
-
-    local metadata = targetPlayer.PlayerData.metadata
-    if metadata["isdead"] or metadata["ishandcuffed"] then
-        TriggerClientEvent('origen_police:client:vehicleinof', src)
-    else
-        TriggerClientEvent('QBCore:Notify', src, '该玩家未死亡或未被上手铐，无法进行操作', 'error')
-    end
-end)
-
 -- 将市民放入车辆
 RegisterNetEvent('ars_ambulancejob:server:PutPlayerInVehicle', function(playerId)
     local src = source
@@ -257,11 +246,14 @@ RegisterNetEvent('ars_ambulancejob:server:PutPlayerInVehicle', function(playerId
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 3.0 then return DropPlayer(src, '尝试滥用操作') end
+    if #(playerCoords - targetCoords) > 3.0 then 
+        TriggerClientEvent('QBCore:Notify', src, 'id为'..playerId..'距离你太远了', 'error')
+        return
+    end
 
     local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
     if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
-
+    
     if EscortPlayer.PlayerData.metadata['ishandcuffed'] or EscortPlayer.PlayerData.metadata['isdead'] then
         TriggerClientEvent('ars_ambulancejob:client:PutInVehicle', EscortPlayer.PlayerData.source)
     else
@@ -270,20 +262,28 @@ RegisterNetEvent('ars_ambulancejob:server:PutPlayerInVehicle', function(playerId
 end)
 
 -- 将市民挪出车辆
-RegisterNetEvent('ars_ambulancejob:server:SetPlayerOutVehicle', function(playerId)
+RegisterNetEvent('ars_ambulancejob:server:SetPlayerOutVehicle', function(netId, playerIds)
     local src = source
-    local playerPed = GetPlayerPed(src)
-    local targetPed = GetPlayerPed(playerId)
-    local playerCoords = GetEntityCoords(playerPed)
-    local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 2.5 then return DropPlayer(src, '尝试滥用操作') end
+    local vehicle = NetworkGetEntityFromNetworkId(netId)
+    if not vehicle or not DoesEntityExist(vehicle) then 
+        TriggerClientEvent('QBCore:Notify', src, '该载具不存在', 'error')
+        return 
+    end
 
-    local EscortPlayer = QBCore.Functions.GetPlayer(playerId)
-    if not QBCore.Functions.GetPlayer(src) or not EscortPlayer then return end
+    -- 遍历所有传递过来的玩家ID
+    for _, playerId in ipairs(playerIds) do
+        local targetPlayer = QBCore.Functions.GetPlayer(playerId)
+        if targetPlayer then
+            local meta = targetPlayer.PlayerData.metadata or {}
+            local isDead = meta['isdead']
+            local isCuffed = meta['ishandcuffed']
 
-    if EscortPlayer.PlayerData.metadata['ishandcuffed'] or EscortPlayer.PlayerData.metadata['isdead'] then
-        TriggerClientEvent('ars_ambulancejob:client:SetOutVehicle', EscortPlayer.PlayerData.source)
-    else
-        TriggerClientEvent('QBCore:Notify', src, '该市民没有被上手铐或者死亡', 'error')
+            -- 判断死亡或被铐
+            if isDead or isCuffed then
+                -- 告诉客户端将该玩家挪出车辆
+                TriggerClientEvent('ars_ambulancejob:client:SetOutVehicle', playerId)
+                break -- 只挪出第一个符合条件的人
+            end
+        end
     end
 end)

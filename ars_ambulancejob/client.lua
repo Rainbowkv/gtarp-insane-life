@@ -67,17 +67,6 @@ RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
                 local dragger = GetPlayerPed(GetPlayerFromServerId(playerId))
                 SetEntityCoords(ped, GetOffsetFromEntityInWorldCoords(dragger, 0.0, 0.45, 0.0))
                 AttachEntityToEntity(ped, dragger, 11816, 0.45, 0.45, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
-                CreateThread(function()
-                    print(isEscorted)
-                    while isEscorted do
-                        Wait(0)
-                        DisableAllControlActions(0)
-                        for _, operation in ipairs(allowOperations) do
-                            EnableControlAction(0, operation, true) 
-                        end
-                    end
-                    print(isEscorted)
-                end)
             else
                 isEscorted = false
                 DetachEntity(ped, true, false)
@@ -99,17 +88,6 @@ RegisterNetEvent('ars_ambulancejob:client:MenuEscortPlayer', function()
         TriggerServerEvent('ars_ambulancejob:server:EscortPlayer', GetPlayerServerId(player))
     end
 end)
-
--- RegisterNetEvent('ars_ambulancejob:client:vehicleinof', function()
---     local player, distance = QBCore.Functions.GetClosestPlayer()
---     if player == -1 or distance > 2.5 then
---         QBCore.Functions.Notify("附近没有市民", "error")
---         return
---     end
---     local playerId = GetPlayerServerId(player)
---     -- 检查目标玩家是否死亡或被上手铐
---     TriggerServerEvent('ars_ambulancejob:server:vehicleinof', playerId)
--- end)
 
 -- 将市民放入车辆
 RegisterNetEvent('ars_ambulancejob:client:PutPlayerInVehicle', function()
@@ -141,15 +119,23 @@ RegisterNetEvent('ars_ambulancejob:client:PutInVehicle', function()
 end)
 
 -- 将市民挪出车辆
-RegisterNetEvent('ars_ambulancejob:client:SetPlayerOutVehicle', function()
-    if exports['ars_ambulancejob']:isDead() or exports['origen_police']:isHandcuffed() or isEscorted then return end
-    local player, distance = QBCore.Functions.GetClosestPlayer()
-    if player ~= -1 and distance < 2.5 then
-        local playerId = GetPlayerServerId(player)
-        TriggerServerEvent('ars_ambulancejob:server:SetPlayerOutVehicle', playerId)
-    else
-        QBCore.Functions.Notify('没有人在附近', 'error')
+RegisterNetEvent('ars_ambulancejob:client:SetPlayerOutVehicle', function(data)
+    local vehicle = data.entity
+    local netId = NetworkGetNetworkIdFromEntity(vehicle)
+    local maxSeats = GetVehicleModelNumberOfSeats(GetEntityModel(vehicle)) - 1
+    local playerIds = {}
+
+    -- 遍历车辆所有座位，获取坐在车上的玩家的ID
+    for seat = -1, maxSeats do
+        local ped = GetPedInVehicleSeat(vehicle, seat)
+        if ped and ped ~= 0 and IsPedAPlayer(ped) then
+            local playerId = GetPlayerServerId(NetworkGetPlayerIndexFromPed(ped))
+            table.insert(playerIds, playerId)
+        end
     end
+
+    -- 将玩家 ID 列表发送到服务端
+    TriggerServerEvent('ars_ambulancejob:server:SetPlayerOutVehicle', netId, playerIds)
 end)
 
 RegisterNetEvent('ars_ambulancejob:client:SetOutVehicle', function()
@@ -192,7 +178,7 @@ CreateThread(function()
             icon = 'fa-solid fa-car',
             distance = 1.2,
             onSelect = function(data)
-                TriggerEvent('ars_ambulancejob:client:SetPlayerOutVehicle')
+                TriggerEvent('ars_ambulancejob:client:SetPlayerOutVehicle', data)
             end
         },
     })
