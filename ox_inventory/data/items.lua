@@ -271,8 +271,8 @@ return {
 	},
 
 	["jerry_can"] = {
-		label = "20L油桶",
-		weight = 18000,
+		label = "不能拿出来的油桶",
+		weight = 15000,
 		stack = true,
 		close = true,
 		description = "装满油的油桶",

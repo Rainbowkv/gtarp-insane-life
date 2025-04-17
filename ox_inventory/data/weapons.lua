@@ -459,8 +459,8 @@ return {
 		},
 
 		['WEAPON_PETROLCAN'] = {
-			label = 'Jerry Can',
-			weight = 4000,
+			label = '100L油桶',
+			weight = 0,
 		},
 
 		['WEAPON_GADGETPISTOL'] = {
