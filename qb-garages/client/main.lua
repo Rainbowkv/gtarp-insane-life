@@ -291,22 +291,14 @@ RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
                 while not NetworkDoesNetworkIdExist(netId) do Wait(10) end
                 local veh = NetworkGetEntityFromNetworkId(netId)
                 -- rb_code
-                -- local timeout = GetGameTimer() + 3000 -- 最多等 3 秒
-                -- print("NetworkHasControlOfEntity(veh):")
-                -- print(NetworkHasControlOfEntity(veh))
-                -- while not NetworkHasControlOfEntity(veh) and GetGameTimer() < timeout do
-                --     NetworkRequestControlOfEntity(veh)
-                --     Wait(10)
-                -- end
-                -- print(NetworkHasControlOfEntity(veh))
-                -- print("IsEntityAMissionEntity(veh):")
-                -- print(IsEntityAMissionEntity(veh))
-                -- Citizen.InvokeNative(0xAD738C3085FE7E11, veh, true, true) -- set as mission entity
-                -- print(IsEntityAMissionEntity(veh))
-                -- print("IsVehiclePreviouslyOwnedByPlayer(veh)")
-                -- print(IsVehiclePreviouslyOwnedByPlayer(veh))
+                print(NetworkHasControlOfEntity(veh))
+                local timeout = GetGameTimer() + 3000 -- 最多等 3 秒
+                while not NetworkHasControlOfEntity(veh) and GetGameTimer() < timeout do
+                    NetworkRequestControlOfEntity(veh)
+                    Wait(10)
+                end
+                print(NetworkHasControlOfEntity(veh))
                 SetVehicleHasBeenOwnedByPlayer(veh,true)  -- 这个验证不了，所以不删除
-                -- print(IsVehiclePreviouslyOwnedByPlayer(veh))
                 --
                 Citizen.Await(CheckPlate(veh, vehPlate))
                 QBCore.Functions.SetVehicleProperties(veh, properties)
