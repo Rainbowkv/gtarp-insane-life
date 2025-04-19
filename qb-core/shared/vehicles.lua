@@ -778,6 +778,7 @@ local Vehicles = {
     { model = '2vd_bstx',      name = '警用CTX',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
     { model = 'expolregent',      name = '警用布鲁特',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
     { model = 'BCS_Silverado',      name = '联邦政府用车',                brand = '瑞文斯',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
+    { model = 'dodgeEMS',      name = '道奇充电器',                brand = '医护',           price = 100000,  category = '特种车辆',      type = 'automobile', shop = 'none' },
 }
 
 for i = 1, #Vehicles do
