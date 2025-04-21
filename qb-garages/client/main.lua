@@ -15,6 +15,13 @@ local function CheckPlayers(vehicle)
         end
     end
     Wait(1500)
+    print(NetworkHasControlOfEntity(vehicle))
+    local timeout = GetGameTimer() + 3000 -- 最多等 3 秒
+    while not NetworkHasControlOfEntity(vehicle) and GetGameTimer() < timeout do
+        NetworkRequestControlOfEntity(vehicle)
+        Wait(10)
+    end
+    print(NetworkHasControlOfEntity(vehicle))
     QBCore.Functions.DeleteVehicle(vehicle)
 end
 
