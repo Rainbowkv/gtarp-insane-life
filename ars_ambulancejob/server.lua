@@ -223,7 +223,7 @@ RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
     local targetPed = GetPlayerPed(playerId)
     local playerCoords = GetEntityCoords(playerPed)
     local targetCoords = GetEntityCoords(targetPed)
-    if #(playerCoords - targetCoords) > 3.0 then 
+    if #(playerCoords - targetCoords) > 1.5 then 
         TriggerClientEvent('QBCore:Notify', src, 'id为'..playerId..'距离你太远了', 'error')
         return 
     end
@@ -233,7 +233,8 @@ RegisterNetEvent('ars_ambulancejob:server:EscortPlayer', function(playerId)
     if not Player or not EscortPlayer then return end
     local metadata = EscortPlayer.PlayerData.metadata
     if metadata['isdead'] or metadata["ishandcuffed"] then
-        TriggerClientEvent('ars_ambulancejob:client:GetEscorted', EscortPlayer.PlayerData.source, Player.PlayerData.source)
+        TriggerClientEvent('ars_ambulancejob:client:Escorting', src)
+        TriggerClientEvent('ars_ambulancejob:client:GetEscorted', EscortPlayer.PlayerData.source, src)
     else
         TriggerClientEvent('QBCore:Notify', src, "该市民未死亡或未被上手铐，无法拖动", 'error')
     end

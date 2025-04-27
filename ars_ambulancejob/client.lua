@@ -46,13 +46,23 @@ local function createZones()
     end
 end
 
-
 CreateThread(createZones)
+
+local function ensureAnimDict(animDict)
+    if not HasAnimDictLoaded(animDict) then
+        RequestAnimDict(animDict)
+        while not HasAnimDictLoaded(animDict) do
+            Wait(0)
+        end        
+    end
+end
 
 -- rb_code  -- 先全部忽略被拷者执行操作的可能性
 local isEscorted = false
+local escorting = false
 local QBCore = exports['qb-core']:GetCoreObject()
 local allowOperations = lib.load("config").allowOperations
+local carry = lib.load("config").carry
 
 exports('isEscorted', function()
     return isEscorted
@@ -65,8 +75,15 @@ RegisterNetEvent('ars_ambulancejob:client:GetEscorted', function(playerId)
             if not isEscorted then
                 isEscorted = true
                 local dragger = GetPlayerPed(GetPlayerFromServerId(playerId))
-                SetEntityCoords(ped, GetOffsetFromEntityInWorldCoords(dragger, 0.0, 0.45, 0.0))
-                AttachEntityToEntity(ped, dragger, 11816, 0.45, 0.45, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
+                AttachEntityToEntity(ped, dragger, 0, carry.personCarried.attachX, carry.personCarried.attachY, carry.personCarried.attachZ, 0.5, 0.5, 180, false, false, false, false, 2, false)
+                ensureAnimDict(carry.personCarried.animDict)
+                while isEscorted do
+                    if not IsEntityPlayingAnim(ped, carry.personCarried.animDict, carry.personCarried.anim, 3) then
+                        TaskPlayAnim(ped, carry.personCarried.animDict, carry.personCarried.anim, 8.0, -8.0, 100000, carry.personCarried.flag, 0, false, false, false)
+                    end
+                    Wait(0)
+                end
+                ClearPedTasks(ped)
             else
                 isEscorted = false
                 DetachEntity(ped, true, false)
@@ -89,6 +106,22 @@ RegisterNetEvent('ars_ambulancejob:client:MenuEscortPlayer', function()
     end
 end)
 
+RegisterNetEvent('ars_ambulancejob:client:Escorting', function()
+    if escorting then 
+        ClearPedTasks(PlayerPedId())
+        escorting = false
+        return 
+    end
+    ensureAnimDict(carry.personCarrying.animDict)
+    escorting = true
+    while escorting do
+        if not IsEntityPlayingAnim(PlayerPedId(), carry.personCarrying.animDict, carry.personCarrying.anim, 3) then
+            TaskPlayAnim(PlayerPedId(), carry.personCarrying.animDict, carry.personCarrying.anim, 8.0, -8.0, 100000, carry.personCarrying.flag, 0, false, false, false)
+        end
+        Wait(0)
+    end
+end)
+
 -- 将市民放入车辆
 RegisterNetEvent('ars_ambulancejob:client:PutPlayerInVehicle', function()
     if exports['ars_ambulancejob']:isDead() or exports['origen_police']:isHandcuffed() or isEscorted then return end
@@ -96,6 +129,8 @@ RegisterNetEvent('ars_ambulancejob:client:PutPlayerInVehicle', function()
     if player ~= -1 and distance < 2.5 then
         local playerId = GetPlayerServerId(player)
         TriggerServerEvent('ars_ambulancejob:server:PutPlayerInVehicle', playerId)
+        ClearPedTasks(PlayerPedId())
+        escorting = false
     else
         QBCore.Functions.Notify('没有人在附近', 'error')
     end
@@ -150,7 +185,7 @@ CreateThread(function()
     exports.ox_target:addGlobalPlayer({
         {
             icon = 'fas fa-door-open',
-            label = '拖动',
+            label = '背起',
             distance = 1.2,
             canInteract = function(entity, distance, coords, name, bone)
                 -- 这里的 entity 是玩家Ped
@@ -183,3 +218,4 @@ CreateThread(function()
         },
     })
 end)
+
