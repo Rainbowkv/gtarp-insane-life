@@ -315,11 +315,11 @@ return {
 	},
 
 	["cryptostick"] = {
-		label = "加密货币U盘",
+		label = "解密U盘",
 		weight = 200,
 		stack = false,
 		close = true,
-		description = "为什么有人会购买不存在的货币呢..它会包含多少呢..?",
+		description = "这个到底有什么用呢，感觉会被警察盯上?",
 		client = {
 			image = "cryptostick.png",
 		}
@@ -2978,5 +2978,12 @@ return {
 	['deer_horn'] = {
 		label = '鹿角',
 		weight = 1000,
+	},
+	["drill_green2"] = {
+		label = "自制电钻",
+		weight = 5000,
+		stack = false,
+		close = true,
+		description = "没有获得许可的电钻。",
 	},
 }

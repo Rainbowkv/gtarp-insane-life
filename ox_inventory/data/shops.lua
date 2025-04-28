@@ -174,6 +174,7 @@ return {
 			{ name = 'weedkey', price = 10000, currency = 'black_money'},
 			{ name = 'cocainekey', price = 10000, currency = 'black_money'},
 			{ name = 'advancedlockpick', price = 300, currency = 'black_money' },
+			{ name = 'drill_green2', price = 2000, currency = 'black_money' },
 		}, locations = {
 			vec3(4988.13, -5126.86, 2.00)
 		}, targets = {

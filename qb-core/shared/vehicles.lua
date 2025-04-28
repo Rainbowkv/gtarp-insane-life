@@ -759,12 +759,13 @@ local Vehicles = {
     { model = 'formula2',        name = 'R88',                           brand = '奥斯洛特',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     { model = 'formula',         name = 'PR4',                           brand = '先驱者',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     -- customized
-    { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
-    { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
-    { model = 'oycm5cs',         name = 'M5',                            brand = '宝马',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'oycm5cs',         name = 'M5',                            brand = '宝马',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'century24',       name = 'GL8',                brand = '别克',           price = 100000,  category = '公共服务',      type = 'automobile', shop = 'none' },
-    { model = 'aperta',         name = 'lafa',                            brand = '法拉利',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
-    { model = 'cullinan',         name = '库里南',                            brand = '劳斯莱斯',            price = 100000000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'aperta',         name = 'lafa',                            brand = '法拉利',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'cullinan',         name = '库里南',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'dpce100',         name = '九号',                            brand = '电瓶车',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- special
     { model = 'voltic2',         name = '火箭伏尔蒂克',                  brand = '科尔',             price = 9830400, category = '超级跑车',         type = 'automobile', shop = 'none' },
