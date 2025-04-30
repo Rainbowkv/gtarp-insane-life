@@ -1,0 +1,13 @@
+{
+    "hack_atm_label": "骇入 ATM",
+    "drill_atm_label": "钻开 ATM",
+    "pick_up_cash": "捡",
+    "dispatch_message": "ATM 抢劫进行中",
+    "wait_robbery": "现在风声紧，再等等",
+    "not_enough_police": "城市中没有足够的警察",
+    "failed_robbery": "你在此次抢劫中失败了",
+    "server_pickup_cash": "你捡起了 %s $"
+}
+
+
+
