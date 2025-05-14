@@ -166,13 +166,13 @@ return {
 		-- name = 'Black Market (Arms)',
 		name = "黑市",
 		inventory = {
-			{ name = 'WEAPON_DAGGER', price = 700, metadata = { registered = false	}, currency = 'black_money' },
+			{ name = 'WEAPON_DAGGER', price = 700, metadata = { registered = false	}},
 			{ name = 'WEAPON_CERAMICPISTOL', price = 20000, metadata = { registered = false }, currency = 'black_money' },
 			{ name = 'ammo-9', price = 10, currency = 'black_money' },
 			{ name = 'at_suppressor_light', price = 10000, currency = 'black_money' },
-			{ name = 'methkey', price = 5000, currency = 'black_money'},
-			{ name = 'weedkey', price = 10000, currency = 'black_money'},
-			{ name = 'cocainekey', price = 10000, currency = 'black_money'},
+			{ name = 'methkey', price = 5000},
+			{ name = 'weedkey', price = 5000},
+			{ name = 'cocainekey', price = 5000},
 			{ name = 'advancedlockpick', price = 300, currency = 'black_money' },
 			{ name = 'drill_green2', price = 2000, currency = 'black_money' },
 		}, locations = {
