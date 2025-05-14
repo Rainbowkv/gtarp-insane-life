@@ -760,6 +760,7 @@ local Vehicles = {
     { model = 'formula',         name = 'PR4',                           brand = '先驱者',          price = 100000000,  category = '开轮赛车',      type = 'automobile', shop = 'none' },
     -- customized
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'dpcsu7max',       name = 'SU7max',                        brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'oycm5cs',         name = 'M5',                            brand = '宝马',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'century24',       name = 'GL8',                brand = '别克',           price = 100000,  category = '公共服务',      type = 'automobile', shop = 'none' },
