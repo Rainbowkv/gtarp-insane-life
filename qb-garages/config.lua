@@ -1,6 +1,6 @@
 Config = {}
 Config.AutoRespawn = true         -- true == stores cars in garage on restart | false == doesnt modify car states
-Config.VisuallyDamageCars = true  -- true == damage car on spawn | false == no damage on spawn
+Config.VisuallyDamageCars = false  -- true == damage car on spawn | false == no damage on spawn
 Config.SharedGarages = false       -- true == take any car from any garage | false == only take car from garage stored in
 Config.ClassSystem = false         -- true == restrict vehicles by class | false == any vehicle class in any garage
 Config.FuelResource = 'LegacyFuel' -- supports any that has a GetFuel() and SetFuel() export
@@ -42,162 +42,6 @@ Config.Garages = {
         type = 'public',
         category = Config.VehicleClass['car']
     },
-    -- sapcounsel = {
-    --     label = 'San Andreas Parking',
-    --     takeVehicle = vector3(-330.01, -780.33, 33.96),
-    --     spawnPoint = {
-    --         vector4(-341.57, -767.45, 33.56, 92.61)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- spanishave = {
-    --     label = 'Spanish Ave Parking',
-    --     takeVehicle = vector3(-1160.86, -741.41, 19.63),
-    --     spawnPoint = {
-    --         vector4(-1145.2, -745.42, 19.26, 108.22)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- caears24 = {
-    --     label = 'Caears 24 Parking',
-    --     takeVehicle = vector3(69.84, 12.6, 68.96),
-    --     spawnPoint = {
-    --         vector4(60.8, 17.54, 68.82, 339.7)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- caears242 = {
-    --     label = 'Caears 24 Parking',
-    --     takeVehicle = vector3(-453.7, -786.78, 30.56),
-    --     spawnPoint = {
-    --         vector4(-472.39, -787.71, 30.14, 180.52)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- lagunapi = {
-    --     label = 'Laguna Parking',
-    --     takeVehicle = vector3(364.37, 297.83, 103.49),
-    --     spawnPoint = {
-    --         vector4(375.09, 294.66, 102.86, 164.04)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- airportp = {
-    --     label = 'Airport Parking',
-    --     takeVehicle = vector3(-773.12, -2033.04, 8.88),
-    --     spawnPoint = {
-    --         vector4(-779.77, -2040.18, 8.47, 315.34)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- beachp = {
-    --     label = 'Beach Parking',
-    --     takeVehicle = vector3(-1185.32, -1500.64, 4.38),
-    --     spawnPoint = {
-    --         vector4(-1188.14, -1487.95, 3.97, 124.06)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- themotorhotel = {
-    --     label = 'The Motor Hotel Parking',
-    --     takeVehicle = vector3(1137.77, 2663.54, 37.9),
-    --     spawnPoint = {
-    --         vector4(1127.7, 2647.84, 37.58, 1.41)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- liqourparking = {
-    --     label = 'Liqour Parking',
-    --     takeVehicle = vector3(883.99, 3649.67, 32.87),
-    --     spawnPoint = {
-    --         vector4(898.38, 3649.41, 32.36, 90.75)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- shoreparking = {
-    --     label = 'Shore Parking',
-    --     takeVehicle = vector3(1737.03, 3718.88, 34.05),
-    --     spawnPoint = {
-    --         vector4(1725.4, 3716.78, 34.15, 20.54)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- haanparking = {
-    --     label = 'Bell Farms Parking',
-    --     takeVehicle = vector3(76.88, 6397.3, 31.23),
-    --     spawnPoint = {
-    --         vector4(62.15, 6403.41, 30.81, 211.38)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
-    -- dumbogarage = {
-    --     label = 'Dumbo Private Parking',
-    --     takeVehicle = vector3(165.75, -3227.2, 5.89),
-    --     spawnPoint = {
-    --         vector4(168.34, -3236.1, 5.43, 272.05)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
     pillboxgarage = {
         label = '公共避难所停车场',
         takeVehicle = vector3(213.2, -796.05, 30.86),
@@ -208,26 +52,13 @@ Config.Garages = {
             vector4(232.33, -807.97, 30.02, 69.17),
             vector4(234.42, -802.76, 30.04, 67.2)
         },
-        showBlip = false,
+        showBlip = true,
         blipName = '公共避难所停车场',
         blipNumber = 357,
         blipColor = 3,
         type = 'public',
         category = Config.VehicleClass['car']
     },
-    -- grapeseedgarage = {
-    --     label = 'Grapeseed Parking',
-    --     takeVehicle = vector3(2552.68, 4671.8, 33.95),
-    --     spawnPoint = {
-    --         vector4(2550.17, 4681.96, 33.81, 17.05)
-    --     },
-    --     showBlip = false,
-    --     blipName = '公共停车场',
-    --     blipNumber = 357,
-    --     blipColor = 3,
-    --     type = 'public',
-    --     category = Config.VehicleClass['car']
-    -- },
     depotLot = {
         label = '戴维斯扣押场',
         takeVehicle = vector3(401.76, -1632.57, 29.29),
@@ -515,5 +346,33 @@ Config.Garages = {
         blipColor = 2,
         type = 'public',
         category = Config.VehicleClass['rig']
+    },
+    -- addon
+    mechanic7231 = {
+        label = '技工车库',
+        takeVehicle = vector3(-378.22, -146.75, 38.68),
+        spawnPoint = {
+            vector4(-379.84, -140.15, 38.68, 296.29)
+        },
+        showBlip = false,
+        blipName = '技工车库（私有）',
+        blipNumber = 357,
+        blipColor = 3,
+        type = 'job',
+        category = Config.VehicleClass['car'], --car, air, sea, rig
+        job = 'mechanic'
+    }, -- -300.94, -988.67, 31.08, 339.01
+    XinShouGongYu = {
+        label = '新手公寓停车场',
+        takeVehicle = vector3(-300.94, -988.67, 31.08),
+        spawnPoint = {
+            vector4(-300.94, -988.67, 31.08, 339.01),
+        },
+        showBlip = true,
+        blipName = '新手公寓停车场',
+        blipNumber = 357,
+        blipColor = 3,
+        type = 'public',
+        category = Config.VehicleClass['car']
     },
 }
