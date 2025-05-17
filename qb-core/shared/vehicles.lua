@@ -777,6 +777,9 @@ local Vehicles = {
     { model = 'ikx3gtone',         name = '欧陆GT',                            brand = '宾利',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'gtr',         name = 'GTR',                            brand = '尼桑',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = '22s680m',         name = 'S680',                            brand = '奔驰',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'su7ultra',         name = 'SU7 Ultra 原型',                            brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'gcwfc2024',         name = '幻影Ⅷ',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'TCMRD',         name = '曜影',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- cutom_veh
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
@@ -785,6 +788,8 @@ local Vehicles = {
     { model = 'cullinan',         name = '库里南',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'dpce100',         name = '九号',                            brand = '电瓶车',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'aperta',         name = 'lafa',                            brand = '法拉利',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'lpveo',         name = 'EVO',                            brand = '阿波罗',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'ie',         name = 'IE',                            brand = '阿波罗',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- special
     { model = 'voltic2',         name = '火箭伏尔蒂克',                  brand = '科尔',             price = 9830400, category = '超级跑车',         type = 'automobile', shop = 'none' },
