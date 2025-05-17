@@ -774,6 +774,9 @@ local Vehicles = {
     { model = 'rmodgt63',         name = 'AMG gt63',                            brand = '奔驰',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'rmodm4gts',         name = 'M4 gts',                            brand = '宝马',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'Victor',         name = 'Victor',                            brand = '阿斯顿马丁',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'ikx3gtone',         name = '欧陆GT',                            brand = '宾利',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'gtr',         name = 'GTR',                            brand = '尼桑',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = '22s680m',         name = 'S680',                            brand = '奔驰',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- cutom_veh
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
