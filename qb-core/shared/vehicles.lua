@@ -779,7 +779,7 @@ local Vehicles = {
     { model = '22s680m',         name = 'S680',                            brand = '奔驰',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'su7ultra',         name = 'SU7 Ultra 原型',                            brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'gcwfc2024',         name = '幻影Ⅷ',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
-    { model = 'TCMRD',         name = '曜影',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'rrdawncabrio2020wb',         name = '曜影 宽体敞篷',                            brand = '劳斯莱斯',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- cutom_veh
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
