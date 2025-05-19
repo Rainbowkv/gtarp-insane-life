@@ -108,3 +108,27 @@ Config.NoCarjackWeapons = {
     "WEAPON_Snowball",
     "WEAPON_SmokeGrenade",
 }
+
+Config.donator_vehicle_mod = {
+    ["760 宝马"] = "m76023",
+    ["SU7 max 小米"] = "dpcsu7max",
+    ["model s 特斯拉"] = "models",
+    ["卫士 路虎"] = "oycdefender",
+    ["RS7 奥迪"] = "rs721",
+    ["揽胜 路虎"] = "rsvr16",
+    ["凯雷德 凯迪拉克"] = "gmt900escalade",
+    ["GTR 尼桑"] = "gtr",
+    ["M4 gts 宝马"] = "rmodm4gts",
+    ["AMG gt63 奔驰"] = "rmodgt63",
+    ["992 gt3 保时捷"] = "992gt3",
+    ["SU7 Ultra 原型 小米"] = "su7ultra",
+    ["S680 奔驰"] = "22s680m",
+    ["欧陆GT 宾利"] = "ikx3gtone",
+    ["G63 4x4 奔驰"] = "4444",
+    ["曜影 宽体敞篷 劳斯莱斯"] = "rrdawncabrio2020wb",
+    ["M4 gt3 宝马"] = "m4gt3",
+    ["SVJ 兰博基尼"] = "cffsvj",        
+    ["Victor 阿斯顿马丁"] = "Victor",
+    ["SF90 法拉利"] = "ikx3sf90custom",
+    ["幻影Ⅷ 劳斯莱斯"] = "p8tempus",
+}

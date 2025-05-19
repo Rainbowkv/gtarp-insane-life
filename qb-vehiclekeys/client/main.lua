@@ -158,7 +158,17 @@ end
 
 exports('removeNoLockVehicles', removeNoLockVehicles)
 
-
+-- rb_code
+local function isDonatorVeh(vehicle)  
+    if not vehicle or vehicle == 0 then return false end
+    local model = GetEntityModel(vehicle)
+    for _, donatorModel in pairs(Config.donator_vehicle_mod) do
+        if model == GetHashKey(donatorModel) then
+            return true
+        end
+    end
+    return false
+end
 
 -----------------------
 ---- Client Events ----
@@ -277,7 +287,16 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
 
-    local difficulty = isAdvanced and 'easy' or 'medium' -- Easy for advanced lockpick, medium by default
+    -- local difficulty = isAdvanced and 'easy' or 'medium' -- Easy for advanced lockpick, medium by default
+    local difficulty = 'medium' -- Easy for advanced lockpick, medium by default
+    if isDonatorVeh(vehicle) then 
+        difficulty = 'hard' 
+        QBCore.Functions.Notify("注意，该车的防盗等级较高！", 'error')
+        PlaySoundFrontend(-1, "ScreenFlash", "WastedSounds", true)  -- 播放音效（沉重提示音）
+        StartScreenEffect("MP_race_crash", 0, false)-- 红屏闪一下
+        Wait(500) -- 持续 0.5 秒
+        StopScreenEffect("MP_race_crash")
+    end  -- rb_code
     local success = exports['qb-minigames']:Skillbar(difficulty)
 
     local chance = math.random()
