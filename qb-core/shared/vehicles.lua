@@ -80,7 +80,7 @@ local Vehicles = {
     { model = 'bjxl',            name = '比杰 XL',                     brand = '卡林',           price = 19000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'cavalcade',       name = '卡瓦尔凯德',                  brand = '阿尔巴尼',      price = 14000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'cavalcade2',      name = '卡瓦尔凯德 II',               brand = '阿尔巴尼',      price = 16500,   category = '城市越野车',           type = 'automobile', shop = 'none' },
-    { model = 'contender',       name = '竞争者',                      brand = '瓦皮德',         price = 220000,   category = '城市越野车',           type = 'automobile', shop = 'none' },
+    { model = 'contender',       name = '竞争者',                      brand = '瓦皮德',         price = 320000,   category = '城市越野车',           type = 'automobile', shop = 'pdm' },  -- pdm_sale
     { model = 'dubsta',          name = '杜布斯塔',                    brand = '贝内法克托',    price = 25500,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'dubsta2',         name = '杜布斯塔豪华版',              brand = '贝内法克托',    price = 19500,   category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'fq2',             name = 'FQ2',                         brand = '法索姆',         price = 18500,   category = '城市越野车',           type = 'automobile', shop = 'none' },
@@ -104,7 +104,7 @@ local Vehicles = {
     { model = 'granger2',        name = '格兰杰 3600LX',               brand = '德克拉斯',      price = 221000,  category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'patriot3',        name = '爱国者军用版',                brand = '军规格',         price = 270000,  category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'aleutian',        name = '阿留申',                      brand = '瓦皮德',         price = 183500,  category = '城市越野车',           type = 'automobile', shop = 'none' },
-    { model = 'baller8',         name = '巴勒 ST-D',                   brand = '加利万特',     price = 450000,  category = '城市越野车',           type = 'automobile', shop = 'pdm' },  -- pdm_sale
+    { model = 'baller8',         name = '巴勒 ST-D',                   brand = '加利万特',     price = 350000,  category = '城市越野车',           type = 'automobile', shop = 'pdm' },  -- pdm_sale
     { model = 'cavalcade3',      name = '卡瓦尔凯德 XL',               brand = '阿尔巴尼',      price = 755000,  category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'dorado',          name = '多拉多',                      brand = '布拉瓦多',       price = 137500,  category = '城市越野车',           type = 'automobile', shop = 'none' },
     { model = 'vivanite',        name = '维瓦尼特',                    brand = '卡林',           price = 160500,  category = '城市越野车',           type = 'automobile', shop = 'none' },
@@ -309,7 +309,7 @@ local Vehicles = {
     { model = 'streiter',        name = '斯特赖特',                       brand = '贝尼法克特',        price = 40000,   category = '运动',         type = 'automobile', shop = 'none' },
     { model = 'sugoi',           name = ' Sugoi',                         brand = '丁卡',            price = 517000,   category = '运动',         type = 'automobile', shop = 'none' },  -- luxury_sale
     { model = 'sultan',          name = '苏丹',                           brand = '卡林王者',             price = 450000,   category = '运动',         type = 'automobile', shop = 'none' },  -- luxury_sale
-    { model = 'sultan2',         name = '经典',                       brand = '卡林王者',             price = 450000,   category = '运动',         type = 'automobile', shop = 'pdm' },  -- pdm_sale
+    { model = 'sultan2',         name = '经典',                       brand = '卡林王者',             price = 350000,   category = '运动',         type = 'automobile', shop = 'pdm' },  -- pdm_sale
     { model = 'surano',          name = '苏拉诺',                         brand = '贝尼法克特',        price = 780000,   category = '运动',         type = 'automobile', shop = 'none' },  -- luxury_sale
     { model = 'tropos',          name = '特罗波斯拉力赛',                 brand = '蓝帕达提',         price = 465000,   category = '运动',         type = 'automobile', shop = 'none' },  -- luxury_sale
     { model = 'verlierer2',      name = '失败者',                         brand = '布拉瓦多',         price = 90500,   category = '运动',         type = 'automobile', shop = 'none' },
@@ -393,7 +393,7 @@ local Vehicles = {
     { model = 'visione',         name = '远景',                           brand = '格罗蒂',           price = 3750000,  category = '超级跑车',         type = 'automobile', shop = 'none' },  -- luxury_sale
     { model = 'voltic',          name = '伏尔蒂克',                      brand = '科尔',             price = 1200000,  category = '超级跑车',         type = 'automobile', shop = 'none' },  -- luxury_sale
     { model = 'xa21',            name = 'XA-21',                         brand = '欧塞洛特',        price = 1800000,  category = '超级跑车',         type = 'automobile', shop = 'none' },  -- luxury_sale
-    { model = 'zentorno',        name = '森托诺',                        brand = '佩加西',          price = 340000,  category = '超级跑车',         type = 'automobile', shop = 'none' },
+    { model = 'zentorno',        name = '桑托劳',                        brand = '佩加西',          price = 300000,  category = '超级跑车',         type = 'automobile', shop = 'none' },
     { model = 'zorrusso',        name = '佐鲁索',                        brand = '佩加西',          price = 2770000,  category = '超级跑车',         type = 'automobile', shop = 'none' },  -- luxury_sale
     { model = 'ignus',           name = '伊格努斯',                     brand = '佩加西',          price = 1120000, category = '超级跑车',         type = 'automobile', shop = 'none' },
     { model = 'zeno',            name = '泽诺',                         brand = '欧弗洛德',        price = 1350000, category = '超级跑车',         type = 'automobile', shop = 'none' },
