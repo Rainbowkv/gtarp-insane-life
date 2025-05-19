@@ -762,7 +762,7 @@ local Vehicles = {
     { model = 'dpcsu7max',       name = 'SU7max',                        brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'rs721',           name = 'RS7',                           brand = '奥迪',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = '992gt3',         name = '992gt3',                           brand = '保时捷',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
-    { model = 'cffsvj',         name = 'SVJ',                            brand = '兰博基尼',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'svj63',         name = 'SVJ 纪念款',                            brand = '兰博基尼',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = '4444',         name = 'G63 4x4',                            brand = '奔驰',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'rsvr16',         name = '揽胜',                            brand = '路虎',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'm76023',         name = '760',                            brand = '宝马',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },
