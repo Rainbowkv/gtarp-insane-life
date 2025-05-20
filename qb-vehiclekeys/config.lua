@@ -132,3 +132,7 @@ Config.donator_vehicle_mod = {
     ["SF90 法拉利"] = "ikx3sf90custom",
     ["幻影Ⅷ 劳斯莱斯"] = "p8tempus",
 }
+
+Config.custom_vehicle_mod = {
+    ["IE 特供版 阿波罗"] = "ieocen",
+}

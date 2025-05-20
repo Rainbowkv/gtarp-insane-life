@@ -170,6 +170,17 @@ local function isDonatorVeh(vehicle)
     return false
 end
 
+local function isCustomVeh(vehicle)
+    if not vehicle or vehicle == 0 then return false end
+    local model = GetEntityModel(vehicle)
+    for _, customModel in pairs(Config.custom_vehicle_mod) do
+        if model == GetHashKey(customModel) then
+            return true
+        end
+    end
+    return false
+end
+
 -----------------------
 ---- Client Events ----
 -----------------------
@@ -289,6 +300,10 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
 
     -- local difficulty = isAdvanced and 'easy' or 'medium' -- Easy for advanced lockpick, medium by default
     local difficulty = 'medium' -- Easy for advanced lockpick, medium by default
+    if isCustomVeh(vehicle) then 
+        QBCore.Functions.Notify("手上的工具破坏不了该车辆", 'error')
+        return
+    end
     if isDonatorVeh(vehicle) then 
         difficulty = 'hard' 
         QBCore.Functions.Notify("注意，该车的防盗等级较高！", 'error')
