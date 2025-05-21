@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车辆拍卖行</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="nui://shared/html/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="auction-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>车辆拍卖</h2>
+                <div class="close-btn"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="auction-list" id="auction-list">
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="vehicle-info">
+                <div class="vehicle-name-container">
+                    <h1 class="vehicle-name">请选择一辆车辆</h1>
+                    <button class="preview-btn" data-vehicle="" id="main-preview-btn">预览</button>
+                </div>
+                <div class="auction-details">
+                    <div class="timer-box">
+                        <span class="label">剩余时间</span>
+                        <span class="time-left">--:--:--</span>
+                    </div>
+                    <div class="bid-box">
+                        <span class="label">当前出价</span>
+                        <span class="current-bid">$0</span>
+                    </div>
+                </div>
+                
+                <div class="bid-controls">
+                    <input type="number" id="bid-amount" placeholder="输入出价金额">
+                    <button class="bid-button primary">出价</button>
+                    <button class="quick-bid">快速出价 +$2500</button>
+                </div>
+
+                <div class="bid-history">
+                    <h3>出价记录</h3>
+                    <div class="bid-list" id="bid-history-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-mode-container">
+            <h3 class="preview-vehicle-name"></h3>
+            <div class="preview-controls">
+                <button class="rotate-left"><i class="fas fa-undo"></i></button>
+                <button class="rotate-right"><i class="fas fa-redo"></i></button>
+                <button class="close-preview">关闭预览</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
