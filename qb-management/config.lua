@@ -16,6 +16,9 @@ Config.BossMenus = {
     mechanic = {
         vector3(-347.59, -133.35, 39.01),
     },
+    usedcardealer = {
+        vector3(1228.12, 2741.89, 38.01),
+    },
 }
 
 Config.GangMenus = {

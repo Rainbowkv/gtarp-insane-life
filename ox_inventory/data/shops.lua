@@ -5,12 +5,12 @@ return {
 		blip = {
 			id = 59, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'burger', price = 20 },
-			{ name = 'water_bottle', price = 10 },
-			{ name = 'kurkakola', price = 15 },
+			{ name = 'burger', price = 200 },
+			{ name = 'water_bottle', price = 70 },
+			{ name = 'kurkakola', price = 70 },
 			{ name = 'bakingsoda', price = 100 },
 			{ name = 'rolling_paper', price = 30 },
-			{ name = 'redwcig', price = 10 },
+			{ name = 'redwcig', price = 15 },
 			{ name = 'scratch_ticket', price = 230 },
 			{ name = 'phone', price = 2000},
 			{ name = 'radio', price = 1200}

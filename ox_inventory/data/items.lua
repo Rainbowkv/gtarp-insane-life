@@ -2986,4 +2986,217 @@ return {
 		close = true,
 		description = "没有获得许可的电钻。",
 	},
+	-- burgershot
+	['rawburgerpatty'] = {
+		label = '生汉堡肉饼',
+		weight = 100,
+		degrade = 120,
+	},
+
+	['cookedburgerpatty'] = {
+		label = '熟汉堡肉饼',
+		weight = 100,
+		degrade = 30,
+	},
+
+	['veganburgerpatty'] = {
+		label = '生素食汉堡肉饼',
+		weight = 100,
+		degrade = 250,
+	},
+
+	['cookedveganburgerpatty'] = {
+		label = '熟素食汉堡肉饼',
+		weight = 100,
+		degrade = 30,
+	},
+
+	['potato'] = {
+		label = '土豆',
+		weight = 100,
+	},
+
+	['cutpotato'] = {
+		label = '切片土豆',
+		weight = 100,
+	},
+
+	['onion'] = {
+		label = '洋葱',
+		weight = 60,
+	},
+
+	['cutonion'] = {
+		label = '切片洋葱',
+		weight = 60,
+	},
+
+	['tomato'] = {
+		label = '番茄',
+		weight = 40,
+	},
+
+	['cuttomato'] = {
+		label = '切片番茄',
+		weight = 40,
+	},
+
+	['burgerbun'] = {
+		label = '汉堡面包',
+		weight = 50,
+	},
+
+	['cheddar'] = {
+		label = '切达奶酪',
+		weight = 20,
+	},
+
+	['lettuce'] = {
+		label = '生菜',
+		weight = 40,
+	},
+
+	['cutlettuce'] = {
+		label = '切片生菜',
+		weight = 40,
+	},
+
+	['nuggets'] = {
+		label = '生鸡块',
+		weight = 40,
+		degrade = 120,
+	},
+
+	['receipt'] = {
+		label = '收据',
+		weight = 1,
+	},
+
+	['bleeder'] = {
+		label = '渗血汉堡',
+		weight = 250,
+		client = {
+			status = { hunger = 400000 },
+			anim = 'eating',
+			prop = { model = `prop_cs_burger_01`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一个汉堡'
+		},
+		degrade = 60,
+	},
+
+	['meatfree'] = {
+		label = '素食汉堡',
+		weight = 250,
+		client = {
+			status = { hunger = 300000 },
+			anim = 'eating',
+			prop = { model = `prop_cs_burger_01`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一个汉堡'
+		},
+		degrade = 60,
+	},
+
+	['torpedo'] = {
+		label = '鱼雷三明治',
+		weight = 250,
+		client = {
+			status = { hunger = 350000 },
+			anim = 'eating',
+			prop = { model = `prop_cs_burger_01`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一个汉堡'
+		},
+		degrade = 60,
+	},
+
+	['cookednuggets'] = {
+		label = '鸡块',
+		weight = 250,
+		client = {
+			status = { hunger = 250000 },
+			anim = 'eating',
+			prop = { model = `prop_cs_burger_01`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一份鸡块'
+		},
+		degrade = 60,
+	},
+
+	['heartstopper'] = {
+		label = '心脏杀手汉堡',
+		weight = 250,
+		client = {
+			status = { hunger = 1000000 },
+			anim = 'eating',
+			prop = { model = `prop_cs_burger_01`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一个汉堡'
+		},
+		degrade = 60,
+	},
+
+	['moneyshot'] = {
+		label = '金钱射击汉堡',
+		weight = 250,
+		client = {
+			status = { hunger = 500000 },
+			anim = 'eating',
+			prop = { model = `prop_cs_burger_01`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一个汉堡'
+		},
+		degrade = 60,
+	},
+
+	['fries'] = {
+		label = '薯条',
+		weight = 100,
+		client = {
+			status = { hunger = 250000 },
+			anim = 'eating',
+			prop = { model = `prop_food_bs_chips`, pos = vec3(0.13, 0.05, 0.02), rot = vec3(-50.0, 16.0, 60.0) },
+			usetime = 2500,
+			notification = '你吃了一份薯条'
+		},
+		degrade = 60,
+	},
+
+	['bscoke'] = {
+		label = '汉堡店可乐',
+		weight = 100,
+		client = {
+			status = { thirst = 480000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = `prop_food_bs_juice01`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+			usetime = 2500,
+			notification = '你喝了一瓶可乐'
+		},
+	},
+
+	['bscoffee'] = {
+		label = '汉堡店咖啡',
+		weight = 100,
+		client = {
+			status = { thirst = 480000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = `prop_food_bs_coffee`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+			usetime = 2500,
+			notification = '你喝了一杯咖啡'
+		}
+	},
+
+	['milkshake'] = {
+		label = '奶昔',
+		weight = 100,
+		client = {
+			status = { thirst = 480000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = `prop_cs_bs_cup`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+			usetime = 2500,
+			notification = '你喝了一杯奶昔'
+		},
+		degrade = 60,
+	}
 }

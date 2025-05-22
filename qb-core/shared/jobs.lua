@@ -140,4 +140,28 @@ QBShared.Jobs = {
 			['4'] = { name = '老板', isboss = true, payment = 1000 },
 		},
 	},
+	usedcardealer = {
+		label = '二手车商',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = '初级车贩子', payment = 500 },
+			['1'] = { name = '中级车贩子', payment = 600 },
+			['2'] = { name = '高级车贩子', payment = 700 },
+			['3'] = { name = '特级车贩子', payment = 800 },
+			['4'] = { name = '车贩子老板', isboss = true, payment = 1000 },
+		},
+	},
+	burgershot = {
+		label = '汉堡王员工',
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = '初出茅庐', payment = 500 },
+			['1'] = { name = '小有所成', payment = 600 },
+			['2'] = { name = '得心应手', payment = 700 },
+			['3'] = { name = '出神入化', payment = 800 },
+			['4'] = { name = '汉堡王', isboss = true, payment = 1000 },
+		},
+	},
 }
