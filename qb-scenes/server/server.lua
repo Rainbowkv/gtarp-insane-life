@@ -71,7 +71,30 @@ RegisterNetEvent('qb-scenes:server:CreateScene', function(sceneData)
 
     TriggerEvent("qb-log:server:CreateLog", "scenes", "New Scene Created", "red", "**".. GetPlayerName(source) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..source.."*) created a new scene; scene: **"..sceneData.text.."**, where: **" .. sceneData.coords .. "**")
 
-    MySQL.Async.insert('INSERT INTO scenes (creator, text, color, viewdistance, expiration, fontsize, fontstyle, coords, date_creation, date_deletion) VALUES (? ,?, ?, ?, ?, ?, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL ? HOUR))', {
+    -- MySQL.Async.insert('INSERT INTO scenes (creator, text, color, viewdistance, expiration, fontsize, fontstyle, coords, date_creation, date_deletion) VALUES (? ,?, ?, ?, ?, ?, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL ? HOUR))', {
+    --     Player.PlayerData.citizenid,
+    --     sceneData.text,
+    --     sceneData.color,
+    --     sceneData.viewdistance,
+    --     sceneData.expiration,
+    --     sceneData.fontsize,
+    --     sceneData.fontstyle,
+    --     json.encode(sceneData.coords),
+    --     sceneData.expiration
+    -- }, function()
+    --     UpdateAllScenes()
+    -- end)
+    
+    -- rb_code，使用北京时间
+    MySQL.Async.insert([[
+        INSERT INTO scenes (
+            creator, text, color, viewdistance, expiration,
+            fontsize, fontstyle, coords, date_creation, date_deletion
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 
+            CONVERT_TZ(NOW(), '+00:00', '+08:00'),
+            CONVERT_TZ(DATE_ADD(NOW(), INTERVAL ? HOUR), '+00:00', '+08:00')
+        )
+    ]], {
         Player.PlayerData.citizenid,
         sceneData.text,
         sceneData.color,

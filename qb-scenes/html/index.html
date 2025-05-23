@@ -17,15 +17,15 @@
 		<div id="menu">
 			<div class="q-mb-md">
 				<q-form @submit="onSubmit" class="q-gutter-md">
-					<q-input dark hint="Markdown supported (i.e. &lt;b>, &lt;i>)" type="textarea" rows="1"
-						v-model="text" class="text" color="field" v-model="text" label="Text">
+					<q-input dark hint="支持markdown格式 (i.e. &lt;b>, &lt;i>)" type="textarea" rows="1"
+						v-model="text" class="text" color="field" v-model="text" label="文本">
 						<template v-slot:prepend>
 							<q-icon name="create"/>
 						</template>
 					</q-input>
 
-					<q-input dark hint="Text Color" v-model="color" class="my-input"
-						color="field" label="Color">
+					<q-input dark hint="文字颜色" v-model="color" class="my-input"
+						color="field" label="颜色">
 						<template v-slot:prepend>
 							<q-icon name="palette"/>
 						</template>
@@ -47,9 +47,9 @@
 						</q-item-section>
 
 					</q-item>
-					<q-item-label class="slidertext">Font Size</q-item-label>
+					<q-item-label class="slidertext">文字大小</q-item-label>
 
-					<q-item class="slideritem">
+					<!-- <q-item class="slideritem">
 						<q-item-section avatar>
 							<q-icon color="slider" name="title"/>
 						</q-item-section>
@@ -57,7 +57,7 @@
 							<q-slider dark label-always v-model="fontstyle" :min="1" :max="5" label color="sliderb"/>
 						</q-item-section>
 					</q-item>
-					<q-item-label class="slidertext">Font style</q-item-label>
+					<q-item-label class="slidertext">Font style</q-item-label> -->
 
 					<q-item class="slideritem">
 						<q-item-section avatar>
@@ -67,21 +67,21 @@
 							<q-slider dark label-always v-model="viewdistance" :min="1" :max="25" label color="sliderb" />
 						</q-item-section>
 					</q-item>
-					<q-item-label class="slidertext">View Distance</q-item-label>
+					<q-item-label class="slidertext">可见距离</q-item-label>
 
-					<q-select hint="Expiration Time" dark v-model="expiration" :options="expirationOptions" color="field"
-						label="Expiration Time">
+					<q-select hint="过期时间" dark v-model="expiration" :options="expirationOptions" color="field"
+						label="过期时间">
 						<template v-slot:prepend>
 							<q-icon name="schedule"/>
 						</template>
 					</q-select>
 
 					<div class="row justify-center">
-						<q-btn style="margin-right: 1vh;" class="Close" label="Create" type="submit" text-color="black"
+						<q-btn style="margin-right: 1vh;" class="Close" label="创建" type="submit" text-color="black"
 							color="button"></q-btn>
-						<q-btn v-on:click="onDelete()" style="margin-right: 1vh;" class="delete" label="Delete"
+						<q-btn v-on:click="onDelete()" style="margin-right: 1vh;" class="delete" label="删除"
 							text-color="black" color="buttondel"></q-btn>
-						<q-btn v-on:click="onReset()" style="margin-right: 1vh;" class="cancel" label="Reset"
+						<q-btn v-on:click="onReset()" style="margin-right: 1vh;" class="cancel" label="重置"
 							text-color="black" color="buttonreset"></q-btn>
 					</div>
 				</q-form>

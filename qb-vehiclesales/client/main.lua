@@ -91,7 +91,7 @@ local function openSellContract(bool)
             firstname = pData.charinfo.firstname,
             lastname = pData.charinfo.lastname,
             account = pData.charinfo.account,
-            phone = pData.charinfo.phone
+            phone = exports["lb-phone"]:GetEquippedPhoneNumber(pData.citizenid)  -- lb-phone
         },
         plate = QBCore.Functions.GetPlate(GetVehiclePedIsUsing(PlayerPedId()))
     })
@@ -108,7 +108,7 @@ local function openBuyContract(sellerData, vehicleData)
             firstname = sellerData.charinfo.firstname,
             lastname = sellerData.charinfo.lastname,
             account = sellerData.charinfo.account,
-            phone = sellerData.charinfo.phone
+            phone = exports["lb-phone"]:GetEquippedPhoneNumber(sellerData.citizenid)  -- lb-phone
         },
         vehicleData = {
             desc = vehicleData.desc,
@@ -219,6 +219,10 @@ RegisterNUICallback('sellVehicle', function(data, cb)
     local plate = QBCore.Functions.GetPlate(GetVehiclePedIsUsing(PlayerPedId())) --Getting the plate and sending to the function
     if tonumber(data.price) < Config.minPrice then
         QBCore.Functions.Notify("最小出售价格: "..Config.minPrice, 'error')
+        return
+    end
+    if tonumber(data.price) > Config.maxPrice then
+        QBCore.Functions.Notify("最大出售价格: " .. Config.maxPrice, 'error')
         return
     end
     SellData(data, plate)

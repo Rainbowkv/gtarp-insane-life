@@ -10,7 +10,7 @@ const app = Vue.createApp({
 		const color = ref('#ffffff')
 		const fontsize = ref(0.3)
 		const fontstyle = ref('1')
-		const expiration = ref('1 hour')
+		const expiration = ref('1 小时')
 
 		return {
 			text,
@@ -19,7 +19,7 @@ const app = Vue.createApp({
 			fontsize,
 			fontstyle,
 			expiration,
-			expirationOptions: ['1 hour', '2 hours', '4 hours', '8 hours', '24 hours', '48 hours', '72 hours'],
+			expirationOptions: ['1 小时', '2 小时', '4 小时', '8 小时', '24 小时', '48 小时', '72 小时'],
 			onSubmit() {
 				if (color.value === null | viewdistance.value === null | text.value === null | fontsize.value === null) {
 					$q.notify({
@@ -56,7 +56,7 @@ const app = Vue.createApp({
 			onReset() {
 				text.value = null
 				color.value = '#ffffff'
-				expiration.value = '1 hour'
+				expiration.value = '1 小时'
 				viewdistance.value = 5
 				fontsize.value = 0.3
 				fontstyle.value = 1
