@@ -6,6 +6,7 @@ Config.UseTarget = true
 Config.newPriceRatio = 90  -- 卖主拿到出售价格的90%，这里需要与ui.js的computed同步更改
 Config.usedCarDealerAccout = 'usedcardealer'
 Config.usedCarDealerRatio = 9  -- 二手车商拿到出售价格的9%，这里需要与ui.js的computed同步更改
+Config.minPrice = 10000  -- 最小出售价格，主要是为了过户费
 
 Config.Zones = {
     ["SandyOccasions"] = {

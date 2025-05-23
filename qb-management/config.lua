@@ -19,6 +19,9 @@ Config.BossMenus = {
     usedcardealer = {
         vector3(1228.12, 2741.89, 38.01),
     },
+    burgershot = {
+        vector3(-1198.61, -891.74, 13.89),
+    },
 }
 
 Config.GangMenus = {
