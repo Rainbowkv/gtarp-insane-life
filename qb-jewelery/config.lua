@@ -11,6 +11,9 @@ Config.JewelleryLocation = {
 }
 
 Config.WhitelistedWeapons = {
+    [`WEAPON_CERAMICPISTOL`] = {
+        ['timeOut'] = 10000
+    },
     [`weapon_assaultrifle`] = {
         ['timeOut'] = 10000
     },

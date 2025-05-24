@@ -1,7 +1,7 @@
 QBShared = QBShared or {}
 QBShared.ForceJobDefaultDutyAtLogin = true -- true: Force duty state to jobdefaultDuty | false: set duty state from database last saved
 QBShared.Jobs = {
-	unemployed = { label = '公民', defaultDuty = true, offDutyPay = false, grades = { ['0'] = { name = '自由职业者', payment = 200 } } },
+	unemployed = { label = '公民', defaultDuty = false, offDutyPay = true, grades = { ['0'] = { name = '自由职业者', payment = 200 } } },
 	bus = { label = '公交车司机', defaultDuty = true, offDutyPay = false, grades = { ['0'] = { name = '司机', payment = 500 } } },
 	judge = { label = '荣誉法官', defaultDuty = true, offDutyPay = false, grades = { ['0'] = { name = '法官', payment = 500 } } },
 	lawyer = { label = '律师事务所', defaultDuty = true, offDutyPay = false, grades = { ['0'] = { name = '助理', payment = 500 } } },
@@ -162,6 +162,18 @@ QBShared.Jobs = {
 			['2'] = { name = '得心应手', payment = 700 },
 			['3'] = { name = '出神入化', payment = 800 },
 			['4'] = { name = '汉堡王', isboss = true, payment = 1000 },
+		},
+	},
+	casino = {
+		label = '钻石赌场',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+			['0'] = { name = '新人', payment = 500 },
+			['1'] = { name = '初级员工', payment = 600 },
+			['2'] = { name = '高级员工', payment = 700 },
+			['3'] = { name = '领班', payment = 800 },
+			['4'] = { name = '老板', isboss = true, payment = 1000 },
 		},
 	},
 }
