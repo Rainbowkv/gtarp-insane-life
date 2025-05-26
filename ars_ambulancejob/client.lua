@@ -57,6 +57,21 @@ local function ensureAnimDict(animDict)
     end
 end
 
+-- rb_code  
+-- 从qb-ambulancejob复制过来，防止自动回血的
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    -- local ped = PlayerPedId()
+    local player = PlayerId()
+    CreateThread(function()
+        Wait(5000)
+        -- SetEntityMaxHealth(ped, 200)
+        -- SetEntityHealth(ped, 200)
+        SetPlayerHealthRechargeMultiplier(player, 0.0)
+        SetPlayerHealthRechargeLimit(player, 0.0)
+    end)
+end)
+--
+
 -- rb_code  -- 先全部忽略被拷者执行操作的可能性
 local isEscorted = false
 local escorting = false
