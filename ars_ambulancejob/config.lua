@@ -29,7 +29,7 @@ Config.keepItemsOnRespawn = { "money", "WEAPON_PISTOL" } -- items that will not 
 Config.baseInjuryReward = 50
 Config.reviveReward = 300
 
-Config.paramedicTreatmentPrice = 50
+Config.paramedicTreatmentPrice = 700
 Config.shouldRevive = true
 Config.allowAlways = true             -- false if you want it to work only when there are only medics online
 
