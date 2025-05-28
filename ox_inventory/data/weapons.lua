@@ -225,9 +225,9 @@ return {
 		},
 
 		['WEAPON_FIREEXTINGUISHER'] = {
-			label = 'Fire Extinguisher',
-			weight = 8616,
-            durability = 0.006
+			label = '灭火器',
+			weight = 5000,
+            durability = 0.02
 		},
 
 		['WEAPON_FIREWORK'] = {
@@ -283,9 +283,9 @@ return {
 		},
 
 		['WEAPON_HAMMER'] = {
-			label = 'Hammer',
-			weight = 1200,
-			durability = 0.1,
+			label = '锤子',
+			weight = 2000,
+			durability = 0.2,
 		},
 
 		['WEAPON_HATCHET'] = {
@@ -692,9 +692,9 @@ return {
 		},
 
 		['WEAPON_WRENCH'] = {
-			label = 'Wrench',
-			weight = 2500,
-			durability = 0.1,
+			label = '扳手',
+			weight = 2000,
+			durability = 0.2,
 		},
 
 		['WEAPON_PRECISIONRIFLE'] = {

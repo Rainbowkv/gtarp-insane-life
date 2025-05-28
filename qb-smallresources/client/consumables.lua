@@ -28,11 +28,11 @@ local function healOxy()
 
     healing = true
 
-    local count = 9
+    local count = 5
     while count > 0 do
-        Wait(1000)
+        Wait(1500)
         count -= 1
-        SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId()) + 6)
+        SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId()) + 5)
     end
     healing = false
 end
@@ -50,7 +50,7 @@ end
 
 local function methBagEffect()
     local startStamina = 8
-    trevorEffect()
+    -- trevorEffect()  -- 取消冰毒副作用
     SetRunSprintMultiplierForPlayer(PlayerId(), 1.49)
     while startStamina > 0 do
         Wait(1000)
@@ -58,9 +58,9 @@ local function methBagEffect()
             RestorePlayerStamina(PlayerId(), 1.0)
         end
         startStamina = startStamina - 1
-        if math.random(5, 100) < 51 then
-            trevorEffect()
-        end
+        -- if math.random(5, 100) < 51 then
+        --     trevorEffect()
+        -- end
     end
     SetRunSprintMultiplierForPlayer(PlayerId(), 1.0)
 end
@@ -209,6 +209,7 @@ RegisterNetEvent('consumables:client:DrinkAlcohol', function(itemName)
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         alcoholCount += 1
         AlcoholLoop()
+        trevorEffect()
         if alcoholCount > 1 and alcoholCount < 4 then
             TriggerEvent('evidence:client:SetStatus', 'alcohol', 200)
         elseif alcoholCount >= 4 then

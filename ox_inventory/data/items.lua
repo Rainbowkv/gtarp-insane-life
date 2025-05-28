@@ -94,7 +94,7 @@ return {
 
 	['parachute'] = {
 		label = '降落伞',
-		weight = 8000,
+		weight = 3000,
 		stack = false,
 		client = {
 			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
@@ -745,7 +745,7 @@ return {
 
 	["diving_fill"] = {
 		label = "潜水管",
-		weight = 3000,
+		weight = 500,
 		stack = false,
 		close = true,
 		description = "一根氧气管和潜水呼吸器",
@@ -1550,7 +1550,7 @@ return {
 
 	["diving_gear"] = {
 		label = "潜水装备",
-		weight = 30000,
+		weight = 3000,
 		stack = false,
 		close = true,
 		description = "一套氧气瓶和潜水呼吸器",
@@ -1605,7 +1605,7 @@ return {
 
 	["binoculars"] = {
 		label = "双筒望远镜",
-		weight = 600,
+		weight = 500,
 		stack = true,
 		close = true,
 		description = "偷偷摸摸的...",
@@ -3198,5 +3198,14 @@ return {
 			notification = '你喝了一杯奶昔'
 		},
 		degrade = 60,
-	}
+	},
+	-- karting_racing
+	['karting_license'] = {
+		label = '卡丁车赛照',
+		weight = 0,
+	},
+	['advanced_karting_license'] = {
+		label = '高级卡丁车赛照',
+		weight = 0,
+	},
 }

@@ -74,10 +74,10 @@ Config.Discord = {
 
 Config.Density = {
     parked = 0.3,  -- 0-1
-    vehicle = 0.4,
-    multiplier = 0.2,
-    peds = 0.4,
-    scenario = 0.3
+    vehicle = 0.3,
+    multiplier = 0.6,
+    peds = 0.3,
+    scenario = 0.6
 }
 
 Config.Disable = {
@@ -100,10 +100,10 @@ Config.PropModel = {
 
 Config.Consumables = {
     eat = { -- default food items
-        ['sandwich'] = math.random(35, 54),
-        ['tosti'] = math.random(40, 50),
-        ['twerks_candy'] = math.random(35, 54),
-        ['snikkel_candy'] = math.random(40, 50)
+        ['sandwich'] = math.random(10, 20),
+        ['tosti'] = math.random(10, 20),
+        ['twerks_candy'] = math.random(10, 20),
+        ['snikkel_candy'] = math.random(10, 20)
     },
     drink = { -- default drink items
         ['water_bottle'] = 10,
@@ -111,9 +111,10 @@ Config.Consumables = {
         ['coffee'] = math.random(40, 50)
     },
     alcohol = { -- default alcohol items
-        ['whiskey'] = math.random(20, 30),
-        ['beer'] = math.random(30, 40),
-        ['vodka'] = math.random(20, 40),
+        ['whiskey'] = math.random(10, 20),
+        ['beer'] = math.random(10, 20),
+        ['vodka'] = math.random(10, 20),
+        ['wine'] = math.random(20, 30)
     },
     custom = { -- put any custom items here
         -- ['newitem'] = {

@@ -13,7 +13,8 @@ return {
 			{ name = 'redwcig', price = 15 },
 			{ name = 'scratch_ticket', price = 230 },
 			{ name = 'phone', price = 2000},
-			{ name = 'radio', price = 1200}
+			{ name = 'radio', price = 1200},
+			{ name = 'WEAPON_FIREEXTINGUISHER', price = 500}
 		}, locations = {
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),
@@ -72,16 +73,17 @@ return {
 		name = '工具店',
 		blip = {
 			id = 402, colour = 69, scale = 0.8
-		}, inventory = {
+		}, 
+		inventory = {
 			{ name = 'lockpick', price = 150 },
 			{ name = 'trimming_scissors', price = 100},
 			{ name = 'finescale', price = 200},
-		}, locations = {
-			vec3(2735.56, 3463.5, 55.7),
-			vec3(342.99, -1298.26, 32.51)
-		}, targets = {
+			{ name = 'WEAPON_WRENCH', price = 500},
+			{ name = 'weapon_hammer', price = 500}
+		},
+		targets = {
 			{ loc = vec3(2735.56, 3463.5, 55.7), length = 0.5, width = 0.5, heading = 158.72, minZ = 55.6, maxZ = 55.8, distance = 2.0 }
-		}
+		},
 	},
 
 	Ammunation = {
@@ -164,7 +166,7 @@ return {
 
 	BlackMarketArms = {
 		-- name = 'Black Market (Arms)',
-		name = "黑市",
+		name = "黑商",
 		inventory = {
 			{ name = 'WEAPON_DAGGER', price = 700, metadata = { registered = false	}},
 			{ name = 'WEAPON_CERAMICPISTOL', price = 20000, metadata = { registered = false }, currency = 'black_money' },
@@ -175,11 +177,16 @@ return {
 			{ name = 'cocainekey', price = 5000},
 			{ name = 'advancedlockpick', price = 300, currency = 'black_money' },
 			{ name = 'drill_green2', price = 2000, currency = 'black_money' },
-		}, locations = {
-			vec3(4988.13, -5126.86, 2.00)
-		}, targets = {
-			{ loc = vec3(4988.13, -5126.86, 2.00), length = 1.0, width = 1.0, heading = 180.0, minZ = 1.00, maxZ = 3.00, distance = 2.0 },
-		}
+			{ name = 'oxy', price = 1000, currency = 'black_money' },
+		},
+		targets = {
+            {
+                ped = `a_m_y_smartcaspat_01`,
+                scenario = 'WORLD_HUMAN_AA_SMOKE',
+                loc = vector3(4988.11, -5127.07, 1.44),
+                heading = 271.92,
+            }
+        }
 	},
 
 	VendingMachineDrinks = {
@@ -248,4 +255,48 @@ return {
 			{ loc = vec3(-343.79, -139.92, 39.01), length = 0.5, width = 3.0, heading = 270.0, minZ = 37.5, maxZ = 41.0, distance = 6 }
 		}
 	},
+
+	seaworld = {
+        name = "深水装备",
+		blip = {
+          id = 729,
+          colour = 67,
+          scale = 0.8
+        },
+        inventory = {
+            { name = 'diving_gear', price = 500 },
+            { name = 'diving_fill', price = 100 },
+            { name = 'dendrogyra_coral', price = 22 },
+            { name = 'antipatharia_coral', price = 5 }
+        },
+        targets = {
+            {
+                ped = `a_m_y_surfer_01`,
+                scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+                loc = vec3(-1687.11, -1072.06, 12.15),
+                heading = 52.49,
+            }
+        }
+    },
+
+	leisureshop = {
+        name = "户外装备",
+		blip = {
+          id = 126,
+          colour = 0,
+          scale = 0.8
+        },
+        inventory = {
+            { name = 'parachute', price = 200 },
+            { name = 'binoculars', price = 1000 },
+        },
+        targets = {
+            {
+                ped = `a_m_y_surfer_01`,
+                scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+                loc = vector3(-1504.6, 1510.9, 114.29),
+                heading = 247.01,
+            }
+        }
+    }
 }
