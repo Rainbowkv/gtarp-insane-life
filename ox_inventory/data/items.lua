@@ -3082,7 +3082,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一个汉堡'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['meatfree'] = {
@@ -3095,7 +3095,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一个汉堡'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['torpedo'] = {
@@ -3108,7 +3108,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一个汉堡'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['cookednuggets'] = {
@@ -3121,7 +3121,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一份鸡块'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['heartstopper'] = {
@@ -3134,7 +3134,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一个汉堡'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['moneyshot'] = {
@@ -3147,7 +3147,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一个汉堡'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['fries'] = {
@@ -3160,7 +3160,7 @@ return {
 			usetime = 2500,
 			notification = '你吃了一份薯条'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 
 	['bscoke'] = {
@@ -3173,6 +3173,7 @@ return {
 			usetime = 2500,
 			notification = '你喝了一瓶可乐'
 		},
+		degrade = 1440,
 	},
 
 	['bscoffee'] = {
@@ -3184,7 +3185,8 @@ return {
 			prop = { model = `prop_food_bs_coffee`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
 			usetime = 2500,
 			notification = '你喝了一杯咖啡'
-		}
+		},
+		degrade = 1440,
 	},
 
 	['milkshake'] = {
@@ -3197,7 +3199,7 @@ return {
 			usetime = 2500,
 			notification = '你喝了一杯奶昔'
 		},
-		degrade = 60,
+		degrade = 1440,
 	},
 	-- karting_racing
 	['karting_license'] = {
