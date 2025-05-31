@@ -5,6 +5,7 @@ local CurrentArea = 0
 local inSellerZone = false
 local isWearingSuit = false
 local OxygenLevel = 0
+local CoralZones = {}  -- for ox_target remove
 
 local CurrentDivingLocation = {
     area = 0,
@@ -54,10 +55,13 @@ local function gearAnim()
 end
 
 local function takeCoral(coral)
-    if Config.CoralLocations[CurrentDivingLocation.area].coords.Coral[coral].PickedUp then return end
+    if Config.CoralLocations[CurrentDivingLocation.area].coords.Coral[coral].PickedUp then 
+        QBCore.Functions.Notify("这个珊瑚已经被采过了", 'error')
+        return 
+    end
     local ped = PlayerPedId()
-    local times = math.random(2, 5)
-    if math.random() > Config.CopsChance then callCops() end
+    local times = 5
+    -- if math.random() > Config.CopsChance then callCops() end  -- rb_code
     FreezeEntityPosition(ped, true)
     QBCore.Functions.Progressbar("take_coral", Lang:t("info.collecting_coral"), times * 1000, false, true, {
         disableMovement = true,
@@ -70,7 +74,7 @@ local function takeCoral(coral)
         flags = 16,
     }, {}, {}, function() -- Done
         Config.CoralLocations[CurrentDivingLocation.area].coords.Coral[coral].PickedUp = true
-        TriggerServerEvent('qb-diving:server:TakeCoral', CurrentDivingLocation.area, coral, true)
+        TriggerServerEvent('qb-diving:server:TakeCoral', CurrentDivingLocation.area, coral)
         ClearPedTasks(ped)
         FreezeEntityPosition(ped, false)
     end, function() -- Cancel
@@ -83,11 +87,12 @@ local function setDivingLocation(divingLocation)
     if CurrentDivingLocation.area ~= 0 then
         for k in pairs(Config.CoralLocations[CurrentDivingLocation.area].coords.Coral) do
             if Config.UseTarget then
-                exports['qb-target']:RemoveZone(k)
+                exports['qb-target']:RemoveZone(CoralZones[k])
             else
                 if next(Zones) then Zones[k]:destroy() end
             end
         end
+        CoralZones = {}
     end
     CurrentDivingLocation.area = divingLocation
     for _, blip in pairs(CurrentDivingLocation.blip) do if blip then RemoveBlip(blip) end end
@@ -107,11 +112,11 @@ local function setDivingLocation(divingLocation)
     CurrentDivingLocation.blip.label = labelBlip
     for k, v in pairs(Config.CoralLocations[CurrentDivingLocation.area].coords.Coral) do
         if Config.UseTarget then
-            exports['qb-target']:AddBoxZone('diving_coral_zone_'..k, v.coords, v.length, v.width, {
+            local zone = exports['qb-target']:AddBoxZone('diving_coral_zone_'..k, v.coords, v.length, v.width, {
                 name = 'diving_coral_zone_'..k,
                 heading = v.heading,
                 debugPoly = false,
-                minZ = v.coords.z - 3,
+                minZ = v.coords.z - 2,
                 maxZ = v.coords.z + 2
             }, {
                 options = {
@@ -125,6 +130,7 @@ local function setDivingLocation(divingLocation)
                 },
                 distance = 2.0
             })
+            CoralZones[k] = zone
         else
             Zones[k] = BoxZone:Create(v.coords, v.length, v.width, {
                 name = 'diving_coral_zone_'..k,
@@ -215,8 +221,8 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
         Config.CoralLocations = config
         setDivingLocation(area)
         createSeller()
-        isLoggedIn = true
     end)
+    isLoggedIn = true
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
@@ -309,7 +315,7 @@ RegisterNetEvent('qb-diving:client:UseGear', function()
                         local bone2 = GetPedBoneIndex(ped, 12844)
                         AttachEntityToEntity(CurrentGear.mask, ped, bone2, 0.0, 0.0, 0.0, 180.0, 90.0, 0.0, 1, 1, 0, 0, 2, 1)
                         SetEnableScuba(ped, true)
-                        SetPedMaxTimeUnderwater(ped, 2000.00)
+                        SetPedMaxTimeUnderwater(ped, 2000.00)  -- 这里配合上面拓展了上限为2000，因此Config.OxygenLevel必须<=2000
                         CurrentGear.enabled = true
                         ClearPedTasks(ped)
                         TriggerServerEvent("InteractSound_SV:PlayOnSource", "breathdivingsuit", 0.25)
@@ -322,11 +328,13 @@ RegisterNetEvent('qb-diving:client:UseGear', function()
                                     if OxygenLevel % 10 == 0 and OxygenLevel <= 90 and OxygenLevel > 0 then
                                         TriggerServerEvent("InteractSound_SV:PlayOnSource", "breathdivingsuit", 0.25)
                                     elseif OxygenLevel == 0 then
-                                        if Config.RemoveDivingGear then deleteGear() end
+                                        if Config.RemoveDivingGear then 
+                                            deleteGear() 
+                                            isWearingSuit = false
+                                        end
                                         SetEnableScuba(ped, false)
-                                        SetPedMaxTimeUnderwater(ped, 1.00)
+                                        SetPedMaxTimeUnderwater(ped, 5.00)  -- 没氧情况允许玩家憋5秒，脱离水底
                                         CurrentGear.enabled = false
-                                        isWearingSuit = false
                                         TriggerServerEvent("InteractSound_SV:PlayOnSource", nil, 0.25)
                                         return
                                     end
@@ -346,7 +354,7 @@ RegisterNetEvent('qb-diving:client:UseGear', function()
             gearAnim()
             QBCore.Functions.Progressbar("remove_gear", Lang:t("info.pullout_suit"), 5000, false, true, {}, {}, {}, {}, function() -- Done
                 SetEnableScuba(ped, false)
-                SetPedMaxTimeUnderwater(ped, 50.00)
+                SetPedMaxTimeUnderwater(ped, 10.00)  -- 正常情况允许玩家憋10秒
                 CurrentGear.enabled = false
                 ClearPedTasks(ped)
                 deleteGear()

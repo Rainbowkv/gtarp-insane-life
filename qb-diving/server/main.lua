@@ -1,5 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local currentDivingArea = math.random(1, #Config.CoralLocations)
+-- local currentDivingArea = math.random(1, #Config.CoralLocations)
+local currentDivingArea = math.random(1, #Config.CoralLocations)  
 local AvailableCorals = {}
 
 -- Functions
@@ -64,24 +65,20 @@ RegisterNetEvent('qb-diving:server:SellCorals', function()
     end
 end)
 
-RegisterNetEvent('qb-diving:server:TakeCoral', function(area, coral, bool)
+RegisterNetEvent('qb-diving:server:TakeCoral', function(area, coral)
     local src = source
+    if Config.CoralLocations[area].coords.Coral[coral].PickedUp then
+        exports['external_bansystem']:SystemBanPlayer(src, "检测到作弊采摘珊瑚行为", nil)
+        return
+    end
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
     local coralType = math.random(1, #Config.CoralTypes)
-    local amount = math.random(1, Config.CoralTypes[coralType].maxAmount)
+    local amount = math.random(Config.CoralTypes[coralType].minAmount, Config.CoralTypes[coralType].maxAmount)
     local ItemData = QBCore.Shared.Items[Config.CoralTypes[coralType].item]
 
-    if amount > 1 then
-        for _ = 1, amount, 1 do
-            exports['qb-inventory']:AddItem(src, ItemData['name'], 1, false, false, 'qb-diving:server:TakeCoral')
-            TriggerClientEvent('qb-inventory:client:ItemBox', src, ItemData, 'add')
-            Wait(250)
-        end
-    else
-        exports['qb-inventory']:AddItem(src, ItemData['name'], amount, false, false, 'qb-diving:server:TakeCoral')
-        TriggerClientEvent('qb-inventory:client:ItemBox', src, ItemData, 'add')
-    end
+    exports['qb-inventory']:AddItem(src, ItemData['name'], amount, false, false, 'qb-diving:server:TakeCoral')
+    -- TriggerClientEvent('qb-inventory:client:ItemBox', src, ItemData, 'add')
 
     if (Config.CoralLocations[area].TotalCoral - 1) == 0 then
         for _, v in pairs(Config.CoralLocations[currentDivingArea].coords.Coral) do
@@ -97,10 +94,10 @@ RegisterNetEvent('qb-diving:server:TakeCoral', function(area, coral, bool)
         currentDivingArea = newLocation
         TriggerClientEvent('qb-diving:client:NewLocations', -1)
     else
-        Config.CoralLocations[area].coords.Coral[coral].PickedUp = bool
+        Config.CoralLocations[area].coords.Coral[coral].PickedUp = true
         Config.CoralLocations[area].TotalCoral = Config.CoralLocations[area].TotalCoral - 1
     end
-    TriggerClientEvent('qb-diving:client:UpdateCoral', -1, area, coral, bool)
+    TriggerClientEvent('qb-diving:client:UpdateCoral', -1, area, coral, true)
 end)
 
 RegisterNetEvent('qb-diving:server:removeItemAfterFill', function()
