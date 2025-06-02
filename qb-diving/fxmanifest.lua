@@ -9,7 +9,8 @@ shared_script {
     '@qb-core/shared/locale.lua',
     'locales/en.lua',
     'locales/*.lua',
-    'config.lua'
+    'config.lua',
+    '@ox_lib/init.lua',
 }
 
 server_script 'server/main.lua'
@@ -18,4 +19,8 @@ client_scripts {
     '@PolyZone/client.lua',
     '@PolyZone/BoxZone.lua',
     'client/main.lua'
+}
+
+dependencies {
+    'ox_lib'
 }

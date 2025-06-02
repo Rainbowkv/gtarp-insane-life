@@ -393,7 +393,7 @@ return {
 
 	["grouper"] = {
 		label = "石斑鱼",
-		weight = 3500,
+		weight = 270,
 		stack = true,
 		close = true,
 		description = "",
@@ -481,7 +481,7 @@ return {
 
 	["haddock"] = {
 		label = "黑线鳕",
-		weight = 500,
+		weight = 240,
 		stack = true,
 		close = true,
 		description = "",
@@ -613,7 +613,7 @@ return {
 
 	["tuna"] = {
 		label = "金枪鱼",
-		weight = 10000,
+		weight = 300,
 		stack = true,
 		close = true,
 		description = "",
@@ -1008,7 +1008,7 @@ return {
 	},
 
 	["markedbills"] = {
-		label = "标记钱币",
+		label = "标记钱袋",
 		weight = 1000,
 		stack = false,
 		close = true,
@@ -1152,7 +1152,7 @@ return {
 
 	["trout"] = {
 		label = "鳟鱼",
-		weight = 750,
+		weight = 220,
 		stack = true,
 		close = true,
 		description = "",
@@ -1174,7 +1174,7 @@ return {
 
 	["antipatharia_coral"] = {
 		label = "黑珊瑚",
-		weight = 1000,
+		weight = 100,
 		stack = true,
 		close = true,
 		description = "也叫黑珊瑚或刺珊瑚",
@@ -1726,7 +1726,7 @@ return {
 
 	["dendrogyra_coral"] = {
 		label = "柱状珊瑚",
-		weight = 1000,
+		weight = 120,
 		stack = true,
 		close = true,
 		description = "也叫柱状珊瑚",
@@ -1737,7 +1737,7 @@ return {
 
 	["piranha"] = {
 		label = "食人鱼",
-		weight = 1500,
+		weight = 150,
 		stack = true,
 		close = true,
 		description = "",
@@ -1748,7 +1748,7 @@ return {
 
 	["shark"] = {
 		label = "鲨鱼",
-		weight = 7500,
+		weight = 500,
 		stack = true,
 		close = true,
 		description = "",
@@ -1803,7 +1803,7 @@ return {
 
 	["mahi_mahi"] = {
 		label = "马哈马哈",
-		weight = 3500,
+		weight = 300,
 		stack = true,
 		close = true,
 		description = "",
@@ -1847,7 +1847,7 @@ return {
 
 	["anchovy"] = {
 		label = "鳀鱼",
-		weight = 20,
+		weight = 200,
 		stack = true,
 		close = true,
 		description = "",
@@ -2254,7 +2254,7 @@ return {
 
 	["red_snapper"] = {
 		label = "红鲷鱼",
-		weight = 2500,
+		weight = 250,
 		stack = true,
 		close = true,
 		description = "",
@@ -2276,7 +2276,7 @@ return {
 
 	["salmon"] = {
 		label = "鲑鱼",
-		weight = 1000,
+		weight = 260,
 		stack = true,
 		close = true,
 		description = "",

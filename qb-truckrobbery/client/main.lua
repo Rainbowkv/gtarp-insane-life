@@ -55,47 +55,46 @@ end
 
 -- Ped spawn and mission accept
 CreateThread(function()
-	while true do
-		local plyCoords = GetEntityCoords(PlayerPedId(), false)
-		local dist = #(plyCoords - vector3(Config.MissionMarker.x, Config.MissionMarker.y, Config.MissionMarker.z))
-		local sleep = 500
-		if dist <= 25.0 then
-			sleep = 0
-			if not DoesEntityExist(dealer) then
-				RequestModel("s_m_y_dealer_01")
-				while not HasModelLoaded("s_m_y_dealer_01") do
-					Wait(10)
-				end
-				dealer = CreatePed(26, "s_m_y_dealer_01", Config.DealerCoords.x, Config.DealerCoords.y, Config.DealerCoords.z, 268.9422, false, false)
-				SetEntityHeading(dealer, 1.8)
-				SetBlockingOfNonTemporaryEvents(dealer, true)
-				TaskStartScenarioInPlace(dealer, "WORLD_HUMAN_AA_SMOKE", 0, false)
-			end
-			if dist <= 2.0 then
-				DrawText3D(Config.MissionMarker.x, Config.MissionMarker.y, Config.MissionMarker.z, "~b~[E]~w~ To accept mission")
-				if IsControlJustPressed(0, 38) then
-					TriggerServerEvent("AttackTransport:akceptujto")
-					sleep = 500
-				end
-			end
-		end
-		Wait(sleep)
-	end
+    RequestModel("s_m_y_dealer_01")
+    while not HasModelLoaded("s_m_y_dealer_01") do
+        Wait(10)
+    end
+
+    dealer = CreatePed(26, "s_m_y_dealer_01", Config.DealerCoords.x, Config.DealerCoords.y, Config.DealerCoords.z, 268.9422, false, false)
+    SetEntityHeading(dealer, 1.8)
+    SetBlockingOfNonTemporaryEvents(dealer, true)
+    FreezeEntityPosition(dealer, true)
+    TaskStartScenarioInPlace(dealer, "WORLD_HUMAN_AA_SMOKE", 0, false)
+
+    exports['qb-target']:AddTargetEntity(dealer, {
+        options = {
+            {
+                icon = "fas fa-briefcase",
+                label = "接受运输任务",
+                action = function()
+                    TriggerServerEvent("AttackTransport:akceptujto")
+                end
+            }
+        },
+        distance = 2.0
+    })
 end)
 ---
 
 local function CheckGuards()
-	if IsPedDeadOrDying(pilot) == 1 or IsPedDeadOrDying(navigator) == 1 then
+	if IsPedDeadOrDying(pilot) == 1 and IsPedDeadOrDying(navigator) == 1 and IsPedDeadOrDying(navigator2) == 1 then
 		GuardsDead = 1
 	end
 end
 
-function AlertPolice()
-    local a, b, c = table.unpack(GetEntityCoords(transport))
-    local AlertCoordA = tonumber(string.format("%.2f", a))
-    local AlertCoordB = tonumber(string.format("%.2f", b))
-    local AlertCoordC = tonumber(string.format("%.2f", c))
-    TriggerServerEvent('AttackTransport:zawiadompsy', AlertCoordA, AlertCoordB, AlertCoordC)
+function AlertPolice(msg)
+    TriggerServerEvent("SendAlert:police", {  -- rb_code，与新警察适配
+		coords = (GetEntityCoords(transport)),
+		title = '运钞车被劫',
+		type = 'GENERAL',
+		message = msg,
+		job = 'police',
+	})
 end
 
 RegisterNetEvent('AttackTransport:InfoForLspd', function(x, y, z)
@@ -123,7 +122,7 @@ RegisterNetEvent('AttackTransport:InfoForLspd', function(x, y, z)
 				Wait(100)
 			end
 			if SilenceAlarm == 0 then
-				hintToDisplay('Press ~INPUT_DETONATE~ to silence the alarm')
+				hintToDisplay('按 ~INPUT_DETONATE~ 关闭警报')
 				SilenceAlarm = 1
 			end
 			if IsControlPressed(0, 47) and GuardsDead == 1 then
@@ -208,7 +207,7 @@ function MissionNotification()
 		message = "So you are intrested in making some money? good... go get yourself a Gun and make it happen... sending you the location now.",
 	})
 end
----
+
 --
 RegisterNetEvent('AttackTransport:Pozwolwykonac', function()
 	MissionNotification()
@@ -252,33 +251,6 @@ RegisterNetEvent('AttackTransport:Pozwolwykonac', function()
 				SetPedIntoVehicle(pilot, transport, -1)
 				SetPedIntoVehicle(navigator, transport, 0)
 				SetPedIntoVehicle(navigator2, transport, 1)
-				SetPedFleeAttributes(pilot, 0, 0)
-				SetPedCombatAttributes(pilot, 46, 1)
-				SetPedCombatAbility(pilot, 100)
-				SetPedCombatMovement(pilot, 2)
-				SetPedCombatRange(pilot, 2)
-				SetPedKeepTask(pilot, true)
-				GiveWeaponToPed(pilot, Config.DriverWep,250,false,true)
-				SetPedAsCop(pilot, true)
-				--
-				SetPedFleeAttributes(navigator, 0, 0)
-				SetPedCombatAttributes(navigator, 46, 1)
-				SetPedCombatAbility(navigator, 100)
-				SetPedCombatMovement(navigator, 2)
-				SetPedCombatRange(navigator, 2)
-				SetPedKeepTask(navigator, true)
-				GiveWeaponToPed(navigator, Config.NavWep,250,false,true)
-				SetPedAsCop(navigator, true)
-				--
-				SetPedFleeAttributes(navigator2, 0, 0)
-				SetPedCombatAttributes(navigator2, 46, 1)
-				SetPedCombatAbility(navigator2, 100)
-				SetPedCombatMovement(navigator2, 2)
-				SetPedCombatRange(navigator2, 2)
-				SetPedKeepTask(navigator2, true)
-				GiveWeaponToPed(navigator2, Config.NavWep,250,false,true)
-				SetPedAsCop(navigator2, true)
-				--
 				TaskVehicleDriveWander(pilot, transport, 80.0, 443)
 			end
 			startMission()
@@ -286,41 +258,38 @@ RegisterNetEvent('AttackTransport:Pozwolwykonac', function()
 		end
 	end)
 	MissionStart = 1
+	QBCore.Functions.Notify("GPS已标志目标车辆位置")
 end)
 
 function stopAndBeAngry()
-	CreateThread(function()
-		SetVehicleBrake(transport)
-		Wait(1000)
+    local playerPed = PlayerPedId()
+    local playerCoords = GetEntityCoords(playerPed)
 
-		GiveWeaponToPed(navigator, Config.NavWeap, 420, 0, 1)
-		GiveWeaponToPed(navigator2, Config.NavWeap, 420, 0, 1)
-		GiveWeaponToPed(pilot, Config.DriverWeap, 420, 0, 1)
-
-		SetPedDropsWeaponsWhenDead(navigator,false)
-		SetPedRelationshipGroupDefaultHash(navigator,`COP`)
-		SetPedRelationshipGroupHash(navigator,`COP`)
-		SetPedAsCop(navigator,true)
-		SetCanAttackFriendly(navigator,false,true)
-
-		SetPedDropsWeaponsWhenDead(navigator2,false)
-		SetPedRelationshipGroupDefaultHash(navigator2,`COP`)
-		SetPedRelationshipGroupHash(navigator2,`COP`)
-		SetPedAsCop(navigator2,true)
-		SetCanAttackFriendly(navigator2,false,true)
-
-		SetPedDropsWeaponsWhenDead(pilot,false)
-		SetPedRelationshipGroupDefaultHash(pilot,`COP`)
-		SetPedRelationshipGroupHash(pilot,`COP`)
-		SetPedAsCop(pilot,true)
-		SetCanAttackFriendly(pilot,false,true)
-
-		TaskCombatPed(pilot, PlayerPedId(), 0, 16)
-		TaskCombatPed(navigator, PlayerPedId(), 0, 16)
-		TaskCombatPed(navigator2, PlayerPedId(), 0, 16)
-
-		TaskEveryoneLeaveVehicle(transport)
-	end)
+    local guards = {pilot, navigator, navigator2}
+    for _, guard in ipairs(guards) do
+        if DoesEntityExist(guard) then
+			-- 让守卫下车并攻击玩家
+            TaskLeaveVehicle(guard, transport, 0)
+            Wait(1000) -- 给一点时间下车
+            -- 设置守卫能力
+            SetPedCombatAttributes(guard, 0, true)
+			SetPedCombatAttributes(guard, 46, true)
+			SetPedCombatAttributes(guard, 5, true)
+			SetPedCombatRange(guard, 2)
+			SetPedCombatAbility(guard, 2)
+			SetPedCombatMovement(guard, 3)
+			SetPedConfigFlag(guard, 183, true)
+			SetPedConfigFlag(guard, 4, true)
+			SetPedFiringPattern(guard, GetHashKey("FIRING_PATTERN_FULL_AUTO"))
+			-- 设置为敌对
+            SetPedRelationshipGroupHash(guard, `HATES_PLAYER`)
+            SetRelationshipBetweenGroups(5, `HATES_PLAYER`, `PLAYER`)
+            SetRelationshipBetweenGroups(5, `PLAYER`, `HATES_PLAYER`)
+			GiveWeaponToPed(guard, "weapon_carbinerifle", 9999, false, true)
+			SetPedInfiniteAmmo(guard, true, "weapon_carbinerifle")
+			TaskCombatPed(guard, playerPed, 0, 16)
+        end
+    end
 end
 
 --Crims side of the mission
@@ -336,9 +305,9 @@ function startMission()
 				DrawMarker(0, transCoords.x, transCoords.y, transCoords.z+4.5, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 1.0, 135, 31, 35, 100, 1, 0, 0, 0)
 				if warning == 0 then
 					warning = 1
+					AlertPolice("运钞车遭遇劫匪")
 					stopAndBeAngry()
-					QBCore.Functions.Notify("Get rid of the guards before you place the bomb.", "error")
-					AlertPolice()
+					QBCore.Functions.Notify("在放置炸弹之前，先把警卫赶走或解决。", "error")
 				end
 
 				if GuardsDead == 0 then
@@ -347,14 +316,60 @@ function startMission()
 
 				if dist <= 7 and BlownUp == 0 and PlayerJob.name ~= 'police' then
 					if BlowBackdoor == 0 then
-						hintToDisplay('Press [G] to blow up the back door and take the money')
-						if IsControlJustPressed(0, 47) then
-							BlowBackdoor = 1
-							CheckVehicleInformation()
-							TriggerEvent("qb-armoredtruckheist:client:911alert")
+						hintToDisplay('按 [G] 炸毁后门，拿走钱')
+						if IsControlJustPressed(0, 47) and not GPressedCooldown then
+							GPressedCooldown = true -- 防止重复按键
+                            CreateThread(function()
+								AlertPolice("劫匪正在尝试在运钞车上安置炸弹")
+                                CheckVehicleInformation()
+                                Wait(3000) -- 设置冷却时间，防止重复触发
+                                GPressedCooldown = false
+                            end)
 							hideLastHint()
 							sleep = 500
 						end
+					end
+				end
+			end
+			Wait(sleep)
+		end
+	end)
+end
+
+local function clearMissionEntity()
+	CreateThread(function()
+		if DoesEntityExist(transport) then
+			SetEntityAsNoLongerNeeded(transport)
+			SetVehicleHasBeenOwnedByPlayer(transport, false)
+		end
+		for _, guard in ipairs({pilot, navigator, navigator2}) do
+			if DoesEntityExist(guard) then
+				SetEntityAsNoLongerNeeded(guard)
+				SetPedAsNoLongerNeeded(guard)
+			end
+		end
+	end)
+end
+
+local function startTakingMoney()
+	CreateThread(function()
+		local start = true
+		while start do
+			local sleep = 500
+			if lootable == 1 then
+				local plyCoords = GetEntityCoords(PlayerPedId(), false)
+				local transCoords = GetEntityCoords(transport)
+				local dist = #(plyCoords - transCoords)
+				if dist <= 4.5 then
+					sleep = 0
+					hintToDisplay('按 [E] 拿钱')
+					if IsControlJustPressed(0, 38) or IsDisabledControlJustPressed(0, 38) then
+						lootable = 0
+						TakingMoney()
+						hideLastHint()
+						clearMissionEntity()
+						sleep = 500
+						start = false
 					end
 				end
 			end
@@ -367,6 +382,11 @@ function CheckVehicleInformation()
 	if IsVehicleStopped(transport) then
 		if IsVehicleSeatFree(transport, -1) and IsVehicleSeatFree(transport, 0) and IsVehicleSeatFree(transport, 1) and GuardsDead == 1 then
 			if not IsEntityInWater(PlayerPedId()) then
+				local currentWeapon = exports.ox_inventory:getCurrentWeapon()
+				if currentWeapon and currentWeapon.name ~= 'unarmed' then
+					QBCore.Functions.Notify('请先收起武器', "error")
+					return
+				end
 				RequestAnimDict('anim@heists@ornate_bank@thermal_charge_heels')
 				while not HasAnimDictLoaded('anim@heists@ornate_bank@thermal_charge_heels') do
 					Wait(50)
@@ -382,51 +402,35 @@ function CheckVehicleInformation()
 				DetachEntity(prop)
 				AttachEntityToEntity(prop, transport, GetEntityBoneIndexByName(transport, 'door_pside_r'), -0.7, 0.0, 0.0, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
 				hideLastHint()
-				QBCore.Functions.Notify('The load will be detonated in '..Config.TimeToBlow ..' seconds.', "error")
+				QBCore.Functions.Notify('炸弹将在 '..Config.TimeToBlow ..' 秒爆炸.', "error")
 				FreezeEntityPosition(PlayerPedId(), false)
 				Wait(Config.TimeToBlow*1000)
 				local transCoords = GetEntityCoords(transport)
-				SetVehicleDoorBroken(transport, 2, false)
+				SetVehicleDoorBroken(transport, 2, false)  -- 损坏车门
 				SetVehicleDoorBroken(transport, 3, false)
-				AddExplosion(transCoords.x,transCoords.y,transCoords.z, 'EXPLOSION_TANKER', 2.0, true, false, 2.0)
+				AddExplosion(transCoords.x, transCoords.y, transCoords.z, 29, 10.0, true, false, 2.0)  -- 更强更致命的爆炸
+				SetVehicleEngineHealth(transport, -4000.0)  -- 可选：触发车辆真正爆炸
+				SetVehicleExplodesOnHighExplosionDamage(transport, true)
 				-- ApplyForceToEntity(transport, 0, transCoords.x,transCoords.y,transCoords.z, 0.0, 0.0, 0.0, 1, false, true, true, true, true)
+				BlowBackdoor = 1
 				BlownUp = 1
 				lootable = 1
-				QBCore.Functions.Notify('You can start collecting cash.', "success")
+				startTakingMoney()
+				QBCore.Functions.Notify('你可以开始拿钱了', "success")
 				RemoveBlip(TruckBlip)
 			else
-				QBCore.Functions.Notify('Get out of the water', "error")
+				QBCore.Functions.Notify('远离水中', "error")
 			end
 		else
-			QBCore.Functions.Notify('The vehicle must be empty to place the load', "error")
+			QBCore.Functions.Notify('还有守卫存活着或者在车上', "error")
 		end
 	else
-		QBCore.Functions.Notify('You can not rob a vehicle that is moving.', "error")
+		QBCore.Functions.Notify('该载具还在移动', "error")
 	end
 end
 
 -- Crim Client
-CreateThread(function()
-    while true do
-		local sleep = 500
-		if lootable == 1 then
-			local plyCoords = GetEntityCoords(PlayerPedId(), false)
-			local transCoords = GetEntityCoords(transport)
-            local dist = #(plyCoords - transCoords)
-			if dist <= 4.5 then
-				sleep = 0
-				hintToDisplay('Press [E] to take the money')
-				if IsControlJustPressed(0, 38) or IsDisabledControlJustPressed(0, 38) then
-					lootable = 0
-					TakingMoney()
-					hideLastHint()
-					sleep = 500
-				end
-			end
-		end
-		Wait(sleep)
-	end
-end)
+
 
 RegisterNetEvent('AttackTransport:CleanUp', function()
 	BlowBackdoor = 0
@@ -454,14 +458,14 @@ function TakingMoney()
 	AttachEntityToEntity(bag, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 57005), 0.0, 0.0, -0.16, 250.0, -30.0, 0.0, false, false, false, false, 2, true)
 	TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
 	FreezeEntityPosition(PlayerPedId(), true)
-	QBCore.Functions.Notify('You are packing cash into a bag', "success")
+	QBCore.Functions.Notify('你正在将现金装进袋子...', "success")
 	local _time = GetGameTimer()
 	while GetGameTimer() - _time < 20000 do
 		if IsControlPressed(0, 47) then
 			hideLastHint()
 			break
 		end
-		hintToDisplay('Hold [G] to bail out')
+		hintToDisplay('按 [G] 取消装钱')
 		Wait(0)
 	end
 	LootTime = GetGameTimer() - _time

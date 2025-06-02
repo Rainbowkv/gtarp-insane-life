@@ -1,7 +1,7 @@
 Config = {}
 
 Config.MissionMarker =  vector3(960.71197509766, -215.51979064941, 76.2552947998) -- place where is the marker with the mission
-Config.DealerCoords = vector3(960.78, -216.25, 76.25) -- place where the NPC dealer stands
+Config.DealerCoords = vector3(960.78, -216.25, 75.25) -- place where the NPC dealer stands
 Config.VehicleSpawn = { -- below the coordinates for random vehicle responses
     vector3(-1327.479736328, -86.045326232910, 49.31),
     vector3(-2075.888183593, -233.73908996580, 21.10),
@@ -12,11 +12,11 @@ Config.VehicleSpawn = { -- below the coordinates for random vehicle responses
 Config.DriverWeap = `WEAPON_MICROSMG` -- Weapon for truck driver to spawn with
 Config.NavWeap = `WEAPON_MICROSMG` -- Weapon for navigator to spawn with
 Config.TimeToBlow = 30 -- bomb detonation time after planting, in seconds
-Config.ActivePolice = 2 -- needed policemen to activate the mission
+Config.ActivePolice = 0 -- needed policemen to activate the mission
 Config.Payout = {
     Min = 250, -- Min reward payout
     Max = 450 -- Max reward payout
 }
-Config.ActivationCost = 500 -- how much is the activation of the mission (clean from the bank)
+Config.ActivationCost = 1000 -- how much is the activation of the mission (clean from the bank)
 Config.Currency = "$"
-Config.ResetTimer = 600 -- cooldown for mission in seconds
+Config.ResetTimer = 2400 -- cooldown for mission in seconds

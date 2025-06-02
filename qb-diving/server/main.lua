@@ -47,22 +47,67 @@ RegisterNetEvent('qb-diving:server:CallCops', function(coords)
     end
 end)
 
-RegisterNetEvent('qb-diving:server:SellCorals', function()
+RegisterNetEvent('qb-diving:server:SellCorals', function(item, amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    if not Player then return end
-    if hasCoral(src) then
-        for _, v in pairs(AvailableCorals) do
-            local item = Player.Functions.GetItemByName(v.item)
-            local price = item.amount * v.price
-            local reward = getItemPrice(item.amount, price)
-            exports['qb-inventory']:RemoveItem(src, item.name, item.amount, false, 'qb-diving:server:SellCorals')
-            Player.Functions.AddMoney('cash', reward, 'qb-diving:server:SellCorals')
-            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[item.name], 'remove')
-        end
-    else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t('error.no_coral'), 'error')
+    if not item then return end
+    amount = tonumber(amount)
+    if amount == nil or amount < 1 or amount%1 ~= 0 then
+        TriggerClientEvent('ox_lib:notify', src, {
+            title = '数量有误',
+            description = '数量应为正整数',
+            type = 'error'
+        })
+        return
     end
+    if amount > Config.maxAmountValue then
+        TriggerClientEvent('ox_lib:notify', src, {
+            title = '出售失败',
+            description = '数量不能超过'..Config.maxAmountValue,
+            type = 'error'
+        })
+        return
+    end
+    -- 找对应配置
+    local coralConfig
+    for _, coral in pairs(Config.CoralTypes) do
+        if coral.item == item then
+            coralConfig = coral
+            break
+        end
+    end
+
+    if not coralConfig then
+        TriggerClientEvent('ox_lib:notify', src, {
+            title = '出售失败',
+            description = '无效的珊瑚类型。',
+            type = 'error'
+        })
+        return
+    end
+
+    local invCount = exports.ox_inventory:Search(src, 'count', item)
+    if invCount < amount then
+        TriggerClientEvent('ox_lib:notify', src, {
+            title = '出售失败',
+            description = '你没有足够的该类型珊瑚。',
+            type = 'error'
+        })
+        return
+    end
+
+    local price = math.random(coralConfig.priceMin, coralConfig.priceMax)
+    local total = price * amount
+
+    -- 移除物品并发钱
+    exports.ox_inventory:RemoveItem(src, item, amount)
+    Player.Functions.AddMoney('cash', total)
+
+    TriggerClientEvent('ox_lib:notify', src, {
+        title = '出售成功',
+        description = ('你出售了 %d 个 %s，获得了 $%d'):format(amount, item, total),
+        type = 'success'
+    })
 end)
 
 RegisterNetEvent('qb-diving:server:TakeCoral', function(area, coral)

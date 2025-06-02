@@ -269,15 +269,19 @@ Config.CoralLocations = {
 Config.CoralTypes = {
     [1] = {
         item = "dendrogyra_coral",
-        minAmount = 3,
-        maxAmount = 7,
-        price = math.random(70, 100),
+        label = '柱状珊瑚',
+        minAmount = 1,
+        maxAmount = 4,
+        priceMin = 50,
+        priceMax = 70,
     },
     [2] = {
         item = "antipatharia_coral",
-        minAmount = 2,
-        maxAmount = 5,
-        price = math.random(50, 70),
+        label = '黑珊瑚',
+        minAmount = 1,
+        maxAmount = 2,
+        priceMin = 70,
+        priceMax = 100,
     }
 }
 
@@ -305,7 +309,7 @@ Config.BonusTiers = {
 
 Config.SellLocations = {
     [1] = {
-        coords = vector4(-1684.13, -1068.91, 13.15, 100.0),
+        coords = vector4(-3100.53, 367.07, 7.12, 166.29),
         model = 'a_m_m_salton_01',
         zoneOptions = { -- Only used when not using the target
             length = 3,
@@ -313,3 +317,5 @@ Config.SellLocations = {
         }
     }
 }
+
+Config.maxAmountValue = 500

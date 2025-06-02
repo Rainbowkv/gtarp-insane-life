@@ -193,10 +193,10 @@ return {
 		-- name = 'Vending Machine',
 		name = "自动贩卖机",
 		inventory = {
-			{ name = 'water', price = 10 },
-			{ name = 'kurkakola', price = 10 },
-			{ name = 'burger', price = 22},
-			{ neme = 'twerks_candy', price = 5}
+			{ name = 'water', price = 100 },
+			{ name = 'kurkakola', price = 100 },
+			{ name = 'burger', price = 200},
+			{ neme = 'twerks_candy', price = 150}
 		},
 		model = {
 			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`, `prop_vend_snak_01`
@@ -266,8 +266,6 @@ return {
         inventory = {
             { name = 'diving_gear', price = 500 },
             { name = 'diving_fill', price = 100 },
-            { name = 'dendrogyra_coral', price = 22 },
-            { name = 'antipatharia_coral', price = 5 }
         },
         targets = {
             {

@@ -1,6 +1,6 @@
 Config = {}
 
-Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
+Config.UseTarget = true
 Config.Jobname = 'garbage'
 -- Price taken and given back when delivered a truck
 Config.TruckPrice = 250
@@ -43,8 +43,8 @@ Config.Peds = {
 
 Config.Locations = {
     ["main"] = {
-        label = "Garbage Depot",
-        coords = vector3(-313.84, -1522.82, 27.56),
+        label = "垃圾工作",
+        coords = vector3(-321.96, -1545.61, 31.02),
     },
     ["vehicle"] = {
         label = "Garbage Truck Storage",

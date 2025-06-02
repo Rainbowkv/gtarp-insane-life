@@ -153,18 +153,42 @@ local function setDivingLocation(divingLocation)
 end
 
 local function sellCoral()
-    local playerPed = PlayerPedId()
-    LocalPlayer.state:set("inv_busy", true, true)
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_STAND_IMPATIENT", 0, true)
-    QBCore.Functions.Progressbar("sell_coral_items", Lang:t("info.checking_pockets"), math.random(2000, 4000), false, true, {}, {}, {}, {}, function() -- Done
-        ClearPedTasks(playerPed)
-        TriggerServerEvent('qb-diving:server:SellCoral')
-        LocalPlayer.state:set("inv_busy", false, true)
-    end, function() -- Cancel
-        ClearPedTasksImmediately(playerPed)
-        QBCore.Functions.Notify(Lang:t("error.canceled"), "error")
-        LocalPlayer.state:set("inv_busy", false, true)
-    end)
+    local options = {}
+
+    for _, coral in pairs(Config.CoralTypes) do
+        table.insert(options, {
+            value = coral.item,
+            label = coral.label,
+        })
+    end
+
+    local input = lib.inputDialog('出售珊瑚', {
+        {
+            type = 'select',
+            label = '选择珊瑚种类',
+            name = 'coralType',
+            options = options
+        },
+        {
+            type = 'number',
+            label = '出售数量',
+            name = 'amount',
+            min = 1
+        }
+    })
+
+    if not input then return end
+
+    local item = input[1]
+    local amount = tonumber(input[2])
+    if amount == nil or amount < 1 or amount%1 ~= 0 then
+        QBCore.Functions.Notify("数量应为正整数", 'error')
+    end
+    if amount > Config.maxAmountValue then
+        QBCore.Functions.Notify("最大单次售卖数量:"..Config.maxAmountValue, 'error')
+    end
+    -- 发送到服务端处理出售
+    TriggerServerEvent('qb-diving:server:SellCorals', item, amount)
 end
 
 local function createSeller()
