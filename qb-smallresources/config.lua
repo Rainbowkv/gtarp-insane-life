@@ -23,6 +23,8 @@ Config.HandsUp = {
     controls = { 21, 22, 24, 25, 47, 58, 59, 63, 64, 71, 72, 75, 140, 141, 142, 143, 257, 263, 264 }  -- 新禁止21，22奔跑和跳跃
 }
 
+Config.armorEffects = 65  -- 警用护甲能到的护甲值
+
 Config.Binoculars = {
     zoomSpeed = 10.0,        -- camera zoom speed
     storeBinocularsKey = 177 -- backspace by default

@@ -288,3 +288,12 @@ RegisterNetEvent('ars_ambulancejob:server:SetPlayerOutVehicle', function(netId, 
         end
     end
 end)
+
+-- 护甲的元数据更新
+RegisterNetEvent('ars_ambulancejob:server:SetArmor', function(source, value)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	if Player then
+		Player.Functions.SetMetaData('armor', value)
+	end
+end)
