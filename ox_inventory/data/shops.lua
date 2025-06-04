@@ -127,13 +127,14 @@ return {
 			id = 110, colour = 84, scale = 0.8
 		}, inventory = {
 			{ name = 'ammo-9', price = 5, },
-			{ name = 'ammo-rifle', price = 5, },
+			-- { name = 'ammo-rifle', price = 50, },
 			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
 			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
 			{ name = 'at_suppressor_light', price = 1000 },
 			{ name = 'at_flashlight', price = 700 },
 			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-			{ name = 'WEAPON_CARBINERIFLE', price = 10000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
+			-- { name = 'WEAPON_CARBINERIFLE', price = 10000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
+			{ name = 'armor', price = 300 },
 			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'megaphone', price = 500},
 			{ name = 'police_cad', price = 2000},

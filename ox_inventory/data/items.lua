@@ -524,8 +524,8 @@ return {
 	},
 
 	["armor"] = {
-		label = "护甲",
-		weight = 5000,
+		label = "警用护甲",
+		weight = 3000,
 		stack = true,
 		close = true,
 		description = "一些保护不会有坏处…对吧？",

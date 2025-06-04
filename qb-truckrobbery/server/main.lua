@@ -72,7 +72,7 @@ RegisterServerEvent('AttackTransport:graczZrobilnapad', function()
 	TriggerClientEvent('QBCore:Notify', _source, '你拿走 ' .. bags .. ' 袋现金从运钞车中.')
 	
 	chance = math.random(1, 100)
-	if chance >= 90 then
+	if chance >= 85 then
 		exports['qb-inventory']:AddItem(_source, 'security_card_01', 1, false, false, 'AttackTransport:graczZrobilnapad')
 		TriggerClientEvent('qb-inventory:client:ItemBox', _source, QBCore.Shared.Items['security_card_01'], 'add')
 	end
