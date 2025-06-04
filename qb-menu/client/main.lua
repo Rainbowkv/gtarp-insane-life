@@ -109,7 +109,7 @@ RegisterCommand('playerfocus', function()
     end
 end)
 
-RegisterKeyMapping('playerFocus', 'Give Menu Focus', 'keyboard', 'LMENU')
+RegisterKeyMapping('playerFocus', '菜单出现时显示鼠标', 'keyboard', 'LMENU')
 
 -- Exports
 

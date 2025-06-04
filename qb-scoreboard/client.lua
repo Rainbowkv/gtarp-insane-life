@@ -106,7 +106,7 @@ RegisterCommand('scoreboard', function()
     end
 end)
 
-RegisterKeyMapping('scoreboard', 'Open Scoreboard', 'keyboard', Config.OpenKey)
+RegisterKeyMapping('scoreboard', '查看城市状态', 'keyboard', Config.OpenKey)
 
 -- Threads
 -- if you want to see player id uncommend this
