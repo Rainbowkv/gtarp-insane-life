@@ -380,7 +380,8 @@ end
 
 function CheckVehicleInformation()
 	if IsVehicleStopped(transport) then
-		if IsVehicleSeatFree(transport, -1) and IsVehicleSeatFree(transport, 0) and IsVehicleSeatFree(transport, 1) and GuardsDead == 1 then
+		-- if IsVehicleSeatFree(transport, -1) and IsVehicleSeatFree(transport, 0) and IsVehicleSeatFree(transport, 1) and GuardsDead == 1 then
+		if GuardsDead == 1 then
 			if not IsEntityInWater(PlayerPedId()) then
 				local currentWeapon = exports.ox_inventory:getCurrentWeapon()
 				if currentWeapon and currentWeapon.name ~= 'unarmed' then

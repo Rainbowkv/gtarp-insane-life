@@ -76,5 +76,4 @@ RegisterServerEvent('AttackTransport:graczZrobilnapad', function()
 		exports['qb-inventory']:AddItem(_source, 'security_card_01', 1, false, false, 'AttackTransport:graczZrobilnapad')
 		TriggerClientEvent('qb-inventory:client:ItemBox', _source, QBCore.Shared.Items['security_card_01'], 'add')
 	end
-	Wait(2500)
 end)

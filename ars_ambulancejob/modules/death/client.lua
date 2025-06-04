@@ -66,6 +66,7 @@ function healPlayer()
 
     SetEntityHealth(playerPed, maxHealth)
     Framework.healStatus()
+    TriggerServerEvent('SetStress', -100)
 end
 
 RegisterNetEvent("ars_ambulancejob:healPlayer", function(data)
