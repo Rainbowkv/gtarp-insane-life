@@ -99,4 +99,4 @@ RegisterCommand('togglecruise', function()
     end
 end, false)
 
-RegisterKeyMapping('togglecruise', 'Toggle Cruise Control', 'keyboard', 'Y')  -- 每一次按Y都会开启一个线程处理本次事件，这就是多次按Y后，解除巡航也会有对于数量的通知。
+RegisterKeyMapping('togglecruise', '定速巡航', 'keyboard', 'Y')  -- 每一次按Y都会开启一个线程处理本次事件，这就是多次按Y后，解除巡航也会有对于数量的通知。
