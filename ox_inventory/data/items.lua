@@ -3210,4 +3210,13 @@ return {
 		label = '高级卡丁车赛照',
 		weight = 0,
 	},
+	-- skateboard
+	['v_res_skateboard'] = {
+		label = '滑板',
+		weight = 0,
+	},
+	['hp3d_skateboard1'] = {
+		label = '涂装滑板',
+		weight = 0,
+	},
 }
