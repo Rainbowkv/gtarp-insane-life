@@ -780,6 +780,7 @@ local Vehicles = {
     { model = 'su7ultra',         name = 'SU7 Ultra 原型',                            brand = '小米',            price = 400000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'p8tempus',         name = '幻影Ⅷ',                            brand = '劳斯莱斯',            price = 400000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'rrdawncabrio2020wb',         name = '曜影 宽体敞篷',                            brand = '劳斯莱斯',            price = 400000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = '765lt',         name = '765LT',                            brand = '迈凯伦',            price = 400000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- cutom_veh
     { model = 'su7',             name = 'SU7',                           brand = '小米',            price = 100000,  category = '定制车',      type = 'automobile', shop = 'none' },

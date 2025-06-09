@@ -29,17 +29,43 @@ Config.Camera = {
 -- 186.92, 1188.78, 225.59, 180.59
 Config.VehiclePool = {
     cycles = {
-        { name = "Fixter", model = "fixter" },
+        { name = "Fixter", model = "fixter" },  -- 第一次拍卖
+        { name = "BMX", model = "bmx" },  -- 第二次拍卖
+    },
+    motorcycles = {
+        { name = "Hakuchou", model = "hakuchou" },  -- 第二次拍卖
+    },
+    sedans = {
+        { name = "Stretch", model = "stretch" },  -- 第二次拍卖
+    },
+    vans = {
+        { name = "Journey Ⅱ", model = "journey2" },  -- 第二次拍卖
+        { name = "Surfer", model = "surfer" },  -- 第二次拍卖
+    },
+    Muscles = {
+        { name = "Moonbeam Custom", model = "moonbeam2" },  -- 第二次拍卖
+        { name = "Faction Custom Donk", model = "faction3" },  -- 第二次拍卖
+    },
+    coupes = {
+        { name = "Exemplar", model = "exemplar" },  -- 第二次拍卖
     },
     utility = {
-        { name = 'Tractor', model = "tractor"},
+        { name = 'Tractor', model = "tractor"},  -- 第一次拍卖
+    },
+    sportsClassic = {
+        { name = 'Roosevelt', model = "btype"},  -- 第二次拍卖
+    },
+    sports = {
+        { name = 'Streiter', model = "streiter"},  -- 第二次拍卖
     },
     super = {
-        { name = "Turismo3", model = "turismo3"},
-        { name = "Zentorno", model = "zentorno"}
+        { name = "Turismo3", model = "turismo3"},  -- 第一次拍卖
+        { name = "Zentorno", model = "zentorno"},  -- 第一次拍卖
+        { name = "SM722", model = "sm722"},  -- 第二次拍卖
+        { name = "ETR1", model = "sheava"},  -- 第二次拍卖
     },
     suvs = {
-        { name = "Patriot2", model = "patriot2"},
+        { name = "Patriot2", model = "patriot2"},  -- 第一次拍卖
     },
 }
 
