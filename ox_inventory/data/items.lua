@@ -249,14 +249,29 @@ return {
 	},
 
 	["tunerlaptop"] = {
-		label = "调谐芯片",
-		weight = 2000,
+		label = "自动驾驶芯片(beta)",
+		weight = 300,
 		stack = false,
 		close = true,
-		description = "用这个调谐芯片可以让你的车变得更强……如果你知道自己在做什么的话",
+		description = "汽车热插拔自动驾驶芯片（测试版），谨慎使用",
 		client = {
 			image = "tunerchip.png",
-		}
+			event = 'Bucko_autopilot:client:autopilot'
+		},
+		consume = 0.1
+	},
+
+	["illegaltunerlaptop"] = {
+		label = "自动驾驶芯片(???)",
+		weight = 300,
+		stack = false,
+		close = true,
+		description = "此汽车热插拔自动驾驶芯片似乎被调过",
+		client = {
+			image = "illegaltunerlaptop.png",
+			event = 'Bucko_autopilot:client:autopilot'
+		},
+		consume = 0.1
 	},
 
 	["electronickit"] = {

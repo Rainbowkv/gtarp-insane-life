@@ -250,12 +250,30 @@ return {
 			-- { name = 'performance_part', price = 1000},
 			{ name = 'mechanic_tablet', price = 1000},
 			-- { name = 'manual_gearbox', price = 1000},
+			{ name = 'tunerlaptop', price = 400 },
+            { name = 'illegaltunerlaptop', price = 900 },
 		}, locations = {
 			vec3(-343.79, -139.92, 39.01)  -- 480.82, -990.16, 30.69
 		}, targets = {
 			{ loc = vec3(-343.79, -139.92, 39.01), length = 0.5, width = 3.0, heading = 270.0, minZ = 37.5, maxZ = 41.0, distance = 6 }
 		}
 	},
+
+	mechanicSelfService = {
+        name = "修车厂自主服务",
+        inventory = {
+            { name = 'tunerlaptop', price = 1700 },
+            { name = 'illegaltunerlaptop', price = 3500 },
+        },
+        targets = {
+            {
+                ped = `s_m_y_armymech_01`,
+                scenario = 'WORLD_HUMAN_STAND_IMPATIENT',
+                loc = vec3(-341.66, -122.99, 38.01),
+                heading = 165.36,
+            }
+        }
+    },
 
 	seaworld = {
         name = "深水装备",
