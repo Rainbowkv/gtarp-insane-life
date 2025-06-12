@@ -424,6 +424,10 @@ RegisterNetEvent('qb-radialmenu:ambulance', function()
     ExecuteCommand("ambulance")
 end)
 
+RegisterNetEvent('qb-radialmenu:reloadskin', function()
+    ExecuteCommand("reloadskin")
+end)
+
 -- NUI Callbacks
 
 RegisterNUICallback('closeRadial', function(data, cb)

@@ -30,6 +30,14 @@ Config.MenuItems = {
                 event = 'qb-radialmenu:ganginfo',
                 shouldClose = true
             }, 
+            {
+                id = 'reloadskin',
+                title = '重载外观',
+                icon = 'masks-theater',
+                type = 'client',
+                event = 'qb-radialmenu:reloadskin',
+                shouldClose = true
+            }, 
         },
     },
     {
@@ -45,46 +53,6 @@ Config.MenuItems = {
                 event = 'ars_ambulancejob:client:MenuEscortPlayer',
                 shouldClose = true
             }, 
-            -- {
-            --     id = 'playerinvehicle',
-            --     title = '放入车内',
-            --     icon = 'car-side',
-            --     type = 'client',
-            --     event = 'police:client:PutPlayerInVehicle',
-            --     shouldClose = true
-            -- }, 
-            -- {
-            --     id = 'playeroutvehicle',
-            --     title = '放出车外',
-            --     icon = 'car-side',
-            --     type = 'client',
-            --     event = 'police:client:SetPlayerOutVehicle',
-            --     shouldClose = true
-            -- }, 
-            -- {
-            --     id = 'stealplayer',
-            --     title = '抢劫',
-            --     icon = 'mask',
-            --     type = 'client',
-            --     event = 'police:client:RobPlayer',
-            --     shouldClose = true
-            -- }, 
-            -- {
-            --     id = 'escort',
-            --     title = '绑架',
-            --     icon = 'user-group',
-            --     type = 'client',
-            --     event = 'police:client:KidnapPlayer',
-            --     shouldClose = true
-            -- }, 
-            -- {
-            --     id = 'escort554',
-            --     title = '人质',
-            --     icon = 'child',
-            --     type = 'client',
-            --     event = 'A5:Client:TakeHostage',
-            --     shouldClose = true
-            -- }
         }
     },     
 }
