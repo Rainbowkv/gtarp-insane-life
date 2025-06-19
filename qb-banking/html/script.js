@@ -68,7 +68,7 @@ const bankingApp = Vue.createApp({
             });
             this.statements = {};
             Object.keys(bankData.statements).forEach((accountKey) => {
-                this.statements[accountKey] = bankData.statements[accountKey].map((statement) => ({
+                this.statements[accountKey] = bankData.statements[accountKey].slice().reverse().map((statement) => ({
                     id: statement.id,
                     date: statement.date,
                     reason: statement.reason,
