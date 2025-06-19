@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>白名单考题</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: transparent;
+    }
+
+    .quiz-wrapper {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #quiz {
+      width: 500px;
+      padding: 30px;
+      background: #6598e6;
+      border-radius: 16px;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+    
+    .quiz-header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      object-fit: contain;
+    }
+
+    .quiz-header h1 {
+      font-size: 22px; /* 可从24降到22 */
+      margin: 0;
+    }
+
+    .question p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+      accent-color: #00aaff;
+      transform: scale(1.2);
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 18px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #00aaff;
+      color: white;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0077cc;
+    }
+
+    button:disabled {
+      background-color: #444;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-wrapper" style="display: none;">
+    <div id="quiz">
+      <div class="quiz-header">
+        <img src="images/myLogo.png" alt="图标" />
+        <h1>Ravens白名单系统</h1>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let questions = []
+    let currentIndex = 0
+    const answers = []
+
+    window.addEventListener('message', (event) => {
+      if (event.data.type === 'open') {
+        questions = event.data.questions
+        answers.length = questions.length
+        renderQuiz()
+        openQuiz()
+      }
+    })
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeQuiz()
+      }
+    })
+
+    function renderQuiz() {
+      const quiz = document.getElementById('quiz')
+
+      const headers = quiz.querySelector('.quiz-header')
+      quiz.innerHTML = ''
+      quiz.appendChild(headers)
+      
+      const q = questions[currentIndex]
+
+      const div = document.createElement('div')
+      div.className = 'question'
+      div.innerHTML = `<p>题目 ${currentIndex + 1}：${q.question}</p>` +
+        q.options.map((opt, i) => {
+          const checked = answers[currentIndex] === i + 1 ? 'checked' : ''
+          return `<label><input type="radio" name="q" value="${i + 1}" ${checked}> ${opt}</label>`
+        }).join('')
+      quiz.appendChild(div)
+
+      // 按钮组
+      const btnGroup = document.createElement('div')
+      btnGroup.className = 'btn-group'
+
+      const prevBtn = document.createElement('button')
+      prevBtn.innerText = '上一题'
+      prevBtn.disabled = currentIndex === 0
+      prevBtn.onclick = () => {
+        saveAnswer()
+        currentIndex--
+        renderQuiz()
+      }
+
+      const nextBtn = document.createElement('button')
+      nextBtn.innerText = currentIndex === questions.length - 1 ? '提交' : '下一题'
+      nextBtn.onclick = () => {
+        saveAnswer()
+        if (currentIndex === questions.length - 1) {
+          submitAnswers()
+        } else {
+          currentIndex++
+          renderQuiz()
+        }
+      }
+
+      btnGroup.appendChild(prevBtn)
+      btnGroup.appendChild(nextBtn)
+      quiz.appendChild(btnGroup)
+    }
+
+    function saveAnswer() {
+      const radios = document.getElementsByName('q')
+      for (const r of radios) {
+        if (r.checked) {
+          answers[currentIndex] = parseInt(r.value)
+          return
+        }
+      }
+      answers[currentIndex] = 0 // 未选择
+    }
+
+    function submitAnswers() {
+      closeQuiz()
+      fetch(`https://${GetParentResourceName()}/rb-whitelist:nui:submitAnswers`, {
+        method: 'POST',
+        body: JSON.stringify(answers),
+        headers: { 'Content-Type': 'application/json' }
+      })
+    }
+
+    function openQuiz() {
+      document.querySelector('.quiz-wrapper').style.display = 'flex'
+    }
+
+    function closeQuiz() {
+      document.querySelector('.quiz-wrapper').style.display = 'none'
+      fetch(`https://${GetParentResourceName()}/rb-whitelist:nui:focus`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ focus: false })
+      });
+    }
+  </script>
+</body>
+</html>
