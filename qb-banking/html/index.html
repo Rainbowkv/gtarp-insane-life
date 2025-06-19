@@ -101,7 +101,7 @@
                     <div v-if="activeView === 'accountOptions'" class="account-options">
                         <div class="debit-card">
                             <div>申请借记卡</div>
-                            <label for="pin-number">PIN码:</label>
+                            <label for="pin-number">密码:</label>
                             <input type="number" id="pin-number" v-model="debitPin" />
                             <div class="card-buttons">
                                 <button class="action-button" @click="orderDebitCard">申请</button>
@@ -202,7 +202,7 @@
             </div>
             <div v-if="showPinPrompt" class="pin-prompt">
                 <div class="pin-input">
-                    <input type="password" v-model="enteredPin" placeholder="Enter PIN" readonly />
+                    <input type="password" v-model="enteredPin" placeholder="输入密码" readonly />
                 </div>
                 <div class="number-pad">
                     <button v-for="number in 9" :key="number" @click="appendNumber(number)">{{ number }}</button>

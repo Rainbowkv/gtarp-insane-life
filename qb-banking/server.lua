@@ -193,7 +193,7 @@ QBCore.Functions.CreateCallback('qb-banking:server:openATM', function(source, cb
     local bankCards = Player.Functions.GetItemsByName('bank_card')
     if not bankCards then return TriggerClientEvent('QBCore:Notify', src, Lang:t('error.card'), 'error') end
     local acceptablePins = {}
-    for _, bankCard in ipairs(bankCards) do acceptablePins[#acceptablePins + 1] = bankCard.info.cardPin end
+    for _, bankCard in ipairs(bankCards) do acceptablePins[#acceptablePins + 1] = bankCard.metadata.cardPin end
     local job = Player.PlayerData.job
     local gang = Player.PlayerData.gang
     local accounts = {}
