@@ -70,6 +70,16 @@ local function filterVehiclesByCategory(vehicles, category)
     return filtered
 end
 
+local function checkDishonest(source)  -- rb_code
+    local invoices = exports['RxBilling']:GetPlayerInvoices(QBCore.Functions.GetPlayer(source).PlayerData.citizenid, 'incoming')
+    for i, inv in ipairs(invoices) do
+        if inv.status == 'pending' then
+            return true
+        end
+    end
+    return false
+end
+
 -- Callbacks
 
 QBCore.Functions.CreateCallback('qb-garages:server:getHouseGarage', function(_, cb, house)
@@ -137,12 +147,22 @@ QBCore.Functions.CreateCallback('qb-garages:server:spawnvehicle', function(sourc
 end)
 
 -- Checks if a vehicle can be spawned based on its type and location.
-QBCore.Functions.CreateCallback('qb-garages:server:IsSpawnOk', function(_, cb, plate, type)
+QBCore.Functions.CreateCallback('qb-garages:server:IsSpawnOk', function(source, cb, plate, type)
     if OutsideVehicles[plate] and DoesEntityExist(OutsideVehicles[plate].entity) then
-        cb(false)
+        cb(false, true)
         return
     end
-    cb(true)
+    if checkDishonest(source) then
+        TriggerClientEvent("ox_lib:notify", source, {
+            title = "车库系统",
+            description = "您还有未支付的账单",
+            type = "error",
+            duration = 3000,
+        })
+        cb(false, false)
+        return
+    end
+    cb(true, true)
 end)
 
 QBCore.Functions.CreateCallback('qb-garages:server:canDeposit', function(source, cb, plate, type, garage, state)

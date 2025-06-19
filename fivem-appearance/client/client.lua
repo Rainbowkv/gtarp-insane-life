@@ -495,6 +495,7 @@ RegisterNetEvent('fivem-appearance:client:openJobOutfitsMenu', function(outfitsT
 end)
 
 RegisterNetEvent('fivem-appearance:client:reloadSkin', function()
+    if exports['ars_ambulancejob']:isDead() or exports['origen_police']:isHandcuffed() or exports['ars_ambulancejob']:isEscorted() then return end
     QBCore.Functions.TriggerCallback('fivem-appearance:server:getAppearance', function(appearance)
         if not appearance then
             return

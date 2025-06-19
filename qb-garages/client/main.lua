@@ -290,7 +290,7 @@ local function CheckPlate(vehicle, plateToSet)
 end
 
 RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
-    QBCore.Functions.TriggerCallback('qb-garages:server:IsSpawnOk', function(spawn)
+    QBCore.Functions.TriggerCallback('qb-garages:server:IsSpawnOk', function(spawn, honest)
         if spawn then
             local location = GetSpawnPoint(data.garage)
             if not location then return end
@@ -320,7 +320,7 @@ RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
                 -- 启动引擎
                 SetVehicleEngineOn(veh, true, true, false)
             end, data.plate, data.vehicle, location, true)
-        else
+        elseif honest then
             QBCore.Functions.Notify(Lang:t('error.not_depot'), 'error', 5000)
         end
     end, data.plate, data.type)
