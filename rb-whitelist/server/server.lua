@@ -26,9 +26,11 @@ RegisterNetEvent('rb-whitelist:server:submitAnswers', function(answers)
     local playerName = player.PlayerData.charinfo.firstname .. ' ' .. player.PlayerData.charinfo.lastname
 
     local correct = true
+    local hint = 0
     for i, question in ipairs(Config.WhitelistQuestions) do
         if answers[i] ~= question.answer then
             correct = false
+            hint = i
             break
         end
     end
@@ -39,7 +41,7 @@ RegisterNetEvent('rb-whitelist:server:submitAnswers', function(answers)
         })
         TriggerClientEvent('rb-whitelist:client:notify', src, '所有题目回答正确，已提交审核，请等待管理员审批。', 'success')
     else
-        TriggerClientEvent('rb-whitelist:client:notify', src, '有题目答案错误，请重新作答。', 'error')
+        TriggerClientEvent('rb-whitelist:client:notify', src, '第' .. hint .. '题答案错误，请重新作答。', 'error')
     end
 end)
 
