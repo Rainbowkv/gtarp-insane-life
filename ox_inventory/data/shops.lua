@@ -149,19 +149,25 @@ return {
 
 	Medicine = {
 		-- name = 'Medicine Cabinet',
-		name = '药箱',
+		name = '医药柜',
 		groups = {
 			['ambulance'] = 0
 		},
 		blip = {
 			id = 403, colour = 69, scale = 0.8
-		}, inventory = {
-			{ name = 'medikit', price = 26 },
-			{ name = 'bandage', price = 5 }
-		}, locations = {
-			vec3(306.3687, -601.5139, 43.28406)
-		}, targets = {
-
+		}, 
+		inventory = {
+			{ name = 'medicalbag', price = 100 },
+			{ name = 'bandage', price = 10 },
+			{ name = 'defibrillator', price = 200 },
+			{ name = 'tweezers', price = 30 },
+			{ name = 'burncream', price = 30 },
+			{ name = 'suturekit', price = 20 },
+			{ name = 'icepack', price = 20 },
+			{ name = 'emstablet', price = 1000 },
+		}, 
+		targets = {
+			{ loc = vec3(358.4, -603.12, 43.28), length = 2.5, width = 3.0, heading = 270.0, minZ = 28.5, maxZ = 33.0, distance = 3 }
 		}
 	},
 

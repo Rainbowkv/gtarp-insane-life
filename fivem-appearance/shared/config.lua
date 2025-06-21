@@ -131,8 +131,7 @@ Config.Stores = {
 }
 
 Config.ClothingRooms = {
-    {requiredJob = "police", isGang = false, coords = vector4(462.85, -999.21, 30.69, 93.35), width = 3, length = 3},
-    {requiredJob = "police", isGang = false, coords = vector4(301.58, -598.82, 43.29, 79.61), width = 3, length = 3}, -- Right double door in Hospital Map that is on QBCore GitHub
+    -- {requiredJob = "police", isGang = false, coords = vector4(462.85, -999.21, 30.69, 93.35), width = 3, length = 3},
 }
 
 
