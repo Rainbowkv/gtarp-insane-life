@@ -792,6 +792,7 @@ local Vehicles = {
     { model = 'lpveo',         name = 'EVO',                            brand = '阿波罗',            price = 500000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'ie',         name = 'IE',                            brand = '阿波罗',            price = 500000,  category = '定制车',      type = 'automobile', shop = 'none' },
     { model = 'ieocen',         name = 'IE 特供版',                            brand = '阿波罗',            price = 500000,  category = '定制车',      type = 'automobile', shop = 'none' },
+    { model = 'dpc911gt3rrennsport',         name = '911gt3r rennsport',    brand = '保时捷',            price = 500000,  category = '定制车',      type = 'automobile', shop = 'none' },
 
     -- special
     { model = 'voltic2',         name = '火箭伏尔蒂克',                  brand = '科尔',             price = 9830400, category = '超级跑车',         type = 'automobile', shop = 'none' },

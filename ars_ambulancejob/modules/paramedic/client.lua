@@ -8,6 +8,7 @@ local Wait                    = Wait
 
 local paramedicTreatmentPrice = lib.load("config").paramedicTreatmentPrice
 local shouldRevive            = lib.load("config").shouldRevive
+local npcReviveCash           = lib.load("config").npcReviveCash
 
 local function openParamedicMenu(ped, hospital)
     lib.registerContext({
@@ -150,7 +151,12 @@ end
 local function offlineRevive()
     if not player.isDead then return end
     local medicsOnline = lib.callback.await('ars_ambulancejob:getMedicsOniline', false)
-    if medicsOnline > 0 then return utils.showNotification(locale("medics_online")) end
+
+    -- if medicsOnline > 0 then return utils.showNotification(locale("medics_online")) end
+    local hasMoney = Framework.hasItem("money", npcReviveCash)
+    if not hasMoney then return utils.showNotification(locale("not_enough_money")) end
+    utils.addRemoveItem("remove", "money", npcReviveCash)
+
     if player.timePassedForCommand > 0 then return utils.showNotification(locale("wait_time"):format(player.timePassedForCommand)) end
 
     utils.showNotification(locale("medic_coming"))
