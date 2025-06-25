@@ -153,11 +153,12 @@ local function offlineRevive()
     local medicsOnline = lib.callback.await('ars_ambulancejob:getMedicsOniline', false)
 
     -- if medicsOnline > 0 then return utils.showNotification(locale("medics_online")) end
+
+    if player.timePassedForCommand > 0 then return utils.showNotification(locale("wait_time"):format(player.timePassedForCommand)) end
+
     local hasMoney = Framework.hasItem("money", npcReviveCash)
     if not hasMoney then return utils.showNotification(locale("not_enough_money")) end
     utils.addRemoveItem("remove", "money", npcReviveCash)
-
-    if player.timePassedForCommand > 0 then return utils.showNotification(locale("wait_time"):format(player.timePassedForCommand)) end
 
     utils.showNotification(locale("medic_coming"))
 
