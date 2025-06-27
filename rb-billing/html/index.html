@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>账单系统</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container" style="display: none;">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">瑞文斯通用账单</div>
+        <ul class="menu" id="sidebar-menu">
+          <li class="menu-item active" data-tab="personal-sent">个人发出的账单</li>
+          <li class="menu-item" data-tab="personal-received">个人收到的账单</li>
+          <!-- JS 根据 Config.JobInvoices 动态插入如下格式 -->
+          <!-- <li class="menu-item" data-tab="police-sent">警局发出的账单</li> -->
+          <!-- <li class="menu-item" data-tab="police-received">警局收到的账单</li> -->
+        </ul>
+      </aside>
+
+      <!-- Main Panel -->
+      <main class="main">
+        <header class="header">
+          <h1 id="page-title">个人收到的账单</h1>
+        </header>
+
+        <section class="content">
+          <div class="actions" id="invoice-actions" style="display: none;">
+            <button id="create-invoice-btn">➕ 创建账单</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="bill-table">
+              <thead>
+                <tr id="table-head">
+                  <!-- JS 动态插入 -->
+                </tr>
+              </thead>
+              <tbody id="bill-table-body">
+                <!-- JS 动态渲染每条账单 -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 分页组件 -->
+          <!-- <div class="pagination">
+            <button>&laquo;</button>
+            <button>&lsaquo;</button>
+            <span id="pagination-status">1 / 1</span>
+            <button>&rsaquo;</button>
+            <button>&raquo;</button>
+          </div> -->
+        </section>
+      </main>
+    </div>
+  </div>
+  <!-- 创建账单对话框 -->
+  <div class="modal" id="create-invoice-modal" style="display: none;">
+    <div class="modal-content">
+      <h2>创建账单</h2>
+      <input type="text" id="input-target" placeholder="请输入被开单人的流动编号" />
+      <input type="number" id="input-amount" placeholder="请输入金额" />
+      <input type="text" id="input-reason" placeholder="请输入开单原因" />
+      <div class="modal-buttons">
+        <button id="submit-invoice">提交</button>
+        <button id="cancel-invoice">取消</button>
+      </div>
+    </div>
+  </div>
+  <!-- 加载 JS 脚本 -->
+  <script src="script.js"></script>
+</body>
+</html>

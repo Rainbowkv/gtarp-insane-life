@@ -1,0 +1,202 @@
+/* 页面基础 */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;   /* 高度撑满整个屏幕 */
+  width: 100vw;    /* 宽度撑满整个屏幕 */
+  background: transparent; /* 背景保持透明 */
+}
+
+.container {
+  display: none;
+  flex-direction: row;
+  width: 1000px;
+  height: 600px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* 左侧 sidebar */
+.sidebar {
+  width: 220px;
+  background: #2c3e50;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  align-items: center;
+}
+
+.sidebar .logo img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background: #34495e;
+}
+
+/* 右侧主区域 */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #f8f8f8;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+/* 表格样式 */
+.table-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.bill-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bill-table thead {
+  background: #ecf0f1;
+}
+
+.bill-table th,
+.bill-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 没数据时也保持高度 */
+.table-wrapper {
+  min-height: 300px;
+}
+
+/* 分页器 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.pagination button {
+  background: #3498db;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.pagination button:hover {
+  background: #2980b9;
+}
+
+.pagination span {
+  font-weight: bold;
+  color: #333;
+}
+
+/* 弹窗遮罩层 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* 半透明遮罩 */
+  display: none; /* 初始隐藏，JS控制显示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 弹窗内容区域 */
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.modal-content input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#submit-invoice {
+  background: #3498db;
+  color: white;
+}
+
+#cancel-invoice {
+  background: #e74c3c;
+  color: white;
+}
