@@ -619,3 +619,24 @@ lib.addCommand('viewinv', {
 }, function(source, args)
 	Inventory.InspectInventory(source, tonumber(args.invId) or args.invId)
 end)
+
+-- rb_code
+local hookId = exports.ox_inventory:registerHook('swapItems', function(payload)
+    local action = payload.action
+    local itemName = payload.fromSlot.name
+	local fromInventory = payload.fromInventory
+    local toInventory = payload.toInventory
+
+    if fromInventory == toInventory then
+        return true
+    end
+
+    return false
+end, {
+    print = true, -- 控制台打印 payload，方便调试
+    itemFilter = {
+        music_box = true,  -- 列出需要检验的物品
+		v_res_skateboard = true,
+		hp3d_skateboard1 = true
+    },
+})
