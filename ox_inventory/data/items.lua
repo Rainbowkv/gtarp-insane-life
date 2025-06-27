@@ -3234,4 +3234,14 @@ return {
 		label = '涂装滑板',
 		weight = 0,
 	},
+	['music_box'] = {
+		label = '音乐盒',
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = '一个可以播放音乐的盒子',
+		client = {
+			event = 'rb-musicbox:client:UseMusicBox',
+		}
+	},
 }
