@@ -18,6 +18,8 @@ function renderTable(invoices, tab) {
     let firstCol = tab.includes('sent') ? inv.billedtoname : inv.billedbyname;
 
     let statusText = inv.status === 'paid' ? '已支付' : '待支付';
+    let rowClass = inv.status === 'paid' ? 'row-paid' : 'row-unpaid';
+
     let operateHtml = '';
 
     if (tab.includes('sent')) {
@@ -38,17 +40,31 @@ function renderTable(invoices, tab) {
         operateHtml = ``;
       }
     }
-
-    tbody.insertAdjacentHTML('beforeend', `
-      <tr>
-        <td>${firstCol}</td>
-        <td>${statusText}</td>
-        <td>${operateHtml}</td>
-        <td>${inv.amount}</td>
-        <td>${formatTime(inv.created_at)}</td>
-        <td>${inv.reason}</td>
-      </tr>
-    `);
+    
+    if (tab.includes('personal')) {
+      tbody.insertAdjacentHTML('beforeend', `
+        <tr class="${rowClass}">
+          <td>${firstCol}</td>
+          <td>${statusText}</td>
+          <td>${operateHtml}</td>
+          <td>${inv.amount}</td>
+          <td>${formatTime(inv.created_at)}</td>
+          <td>${inv.reason}</td>
+        </tr>
+      `);
+    } else {
+      tbody.insertAdjacentHTML('beforeend', `
+        <tr class="${rowClass}">
+          <td>${inv.billedbyname}</td>
+          <td>${firstCol}</td>
+          <td>${statusText}</td>
+          <td>${operateHtml}</td>
+          <td>${inv.amount}</td>
+          <td>${formatTime(inv.created_at)}</td>
+          <td>${inv.reason}</td>
+        </tr>
+      `);
+    }
   });
 }
 
@@ -76,14 +92,27 @@ function bindMenuEvents() {
 
       // 设置表头
       if (selectedTab.includes('sent')) {
-        document.getElementById('table-head').innerHTML = `
-          <th>接收者</th>
-          <th>状态</th>
-          <th>操作</th>
-          <th>金额</th>
-          <th>时间</th>
-          <th>原因</th>
-        `;
+        if(selectedTab.includes('personal')){
+          document.getElementById('table-head').innerHTML = `
+            <th>接收者</th>
+            <th>状态</th>
+            <th>操作</th>
+            <th>金额</th>
+            <th>时间</th>
+            <th>原因</th>
+          `;
+        } else {
+          document.getElementById('table-head').innerHTML = `
+            <th>发出者</th>
+            <th>接收者</th>
+            <th>状态</th>
+            <th>操作</th>
+            <th>金额</th>
+            <th>时间</th>
+            <th>原因</th>
+          `;
+        }
+        
       } else {
         document.getElementById('table-head').innerHTML = `
           <th>发出者</th>

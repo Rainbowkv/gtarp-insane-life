@@ -152,16 +152,16 @@ QBCore.Functions.CreateCallback('qb-garages:server:IsSpawnOk', function(source, 
         cb(false, true)
         return
     end
-    if checkDishonest(source) then
-        TriggerClientEvent("ox_lib:notify", source, {
-            title = "车库系统",
-            description = "您还有未支付的账单",
-            type = "error",
-            duration = 3000,
-        })
-        cb(false, false)
-        return
-    end
+    -- if checkDishonest(source) then
+    --     TriggerClientEvent("ox_lib:notify", source, {
+    --         title = "车库系统",
+    --         description = "您还有未支付的账单",
+    --         type = "error",
+    --         duration = 3000,
+    --     })
+    --     cb(false, false)
+    --     return
+    -- end
     cb(true, true)
 end)
 
