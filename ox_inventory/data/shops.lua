@@ -5,9 +5,9 @@ return {
 		blip = {
 			id = 59, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'burger', price = 200 },
-			{ name = 'water_bottle', price = 70 },
-			{ name = 'kurkakola', price = 70 },
+			{ name = 'burger', price = 300 },
+			{ name = 'water_bottle', price = 120 },
+			{ name = 'kurkakola', price = 150 },
 			{ name = 'bakingsoda', price = 100 },
 			{ name = 'rolling_paper', price = 30 },
 			{ name = 'redwcig', price = 15 },
@@ -200,10 +200,10 @@ return {
 		-- name = 'Vending Machine',
 		name = "自动贩卖机",
 		inventory = {
-			{ name = 'water', price = 100 },
-			{ name = 'kurkakola', price = 100 },
-			{ name = 'burger', price = 200},
-			{ neme = 'twerks_candy', price = 150}
+			{ name = 'water', price = 120 },
+			{ name = 'kurkakola', price = 150 },
+			{ name = 'burger', price = 300},
+			{ neme = 'twerks_candy', price = 250}
 		},
 		model = {
 			`prop_vend_soda_02`, `prop_vend_fridge01`, `prop_vend_water_01`, `prop_vend_soda_01`, `prop_vend_snak_01`
