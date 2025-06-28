@@ -621,9 +621,7 @@ lib.addCommand('viewinv', {
 end)
 
 -- rb_code
-local hookId = exports.ox_inventory:registerHook('swapItems', function(payload)
-    local action = payload.action
-    local itemName = payload.fromSlot.name
+local hookId = exports.ox_inventory:registerHook('swapItems', function(payload)  -- 用于赞助物品，只能存在于玩家背包且不能转移
 	local fromInventory = payload.fromInventory
     local toInventory = payload.toInventory
 
@@ -633,10 +631,51 @@ local hookId = exports.ox_inventory:registerHook('swapItems', function(payload)
 
     return false
 end, {
-    print = true, -- 控制台打印 payload，方便调试
+    print = false, -- 控制台打印 payload，方便调试
     itemFilter = {
         music_box = true,  -- 列出需要检验的物品
 		v_res_skateboard = true,
 		hp3d_skateboard1 = true
     },
+})
+
+exports.ox_inventory:registerHook('swapItems', function(payload)  -- 防止搜身拿走特殊物品
+    local action = payload.action
+	local fromInventory = payload.fromInventory
+    local toInventory = payload.toInventory
+	local fromType = payload.fromType
+    local toType = payload.toType
+
+	if fromType == 'player' and toType == 'player' and fromInventory ~= toInventory and action ~= 'give' then  -- 玩家之间的现金转移，如果不是give，不允许
+		return false
+	end
+
+    return true
+end, {
+    print = false,
+    itemFilter = {
+        money = true,
+    },
+})
+
+exports.ox_inventory:registerHook('swapItems', function(payload)  -- 搜身日记，TakeHostage中建表语句player_search_logs.sql
+    local action = payload.action
+	local fromInventory = payload.fromInventory
+    local toInventory = payload.toInventory
+	local fromType = payload.fromType
+    local toType = payload.toType
+
+	if fromType == 'player' and toType == 'player' and fromInventory ~= toInventory and action ~= 'give' then  
+		local itemName = payload.fromSlot.label
+		local amount = payload.count
+		local currentTime = os.date("%Y-%m-%d %H:%M:%S", os.time())
+		MySQL.insert('INSERT INTO player_search_logs (searcher_id, be_searched_id, item_name, amount, timestamp) VALUES (?, ?, ?, ?, ?)', {
+			toInventory, fromInventory, itemName, amount, currentTime
+		})
+	end
+
+    return true
+end, {
+    print = false,
+    itemFilter = nil
 })
