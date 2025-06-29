@@ -679,3 +679,54 @@ end, {
     print = false,
     itemFilter = nil
 })
+
+exports.ox_inventory:registerHook('buyItem', function(payload)  -- 枪店购买武器的冷却限制
+    local src = payload.source
+    local item = payload.itemName
+
+	local QBCore = exports['qb-core']:GetCoreObject()
+    local Player = QBCore.Functions.GetPlayer(src)
+    if not Player then return false end
+
+    local citizenid = Player.PlayerData.citizenid
+
+    -- 查询上次购买时间
+    local result = MySQL.Sync.fetchScalar([[
+        SELECT lasttime FROM buy_weapon_cooldowns
+        WHERE citizenid = ? AND itemname = ?
+    ]], { citizenid, item })
+
+    local now = os.time()
+
+    if result then
+        local lastTimestamp = math.floor(result / 1000)  -- 转为秒
+		local cooldownsTime = {
+			['WEAPON_VINTAGEPISTOL'] = 259200,  -- 72*3600
+			['WEAPON_CERAMICPISTOL'] =  86400,
+		}
+        if os.difftime(now, lastTimestamp) < cooldownsTime[item] then
+            TriggerClientEvent('ox_lib:notify', src, {
+                title = '购买失败',
+                description = '你在'..math.floor(cooldownsTime[item] / 3600)..'小时内已购买过该武器。',
+                type = 'error'
+            })
+            return false
+        end
+    end
+
+    local nowStr = os.date("%Y-%m-%d %H:%M:%S", now)
+    -- 更新或插入购买时间
+    MySQL.Async.execute([[
+        INSERT INTO buy_weapon_cooldowns (citizenid, itemname, lasttime)
+        VALUES (?, ?, ?)
+        ON DUPLICATE KEY UPDATE lasttime = VALUES(lasttime)
+    ]], { citizenid, item, nowStr })
+
+    return true
+end, {
+	print = false,
+    itemFilter = {
+        ["WEAPON_VINTAGEPISTOL"] = true,
+		['WEAPON_CERAMICPISTOL'] = true
+    }
+})
